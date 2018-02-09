@@ -1,7 +1,7 @@
 # SparkStarterKitForStudents
 Quick and dirty starter kit for students: Use some basic commands of the DJI's SDK
 
-1) Download the project
+1) Download the project and open the .xcworkspace
 2) Add your custom product key to info.plist: https://developer.dji.com/mobile-sdk/documentation/quick-start/index.html#generate-an-app-key
 
 ![Screenshot](https://github.com/AlbanPerli/SparkStarterKitForStudents/blob/master/Sans%20titre.jpg)
