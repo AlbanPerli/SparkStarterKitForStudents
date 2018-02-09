@@ -7,6 +7,7 @@ Quick and dirty starter kit for students: Use some basic commands of the DJI's S
 
 3) Use the accelerometer carefully... ;-)
 
+4) Use it as a starter then, write quality code, not like me!
 
 Specs:
 https://www.dji.com/spark/info#specs
