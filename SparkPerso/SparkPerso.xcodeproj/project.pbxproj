@@ -1,0 +1,513 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3905F106BBC08AB6924C7E1C /* Pods_SparkPerso.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519E2A39EBBA3FC5A2EE6841 /* Pods_SparkPerso.framework */; };
+		612304AA200BABF200F98395 /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304A9200BABF200F98395 /* ProductCommunicationManager.swift */; };
+		612304B0200BB6A000F98395 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304AF200BB6A000F98395 /* CameraViewController.swift */; };
+		612304B4200BBC1E00F98395 /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612304B1200BB73300F98395 /* VideoPreviewer.framework */; };
+		612304B5200BBC1E00F98395 /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 612304B1200BB73300F98395 /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		612304B9200BC77200F98395 /* CalibrationAndHeadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304B8200BC77200F98395 /* CalibrationAndHeadingViewController.swift */; };
+		612304BB200BD77300F98395 /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BA200BD77300F98395 /* LocationDelegate.swift */; };
+		612304BE200BDCEE00F98395 /* TakeOffAndLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */; };
+		612304C0200BE41500F98395 /* MovementLevelOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */; };
+		612304CB200C03B700F98395 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612304C7200C018000F98395 /* GPUImage.framework */; };
+		612304CC200C03B700F98395 /* GPUImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 612304C7200C018000F98395 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		61B94650200E70E5001E5E41 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B9464F200E70E5001E5E41 /* NetworkExtension.framework */; };
+		61D50D7220274586000842A3 /* AccelerometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D50D7120274586000842A3 /* AccelerometerViewController.swift */; };
+		61DAFC0D200B9AB3001CB2E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAFC0C200B9AB3001CB2E2 /* AppDelegate.swift */; };
+		61DAFC0F200B9AB3001CB2E2 /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAFC0E200B9AB3001CB2E2 /* ConnectionViewController.swift */; };
+		61DAFC12200B9AB3001CB2E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61DAFC10200B9AB3001CB2E2 /* Main.storyboard */; };
+		61DAFC14200B9AB3001CB2E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61DAFC13200B9AB3001CB2E2 /* Assets.xcassets */; };
+		61DAFC17200B9AB3001CB2E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61DAFC15200B9AB3001CB2E2 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		612304B6200BBC1F00F98395 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				612304B5200BBC1E00F98395 /* VideoPreviewer.framework in Embed Frameworks */,
+				612304CC200C03B700F98395 /* GPUImage.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3FC166B54DFCF09CC13A3795 /* Pods-SparkPerso.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SparkPerso.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SparkPerso/Pods-SparkPerso.debug.xcconfig"; sourceTree = "<group>"; };
+		43A0CB1DA1DFC20A7F568AB0 /* Pods-SparkPerso.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SparkPerso.release.xcconfig"; path = "Pods/Target Support Files/Pods-SparkPerso/Pods-SparkPerso.release.xcconfig"; sourceTree = "<group>"; };
+		519E2A39EBBA3FC5A2EE6841 /* Pods_SparkPerso.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SparkPerso.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		612304A9200BABF200F98395 /* ProductCommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationManager.swift; sourceTree = "<group>"; };
+		612304AF200BB6A000F98395 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		612304B1200BB73300F98395 /* VideoPreviewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VideoPreviewer.framework; sourceTree = "<group>"; };
+		612304B8200BC77200F98395 /* CalibrationAndHeadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationAndHeadingViewController.swift; sourceTree = "<group>"; };
+		612304BA200BD77300F98395 /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
+		612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeOffAndLandingViewController.swift; sourceTree = "<group>"; };
+		612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementLevelOneViewController.swift; sourceTree = "<group>"; };
+		612304C7200C018000F98395 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
+		61B9464F200E70E5001E5E41 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		61B94651200E70E5001E5E41 /* SparkPerso.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SparkPerso.entitlements; sourceTree = "<group>"; };
+		61D50D7120274586000842A3 /* AccelerometerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerViewController.swift; sourceTree = "<group>"; };
+		61DAFC09200B9AB3001CB2E2 /* SparkPerso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SparkPerso.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		61DAFC0C200B9AB3001CB2E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		61DAFC0E200B9AB3001CB2E2 /* ConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
+		61DAFC11200B9AB3001CB2E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		61DAFC13200B9AB3001CB2E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		61DAFC16200B9AB3001CB2E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		61DAFC18200B9AB3001CB2E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		61DAFC06200B9AB3001CB2E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3905F106BBC08AB6924C7E1C /* Pods_SparkPerso.framework in Frameworks */,
+				61B94650200E70E5001E5E41 /* NetworkExtension.framework in Frameworks */,
+				612304CB200C03B700F98395 /* GPUImage.framework in Frameworks */,
+				612304B4200BBC1E00F98395 /* VideoPreviewer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		612304AB200BABF700F98395 /* HelpersFromSample */ = {
+			isa = PBXGroup;
+			children = (
+				612304A9200BABF200F98395 /* ProductCommunicationManager.swift */,
+			);
+			path = HelpersFromSample;
+			sourceTree = "<group>";
+		};
+		612304B7200BC74500F98395 /* Starter */ = {
+			isa = PBXGroup;
+			children = (
+				61DAFC0E200B9AB3001CB2E2 /* ConnectionViewController.swift */,
+				612304AF200BB6A000F98395 /* CameraViewController.swift */,
+				612304BC200BD77A00F98395 /* Heading+Calibration */,
+				612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */,
+				612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */,
+				61D50D7120274586000842A3 /* AccelerometerViewController.swift */,
+			);
+			path = Starter;
+			sourceTree = "<group>";
+		};
+		612304BC200BD77A00F98395 /* Heading+Calibration */ = {
+			isa = PBXGroup;
+			children = (
+				612304B8200BC77200F98395 /* CalibrationAndHeadingViewController.swift */,
+				612304BA200BD77300F98395 /* LocationDelegate.swift */,
+			);
+			path = "Heading+Calibration";
+			sourceTree = "<group>";
+		};
+		61DAFC00200B9AB3001CB2E2 = {
+			isa = PBXGroup;
+			children = (
+				61DAFC0B200B9AB3001CB2E2 /* SparkPerso */,
+				61DAFC0A200B9AB3001CB2E2 /* Products */,
+				9DE103B774E7C0D0D915A0FF /* Pods */,
+				DAF062492152209D4BDB5354 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		61DAFC0A200B9AB3001CB2E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61DAFC09200B9AB3001CB2E2 /* SparkPerso.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		61DAFC0B200B9AB3001CB2E2 /* SparkPerso */ = {
+			isa = PBXGroup;
+			children = (
+				61B94651200E70E5001E5E41 /* SparkPerso.entitlements */,
+				612304B7200BC74500F98395 /* Starter */,
+				612304AB200BABF700F98395 /* HelpersFromSample */,
+				61DAFC0C200B9AB3001CB2E2 /* AppDelegate.swift */,
+				61DAFC10200B9AB3001CB2E2 /* Main.storyboard */,
+				61DAFC13200B9AB3001CB2E2 /* Assets.xcassets */,
+				61DAFC15200B9AB3001CB2E2 /* LaunchScreen.storyboard */,
+				61DAFC18200B9AB3001CB2E2 /* Info.plist */,
+			);
+			path = SparkPerso;
+			sourceTree = "<group>";
+		};
+		9DE103B774E7C0D0D915A0FF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3FC166B54DFCF09CC13A3795 /* Pods-SparkPerso.debug.xcconfig */,
+				43A0CB1DA1DFC20A7F568AB0 /* Pods-SparkPerso.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DAF062492152209D4BDB5354 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61B9464F200E70E5001E5E41 /* NetworkExtension.framework */,
+				612304C7200C018000F98395 /* GPUImage.framework */,
+				612304B1200BB73300F98395 /* VideoPreviewer.framework */,
+				519E2A39EBBA3FC5A2EE6841 /* Pods_SparkPerso.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		61DAFC08200B9AB3001CB2E2 /* SparkPerso */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61DAFC1B200B9AB3001CB2E2 /* Build configuration list for PBXNativeTarget "SparkPerso" */;
+			buildPhases = (
+				8D34D4480670726EA1824995 /* [CP] Check Pods Manifest.lock */,
+				61DAFC05200B9AB3001CB2E2 /* Sources */,
+				61DAFC06200B9AB3001CB2E2 /* Frameworks */,
+				61DAFC07200B9AB3001CB2E2 /* Resources */,
+				9A358873264767E72AC0AC6F /* [CP] Embed Pods Frameworks */,
+				0507D1E9F742D09E6180189E /* [CP] Copy Pods Resources */,
+				612304B6200BBC1F00F98395 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SparkPerso;
+			productName = SparkPerso;
+			productReference = 61DAFC09200B9AB3001CB2E2 /* SparkPerso.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61DAFC01200B9AB3001CB2E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = AlbanPerli;
+				TargetAttributes = {
+					61DAFC08200B9AB3001CB2E2 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 61DAFC04200B9AB3001CB2E2 /* Build configuration list for PBXProject "SparkPerso" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 61DAFC00200B9AB3001CB2E2;
+			productRefGroup = 61DAFC0A200B9AB3001CB2E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				61DAFC08200B9AB3001CB2E2 /* SparkPerso */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		61DAFC07200B9AB3001CB2E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61DAFC17200B9AB3001CB2E2 /* LaunchScreen.storyboard in Resources */,
+				61DAFC14200B9AB3001CB2E2 /* Assets.xcassets in Resources */,
+				61DAFC12200B9AB3001CB2E2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0507D1E9F742D09E6180189E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SparkPerso/Pods-SparkPerso-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D34D4480670726EA1824995 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SparkPerso-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A358873264767E72AC0AC6F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SparkPerso/Pods-SparkPerso-frameworks.sh",
+				"${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SparkPerso/Pods-SparkPerso-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		61DAFC05200B9AB3001CB2E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				612304BE200BDCEE00F98395 /* TakeOffAndLandingViewController.swift in Sources */,
+				612304B9200BC77200F98395 /* CalibrationAndHeadingViewController.swift in Sources */,
+				612304BB200BD77300F98395 /* LocationDelegate.swift in Sources */,
+				612304C0200BE41500F98395 /* MovementLevelOneViewController.swift in Sources */,
+				612304AA200BABF200F98395 /* ProductCommunicationManager.swift in Sources */,
+				61D50D7220274586000842A3 /* AccelerometerViewController.swift in Sources */,
+				612304B0200BB6A000F98395 /* CameraViewController.swift in Sources */,
+				61DAFC0F200B9AB3001CB2E2 /* ConnectionViewController.swift in Sources */,
+				61DAFC0D200B9AB3001CB2E2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		61DAFC10200B9AB3001CB2E2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61DAFC11200B9AB3001CB2E2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		61DAFC15200B9AB3001CB2E2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61DAFC16200B9AB3001CB2E2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		61DAFC19200B9AB3001CB2E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		61DAFC1A200B9AB3001CB2E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		61DAFC1C200B9AB3001CB2E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FC166B54DFCF09CC13A3795 /* Pods-SparkPerso.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SparkPerso/SparkPerso.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G739VH73FZ;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = SparkPerso/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.alban;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		61DAFC1D200B9AB3001CB2E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43A0CB1DA1DFC20A7F568AB0 /* Pods-SparkPerso.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SparkPerso/SparkPerso.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G739VH73FZ;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = SparkPerso/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.alban;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		61DAFC04200B9AB3001CB2E2 /* Build configuration list for PBXProject "SparkPerso" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61DAFC19200B9AB3001CB2E2 /* Debug */,
+				61DAFC1A200B9AB3001CB2E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61DAFC1B200B9AB3001CB2E2 /* Build configuration list for PBXNativeTarget "SparkPerso" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61DAFC1C200B9AB3001CB2E2 /* Debug */,
+				61DAFC1D200B9AB3001CB2E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 61DAFC01200B9AB3001CB2E2 /* Project object */;
+}

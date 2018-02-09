@@ -1,0 +1,5 @@
+# platform :ios, '9.0'
+use_frameworks!
+target 'SparkPerso' do
+   pod 'DJI-SDK-iOS'
+end
