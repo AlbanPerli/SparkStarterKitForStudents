@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3905F106BBC08AB6924C7E1C /* Pods_SparkPerso.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519E2A39EBBA3FC5A2EE6841 /* Pods_SparkPerso.framework */; };
 		612304AA200BABF200F98395 /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304A9200BABF200F98395 /* ProductCommunicationManager.swift */; };
 		612304B0200BB6A000F98395 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304AF200BB6A000F98395 /* CameraViewController.swift */; };
 		612304B4200BBC1E00F98395 /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612304B1200BB73300F98395 /* VideoPreviewer.framework */; };
@@ -16,8 +15,6 @@
 		612304BB200BD77300F98395 /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BA200BD77300F98395 /* LocationDelegate.swift */; };
 		612304BE200BDCEE00F98395 /* TakeOffAndLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */; };
 		612304C0200BE41500F98395 /* MovementLevelOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */; };
-		612304CB200C03B700F98395 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612304C7200C018000F98395 /* GPUImage.framework */; };
-		612304CC200C03B700F98395 /* GPUImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 612304C7200C018000F98395 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		61B94650200E70E5001E5E41 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B9464F200E70E5001E5E41 /* NetworkExtension.framework */; };
 		61D50D7220274586000842A3 /* AccelerometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D50D7120274586000842A3 /* AccelerometerViewController.swift */; };
 		61DAFC0D200B9AB3001CB2E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAFC0C200B9AB3001CB2E2 /* AppDelegate.swift */; };
@@ -35,7 +32,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				612304B5200BBC1E00F98395 /* VideoPreviewer.framework in Embed Frameworks */,
-				612304CC200C03B700F98395 /* GPUImage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,7 +41,6 @@
 /* Begin PBXFileReference section */
 		3FC166B54DFCF09CC13A3795 /* Pods-SparkPerso.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SparkPerso.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SparkPerso/Pods-SparkPerso.debug.xcconfig"; sourceTree = "<group>"; };
 		43A0CB1DA1DFC20A7F568AB0 /* Pods-SparkPerso.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SparkPerso.release.xcconfig"; path = "Pods/Target Support Files/Pods-SparkPerso/Pods-SparkPerso.release.xcconfig"; sourceTree = "<group>"; };
-		519E2A39EBBA3FC5A2EE6841 /* Pods_SparkPerso.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SparkPerso.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		612304A9200BABF200F98395 /* ProductCommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationManager.swift; sourceTree = "<group>"; };
 		612304AF200BB6A000F98395 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		612304B1200BB73300F98395 /* VideoPreviewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VideoPreviewer.framework; sourceTree = "<group>"; };
@@ -53,7 +48,6 @@
 		612304BA200BD77300F98395 /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
 		612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeOffAndLandingViewController.swift; sourceTree = "<group>"; };
 		612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementLevelOneViewController.swift; sourceTree = "<group>"; };
-		612304C7200C018000F98395 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
 		61B9464F200E70E5001E5E41 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		61B94651200E70E5001E5E41 /* SparkPerso.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SparkPerso.entitlements; sourceTree = "<group>"; };
 		61D50D7120274586000842A3 /* AccelerometerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerViewController.swift; sourceTree = "<group>"; };
@@ -71,9 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3905F106BBC08AB6924C7E1C /* Pods_SparkPerso.framework in Frameworks */,
 				61B94650200E70E5001E5E41 /* NetworkExtension.framework in Frameworks */,
-				612304CB200C03B700F98395 /* GPUImage.framework in Frameworks */,
 				612304B4200BBC1E00F98395 /* VideoPreviewer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,9 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				61B9464F200E70E5001E5E41 /* NetworkExtension.framework */,
-				612304C7200C018000F98395 /* GPUImage.framework */,
 				612304B1200BB73300F98395 /* VideoPreviewer.framework */,
-				519E2A39EBBA3FC5A2EE6841 /* Pods_SparkPerso.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

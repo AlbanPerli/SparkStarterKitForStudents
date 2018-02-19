@@ -8,7 +8,7 @@
 
 import UIKit
 import DJISDK
-import NetworkExtension
+
 
 class ConnectionViewController: UIViewController {
     
@@ -23,17 +23,17 @@ class ConnectionViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let hotspotConfig = NEHotspotConfiguration(ssid: SSID, passphrase: "", isWEP: false)
-        
-        NEHotspotConfigurationManager.shared.apply(hotspotConfig) {[unowned self] (error) in
-            
-            if let error = error {
-                
-            }
-            else {
-                
-            }
-        }
+//        let hotspotConfig = NEHotspotConfiguration(ssid: SSID, passphrase: "", isWEP: false)
+//
+//        NEHotspotConfigurationManager.shared.apply(hotspotConfig) {[unowned self] (error) in
+//
+//            if let error = error {
+//
+//            }
+//            else {
+//
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {
