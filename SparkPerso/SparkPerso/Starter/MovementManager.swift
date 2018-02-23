@@ -9,7 +9,7 @@
 import Foundation
 
 public struct Movement {
-  
+    
     public struct Direction {
         var impulse:Float = 0.5
         
@@ -34,13 +34,13 @@ public struct Movement {
     // Physics
     var start:Any?
     var end:Any?
-   
+    
     
     var duration:Float
     
-//    // SDK
-//    var rightStickVertical:Float
-//    var rightStickHorizontal:Float
+    //    // SDK
+    //    var rightStickVertical:Float
+    //    var rightStickHorizontal:Float
     
 }
 
@@ -60,19 +60,29 @@ public class MovementManager {
     
     public func createSquareScenario() -> [Movement] {
         
+        let duration:Float = 2.0
         var scenario = [Movement]()
+       
+        let stop = makeStopMovement()
         
-        let forward = Movement(directions: [self.makeForwardDirection()], start: nil, end: nil, duration: 0.5)
-        let right = Movement(directions: [self.makeRightDirection()], start: nil, end: nil, duration: 0.5)
-        let backward = Movement(directions: [self.makeBackwardDirection()], start: nil, end: nil, duration: 0.5)
-        let left = Movement(directions: [self.makeLeftDirection()], start: nil, end: nil, duration: 0.5)
+        scenario.append(moveForward(3.0))
+        scenario.append(stop)
+        scenario.append(moveBackward(3.0))
+        scenario.append(stop)
+        scenario.append(moveRight(0.5))
+        scenario.append(stop)
+        scenario.append(moveLeft(0.5))
+        scenario.append(stop)
         
-        // Square
-        scenario.append(forward)
-        scenario.append(right)
-        scenario.append(backward)
-        scenario.append(left)
-        scenario.append(forward)
+//        // Square
+//        scenario.append(moveForward())
+//        scenario.append(stop)
+//        scenario.append(moveRight())
+//        scenario.append(stop)
+//        scenario.append(moveBackward())
+//        scenario.append(stop)
+//        scenario.append(moveLeft())
+//        scenario.append(stop)
         
         
         return scenario
@@ -114,7 +124,7 @@ public class MovementManager {
         let direction1 = Movement.Direction(impulse: 0.0, axe: Movement.Direction.Axes.rightStickVertical, type: Movement.Direction.MovementType.forward)
         let direction2 = Movement.Direction(impulse: 0.0, axe: Movement.Direction.Axes.rightStickHorizontal, type: Movement.Direction.MovementType.forward)
         
-        let mov = Movement(directions: [direction1,direction2], start: nil, end: nil, duration: 0.0001)
+        let mov = Movement(directions: [direction1,direction2], start: nil, end: nil, duration: 0.4)
         
         return mov
     }
@@ -123,19 +133,41 @@ public class MovementManager {
 }
 
 extension MovementManager {
-    func makeForwardDirection(_ impulse:Float = 0.1) -> Movement.Direction {
+    func makeForwardDirection(_ impulse:Float = 0.3) -> Movement.Direction {
         return Movement.Direction(impulse: impulse, axe: Movement.Direction.Axes.rightStickVertical, type: Movement.Direction.MovementType.forward)
     }
     
-    func makeBackwardDirection(_ impulse:Float = 0.1) -> Movement.Direction {
+    func makeBackwardDirection(_ impulse:Float = 0.3) -> Movement.Direction {
         return Movement.Direction(impulse: impulse, axe: Movement.Direction.Axes.rightStickVertical, type: Movement.Direction.MovementType.backward)
     }
     
-    func makeLeftDirection(_ impulse:Float = 0.1) -> Movement.Direction {
+    func makeLeftDirection(_ impulse:Float = 0.3) -> Movement.Direction {
         return Movement.Direction(impulse: impulse, axe: Movement.Direction.Axes.rightStickHorizontal, type: Movement.Direction.MovementType.forward)
     }
     
-    func makeRightDirection(_ impulse:Float = 0.1) -> Movement.Direction {
+    func makeRightDirection(_ impulse:Float = 0.3) -> Movement.Direction {
         return Movement.Direction(impulse: impulse, axe: Movement.Direction.Axes.rightStickHorizontal, type: Movement.Direction.MovementType.backward)
     }
+}
+
+extension MovementManager {
+    
+    func moveForward(_ duration:Float = 2.0) -> Movement {
+        return Movement(directions: [self.makeForwardDirection()], start: nil, end: nil, duration: duration)
+    }
+    
+    
+    func moveRight(_ duration:Float = 2.0) -> Movement {
+        return Movement(directions: [self.makeRightDirection()], start: nil, end: nil, duration: duration)
+        
+    }
+    func moveBackward(_ duration:Float = 2.0) -> Movement {
+        return Movement(directions: [self.makeBackwardDirection()], start: nil, end: nil, duration: duration)
+        
+    }
+    func moveLeft(_ duration:Float = 2.0) -> Movement {
+        return Movement(directions: [self.makeLeftDirection()], start: nil, end: nil, duration: duration)
+    }
+    
+    
 }

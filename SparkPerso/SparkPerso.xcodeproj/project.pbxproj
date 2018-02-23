@@ -16,6 +16,10 @@
 		612304BE200BDCEE00F98395 /* TakeOffAndLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */; };
 		612304C0200BE41500F98395 /* MovementLevelOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */; };
 		614F6E1620403BB30079B22D /* MovementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614F6E1520403BB30079B22D /* MovementManager.swift */; };
+		618F61D02040646500CAE2A3 /* Scenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618F61CE2040646500CAE2A3 /* Scenarios.swift */; };
+		618F61D12040646500CAE2A3 /* Infos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618F61CF2040646500CAE2A3 /* Infos.swift */; };
+		618F61D42040647E00CAE2A3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618F61D32040647E00CAE2A3 /* SwiftyJSON.swift */; };
+		618F61D6204064C900CAE2A3 /* Scenar.json in Resources */ = {isa = PBXBuildFile; fileRef = 618F61D5204064C900CAE2A3 /* Scenar.json */; };
 		61C0211420404AD3006D887D /* AutomaticMovementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C0211320404AD3006D887D /* AutomaticMovementViewController.swift */; };
 		61D50D7220274586000842A3 /* AccelerometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D50D7120274586000842A3 /* AccelerometerViewController.swift */; };
 		61DAFC0D200B9AB3001CB2E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAFC0C200B9AB3001CB2E2 /* AppDelegate.swift */; };
@@ -51,6 +55,10 @@
 		612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementLevelOneViewController.swift; sourceTree = "<group>"; };
 		6130FA5B20404746009EE612 /* TestScenarios.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestScenarios.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		614F6E1520403BB30079B22D /* MovementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementManager.swift; sourceTree = "<group>"; };
+		618F61CE2040646500CAE2A3 /* Scenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenarios.swift; sourceTree = "<group>"; };
+		618F61CF2040646500CAE2A3 /* Infos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Infos.swift; sourceTree = "<group>"; };
+		618F61D32040647E00CAE2A3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		618F61D5204064C900CAE2A3 /* Scenar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Scenar.json; sourceTree = "<group>"; };
 		61B94651200E70E5001E5E41 /* SparkPerso.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SparkPerso.entitlements; sourceTree = "<group>"; };
 		61C0211320404AD3006D887D /* AutomaticMovementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticMovementViewController.swift; sourceTree = "<group>"; };
 		61D50D7120274586000842A3 /* AccelerometerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +94,7 @@
 		612304B7200BC74500F98395 /* Starter */ = {
 			isa = PBXGroup;
 			children = (
+				618F61D22040646900CAE2A3 /* Model */,
 				6130FA5B20404746009EE612 /* TestScenarios.playground */,
 				61DAFC0E200B9AB3001CB2E2 /* ConnectionViewController.swift */,
 				612304AF200BB6A000F98395 /* CameraViewController.swift */,
@@ -95,6 +104,7 @@
 				61D50D7120274586000842A3 /* AccelerometerViewController.swift */,
 				614F6E1520403BB30079B22D /* MovementManager.swift */,
 				61C0211320404AD3006D887D /* AutomaticMovementViewController.swift */,
+				618F61D5204064C900CAE2A3 /* Scenar.json */,
 			);
 			path = Starter;
 			sourceTree = "<group>";
@@ -106,6 +116,16 @@
 				612304BA200BD77300F98395 /* LocationDelegate.swift */,
 			);
 			path = "Heading+Calibration";
+			sourceTree = "<group>";
+		};
+		618F61D22040646900CAE2A3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				618F61D32040647E00CAE2A3 /* SwiftyJSON.swift */,
+				618F61CF2040646500CAE2A3 /* Infos.swift */,
+				618F61CE2040646500CAE2A3 /* Scenarios.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		61DAFC00200B9AB3001CB2E2 = {
@@ -228,6 +248,7 @@
 			files = (
 				61DAFC17200B9AB3001CB2E2 /* LaunchScreen.storyboard in Resources */,
 				61DAFC14200B9AB3001CB2E2 /* Assets.xcassets in Resources */,
+				618F61D6204064C900CAE2A3 /* Scenar.json in Resources */,
 				61DAFC12200B9AB3001CB2E2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,7 +319,10 @@
 				614F6E1620403BB30079B22D /* MovementManager.swift in Sources */,
 				612304BB200BD77300F98395 /* LocationDelegate.swift in Sources */,
 				612304C0200BE41500F98395 /* MovementLevelOneViewController.swift in Sources */,
+				618F61D42040647E00CAE2A3 /* SwiftyJSON.swift in Sources */,
+				618F61D02040646500CAE2A3 /* Scenarios.swift in Sources */,
 				612304AA200BABF200F98395 /* ProductCommunicationManager.swift in Sources */,
+				618F61D12040646500CAE2A3 /* Infos.swift in Sources */,
 				61D50D7220274586000842A3 /* AccelerometerViewController.swift in Sources */,
 				61C0211420404AD3006D887D /* AutomaticMovementViewController.swift in Sources */,
 				612304B0200BB6A000F98395 /* CameraViewController.swift in Sources */,
@@ -451,7 +475,7 @@
 				INFOPLIST_FILE = SparkPerso/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dmii.dronilac-pilot";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.albanperli;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -473,7 +497,7 @@
 				INFOPLIST_FILE = SparkPerso/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dmii.dronilac-pilot";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.albanperli;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -193,6 +193,14 @@
                                     <segue destination="nc7-dl-5YI" kind="show" id="s7l-ke-jwc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m68-0j-G62">
+                                <rect key="frame" x="317" y="79" width="42" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="start"/>
+                                <connections>
+                                    <action selector="startButtonClicked:" destination="6yA-Rb-RDa" eventType="touchUpInside" id="AAP-et-5Ls"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -262,7 +270,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USV-ol-738">
-                                <rect key="frame" x="139" y="539" width="97" height="30"/>
+                                <rect key="frame" x="139" y="376" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Automatic"/>
                                 <connections>
@@ -287,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="miV-Vt-tbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2688.8000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="2689" y="134"/>
         </scene>
         <!--Movement Level One-->
         <scene sceneID="xhm-DI-Klo">

@@ -29,6 +29,10 @@ class CalibrationAndHeadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       
+    }
+    
+    @IBAction func startButtonClicked(_ sender: UIButton) {
         // ---------------------
         // Spark
         // ---------------------

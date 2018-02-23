@@ -32,6 +32,28 @@ class AutomaticMovementViewController: UIViewController {
             }
         }
         
+        // Read a json
+        if let filepath = Bundle.main.path(forResource: "Scenar", ofType: "json") {
+            do {
+                let contents = try String(contentsOfFile: filepath)
+                
+                let json = JSON(parseJSON: contents)
+                let scenar = Scenarios(json: json)
+                for info in scenar.infos!{
+                    print(info.dictionaryRepresentation())
+                    
+                }
+                
+            } catch {
+                // contents could not be loaded
+            }
+        } else {
+            // example.txt not found!
+        }
+
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

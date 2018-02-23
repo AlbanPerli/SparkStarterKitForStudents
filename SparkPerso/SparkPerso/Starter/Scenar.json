@@ -1,0 +1,21 @@
+{
+"name" : "toto",
+"infos" : [
+{
+"movementDirection" : 1,
+"durationInSeconds" : 0.4
+},
+{
+"movementDirection" : 3,
+"durationInSeconds" : 0.4
+},
+{
+"movementDirection" : 2,
+"durationInSeconds" : 0.4
+},
+{
+"movementDirection" : 4,
+"durationInSeconds" : 0.4
+}
+]
+}
