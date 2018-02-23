@@ -261,6 +261,14 @@
                                     <segue destination="Ppr-Tr-2jt" kind="show" id="Zxu-Ya-kYu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USV-ol-738">
+                                <rect key="frame" x="139" y="539" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Automatic"/>
+                                <connections>
+                                    <segue destination="5vI-nq-hAa" kind="show" id="Hod-A1-0If"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -425,6 +433,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVd-de-eU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3461.5999999999999" y="133.5832083958021"/>
+        </scene>
+        <!--Automatic Movement View Controller-->
+        <scene sceneID="s6Q-Bf-wzh">
+            <objects>
+                <viewController id="5vI-nq-hAa" customClass="AutomaticMovementViewController" customModule="SparkPerso" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CXG-Xg-sbR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CG8-Gv-I9v">
+                                <rect key="frame" x="100" y="286" width="175" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.83137254900000002" green="0.0" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="ALERT"/>
+                                <connections>
+                                    <action selector="alertButtonClicked:" destination="5vI-nq-hAa" eventType="touchUpInside" id="s23-EN-SHt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ts-eq-aav">
+                                <rect key="frame" x="128" y="143" width="118" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Launch Process"/>
+                                <connections>
+                                    <action selector="launchProcess:" destination="5vI-nq-hAa" eventType="touchUpInside" id="va2-fK-d7P"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="6hg-xJ-B3q"/>
+                    </view>
+                    <connections>
+                        <outlet property="launchButton" destination="3ts-eq-aav" id="zGk-gO-uRb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nq-oJ-UU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2688.8000000000002" y="889.20539730134942"/>
         </scene>
         <!--Accelerometer-->
         <scene sceneID="e4h-g4-eqQ">

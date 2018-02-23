@@ -15,7 +15,8 @@
 		612304BB200BD77300F98395 /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BA200BD77300F98395 /* LocationDelegate.swift */; };
 		612304BE200BDCEE00F98395 /* TakeOffAndLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */; };
 		612304C0200BE41500F98395 /* MovementLevelOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */; };
-		61B94650200E70E5001E5E41 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B9464F200E70E5001E5E41 /* NetworkExtension.framework */; };
+		614F6E1620403BB30079B22D /* MovementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614F6E1520403BB30079B22D /* MovementManager.swift */; };
+		61C0211420404AD3006D887D /* AutomaticMovementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C0211320404AD3006D887D /* AutomaticMovementViewController.swift */; };
 		61D50D7220274586000842A3 /* AccelerometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D50D7120274586000842A3 /* AccelerometerViewController.swift */; };
 		61DAFC0D200B9AB3001CB2E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAFC0C200B9AB3001CB2E2 /* AppDelegate.swift */; };
 		61DAFC0F200B9AB3001CB2E2 /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAFC0E200B9AB3001CB2E2 /* ConnectionViewController.swift */; };
@@ -48,8 +49,10 @@
 		612304BA200BD77300F98395 /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
 		612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeOffAndLandingViewController.swift; sourceTree = "<group>"; };
 		612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementLevelOneViewController.swift; sourceTree = "<group>"; };
-		61B9464F200E70E5001E5E41 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		6130FA5B20404746009EE612 /* TestScenarios.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestScenarios.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		614F6E1520403BB30079B22D /* MovementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementManager.swift; sourceTree = "<group>"; };
 		61B94651200E70E5001E5E41 /* SparkPerso.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SparkPerso.entitlements; sourceTree = "<group>"; };
+		61C0211320404AD3006D887D /* AutomaticMovementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticMovementViewController.swift; sourceTree = "<group>"; };
 		61D50D7120274586000842A3 /* AccelerometerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerViewController.swift; sourceTree = "<group>"; };
 		61DAFC09200B9AB3001CB2E2 /* SparkPerso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SparkPerso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DAFC0C200B9AB3001CB2E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61B94650200E70E5001E5E41 /* NetworkExtension.framework in Frameworks */,
 				612304B4200BBC1E00F98395 /* VideoPreviewer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,12 +86,15 @@
 		612304B7200BC74500F98395 /* Starter */ = {
 			isa = PBXGroup;
 			children = (
+				6130FA5B20404746009EE612 /* TestScenarios.playground */,
 				61DAFC0E200B9AB3001CB2E2 /* ConnectionViewController.swift */,
 				612304AF200BB6A000F98395 /* CameraViewController.swift */,
 				612304BC200BD77A00F98395 /* Heading+Calibration */,
 				612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */,
 				612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */,
 				61D50D7120274586000842A3 /* AccelerometerViewController.swift */,
+				614F6E1520403BB30079B22D /* MovementManager.swift */,
+				61C0211320404AD3006D887D /* AutomaticMovementViewController.swift */,
 			);
 			path = Starter;
 			sourceTree = "<group>";
@@ -148,7 +153,6 @@
 		DAF062492152209D4BDB5354 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				61B9464F200E70E5001E5E41 /* NetworkExtension.framework */,
 				612304B1200BB73300F98395 /* VideoPreviewer.framework */,
 			);
 			name = Frameworks;
@@ -193,7 +197,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.NetworkExtensions.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -291,10 +295,12 @@
 			files = (
 				612304BE200BDCEE00F98395 /* TakeOffAndLandingViewController.swift in Sources */,
 				612304B9200BC77200F98395 /* CalibrationAndHeadingViewController.swift in Sources */,
+				614F6E1620403BB30079B22D /* MovementManager.swift in Sources */,
 				612304BB200BD77300F98395 /* LocationDelegate.swift in Sources */,
 				612304C0200BE41500F98395 /* MovementLevelOneViewController.swift in Sources */,
 				612304AA200BABF200F98395 /* ProductCommunicationManager.swift in Sources */,
 				61D50D7220274586000842A3 /* AccelerometerViewController.swift in Sources */,
+				61C0211420404AD3006D887D /* AutomaticMovementViewController.swift in Sources */,
 				612304B0200BB6A000F98395 /* CameraViewController.swift in Sources */,
 				61DAFC0F200B9AB3001CB2E2 /* ConnectionViewController.swift in Sources */,
 				61DAFC0D200B9AB3001CB2E2 /* AppDelegate.swift in Sources */,
@@ -435,9 +441,8 @@
 			baseConfigurationReference = 3FC166B54DFCF09CC13A3795 /* Pods-SparkPerso.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = SparkPerso/SparkPerso.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G739VH73FZ;
+				DEVELOPMENT_TEAM = 54PCF2T5ZE;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -446,7 +451,7 @@
 				INFOPLIST_FILE = SparkPerso/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.alban;
+				PRODUCT_BUNDLE_IDENTIFIER = "dmii.dronilac-pilot";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -458,9 +463,8 @@
 			baseConfigurationReference = 43A0CB1DA1DFC20A7F568AB0 /* Pods-SparkPerso.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = SparkPerso/SparkPerso.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G739VH73FZ;
+				DEVELOPMENT_TEAM = 54PCF2T5ZE;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -469,7 +473,7 @@
 				INFOPLIST_FILE = SparkPerso/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.alban;
+				PRODUCT_BUNDLE_IDENTIFIER = "dmii.dronilac-pilot";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

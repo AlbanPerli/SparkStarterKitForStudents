@@ -38,7 +38,8 @@ class MovementLevelOneViewController: UIViewController {
     }
     
     @IBAction func forward(_ sender: UIButton) {
-        sendCommand(Movement(value: commonValue, type: .forward))
+        let mov = Movement(value: commonValue, type: .forward)
+        sendCommand(mov)
     }
     
     @IBAction func backward(_ sender: UIButton) {
