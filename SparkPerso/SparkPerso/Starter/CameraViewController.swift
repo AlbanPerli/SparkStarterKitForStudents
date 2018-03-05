@@ -12,7 +12,11 @@ import VideoPreviewer
 
 class CameraViewController: UIViewController {
 
+    let prev1 = VideoPreviewer()
     @IBOutlet weak var cameraView: UIView!
+    
+    let prev2 = VideoPreviewer()
+    @IBOutlet weak var camera2View: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,15 +57,21 @@ class CameraViewController: UIViewController {
     }
     
     func setupVideoPreview() {
-        VideoPreviewer.instance().setView(self.cameraView)
+        
+        prev1?.setView(self.cameraView)
+        prev2?.setView(self.camera2View)
+        //VideoPreviewer.instance().setView(self.cameraView)
         if let _ = DJISDKManager.product(){
             DJISDKManager.videoFeeder()?.primaryVideoFeed.add(self, with: nil)
         }
-        VideoPreviewer.instance().start()
+        prev1?.start()
+        prev2?.start()
+        //VideoPreviewer.instance().start()
     }
     
     func resetVideoPreview() {
-        VideoPreviewer.instance().unSetView()
+        prev1?.unSetView()
+        prev2?.unSetView()
         DJISDKManager.videoFeeder()?.primaryVideoFeed.remove(self)
         
     }
@@ -89,15 +99,17 @@ extension CameraViewController:DJIVideoFeedListener {
     func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData videoData: Data) {
         
         videoData.withUnsafeBytes { (bytes:UnsafePointer<UInt8>) in
-            VideoPreviewer.instance().push(UnsafeMutablePointer(mutating: bytes), length: Int32(videoData.count))
+            prev1?.push(UnsafeMutablePointer(mutating: bytes), length: Int32(videoData.count))
+            prev2?.push(UnsafeMutablePointer(mutating: bytes), length: Int32(videoData.count))
         }
         
+        /*
         VideoPreviewer.instance().snapshotPreview { (image) in
             if let img = image {
                 
             }
         }
-        
+        */
     }
     
     
