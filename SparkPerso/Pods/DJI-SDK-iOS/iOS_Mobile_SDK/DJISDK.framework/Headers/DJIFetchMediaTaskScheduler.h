@@ -55,7 +55,7 @@ typedef NS_ENUM(NSUInteger, DJIFetchMediaTaskSchedulerState) {
     DJIFetchMediaTaskSchedulerStateExecuting,
 
     /**
-     *  Scheduler is suspended. Use `resumeWithCompletion`  to resume the scheduler.
+     *  Scheduler is suspended. Use `resumeWithCompletion` to resume the scheduler.
      */
     DJIFetchMediaTaskSchedulerStateSuspended,
 
@@ -69,11 +69,11 @@ typedef NS_ENUM(NSUInteger, DJIFetchMediaTaskSchedulerState) {
 
 /**
  *  Completion block that is called when the scheduler finishes downloading content
- *  for a  fetch media file task. If multiple content types are defined for a file,
- *  this completion  block will be called at the completion of each content type
- *  being downloaded. The order  content types will be downloaded in is first
- *  `DJIFetchMediaTaskContentThumbnail`,  then `DJIFetchMediaTaskContentPreview` and
- *  lastly  `DJIFetchMediaTaskContentCustomInformation`.
+ *  for a fetch media file task. If multiple content types are defined for a file,
+ *  this completion block will be called at the completion of each content type
+ *  being downloaded. The order content types will be downloaded in is first
+ *  `DJIFetchMediaTaskContentThumbnail`, then `DJIFetchMediaTaskContentPreview` and
+ *  lastly `DJIFetchMediaTaskContentCustomInformation`.
  *  
  *  @param file The media file that the content belongs to.
  *  @param content An enum value of `DJIFetchMediaTaskContent`.
@@ -85,7 +85,7 @@ typedef void(^DJIFetchMediaTaskCompletionBlock)(DJIMediaFile *file, DJIFetchMedi
 /**
  *  Task to fetch contents of a media file. To make `DJIFetchMediaTaskScheduler`
  *  fetch the thumbnail, preview or custom information of a media file, a task
- *  should be created  by using `taskWithFile:content:andCompletion`.
+ *  should be created by using `taskWithFile:content:andCompletion`.
  */
 @interface DJIFetchMediaTask : NSObject
 
@@ -98,7 +98,7 @@ typedef void(^DJIFetchMediaTaskCompletionBlock)(DJIMediaFile *file, DJIFetchMedi
 
 /**
  *  Content types to fetch. A task can fetch more than one content type by using the
- *  bitwise  OR operator on different contents.
+ *  bitwise OR operator on different contents.
  */
 @property (nonatomic, readonly) DJIFetchMediaTaskContent content;
 
@@ -119,26 +119,26 @@ typedef void(^DJIFetchMediaTaskCompletionBlock)(DJIMediaFile *file, DJIFetchMedi
 
 /**
  *  The camera stores the media it captures to SD or SSD storage on the product.
- *  When the  mobile device wants to access the media, it needs to download it from
- *  the product over  the wireless link between the product, remote controller and
- *  mobile device (depending  on the product). Each media file captured by the
- *  camera can have several types of  content associated with it including the full
- *  resolution media content, a lower  resolution preview, a lower resolution again
- *  thumbnail, and custom data within  the file's XML meta data. The full resolution
- *  content can take a long time to  download over the wireless link, so it is often
- *  useful to download previews or  thumbnails of many media files, and then only
- *  download the full resolution content  of fewer select media files. This
- *  scheduler conveniently allows the small content  types of media files (preview,
- *  thumbnail and custom data) to be downloaded to the  mobile device. The scheduler
- *  can be used to queue and download content from a series  of files, as well as
- *  used to re-prioritize files during the download process. The  scheduler holds a
- *  list of pending tasks and it completes them one by one in  first-in-first-out
- *  order. To prioritize a new task, `moveTaskToNext`  can be used. Each task
- *  relates to a media file and can download multiple content types  sequentially.
- *  When the last content type of a task starts being downloaded, the task is
- *  removed from the list. Note, the scheduler cannot be used to queue the download
- *  of full  resolution media content. Only
- *  `fetchFileDataWithOffset:updateQueue:updateBlock` can be used for this.
+ *  When the mobile device wants to access the media, it needs to download it from
+ *  the product over the wireless link between the product, remote controller and
+ *  mobile device (depending on the product). Each media file captured by the camera
+ *  can have several types of content associated with it including the full
+ *  resolution media content, a lower resolution preview, a lower resolution again
+ *  thumbnail, and custom data within the file's XML meta data. The full resolution
+ *  content can take a long time to download over the wireless link, so it is often
+ *  useful to download previews or thumbnails of many media files, and then only
+ *  download the full resolution content of fewer select media files. This scheduler
+ *  conveniently allows the small content types of media files (preview, thumbnail
+ *  and custom data) to be downloaded to the mobile device. The scheduler can be
+ *  used to queue and download content from a series of files, as well as used to
+ *  re-prioritize files during the download process. The scheduler holds a list of
+ *  pending tasks and it completes them one by one in first-in-first-out order. To
+ *  prioritize a new task, `moveTaskToNext` can be used. Each task relates to a
+ *  media file and can download multiple content types sequentially. When the last
+ *  content type of a task starts being downloaded, the task is removed from the
+ *  list. Note, the scheduler cannot be used to queue the download of full
+ *  resolution media content. Only `fetchFileDataWithOffset:updateQueue:updateBlock`
+ *  can be used for this.
  */
 @interface DJIFetchMediaTaskScheduler : NSObject
 
@@ -165,7 +165,7 @@ typedef void(^DJIFetchMediaTaskCompletionBlock)(DJIMediaFile *file, DJIFetchMedi
 
 /**
  *  Pushes a task to the back of the queue. The task will be executed after all
- *  other  tasks are complete.
+ *  other tasks are complete.
  *  
  *  @param task Task to schedule.
  */

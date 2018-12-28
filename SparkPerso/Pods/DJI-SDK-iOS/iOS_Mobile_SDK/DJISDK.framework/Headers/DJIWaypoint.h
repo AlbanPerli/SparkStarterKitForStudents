@@ -159,7 +159,7 @@ typedef NS_ENUM (NSUInteger, DJIWaypointActionType){
  *  aircraft is relative to  the ground at the take-off location, has a range of
  *  [-200,500], and should not be larger than the  aircraft's maximum altitude. If
  *  two adjacent waypoints have different altitudes, the altitude will  gradually
- *  change as the aircraft flys between waypoints.
+ *  change as the aircraft flies between waypoints.
  */
 @property(nonatomic, assign) float altitude;
 

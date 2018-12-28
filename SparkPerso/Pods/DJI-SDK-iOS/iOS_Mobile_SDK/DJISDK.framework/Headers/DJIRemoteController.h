@@ -109,15 +109,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  This class represents the remote controller of the aircraft. It provides methods
- *  to change the settings of the  physical remote controller. For some products
- *  (e.g. Inspire 1 and Matrice 100), the class provides methods to  manager the
+ *  to change the settings of the physical remote controller. For some products
+ *  (e.g. Inspire 1 and Matrice 100), the class provides methods to manager the
  *  slave/master mode of the remote controllers. A remote controller is a device
- *  that can have a GPS,  battery, radio, buttons, sticks, wheels, and output ports
- *  for video. The mobile device is connected to the  remote controller, which is
+ *  that can have a GPS, battery, radio, buttons, sticks, wheels, and output ports
+ *  for video. The mobile device is connected to the remote controller, which is
  *  always sending out information about what everything is doing. The normal remote
  *  controller is called the master. A slave wirelessly connects to the master
- *  remote controller at 5 GHz, and  the aircraft can also download information to
- *  the slave. The slave can send gimbal control commands to the  master. This
+ *  remote controller at 5 GHz, and the aircraft can also download information to
+ *  the slave. The slave can send gimbal control commands to the master. This
  *  configuration allows one person to fly the aircraft while another person
  *  controls the gimbal. This object is available from the `DJIAircraft` subclass
  *  off `DJIBaseProduct`.
@@ -258,7 +258,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Sets the charge mode of a connected iOS device.  Note: Android devices are
  *  always charging when connected to the remote controller. It is only supported by
- *  Inspire 2.
+ *  Inspire 2, M200 series, Cendence and Mavic 2 series.
  *  
  *  @param mode Charge Mobile mode.
  *  @param completion Completion block that receives the setter result.
@@ -269,7 +269,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Gets the mode to charge the connected iOS device. Note that Android devices are
  *  always charging when connected to the remote controller. It is only supported by
- *  Inspire 2.
+ *  Inspire 2, M200 series, Cendence, and Mavic 2 series.
  *  
  *  @param mode The mode to charge the connected iOS device.
  *  @param error Error retrieving the value.
@@ -437,7 +437,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getMasterSlaveConnectionStateWithCompletion:(void (^_Nonnull)(BOOL isConnected,
                                                                       NSError *_Nullable error))completion;
 
-
 /*********************************************************************************/
 #pragma mark RC master and slave mode - Slave RC methods
 /*********************************************************************************/
@@ -505,13 +504,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Called by the slave Remote Controller to request gimbal control from the master
- *  Remote Controller.
+ *  Remote Controller. It is only supported by Inspire 1 and DJI Lightbridge 2.
  *  
  *  @param result DJIRCRequestGimbalControlResult object.
  *  @param error Error retrieving the value.
  *  @param completion Remote execution result callback block.
  */
-- (void)requestGimbalControlWithCompletion:(void (^_Nonnull)(DJIRCRequestGimbalControlResult result, NSError *_Nullable error))completion;
+- (void)requestLegacyGimbalControlWithCompletion:(void (^_Nonnull)(DJIRCRequestGimbalControlResult result, NSError *_Nullable error))completion;
 
 
 /**
@@ -557,7 +556,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  Called by the slave Remote Controller to set the gimbal's pitch, roll, and yaw
  *  speed with a range of [0, 100].
  *  
- *  @param speedCoefficient Speed to be set for gimal's pitch, roll, and yaw, which should be in the range of [0, 100].
+ *  @param speedCoefficient Speed to be set for gimbal's pitch, roll, and yaw, which should be in the range of [0, 100].
  *  @param completion Completion block.
  */
 - (void)setGimbalControlSpeedCoefficient:(DJIRCGimbalControlSpeedCoefficient)speedCoefficient withCompletion:(DJICompletionBlock)completion;
@@ -647,6 +646,18 @@ NS_ASSUME_NONNULL_BEGIN
             authorizationCode:(NSString *_Nullable)code
                withCompletion:(void (^_Nonnull)(DJIRCConnectToMasterResult result, NSError *_Nullable error))completion;
 
+
+/**
+ *  Requests the gimbal control from the other remote controller. Different  from
+ *  `requestLegacyGimbalControlWithCompletion`, the gimbal control  permission is
+ *  transferred to the remote controller without the reply from  the master remote
+ *  controller. The master remote controller can attain the  gimbal control back by
+ *  calling the same method. It is only supported by  Inspire 2, M200 series and
+ *  Cendence.
+ *  
+ *  @param completion The completion block.
+ */
+- (void)requestGimbalControlWithCompletion:(DJICompletionBlock)completion;
 
 /*********************************************************************************/
 #pragma mark Custom buttons (Cendence)
@@ -818,6 +829,40 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)fetchCustomizedActionOfButton:(DJIRCCustomizableButton)button withCompletion:(void (^)(DJIRCButtonAction action,
                                                                                       NSError *_Nullable error))completion;
 
+/*********************************************************************************/
+#pragma mark Dual Gimbal Control
+/*********************************************************************************/
+
+/**
+ *  Directs commands of the physical buttons on the remote controller (rotating
+ *  gimbal, shoot photo, record video, etc.) to the specific gimbal, when there are
+ *  multiple gimbals connected. If there is only one gimbal connected, this setting
+ *  is reset to the remaining gimbal. Enabling
+ *  `setAttitudeSynchronizationEnabled:withCompletion` will reset this setting to
+ *  index 0 and when `setAttitudeSynchronizationEnabled:withCompletion` is enabled,
+ *  index can only be set to 0. It is only supported by M210 and M210 RTK.
+ *  
+ *  @param index Index of the gimbal to receive the remote controller commands.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)setControllingGimbalIndex:(NSUInteger)index withCompletion:(DJICompletionBlock)completion;
+
+
+
+/**
+ *  The index of the gimbal that the remote controller is controlling. Commands of
+ *  the physical buttons (rotating gimbal, shoot photo, record video, etc.) will be
+ *  directed to the specific gimbal. If there is only one gimbal connected, this
+ *  setting is reset to the remaining gimbal's index. Enabling
+ *  `setAttitudeSynchronizationEnabled:withCompletion` will reset the value to 0.
+ *  For product that supports only one gimbal, the value is always 0.
+ *  
+ *  @param index Get the index of the gimbal that the remote controller is controlling.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getControllingGimbalIndexWithCompletion:(void (^)(NSUInteger index,
+														  NSError *_Nullable error))completion;
 @end
 
 NS_ASSUME_NONNULL_END

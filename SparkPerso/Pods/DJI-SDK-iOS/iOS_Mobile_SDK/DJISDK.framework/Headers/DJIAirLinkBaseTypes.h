@@ -120,6 +120,32 @@ typedef NS_ENUM (uint8_t, DJIWiFiDataRate) {
 
 
 /**
+ *  Channel selection mode for WiFi Link.
+ */
+typedef NS_ENUM (uint8_t, DJIWiFiChannelSelectionMode) {
+	
+
+	/**
+	 *  WiFi link will automatically select the best physical channel based on the
+	 *  signal environment.
+	 */
+	DJIWiFiChannelSelectionModeAuto,
+	
+
+	/**
+	 *  Manually select the physical channel.
+	 */
+	DJIWiFiChannelSelectionModeManual,
+	
+
+	/**
+	 *  Unknown.
+	 */
+	DJIWiFiChannelSelectionModeUnknown,
+};
+
+
+/**
  *  The interference power of a WiFi channel.
  */
 @interface DJIWiFiChannelInterference : NSObject
@@ -552,6 +578,39 @@ typedef NS_ENUM (uint8_t, DJIOcuSyncChannelSelectionMode) {
 };
 
 
+
+/**
+ *  The frequency bands for OcuSync.
+ */
+typedef NS_ENUM (uint8_t, DJIOcuSyncFrequencyBand){
+
+
+    /**
+     *  The Frequency band is 2.4 GHz.
+     */
+    DJIOcuSyncFrequencyBand2Dot4GHz,
+	
+
+    /**
+     *  The Frequency band is 5.8 GHz.
+     */
+    DJIOcuSyncFrequencyBand5Dot8GHz,
+    
+
+    /**
+     *  Dual frequency band mode. The frequency band can be either 2.4 GHz or 5 GHz.
+     */
+    DJIOcuSyncFrequencyBandDual,
+
+
+    /**
+     *  Unknown.
+     */
+    DJIOcuSyncFrequencyBandUnknown = 0xFF,
+    
+};
+
+
 /**
  *  The channel bandwidth for the OcuSync downlink (from the aircraft to the remote
  *  controller). Setting a smaller  bandwidth will reduce the data rate, but make
@@ -669,7 +728,7 @@ typedef NS_ENUM (uint8_t, DJIOcuSyncWarningMessage) {
      *  bandwidth of the channel to make it more robust.
      */
     DJIOcuSyncWarningMessageDownlinkBroken,
- 
+
 
     /**
      *  The link between the remote controller and the aircraft is unusable. It is

@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class DJISimulator;
+@class DJISimulatorWindSpeed;
 
 
 /**
@@ -94,6 +95,25 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param block Completion block to receive the result.
  */
 - (void)getFlyZoneLimitationEnabledWithCompletion:(void(^)(BOOL enabled, NSError *_Nullable error))block;
+
+
+/**
+ *  Set simulator wind speed.
+ *  
+ *  @param windSpeed Simulator Wind Speed.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)setWindSpeed:(DJISimulatorWindSpeed *)windSpeed withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Get simulator wind speed.
+ *  
+ *  @param windSpeed Simulator Wind Speed.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getWindSpeedWithCompletion:(void(^)(DJISimulatorWindSpeed *_Nullable windSpeed, NSError *_Nullable error))completion;
 
 @end
 

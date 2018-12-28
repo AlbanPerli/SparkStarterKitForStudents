@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Abstract class for components in a DJI Product. A component can be a camera,
- *  gimbal, remote controller, etc.  A DJI product consists of several components.
+ *  gimbal, remote controller, etc. A DJI product consists of several components.
  *  All components of a product are subclasses of `DJIBaseComponent` and can be
  *  accessed directly from the product objects (`DJIAircraft` or `DJIHandheld`).
  */

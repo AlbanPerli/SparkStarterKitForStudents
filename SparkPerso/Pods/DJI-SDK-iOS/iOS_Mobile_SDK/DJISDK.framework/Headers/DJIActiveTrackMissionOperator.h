@@ -57,6 +57,22 @@ typedef NS_ENUM(NSInteger, DJIActiveTrackMissionState) {
      *  The operator is ready to start an ActiveTrack mission.
      */
     DJIActiveTrackMissionStateReadyToStart,
+    
+
+    /**
+     *  Auto sensing is enabled and the aircraft is looking for humans automatically  in
+     *  the live view. Sensed subjects are pushed  through `autoSensedSubjects` of
+     *  `DJIActiveTrackTrackingState`.
+     */
+    DJIActiveTrackMissionStateAutoSensing,
+    
+
+    /**
+     *  Auto sensing for QuickShot is enabled and the aircraft is looking for humans
+     *  automatically  in the live view. Sensed subjects are pushed through
+     *  `autoSensedSubjects`  of `DJIActiveTrackTrackingState`.
+     */
+    DJIActiveTrackMissionStateAutoSensingForQuickShot,
 
 
     /**
@@ -157,37 +173,35 @@ typedef NS_ENUM(NSInteger, DJIActiveTrackMissionState) {
  *   An ActiveTrack Mission allows an aircraft to track a moving subject using the
  *  vision system and without a GPS tracker on the subject. To use an ActiveTrack
  *  mission:
- *   - Prepare a mission with the rectangle that best represents the  target to
- *  track
- *   - Start the mission to initiate tracking of the object and  begin the state
+ *   - Prepare a mission with the rectangle that best represents the target to track
+ *   - Start the mission to initiate tracking of the object and begin the state
  *  updates (DJIMissionProgressStatus)
- *   - At this point, the  aircraft will track the target while hovering in place.
- *   - Give confirmation that the tracked target is correct  with
- *  `acceptConfirmationWithCompletion` and the aircraft will begin flying  relative
+ *   - At this point, the aircraft will track the target while hovering in place.
+ *   - Give confirmation that the tracked target is correct with
+ *  `acceptConfirmationWithCompletion` and the aircraft will begin flying relative
  *  to the target.
- *   - If the tracking algorithm looses sufficient  confidence in tracking the
- *  target, then the aircraft will stop flying relative  to the object and either
- *  notify the user (through execution state) that the  target is lost or it needs
+ *   - If the tracking algorithm looses sufficient confidence in tracking the
+ *  target, then the aircraft will stop flying relative to the object and either
+ *  notify the user (through execution state) that the target is lost or it needs
  *  another confirmation that the target is correct.
  *   - If the mission is paused, the aircraft will hover in place, but continue
  *  tracking the target by adjusting gimbal pitch and aircraft yaw.
  *   - If mission is resumed, confirmation of tracking rectangle will need to be
- *  sent through to  start flying relative to target.
- *   - The mission can be canceled with `stopMissionWithCompletion`  at any time.  -
+ *  sent through to start flying relative to target.
+ *   - The mission can be canceled with `stopMissionWithCompletion` at any time. -
  *  `stopMissionWithCompletion` should also be used to reject tracking confirmation
  *  if the camera is tracking the wrong target. After stopping the mission, the
  *  mission needs to be recreated with a new rectangle and loaded into the operator.
  *   - The main camera is used to track the target, so gimbal cannot be adjusted
- *  during an  ActiveTrack mission.
- *   - During the mission  the aircraft can be manually flown with pitch, roll and
- *  throttle. Yaw and gimbal are  automatically controlled to continue tracking the
+ *  during an ActiveTrack mission.
+ *   - During the mission the aircraft can be manually flown with pitch, roll and
+ *  throttle. Yaw and gimbal are automatically controlled to continue tracking the
  *  target.
- *   - If the mission is  executing, and after confirmation of the tracking
- *  rectangle has been sent, the  aircraft can be manually controlled horizontally
- *  similar to a  `DJIFlightOrientationModeHomeLock` where the home is the tracked
- *  target. If aircraft  is manually controlled upward, the aircraft will lift and
- *  retreat, and if it is  controlled downward, it will go down and get closer to
- *  the target.
+ *   - If the mission is executing, and after confirmation of the tracking rectangle
+ *  has been sent, the aircraft can be manually controlled horizontally similar to a
+ *  `DJIFlightOrientationModeHomeLock` where the home is the tracked target. If
+ *  aircraft is manually controlled upward, the aircraft will lift and retreat, and
+ *  if it is controlled downward, it will go down and get closer to the target.
  */
 @interface DJIActiveTrackMissionOperator : NSObject
 
@@ -206,6 +220,26 @@ typedef NS_ENUM(NSInteger, DJIActiveTrackMissionState) {
  *    - `DJIActiveTrackMissionStateRecovering`
  */
 @property (nonatomic, readonly) BOOL isGestureModeEnabled;
+
+
+/**
+ *  `YES` if auto sensing is enabled. Value is undefined if  the `currentState` is
+ *  one of the following:
+ *   - `DJIActiveTrackMissionStateNotSupported`
+ *   - `DJIActiveTrackMissionStateDisconnected`
+ *    - `DJIActiveTrackMissionStateRecovering`
+ */
+@property (nonatomic, readonly) BOOL isAutoSensingEnabled;
+
+
+/**
+ *  `YES` if auto sensing for QuickShot is enabled. Value is undefined if  the
+ *  `currentState` is one of the following:
+ *   - `DJIActiveTrackMissionStateNotSupported`
+ *   - `DJIActiveTrackMissionStateDisconnected`
+ *    - `DJIActiveTrackMissionStateRecovering`
+ */
+@property (nonatomic, readonly) BOOL isAutoSensingForQuickShotEnabled;
 
 
 /**
@@ -300,6 +334,53 @@ typedef void (^DJIActiveTrackMissionOperatorEventBlock)(DJIActiveTrackMissionEve
 
 
 /**
+ *  Checks if the connected product supports auto sensing. When the product
+ *  supports auto sensing, enabling auto sensing is the pre-condition of starting
+ *  active track.
+ *  
+ *  @return `YES` if the product supports auto sensing.
+ */
+- (BOOL)isAutoSensingSupported;
+
+
+/**
+ *  Starts auto sensing. After auto sensing starts, the aircraft will sense  humans
+ *  captured by the camera and return the detected subjects by `autoSensedSubjects`
+ *  in the updated event. QuickShot requires a special auto sensing mode, therefore,
+ *  use `enableAutoSensingForQuickShotWithCompletion`  if a QuickShot mission will
+ *  be performed. It is only supported when `isAutoSensingSupported`  returns `YES`.
+ *  When the product supports auto sensing, enabling auto sensing is the pre-
+ *  condition of starting active track.
+ *  
+ *  @param completion Completion block that receives the execution result.
+ */
+- (void)enableAutoSensingWithCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Starts auto sensing specifically for QuickShot. After auto sensing starts, the
+ *  aircraft will sense humans captured by the camera and return the  detected
+ *  subjects by `autoSensedSubjects` in the updated event. This interface is
+ *  specific for QuickShot, therefore,  use `enableAutoSensingWithCompletion` for
+ *  missions other than QuickShot. It is only supported  when
+ *  `isAutoSensingSupported` returns `YES`. When the product supports auto sensing,
+ *  enabling auto sensing  is the pre-condition of starting active track.
+ *  
+ *  @param completion Completion block that receives the execution result.
+ */
+- (void)enableAutoSensingForQuickShotWithCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Stops auto sensing (either for QuickShot or the other active track modes). It is
+ *  only supported  when `isAutoSensingSupported` returns `YES`.
+ *  
+ *  @param completion Completion block that receives the execution result.
+ */
+- (void)disableAutoSensingWithCompletion:(DJICompletionBlock)completion;
+
+
+/**
  *  Checks if the operator can start the mission.
  *  
  *  @param mission An ActiveTrack mission.
@@ -310,7 +391,7 @@ typedef void (^DJIActiveTrackMissionOperatorEventBlock)(DJIActiveTrackMissionEve
 
 
 /**
- *  Starts to execute a ActiveTrack mission. It can only be called when the
+ *  Starts to execute an ActiveTrack mission. It can only be called when the
  *  `currentState` is  `DJIActiveTrackMissionStateReadyToStart`. If a mission with
  *  `DJIActiveTrackModeTrace` or  `DJIActiveTrackModeProfile` is started
  *  successfully, the `currentState`  will become one of the following:
@@ -324,6 +405,33 @@ typedef void (^DJIActiveTrackMissionOperatorEventBlock)(DJIActiveTrackMissionEve
  *  @param completion Completion block that receives the execution result.
  */
 -(void)startMission:(DJIActiveTrackMission *)mission withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Starts to execute an ActiveTrack mission after auto sensing (either for
+ *  QuickShot or the other active track modes) is  started. The aircraft will start
+ *  to track the subject defined by `subjectIndex`.  If auto sensing for active
+ *  track modes other than QuickShot is enabled, the active track mode to start is
+ *  defined  by `DJIActiveTrackMission`'s `mode`. `quickShotMode` of
+ *  `DJIActiveTrackMission`  will be ignored. If auto sensing specifically for
+ *  QuickShot is enabled, The QuickShot mode to start is defined  by
+ *  `DJIActiveTrackMission`'s `quickShotMode`. `quickShotMode` of
+ *  `DJIActiveTrackMission`  will be ignored.
+ *  It can only be called when the `currentState` is one of the following:
+ *  - `DJIActiveTrackMissionStateAutoSensing`
+ *  - `DJIActiveTrackMissionStateAutoSensingForQuickShot`
+ *  If the aircraft has high  confidence about the auto-sensed subject, confirmation
+ *  is not required and the state will change to
+ *  `DJIActiveTrackMissionStateAircraftFollowing`  or
+ *  `DJIActiveTrackMissionStateOnlyCameraFollowing` (determined by the active track
+ *  mode). Otherwise, the state will change  to
+ *  `DJIActiveTrackMissionStateWaitingForConfirmation` and user need to perform
+ *  `acceptConfirmationWithCompletion`.
+ *  
+ *  @param mission The ActiveTrack mission to check.
+ *  @param completion Completion block that receives the execution result.
+ */
+-(void)startAutoSensingMission:(DJIActiveTrackMission *)mission withCompletion:(DJICompletionBlock)completion;
 
 
 /**

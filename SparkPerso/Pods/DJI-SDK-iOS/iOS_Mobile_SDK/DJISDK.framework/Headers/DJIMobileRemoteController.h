@@ -11,8 +11,8 @@
 
 /**
  *  A simulated remote controller on the mobile device to control the aircraft when
- *  the physical remote controller  is absent. The mobile remote controller only
- *  supports Mode 2 control style and flight mode P. It is supported  by Mavic Pro
+ *  the physical remote controller is absent. The mobile remote controller only
+ *  supports Mode 2 control style and flight mode P. It is supported by Mavic Pro
  *  using WiFi. This object is available from the `DJIAircraft` subclass off
  *  `DJIBaseProduct`.
  */

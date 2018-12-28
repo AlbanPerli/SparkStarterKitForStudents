@@ -65,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  This class provides multiple methods to control the gimbal. These include
- *  setting the gimbal work mode,  rotating the gimbal with angle, starting the
+ *  setting the gimbal work mode, rotating the gimbal with angle, starting the
  *  gimbal auto calibration, etc. This object is available from the `DJIAircraft` or
  *  `DJIHandheld` object which is a subclass of `DJIBaseProduct`.
  */
@@ -80,12 +80,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Returns the gimbal's features and possible range of settings. Each dictionary
- *  key is  a possible gimbal feature and uses the DJIGimbalParam prefix. The value
- *  for  each key is an instance of `DJIParamCapability` or its sub-classes.  The
- *  `isSupported` property can be used to query if a feature is  supported by the
- *  gimbal and the `min`  and `max` properties of `DJIParamCapabilityMinMax`  can be
+ *  key is a possible gimbal feature and uses the DJIGimbalParam prefix. The value
+ *  for each key is an instance of `DJIParamCapability` or its sub-classes. The
+ *  `isSupported` property can be used to query if a feature is supported by the
+ *  gimbal and the `min` and `max` properties of `DJIParamCapabilityMinMax` can be
  *  used to query the valid range for the setting. When a feature is not supported,
- *  the  values for `min`  and `max` are undefined.
+ *  the values for `min` and `max` are undefined.
  */
 @property(nonatomic, readonly) NSDictionary *_Nonnull capabilities;
 
@@ -108,7 +108,10 @@ NS_ASSUME_NONNULL_BEGIN
 /*********************************************************************************/
 
 /**
- *  Rotate gimbal's pitch, roll, and yaw with `DJIGimbalRotation`.
+ *  Rotate gimbal's pitch, roll, and yaw with `DJIGimbalRotation`. For X5S, X4S and
+ *  X7, rotating the gimbal with mode `DJIGimbalRotationModeRelativeAngle` or
+ *  `DJIGimbalRotationModeAbsoluteAngle`, will reset the gimbal mode to
+ *  `DJIGimbalModeFree`.
  *  
  *  @param rotation An instance of `DJIGimbalRotation`.
  *  @param completion Completion block.
@@ -119,11 +122,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Resets the gimbal. The behaviors are product-dependent. Osmo series (e.g. Osmo,
- *  Osmo Pro):  The gimbal's pitch and yaw will be set to the origin, which is the
- *  standard position for  the gimbal. Phantom series (e.g. Phantom 3 Professional,
- *  Phantom 4 series): The first call  sets gimbal to point down vertically to the
- *  earth. The second call sets gimbal to the  standard position. Other products
- *  (e.g. Inspire 1): Only the gimbal's pitch will the set  to the origin.
+ *  Osmo Pro): The gimbal's pitch and yaw will be set to the origin, which is the
+ *  standard position for the gimbal. Phantom series (e.g. Phantom 3 Professional,
+ *  Phantom 4 series): The first call sets gimbal to point down vertically to the
+ *  earth. The second call sets gimbal to the standard position. Other products
+ *  (e.g. Inspire 1): Only the gimbal's pitch will the set to the origin.
  *  
  *  @param completion Remote execution result error block.
  */
@@ -136,8 +139,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Starts calibrating the gimbal. The product should be stationary (not flying, or
- *  being held)  and horizontal during calibration. For gimbal's with adjustable
- *  payloads, the payload should  be present and balanced before doing a
+ *  being held) and horizontal during calibration. For gimbal's with adjustable
+ *  payloads, the payload should be present and balanced before doing a calibration.
+ *  For Osmo Mobile series, user should double-click the trigger (or mode button on
+ *  Osmo Mobile 2) or restart the device to re-center the gimbal after the
  *  calibration.
  *  
  *  @param completion Remote execution result error block.
@@ -147,8 +152,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  The gimbal roll can be fine tuned with a custom offset. The range for the custom
- *  offset  is [-2.0, 2.0] degrees. If the offset is negative, the gimbal will be
- *  fine tuned the  specified number of degrees in the counterclockwise direction.
+ *  offset is [-2.0, 2.0] degrees. If the offset is negative, the gimbal will be
+ *  fine tuned the specified number of degrees in the counterclockwise direction.
  *  
  *  @param offset Fine-tuned offset, in degrees, to be tuned.
  *  @param completion Completion block.
@@ -158,9 +163,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  The gimbal pitch can be fine tuned with a custom offset. The range for the
- *  custom offset  is [-2.0, 2.0] degrees. If the offset is negative, the gimbal
- *  will be fine tuned the specified  number of degrees in the counterclockwise
- *  direction. It is only supported by Spark.
+ *  custom offset is [-2.0, 2.0] degrees. If the offset is negative, the gimbal will
+ *  be fine tuned the specified number of degrees in the counterclockwise direction.
+ *  It is only supported by Spark and Mavic 2 Series.
  *  
  *  @param offset Fine-tuned offset, in degrees, to be tuned.
  *  @param completion Completion block.
@@ -169,12 +174,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Starts testing the balance of the gimbal payload. For gimbals that allow
- *  payloads to be  changed, a balance test should be performed to ensure the camera
- *  is mounted correctly.  The product should be stationary (not flying, or being
- *  held) and horizontal during testing.  See `DJIGimbalState` for the test result.
+ *  The gimbal yaw can be fine tuned with a custom offset. The range for the custom
+ *  offset is [-2.0, 2.0] degrees. If the offset is negative, the gimbal will be
+ *  fine tuned the specified number of degrees in the counterclockwise direction. It
+ *  is only supported by Mavic Air and Mavic 2 Series.
  *  
- *  @param completion Completion block that receives the execution result. The completion block will return  when the balance test is successfully started.
+ *  @param offset Fine-tuned offset, in degrees, to be tuned.
+ *  @param completion Completion block.
+ */
+- (void)fineTuneYawInDegrees:(float)offset withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Starts testing the balance of the gimbal payload. For gimbals that allow
+ *  payloads to be changed, a balance test should be performed to ensure the camera
+ *  is mounted correctly. The product should be stationary (not flying, or being
+ *  held) and horizontal during testing. See `DJIGimbalState` for the test result.
+ *  
+ *  @param completion Completion block that receives the execution result. The completion block will return when the balance test is successfully started.
  */
 - (void)startBalanceTestWithCompletion:(DJICompletionBlock)completion;
 
@@ -185,8 +202,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sets the movement settings profile. The movement settings profile has options
- *  for both  preset and custom profiles for SmoothTrack and Controller settings.
- *  Settings for  SmoothTrack and Controller can only be set manually when using a
+ *  for both preset and custom profiles for SmoothTrack and Controller settings.
+ *  Settings for SmoothTrack and Controller can only be set manually when using a
  *  custom profile.
  *  
  *  @param profile Profile to set.
@@ -198,7 +215,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Gets the advanced settings profile. Use `DJIGimbalMovementSettingsProfile` to
- *  check if  it is supported by the gimbal.
+ *  check if it is supported by the gimbal.
  *  
  *  @param profile The advanced settings profile.
  *  @param error Error retrieving the value.
@@ -222,8 +239,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Extends the pitch range of gimbal. If extended, the gimbal's pitch control range
- *  can  be [-30, 90], otherwise, it's [0, 90]. Use
- *  `DJIGimbalParamPitchRangeExtensionEnabled`  to check if it is supported by the
+ *  can be [-30, 90], otherwise, it's [0, 90]. Use
+ *  `DJIGimbalParamPitchRangeExtensionEnabled` to check if it is supported by the
  *  gimbal.
  *  
  *  @param isEnabled Whether the pitch range should be extended
@@ -235,7 +252,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Get the extend gimbal pitch range state. Use
- *  `DJIGimbalParamPitchRangeExtensionEnabled`  to check if it is supported by the
+ *  `DJIGimbalParamPitchRangeExtensionEnabled` to check if it is supported by the
  *  gimbal.
  *  
  *  @param isExtended Whether the pitch range should be extended.
@@ -252,7 +269,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Configures gimbal's motor control with a preset configuration applicable for
- *  most popular  cameras. In order to the optimize the performance, motor control
+ *  most popular cameras. In order to the optimize the performance, motor control
  *  tuning is still required.
  *  
  *  @param preset The preset configuration to set.
@@ -264,10 +281,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sets the coefficient of speed error control. It can be seen as the coefficient
- *  for the  proportional term in the PID controller. Use
+ *  for the proportional term in the PID controller. Use
  *  `DJIGimbalParamPitchMotorControlStiffness`,
- *  `DJIGimbalParamYawMotorControlStiffness`  and
- *  `DJIGimbalParamRollMotorControlStiffness` with `capabilities`  to check if the
+ *  `DJIGimbalParamYawMotorControlStiffness` and
+ *  `DJIGimbalParamRollMotorControlStiffness` with `capabilities` to check if the
  *  gimbal supports this feature and the range of possible values (unitless).
  *  
  *  @param stiffness The stiffness value to set.
@@ -281,11 +298,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Gets the coefficient of speed error control. It can be seen as the coefficient
- *  for the proportional term in  the PID controller. Use
+ *  for the proportional term in the PID controller. Use
  *  `DJIGimbalParamPitchMotorControlStiffness`,
- *  `DJIGimbalParamYawMotorControlStiffness`  and
+ *  `DJIGimbalParamYawMotorControlStiffness` and
  *  `DJIGimbalParamRollMotorControlStiffness` with `capabilities` to check if the
- *  gimbal  supports this feature and the range of possible values (unitless).
+ *  gimbal supports this feature and the range of possible values (unitless).
  *  
  *  @param axis The axis to query.
  *  @param stiffness The proportional term in the PID controller.
@@ -299,11 +316,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sets the coefficient of attitude accuracy control. It can be seen as the
- *  coefficient for the integral term  in the PID controller. Use
+ *  coefficient for the integral term in the PID controller. Use
  *  `DJIGimbalParamPitchMotorControlStrength`,
- *  `DJIGimbalParamYawMotorControlStrength`  and
+ *  `DJIGimbalParamYawMotorControlStrength` and
  *  `DJIGimbalParamRollMotorControlStrength` with `capabilities` to check if the
- *  gimbal supports  this feature and the range of possible values (unitless).
+ *  gimbal supports this feature and the range of possible values (unitless).
  *  
  *  @param strength The strength value to set.
  *  @param axis The axis that the setting is applied to.
@@ -316,11 +333,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Gets the coefficient of attitude accuracy control. It can be seen as the
- *  coefficient for the integral term  in the PID controller. Use
+ *  coefficient for the integral term in the PID controller. Use
  *  `DJIGimbalParamPitchMotorControlStrength`,
- *  `DJIGimbalParamYawMotorControlStrength`  and
+ *  `DJIGimbalParamYawMotorControlStrength` and
  *  `DJIGimbalParamRollMotorControlStrength` with `capabilities` to check if the
- *  gimbal supports  this feature and the range of possible values (unitless).
+ *  gimbal supports this feature and the range of possible values (unitless).
  *  
  *  @param axis The axis to query.
  *  @param strength The strength value.
@@ -333,9 +350,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Sets the coefficient of denoising the output.  Use
+ *  Sets the coefficient of denoising the output. Use
  *  `DJIGimbalParamPitchMotorControlGyroFilteringFactor`,
- *  `DJIGimbalParamYawMotorControlGyroFilteringFactor`  and
+ *  `DJIGimbalParamYawMotorControlGyroFilteringFactor` and
  *  `DJIGimbalParamRollMotorControlGyroFilteringFactor` with `capabilities` to check
  *  if the gimbal supports this feature and the range of possible values (unitless).
  *  
@@ -349,9 +366,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Gets the coefficient of denoising the output.  Use
+ *  Gets the coefficient of denoising the output. Use
  *  `DJIGimbalParamPitchMotorControlGyroFilteringFactor`,
- *  `DJIGimbalParamYawMotorControlGyroFilteringFactor`  and
+ *  `DJIGimbalParamYawMotorControlGyroFilteringFactor` and
  *  `DJIGimbalParamRollMotorControlGyroFilteringFactor` with `capabilities` to check
  *  if the gimbal supports this feature and the range of possible values (unitless).
  *  
@@ -384,9 +401,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Gets the value for pre-adjust. It can be seen as the coefficient for the
- *  derivative term in the  PID controller. Only supported by Ronin-MX. Use
+ *  derivative term in the PID controller. Only supported by Ronin-MX. Use
  *  `DJIGimbalParamPitchMotorControlPreControl`,
- *  `DJIGimbalParamYawMotorControlPreControl`  and
+ *  `DJIGimbalParamYawMotorControlPreControl` and
  *  `DJIGimbalParamRollMotorControlPreControl` with `capabilities` to check if the
  *  gimbal supports this feature and the range of possible values (unitless).
  *  
@@ -406,10 +423,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sets physical controller (e.g. the joystick on Osmo or the remote controller of
- *  the aircraft)  deadband on an axis. A larger deadband requires more controller
- *  movement to start gimbal motion.  Use `DJIGimbalParamYawControllerDeadband` and
- *  `DJIGimbalParamPitchControllerDeadband`  with `capabilities` to check if the
- *  gimbal supports this feature and the range  of possible values (unitless).
+ *  the aircraft) deadband on an axis. A larger deadband requires more controller
+ *  movement to start gimbal motion. Use `DJIGimbalParamYawControllerDeadband` and
+ *  `DJIGimbalParamPitchControllerDeadband` with `capabilities` to check if the
+ *  gimbal supports this feature and the range of possible values (unitless).
  *  
  *  @param deadband The deadband value to be set.
  *  @param axis The axis that the setting will be applied to.
@@ -422,9 +439,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Gets physical controller deadband value on an axis. A larger deadband requires
- *  more controller  movement to start gimbal motion. Use
- *  `DJIGimbalParamYawControllerDeadband`  and
- *  `DJIGimbalParamPitchControllerDeadband` with `capabilities` to  check if the
+ *  more controller movement to start gimbal motion. Use
+ *  `DJIGimbalParamYawControllerDeadband` and
+ *  `DJIGimbalParamPitchControllerDeadband` with `capabilities` to check if the
  *  gimbal supports this feature and the range of possible values (unitless).
  *  
  *  @param axis The axis to query.
@@ -439,9 +456,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sets physical controller (e.g. the joystick on Osmo or the remote controller of
- *  the aircraft)  speed on an axis. Speed setting controls the mapping between the
- *  movement of the controller and  the gimbal speed. Use
- *  `DJIGimbalParamYawControllerSpeedCoefficient`  and
+ *  the aircraft) speed on an axis. Speed setting controls the mapping between the
+ *  movement of the controller and the gimbal speed. Use
+ *  `DJIGimbalParamYawControllerSpeedCoefficient` and
  *  `DJIGimbalParamPitchControllerSpeedCoefficient` with `capabilities` to check if
  *  the gimbal supports this feature and the range of possible values (unitless).
  *  
@@ -456,8 +473,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Gets physical controller speed value on an axis. Speed setting controls the
- *  mapping between the  movement of the controller and the gimbal speed. Use
- *  `DJIGimbalParamYawControllerSpeedCoefficient`  and
+ *  mapping between the movement of the controller and the gimbal speed. Use
+ *  `DJIGimbalParamYawControllerSpeedCoefficient` and
  *  `DJIGimbalParamPitchControllerSpeedCoefficient` with `capabilities` to check if
  *  the gimbal supports this feature and the range of possible values (unitless).
  *  
@@ -473,10 +490,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sets physical controller (e.g. the joystick on Osmo or the remote controller of
- *  the aircraft)  smoothing on an axis. Smoothing controls the deceleration of the
- *  gimbal.  Use `DJIGimbalParamYawControllerSmoothingFactor` and
- *  `DJIGimbalParamPitchControllerSmoothingFactor`  with `capabilities` to check if
- *  the gimbal supports this feature and the  range of possible values (unitless).
+ *  the aircraft) smoothing on an axis. Smoothing controls the deceleration of the
+ *  gimbal. Use `DJIGimbalParamYawControllerSmoothingFactor` and
+ *  `DJIGimbalParamPitchControllerSmoothingFactor` with `capabilities` to check if
+ *  the gimbal supports this feature and the range of possible values (unitless).
  *  
  *  @param smoothingFactor The smoothing value to be set.
  *  @param axis The axis that the setting will be applied to.
@@ -489,9 +506,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Gets physical controller smoothing value on an axis. Smoothing controls the
- *  deceleration of the  gimbal. Use `DJIGimbalParamYawControllerSmoothingFactor`
- *  and `DJIGimbalParamPitchControllerSmoothingFactor` with `capabilities`  to check
- *  if the gimbal supports this feature and the range of possible values (unitless).
+ *  deceleration of the gimbal. Use `DJIGimbalParamYawControllerSmoothingFactor` and
+ *  `DJIGimbalParamPitchControllerSmoothingFactor` with `capabilities` to check if
+ *  the gimbal supports this feature and the range of possible values (unitless).
  *  
  *  @param axis The axis to query.
  *  @param smoothingFactor The smoothing value.
@@ -501,6 +518,37 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getControllerSmoothingFactorOnAxis:(DJIGimbalAxis)axis
                             withCompletion:(void (^_Nonnull)(NSInteger smoothingFactor,
                                                              NSError *_Nullable error))completion;
+
+
+/**
+ *  Gets physical controller max speed value on an axis. It controls the mapping
+ *  between the movement of the controller and the gimbal speed. Use
+ *  `DJIGimbalParamPitchControllerMaxSpeed` and
+ *  `DJIGimbalParamYawControllerMaxSpeed` with "capabilities" to check if the gimbal
+ *  supports this feature and the range of possible values (unitless).
+ *  
+ *  @param maxSpeed The maximum speed to set for one axis.
+ *  @param axis The axis that the setting will be applied to.
+ *  @param completion The completion block that receives execution result.
+ */
+- (void)setControllerMaxSpeed:(NSInteger)maxSpeed onAxis:(DJIGimbalAxis)axis withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets physical controller max speed value on an axis. It controls the mapping
+ *  between the movement of the controller and the gimbal speed. Use
+ *  `DJIGimbalParamPitchControllerMaxSpeed` and
+ *  `DJIGimbalParamYawControllerMaxSpeed` with "capabilities" to check if the gimbal
+ *  supports this feature and the range of possible values (unitless).
+ *  
+ *  @param axis The axis to query.
+ *  @param maxSpeed The maximum speed of the axis.
+ *  @param error Error retrieving the value.
+ *  @param completion The completion block that receives execution result.
+ */
+- (void)getControllerMaxSpeedOnAxis:(DJIGimbalAxis)axis withCompletion:(void (^_Nonnull)(NSInteger maxSpeed,
+                                                                                         NSError *_Nullable error))completion;
+
 /*********************************************************************************/
 #pragma mark Gimbal Smooth Track Setting
 /*********************************************************************************/
@@ -508,10 +556,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Enables SmoothTrack for the axis. Only supported by Osmo. Ronin-MX supports
- *  SmoothTrack but it  is always enabled for both pitch axis and yaw axis.  Use
+ *  SmoothTrack but it is always enabled for both pitch axis and yaw axis. Use
  *  `DJIGimbalParamPitchSmoothTrackEnabled` and
- *  `DJIGimbalParamYawSmoothTrackEnabled`  with `capabilities` to check if the
- *  gimbal supports this feature.
+ *  `DJIGimbalParamYawSmoothTrackEnabled` with `capabilities` to check if the gimbal
+ *  supports this feature.
  *  
  *  @param enabled `YES` to enable SmoothTrack on the axis.
  *  @param axis The axis that the setting will be applied to.
@@ -524,10 +572,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Gets whether an axis has SmoothTrack enabled. Only supported by Osmo. Ronin-MX
- *  supports  SmoothTrack but it is always enabled for both pitch axis and yaw axis.
+ *  supports SmoothTrack but it is always enabled for both pitch axis and yaw axis.
  *  Use `DJIGimbalParamPitchSmoothTrackEnabled` and
- *  `DJIGimbalParamYawSmoothTrackEnabled`  with `capabilities` to check if the
- *  gimbal supports this feature.
+ *  `DJIGimbalParamYawSmoothTrackEnabled` with `capabilities` to check if the gimbal
+ *  supports this feature.
  *  
  *  @param axis The axis to query.
  *  @param isEnabled YES if smooth track enabled.
@@ -541,10 +589,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sets gimbal SmoothTrack catch up speed on an axis. SmoothTrack speed determines
- *  how fast the  gimbal will catch up with a large, translated handle movement.
- *  Use `DJIGimbalParamPitchSmoothTrackSpeed` and
- *  `DJIGimbalParamYawSmoothTrackSpeed`  with `capabilities` to check if the gimbal
- *  supports this feature and the  range of possible values (unitless).
+ *  how fast the gimbal will catch up with a large, translated handle movement. Use
+ *  `DJIGimbalParamPitchSmoothTrackSpeed` and `DJIGimbalParamYawSmoothTrackSpeed`
+ *  with `capabilities` to check if the gimbal supports this feature and the range
+ *  of possible values (unitless).
  *  
  *  @param speed SmoothTrack speed [0,100].
  *  @param axis The axis that the setting will be applied to.
@@ -557,9 +605,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Gets gimbal SmoothTrack speed on an axis. SmoothTrack speed determines how fast
- *  the gimbal will  catch up with a large, translated handle movement. Use
- *  `DJIGimbalParamPitchSmoothTrackSpeed`  and `DJIGimbalParamYawSmoothTrackSpeed`
- *  with `capabilities` to check if the  gimbal supports this feature and the range
+ *  the gimbal will catch up with a large, translated handle movement. Use
+ *  `DJIGimbalParamPitchSmoothTrackSpeed` and `DJIGimbalParamYawSmoothTrackSpeed`
+ *  with `capabilities` to check if the gimbal supports this feature and the range
  *  of possible values (unitless).
  *  
  *  @param axis The axis to query.
@@ -574,9 +622,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sets SmoothTrack deadband on an axis. A larger deadband requires more handle
- *  movement to  translate into gimbal motion. Use
- *  `DJIGimbalParamPitchSmoothTrackDeadband`  and
- *  `DJIGimbalParamYawSmoothTrackDeadband` with `capabilities` to check  if the
+ *  movement to translate into gimbal motion. Use
+ *  `DJIGimbalParamPitchSmoothTrackDeadband` and
+ *  `DJIGimbalParamYawSmoothTrackDeadband` with `capabilities` to check if the
  *  gimbal supports this feature and the range of possible values in degrees.
  *  
  *  @param deadband SmoothTrack deadband [0,90].
@@ -590,9 +638,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Gets SmoothTrack deadband on an axis. A larger deadband requires more handle
- *  movement to  translate into gimbal motion. Use
- *  `DJIGimbalParamPitchSmoothTrackDeadband`  and
- *  `DJIGimbalParamYawSmoothTrackDeadband` with `capabilities` to check  if the
+ *  movement to translate into gimbal motion. Use
+ *  `DJIGimbalParamPitchSmoothTrackDeadband` and
+ *  `DJIGimbalParamYawSmoothTrackDeadband` with `capabilities` to check if the
  *  gimbal supports this feature and the range of possible values in degrees.
  *  
  *  @param axis Gimbal axis.
@@ -607,9 +655,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sets SmoothTrack acceleration on an axis. Acceleration determines how closely
- *  the camera will  follow the translated yaw handle movement. Use
- *  `DJIGimbalParamPitchSmoothTrackAcceleration`  and
- *  `DJIGimbalParamYawSmoothTrackAcceleration` with `capabilities` to  check if the
+ *  the camera will follow the translated yaw handle movement. Use
+ *  `DJIGimbalParamPitchSmoothTrackAcceleration` and
+ *  `DJIGimbalParamYawSmoothTrackAcceleration` with `capabilities` to check if the
  *  gimbal supports this feature and the range of possible values (unitless).
  *  
  *  @param acceleration SmoothTrack acceleration [0,30].
@@ -623,9 +671,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Gets SmoothTrack acceleration on an axis. Acceleration determines how closely
- *  the camera will  follow the translated yaw handle movement. Use
- *  `DJIGimbalParamPitchSmoothTrackAcceleration`  and
- *  `DJIGimbalParamYawSmoothTrackAcceleration` with `capabilities` to check  if the
+ *  the camera will follow the translated yaw handle movement. Use
+ *  `DJIGimbalParamPitchSmoothTrackAcceleration` and
+ *  `DJIGimbalParamYawSmoothTrackAcceleration` with `capabilities` to check if the
  *  gimbal supports this feature and the range of possible values (unitless).
  *  
  *  @param axis Gimbal axis.
@@ -644,10 +692,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Endpoint settings determine the farthest points to which the gimbal will rotate
- *  during manual controller  input. Only supported by Ronin-MX. Use
+ *  during manual controller input. Only supported by Ronin-MX. Use
  *  `DJIGimbalParamPitchUpEndpoint`, `DJIGimbalParamPitchDownEndpoint`,
- *  `DJIGimbalParamYawLeftEndpoint`  and `DJIGimbalParamYawRightEndpoint` in
- *  `capabilities` to check if the gimbal supports this  feature and what the valid
+ *  `DJIGimbalParamYawLeftEndpoint` and `DJIGimbalParamYawRightEndpoint` in
+ *  `capabilities` to check if the gimbal supports this feature and what the valid
  *  range of endpoints are.
  *  
  *  @param endpoint The endpoint value to set.
@@ -661,10 +709,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Gets the farthest points to which the gimbal will rotate during manual
- *  controller input.  Use `DJIGimbalParamPitchUpEndpoint`,
- *  `DJIGimbalParamPitchDownEndpoint`, `DJIGimbalParamYawLeftEndpoint`  and
+ *  controller input. Use `DJIGimbalParamPitchUpEndpoint`,
+ *  `DJIGimbalParamPitchDownEndpoint`, `DJIGimbalParamYawLeftEndpoint` and
  *  `DJIGimbalParamYawRightEndpoint` with `capabilities` to check if the gimbal
- *  supports  this feature.
+ *  supports this feature.
  *  
  *  @param direction The endpoint direction.
  *  @param endpoint The endpoint value.
@@ -702,10 +750,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Resets gimbal position to selfie setup. If the gimbal yaw is not at 180 degrees,
- *  then calling this method will rotate the gimbal yaw to 180 degrees (effectively
- *  pointing the camera to the person holding the gimbal). If the gimbal yaw is at
- *  180 degrees, then the gimbal will rotate in yaw to 0 degrees.
+ *  Resets gimbal position to selfie setup. If the gimbal yaw is not at 180
+ *  degrees, then calling this method will rotate the gimbal yaw to 180  degrees
+ *  (effectively pointing the camera to the person holding the gimbal).  If the
+ *  gimbal yaw is at 180 degrees, then the gimbal will rotate in yaw to 0 degrees.
+ *  It's only supported by DJI OSMO, OSMO Pro and OSMO Raw.
  *  
  *  @param completion The completion block that receives execution result.
  */
@@ -714,7 +763,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Inverts the physical control for gimbal movement on an axis. The setting can
- *  only be applied  to the pitch or yaw axis.
+ *  only be applied to the pitch or yaw axis.
  *  
  *  @param enabled `YES` to enable inverted control.
  *  @param axis The axis that the setting will be applied to.
@@ -727,7 +776,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Determines whether the physical control is inverted for gimbal movement on an
- *  axis.  The setting can only be applied to the pitch or yaw axis.
+ *  axis. The setting can only be applied to the pitch or yaw axis.
  *  
  *  @param axis The axis to query.
  *  @param enabled The enabled value.
@@ -737,6 +786,55 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)getInvertedControlEnabledOnAxis:(DJIGimbalAxis)axis
                         withCompletion:(void (^_Nonnull)(BOOL enabled,
                                                          NSError *_Nullable error))completion;
+
+
+/**
+ *  Synchronizes the attitude of port (left) gimbal and starboard (right) gimbal. It
+ *  is only valid when both gimbals are connected. If only 1 gimbal is connected,
+ *  this setting will be reset to `NO`. Enables this setting will reset
+ *  `getControllingGimbalIndexWithCompletion` to index 0. It is only supported by
+ *  M210 and M210 RTK.
+ *  
+ *  @param enabled `YES` to enable the synchronization.
+ *  @param completion The completion block that receives execution result.
+ */
+- (void)setAttitudeSynchronizationEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines whether both gimbals' attitudes are synchronized. If only 1 gimbal is
+ *  connected, this setting will be reset to `NO`. It is only supported by M210 and
+ *  M210 RTK.
+ *  
+ *  @param enabled `YES` to enable the synchronization.
+ *  @param error The encountered error if any.
+ *  @param completion The completion block that receives execution result.
+ */
+- (void)getAttitudeSynchronizationEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Enables this to make the gimbal respond to the controller command to rotate
+ *  aircraft's heading.  Enabling this setting makes gimbal rotate simultaneously
+ *  with aircraft's heading when the user  is controlling the aircraft's heading
+ *  with the remote controller.
+ *  
+ *  @param enabled `YES` to enable yaw simultaneous follow.
+ *  @param completion The completion block that receives execution result.
+ */
+- (void)setYawSimultaneousFollowEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines whether yaw simultaneous follow is enabled. Enabling this setting
+ *  makes gimbal rotate  simultaneously with aircraft's heading when the user is
+ *  controlling the aircraft's heading with the remote controller.
+ *  
+ *  @param enabled `YES` if it is enabled.
+ *  @param error The encountered error if any.
+ *  @param completion The completion block that receives execution result.
+ */
+- (void)getYawSimultaneousFollowEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
 
 @end
 

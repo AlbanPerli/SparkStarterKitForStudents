@@ -52,8 +52,14 @@ extern NSString *const DJIHandheldModelNameOsmoPlus;
 
 
 /**
+ *  Handheld device model name Osmo Mobile 2.
+ */
+extern NSString *const DJIHandheldModelNameOsmoMobile2;
+
+
+/**
  *  Handheld product class, which includes basic product information and access to
- *  all components (such as camera, battery etc.). This object is accessed  from
+ *  all components (such as camera, battery etc.). This object is accessed from
  *  `product` in `DJISDKManager`.
  */
 @interface DJIHandheld : DJIBaseProduct

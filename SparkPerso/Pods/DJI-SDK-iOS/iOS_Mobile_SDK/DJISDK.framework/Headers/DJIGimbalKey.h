@@ -23,6 +23,7 @@ EXTERN_KEY NSString *const DJIGimbalParamIsCalibratingStateDependProgress;
 EXTERN_KEY NSString *const DJIGimbalParamIsPitchAtStop;
 EXTERN_KEY NSString *const DJIGimbalParamIsRollAtStop;
 EXTERN_KEY NSString *const DJIGimbalParamIsYawAtStop;
+EXTERN_KEY NSString *const DJIGimbalParamIsGimbalOverloaded;
 
 EXTERN_KEY NSString *const DJIGimbalParamMode;
 EXTERN_KEY NSString *const DJIGimbalParamRotate;
@@ -85,6 +86,11 @@ EXTERN_KEY NSString *const DJIGimbalParamPitchInvertedControlEnabled;
 EXTERN_KEY NSString *const DJIGimbalParamLandingGearProtectionEnabled;
 EXTERN_KEY NSString *const DJIGimbalParamStickControlMode;
 
+EXTERN_KEY NSString *const DJIGimbalParamPitchControllerMaxSpeed;
+EXTERN_KEY NSString *const DJIGimbalParamYawControllerMaxSpeed;
+
+EXTERN_KEY NSString *const DJIGimbalParamAttitudeSynchronizationEnabled;
+EXTERN_KEY NSString *const DJIGimbalParamYawSimultaneousFollowEnabled;
 
 
 /**

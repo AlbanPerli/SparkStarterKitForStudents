@@ -14,9 +14,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
+ *  CameraVideoCompressionStandardRange key.
+ */
+extern NSString *const DJISupportedCameraVideoFileCompressionStandardRange;
+
+
+/**
  *  CameraVideoResolutionAndFrameRateRange key.
  */
 extern NSString *const DJISupportedCameraVideoResolutionAndFrameRateRange;
+
+
+/**
+ *  DJISupportedCameraVideoFOVRange key.
+ */
+extern NSString *const DJISupportedCameraVideoFOVRange;
 
 
 /**
@@ -150,6 +162,36 @@ extern NSString *const DJISupportedCameraPhotoAspectRatioRange;
 extern NSString *const DJISupportedCameraPhotoShootModeRange;
 
 
+/**
+ *  Use this key to fetch all the file formats of original images supported by the
+ *  camera in panorama mode.
+ */
+extern NSString *const DJISupportedCameraPanoOriginalImagesFormatRange;
+
+
+/**
+ *  Use this key to fetch the panorama modes supported by the camera.
+ */
+extern NSString *const DJISupportedCameraPhotoPanoramaModeRange;
+
+
+/**
+ *  Use this key to fetch the orientations supported by the camera.
+ */
+extern NSString *const DJISupportedCameraOrientationRange;
+
+
+/**
+ *  Use this key to fetch the anti flicker frequency supported by the camera.
+ */
+extern NSString *const DJISupportedCameraAntiFlickerFrequencyRange;
+
+
+/**
+ *  Use this key to fetch the long exposure preview time supported by the camera.
+ */
+extern NSString *const DJISupportedCameraLongExposurePreviewTimeRange;
+
 @class DJICameraCapabilities;
 
 
@@ -179,6 +221,14 @@ extern NSString *const DJISupportedCameraPhotoShootModeRange;
  *  required to get the corresponding enumerator value for each range element.
  */
 @interface DJICameraCapabilities : NSObject
+
+
+/**
+ *  Returns the current valid range for video file compression standard range.
+ *  
+ *  @return Array of NSNumber. Each element represents one current supported video file compression standard.
+ */
+- (nonnull NSArray<NSNumber *> *)videoFileCompressionStandardRange;
 
 
 /**
@@ -265,6 +315,16 @@ extern NSString *const DJISupportedCameraPhotoShootModeRange;
  *  @return Array of NSNumber. Each element represent one current supported resolution value.
  */
 - (nonnull NSArray<NSNumber *> *)SSDVideoResolutionRange;
+
+
+/**
+ *  Returns the photo formats supported by the camera for saving the original images
+ *  of panorama.  The return value is `nil` if current camera does not support any
+ *  photo formats or is disconnected.
+ *  
+ *  @return Array of NSNumber. Each element is a value of `DJICameraPhotoFileFormat`.
+ */
+- (nonnull NSArray<NSNumber *> *)panoOriginalImagesFormatRange;
 
 
 /**
@@ -398,6 +458,41 @@ extern NSString *const DJISupportedCameraPhotoShootModeRange;
  */
 - (nonnull NSArray<NSNumber *> *)photoShootModeRange;
 
+
+/**
+ *  Returns the panorama modes supported by the camera. Returns `nil` if current
+ *  camera does  not support any value or the camera is disconnected.
+ *  
+ *  @return Array of NSNumber. Each element is a value of `DJICameraPhotoPanoramaMode`.
+ */
+- (nonnull NSArray<NSNumber *> *)photoPanoramaModeRange;
+
+
+/**
+ *  Returns the orientations supported by the camera. Returns `nil` if current
+ *  camera does  not support any value or the camera is disconnected.
+ *  
+ *  @return Array of NSNumber. Each element is a value of `DJICameraOrientation`.
+ */
+- (nonnull NSArray<NSNumber *> *)orientationRange;
+
+
+/**
+ *  Returns the anti flicker frequency supported by the camera. Returns `nil` if
+ *  current camera does  not support any value or the camera is disconnected.
+ *  
+ *  @return Array of NSNumber. Each element is a value of `DJICameraAntiFlickerFrequency`.
+ */
+- (nonnull NSArray<NSNumber *> *)antiFlickerFrequencyRange;
+
+
+/**
+ *  Returns the long exposure preview time supported by the camera. Returns `nil` if
+ *  current camera does  not support any value or the camera is disconnected.
+ *  
+ *  @return Array of NSNumber.
+ */
+- (nonnull NSArray<NSNumber *> *)longExposurePreviewTimeRange;
 
 @end
 

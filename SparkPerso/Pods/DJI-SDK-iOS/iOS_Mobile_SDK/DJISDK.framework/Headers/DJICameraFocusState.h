@@ -24,8 +24,8 @@
 
 
 /**
- *  `YES` if the lens Auto Focus (AF) switch is on. If the lens is not  installed,
- *  the value is undefined. If `YES`, `setFocusMode:withCompletion`  can be used to
+ *  `YES` if the lens Auto Focus (AF) switch is on. If the lens is not installed,
+ *  the value is undefined. If `YES`, `setFocusMode:withCompletion` can be used to
  *  control the focal point.
  */
 @property(nonatomic, readonly) BOOL isAFSwitchOn;
@@ -38,8 +38,8 @@
 
 
 /**
- *  The current focus status of the lens.  If the lens is not installed, the value
- *  is undefined.
+ *  The current focus status of the lens. If the lens is not installed, the value is
+ *  undefined.
  */
 @property(nonatomic, readonly) DJICameraFocusStatus focusStatus;
 
@@ -59,7 +59,7 @@
 
 
 /**
- *  `YES` if the focus target is zooming out.  If the lens is not installed, the
+ *  `YES` if the focus target is zooming out. If the lens is not installed, the
  *  value is undefined.
  */
 @property(nonatomic, readonly) BOOL isFocusAssistantWorking;

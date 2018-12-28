@@ -40,13 +40,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Called when the handheld controller's current hardware state (e.g. the state of
- *  the physical  buttons and joysticks) has been updated.
+ *  the physical buttons and joysticks) has been updated.
  *  
  *  @param controller The handheld controller that updates the hardware state.
  *  @param state The handheld controller's current hardware state.
  */
 - (void)handheldController:(DJIHandheldController *_Nonnull)controller didUpdateHardwareState:(DJIHandheldControllerHardwareState *)state;
-
 @end
 
 /*********************************************************************************/
@@ -55,8 +54,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  This class contains interfaces related to the hand controller of a  handheld
- *  device (such as Osmo). This object is available from the  `DJIHandheld` subclass
+ *  This class contains interfaces related to the hand controller of a handheld
+ *  device (such as Osmo). This object is available from the `DJIHandheld` subclass
  *  off `DJIBaseProduct`.
  */
 @interface DJIHandheldController : DJIBaseComponent
@@ -71,7 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Set the power mode for the handheld controller.
  *  
- *  @param mode The power mode to set. CAUTION! When the mode  is `DJIHandheldPowerModeOff`,  the handheld product will be shut down and the connection will  be broken. The user must then power on the device manually.
+ *  @param mode The power mode to set. CAUTION! When the mode is `DJIHandheldPowerModeOff`, the handheld product will be shut down and the connection will be broken. The user must then power on the device manually.
  *  @param completion Remote execution result callback block.
  */
 - (void)setPowerMode:(DJIHandheldPowerMode)mode withCompletion:(DJICompletionBlock)completion;
@@ -89,10 +88,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Enables/disables the gimbal control with the joystick. By default, it is
- *  enabled. The handheld  will be reset to the default value  when it reboots or
- *  SDK reinitializes. When gimbal control is  disabled, the joystick can be used
- *  for other purposes in an SDK application by reading its position  values with
- *  `DJIHandheldStickVerticalDirection`  and `DJIHandheldStickHorizontalDirection`.
+ *  enabled. The handheld will be reset to the default value  when it reboots or SDK
+ *  reinitializes. When gimbal control is disabled, the joystick can be used for
+ *  other purposes in an SDK application by reading its position values with
+ *  `DJIHandheldStickVerticalDirection` and `DJIHandheldStickHorizontalDirection`.
  *  Only supported in firmware version 1.2.0.40 or above.
  *  
  *  @param enabled `YES` to enable the gimbal control.
@@ -114,12 +113,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sets the gimbal's controller mode. The control mode for the gimbal controller
- *  (joystick for Osmo). The total  controller deflection is a combination of
- *  horizontal and vertical deflection. This translates to gimbal movement  around
+ *  (joystick for Osmo). The total controller deflection is a combination of
+ *  horizontal and vertical deflection. This translates to gimbal movement around
  *  the yaw and pitch axes. The gimbal can be set to either move in both yaw and
- *  pitch simultaneously based on  horizontal and vertical deflection of the
- *  controller, or move in only yaw or pitch exclusively based on whether
- *  horizontal or vertical deflection is larger.
+ *  pitch simultaneously based on horizontal and vertical deflection of the
+ *  controller, or move in only yaw or pitch exclusively based on whether horizontal
+ *  or vertical deflection is larger.
  *  
  *  @param mode The stick control mode to set.
  *  @param completion The completion block that receives execution result.

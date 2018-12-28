@@ -63,7 +63,7 @@ typedef NS_ENUM (NSUInteger, DJIMediaType){
 
 
     /**
-     *  Tiff file type.
+     *  TIFF file type.
      */
     DJIMediaTypeTIFF,
 
@@ -72,6 +72,24 @@ typedef NS_ENUM (NSUInteger, DJIMediaType){
      *  ShallowFocus file type. ShallowFocus files have a shallow depth of field.
      */
     DJIMediaTypeShallowFocus,
+	
+
+    /**
+     *  TIFF Sequence file type. It is a video format for infrared cameras.
+     */
+    DJIMediaTypeTIFFSequence,
+
+
+	/**
+	 *  SEQ file type. It is a video format for infrared cameras.
+	 */
+    DJIMediaTypeSEQ,
+    
+
+    /**
+     *  Audio file type. It is an audio format for the speaker.
+     */
+    DJIMediaTypeAudio,
 };
 
 /*********************************************************************************/
@@ -142,14 +160,17 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
 
 /**
  *  This class contains information about a multi-media file on the SD card. It also
- *  provides methods to retrieve the  data in the file.
+ *  provides methods to retrieve the data in the file.
  */
 @interface DJIMediaFile : NSObject
 
 
+@property (nonatomic, readonly) int guid;
+
+
 /**
  *  `YES` if the media file is still valid. If a media file is from the file list of
- *  the  media manager, the file will become invalid after the file list is reset.
+ *  the media manager, the file will become invalid after the file list is reset.
  */
 @property(nonatomic, readonly) BOOL valid; 
 
@@ -181,7 +202,7 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
 
 /**
  *  If the media file is a video, this property returns the duration of the video in
- *  seconds. Will be 0s if the media  file is a photo.
+ *  seconds. Will be 0s if the media file is a photo.
  */
 @property(nonatomic, readonly) float durationInSeconds;
 
@@ -194,10 +215,10 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
 
 /**
  *  The orientation of the camera when the video file was first recorded. If the
- *  camera orientation changes during a  video capture, this will report the initial
- *  orientation. Will be `DJICameraOrientationLandscape` if  the media file is a
+ *  camera orientation changes during a video capture, this will report the initial
+ *  orientation. Will be `DJICameraOrientationLandscape` if the media file is a
  *  photo. Only Mavic Pro supports this property. Will be
- *  `DJICameraOrientationLandscape`  for other products.
+ *  `DJICameraOrientationLandscape` for other products.
  */
 @property(nonatomic, readonly) DJICameraOrientation videoOrientation;
 
@@ -217,6 +238,12 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
 
 
 /**
+ *  Storage location of the media file.
+ */
+@property(nonatomic, readonly) DJICameraStorageLocation storageLocation;
+
+
+/**
  *  Returns the thumbnail for this media. If this property returns nil, call
  *  `fetchThumbnailWithCompletion`.
  */
@@ -224,7 +251,7 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
 
 
 /**
- *  Returns the preview image for this media. If this property returns `nil`,  call
+ *  Returns the preview image for this media. If this property returns `nil`, call
  *  `fetchPreviewWithCompletion`.
  */
 @property(nonatomic, nullable, readonly) UIImage *preview;
@@ -234,23 +261,23 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
  *  Custom information can be stored in media file's XMP meta data using
  *  `setMediaFileCustomInformation:withCompletion` This property contains the
  *  information that was written to this media file. If this property returns `nil`,
- *  use `fetchCustomInformationWithCompletion` to populate it. Only supported  by
+ *  use `fetchCustomInformationWithCompletion` to populate it. Only supported by
  *  Phantom 4 Pro, Phantom 4 Advanced and Inspire 2 with firmware versions from
- *  after  May 23 2017.
+ *  after May 23 2017.
  */
 @property(nonatomic, nullable, readonly) NSString *customInformation;
 
 
 /**
  *  Fetches this media's thumbnail with a resolution (99 x 99) from the SD card.
- *  This method can be used to fetch  either a photo or a video, where the first
- *  frame of the video is the thumbnail that is fetched. It is not  available if the
+ *  This method can be used to fetch either a photo or a video, where the first
+ *  frame of the video is the thumbnail that is fetched. It is not available if the
  *  media type is Panorama.
  *   Precondition:
  *   The camera mode is MediaDownload mode.
  *   Post Condition:
  *   This method will start to download the media thumbnail in the SD card. The
- *  content  can be videos or images.
+ *  content can be videos or images.
  *  
  *  @param completion The `completion block` with the returned execution result.
  */
@@ -259,15 +286,15 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
 
 /**
  *  Free memory by setting cached thumbnail to `nil`. This does not need to be
- *  called before `fetchThumbnailWithCompletion` and is provided  for convenience.
+ *  called before `fetchThumbnailWithCompletion` and is provided for convenience.
  */
 - (void)resetThumbnail;
 
 
 /**
  *  Fetch media's preview image. The preview image is a lower resolution (960 x 540)
- *  version of  a photo. The `DJIMediaType` of this media object should be
- *  `DJIMediaTypeJPEG` or  `DJIMediaTypeTIFF`. The preview will be stored in
+ *  version of a photo. The `DJIMediaType` of this media object should be
+ *  `DJIMediaTypeJPEG` or `DJIMediaTypeTIFF`. The preview will be stored in
  *  `preview`.
  *  
  *  @param completion The `completion block` with the returned execution result.
@@ -285,8 +312,9 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
 /**
  *  Custom information can be stored in media file's XMP meta data using
  *  `setMediaFileCustomInformation:withCompletion`. The information will be stored
- *  in  `customInformation`. Only supported by Phantom 4 Pro, Phantom 4  Advanced
- *  and Inspire 2 with firmware released after May 23 2017.
+ *  in `customInformation`. Only supported by Phantom 4 Pro, Phantom 4 Advanced,
+ *  Phantom 4 Pro V2.0, Zenmuse X4S, Zenmuse X5S, Zenmuse X7 and Mavic 2 Enterprise
+ *  camera.
  *  
  *  @param completion The `completion block` with the returned execution result.
  */
@@ -295,19 +323,19 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
 
 
 /**
- *  Fetches this media file's full resolution data from the SD card. The  difference
- *  between fetching the media data and fetching the thumbnail is  that fetching the
- *  thumbnail will return a low-resolution image of the actual  picture, while
- *  fetching the media data will return all data for a video or  image. If last
- *  download action is aborted, it will continue to download the data  from where
- *  the file download has been aborted.
+ *  Fetches this media file's full resolution data from the SD card. The difference
+ *  between fetching the media data and fetching the thumbnail is that fetching the
+ *  thumbnail will return a low-resolution image of the actual picture, while
+ *  fetching the media data will return all data for a video or image. If last
+ *  download action is aborted, it will continue to download the data from where the
+ *  file download has been aborted.
  *  
- *  @param offset Offset in bytes. Pass 0 to fetch all data from the beginning. Pass the  already fetched bytes to continue the previous download.
+ *  @param offset Offset in bytes. Pass 0 to fetch all data from the beginning. Pass the already fetched bytes to continue the previous download.
  *  @param queue Queue to call the update block on.
  *  @param data A chunk of binary data of the file.
  *  @param isComplete `YES` if the last byte of the file is returned and thus fetching is complete.
  *  @param error Error retrieving the value.
- *  @param updateBlock Block to receive file data. It will be called multiple times and each time  will return the data received since the last call.
+ *  @param updateBlock Block to receive file data. It will be called multiple times and each time will return the data received since the last call.
  */
 - (void)fetchFileDataWithOffset:(NSUInteger)offset
                     updateQueue:(dispatch_queue_t)queue
@@ -325,7 +353,7 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
 
 /**
  *  Fetches the file data of the sub media files. It is available only when
- *  `mediaType` is  `DJIMediaTypePanorama` or  `DJIMediaTypeShallowFocus`.
+ *  `mediaType` is `DJIMediaTypePanorama` or `DJIMediaTypeShallowFocus`.
  *  
  *  @param dataList Sub media files' data. They are files are in JPEG format.
  *  @param error Error retrieving the value.

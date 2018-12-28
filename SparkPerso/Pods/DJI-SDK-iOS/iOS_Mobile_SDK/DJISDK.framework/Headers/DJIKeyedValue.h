@@ -9,6 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DJIParamCapabilityMinMax;
+
 
 /**
  *  `DJIKeyedValue` is a container object for values associated with  `DJIKey`
@@ -114,11 +116,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic) NSUInteger unsignedIntegerValue;
 
 
-
 /**
  *  Convenience accessor to string value.
  */
-@property (readonly, nonatomic,copy) NSString *stringValue;
+@property (readonly, nonatomic, nullable, copy) NSString *stringValue;
+
+
+/**
+ *  Convenient accessor to the parameter range. `nil` if `value` is not in a  type
+ *  of `DJIParamCapabilityMinMax`.
+ */
+@property (readonly, nonatomic, nullable) DJIParamCapabilityMinMax *paramRange;
 
 @end
 

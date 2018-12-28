@@ -62,16 +62,16 @@ typedef void (^_Nullable DJIAccountStateCompletionBlock)(DJIUserAccountState sta
 
 
 /**
- *  Gets the DJI user account state.
+ *  Current state of DJI user account.
  *  
  *  @return An enum value of `DJIUserAccountState`.
  */
--(DJIUserAccountState)getUserAccountState;
+@property (nonatomic, readonly) DJIUserAccountState userAccountState;
 
 
 /**
  *  The name of the currently logged in user account.  It is `nil`  if
- *  `getUserAccountState` is either:   `DJIUserAccountStateNotLoggedIn`,
+ *  `userAccountState` is either:   `DJIUserAccountStateNotLoggedIn`,
  *  `DJIUserAccountStateTokenOutOfDate`  or `DJIUserAccountStateUnknown`.
  */
 @property(nonatomic, readonly, nullable) NSString *loggedInDJIUserAccountName;
@@ -98,6 +98,5 @@ typedef void (^_Nullable DJIAccountStateCompletionBlock)(DJIUserAccountState sta
  *  @param completion The `completion block` with the returned execution result.
  */
 -(void)logOutOfDJIUserAccountWithCompletion:(DJICompletionBlock)completion;
-
 
 @end

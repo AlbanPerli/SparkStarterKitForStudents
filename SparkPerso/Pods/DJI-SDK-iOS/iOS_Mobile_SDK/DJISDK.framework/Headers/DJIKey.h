@@ -57,7 +57,13 @@ EXTERN_KEY NSString *const DJIParamConnection;
  *  The sub-component index of the key. Index is zero based. Currently, no product
  *  supports multiple  sub-components of the same type, so it is always 0.
  */
-@property (readonly, nonatomic) NSInteger subIndex;
+@property (readonly, nonatomic) NSInteger subComponentIndex;
+
+
+/**
+ *  The subElement of the key if it exists.
+ */
+@property (readonly, nonatomic, nullable) NSString *subComponent;
 
 
 /**
@@ -75,7 +81,7 @@ EXTERN_KEY NSString *const DJIParamConnection;
  *  Convenience creator of a key by specifying the index of the element and the
  *  parameter of the key
  *  
- *  @param index the index of the element. In the case of multiple components these would refer to their index.
+ *  @param index The index of the element. In the case of multiple components these would refer to their index.
  *  @param param A valid string-formatted key as defined in DJIKey's subclasses headers.
  *  
  *  @return A valid key object or nil if an error occurred.
@@ -87,15 +93,15 @@ EXTERN_KEY NSString *const DJIParamConnection;
  *  Full creator of a key allowing to specify subelement, subindex and parameters.
  *  
  *  @param index The index of the element
- *  @param subElement The sub element string-formatted key as defined in DJIKey's subclasses headers.
+ *  @param subComponent The sub element string-formatted key as defined in DJIKey's subclasses headers.
  *  @param subIndex The sub element index.
  *  @param param The string-formatted key as defined in DJIKey's subclasses headers.
  *  
  *  @return A valid key object or nil if an error occurred.
  */
 + (nullable instancetype)keyWithIndex:(NSInteger)index
-                           subElement:(nonnull NSString *)subElement
-                             subIndex:(NSInteger)subIndex
+                         subComponent:(nonnull NSString *)subComponent
+                    subComponentIndex:(NSInteger)subIndex
                              andParam:(nonnull NSString *)param;
 
 @end

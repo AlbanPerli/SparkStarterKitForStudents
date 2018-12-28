@@ -12,6 +12,8 @@ import VideoPreviewer
 
 class CameraViewController: UIViewController {
 
+    @IBOutlet weak var extractedFrameImageView: UIImageView!
+    
     let prev1 = VideoPreviewer()
     @IBOutlet weak var cameraView: UIView!
     
@@ -40,6 +42,16 @@ class CameraViewController: UIViewController {
     }
     
     @IBAction func startStopCameraButtonClicked(_ sender: UIButton) {
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            self.prev1?.snapshotThumnnail { (image) in
+                if let img = image {
+                    print(img.size)
+                    // Resize it and put it in a neural network! :)
+                    self.extractedFrameImageView.image = img
+                }
+            }
+        }
         
     }
     
@@ -103,13 +115,6 @@ extension CameraViewController:DJIVideoFeedListener {
             prev2?.push(UnsafeMutablePointer(mutating: bytes), length: Int32(videoData.count))
         }
         
-        /*
-        VideoPreviewer.instance().snapshotPreview { (image) in
-            if let img = image {
-                
-            }
-        }
-        */
     }
     
     

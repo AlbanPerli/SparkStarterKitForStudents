@@ -37,9 +37,20 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #import <DJISDK/DJIUserAccountManager.h>
 
 /*********************************************************************************/
+#pragma mark - Data Protection
+/*********************************************************************************/
+#import <DJISDK/DJIDataProtectionManager.h>
+
+/*********************************************************************************/
 #pragma mark - LDM
 /*********************************************************************************/
 #import <DJISDK/DJILDMManager.h>
+
+/*********************************************************************************/
+#pragma mark - FlightHub
+/*********************************************************************************/
+#import <DJISDK/DJIFlightHubManager.h>
+#import <DJISDK/DJIFlightHubBaseTypes.h>
 
 /*********************************************************************************/
 #pragma mark - Products
@@ -47,7 +58,6 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #import <DJISDK/DJIAircraft.h>
 #import <DJISDK/DJIHandheld.h>
 #import <DJISDK/DJIBaseProduct.h>
-
 
 
 
@@ -84,6 +94,7 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #import <DJISDK/DJIFlightControllerBaseTypes.h>
 #import <DJISDK/DJISimulatorState.h>
 #import <DJISDK/DJIAirSenseSystemInformation.h>
+#import <DJISDK/DJIOnboardSDKDevice.h>
 
 //-----------------------------------------------------------------
 #pragma mark RemoteController
@@ -91,6 +102,7 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #import <DJISDK/DJIRemoteControllerBaseTypes.h>
 #import <DJISDK/DJIRemoteController.h>
 #import <DJISDK/DJIMobileRemoteController.h>
+#import <DJISDK/DJIRemoteControllerDisplayNames.h>
 
 //-----------------------------------------------------------------
 #pragma mark Camera
@@ -100,7 +112,7 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #import <DJISDK/DJICameraPlaybackState.h>
 #import <DJISDK/DJICameraSystemState.h>
 #import <DJISDK/DJICameraFocusState.h>
-#import <DJISDK/DJICameraSDCardState.h>
+#import <DJISDK/DJICameraStorageState.h>
 #import <DJISDK/DJICameraSSDState.h>
 #import <DJISDK/DJICameraDisplayNames.h>
 #import <DJISDK/DJICameraCapabilities.h>
@@ -130,6 +142,11 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #import <DJISDK/DJIOcuSyncLink.h>
 #import <DJISDK/DJILightbridgeAntennaRSSI.h>
 #import <DJISDK/DJIAirLinkBaseTypes.h>
+//-----------------------------------------------------------------
+#pragma mark Payload
+//-----------------------------------------------------------------
+#import <DJISDK/DJIPayload.h>
+#import <DJISDK/DJIPayloadWidget.h>
 
 //-----------------------------------------------------------------
 #pragma mark Handheld Controller
@@ -228,6 +245,7 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 /*********************************************************************************/
 #import <DJISDK/DJIFlyZoneInformation.h>
 #import <DJISDK/DJICustomUnlockZone.h>
+#import <DJISDK/DJIUnlockedZoneGroup.h>
 #import <DJISDK/DJIFlyZoneManager.h>
 /*********************************************************************************/
 #pragma mark - Categories
@@ -239,6 +257,24 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 /*********************************************************************************/
 #import <DJISDK/DJIRemoteLogger.h>
 
+/*********************************************************************************/
+#pragma mark - AccessLocker
+/*********************************************************************************/
+
+#import <DJISDK/DJIAccessLocker.h>
+#import <DJISDK/DJIAccessLockerBaseTypes.h>
+
+/*********************************************************************************/
+#pragma mark - Accessory Aggregation
+/*********************************************************************************/
+
+#import <DJISDK/DJIAccessoryAggregation.h>
+#import <DJISDK/DJIAccessoryAggregationState.h>
+#import <DJISDK/DJISpotlight.h>
+#import <DJISDK/DJIBeacon.h>
+#import <DJISDK/DJISpeaker.h>
+#import <DJISDK/DJIAudioMediaFile.h>
+#import <DJISDK/DJIAccessoryBaseTypes.h>
 
 /*********************************************************************************/
 #pragma mark - Keyed Interface
@@ -254,5 +290,6 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #import <DJISDK/DJIFlightControllerKey.h>
 #import <DJISDK/DJIRemoteControllerKey.h>
 #import <DJISDK/DJIAirLinkKey.h>
+#import <DJISDK/DJIAccessoryKey.h>
+#import <DJISDK/DJIPayloadKey.h>
 #import <DJISDK/DJIHandheldControllerKey.h>
-

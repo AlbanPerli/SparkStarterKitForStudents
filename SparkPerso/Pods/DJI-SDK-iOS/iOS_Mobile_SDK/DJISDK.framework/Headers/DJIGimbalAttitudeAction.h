@@ -73,13 +73,33 @@ typedef NS_ENUM(NSInteger, DJIGimbalAttitudeActionError) {
 
 
 /**
- *  Initialize instance with gimbal target attitude.
+ *  Gimbal mode to switch to when executing the action. When it is
+ *  `DJIGimbalModeUnknown`,  the action will not change the gimbal mode.
+ */
+@property (nonatomic, assign) DJIGimbalMode gimbalMode;
+
+
+/**
+ *  Initialize instance with gimbal target attitude. The value of `DJIGimbalMode` is
+ *  `DJIGimbalModeUnknown`.
  *  
  *  @param attitude Gimbal target attitude.
  *  
  *  @return An instance of `DJIGimbalAttitudeAction`.
  */
 - (instancetype _Nullable)initWithAttitude:(DJIGimbalAttitude)attitude;
+
+
+/**
+ *  Initialize instance with gimbal target attitude and gimbal mode.
+ *  
+ *  @param attitude Gimbal target attitude.
+ *  @param gimbalMode Gimbal mode to switch to.
+ *  
+ *  @return An instance of `DJIGimbalAttitudeAction`.
+ */
+- (instancetype _Nullable)initWithAttitude:(DJIGimbalAttitude)attitude
+                                gimbalMode:(DJIGimbalMode)gimbalMode;
 
 @end
 

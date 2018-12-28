@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Completion block for asynchronous operations. This completion block is used for
- *  methods that return at an  unknown future time.
+ *  methods that return at an unknown future time.
  *  
  *  @param error An error object if an error occurred during async operation, or `nil` if no error occurred.
  */
@@ -27,12 +27,13 @@ typedef void (^_Nullable DJICompletionBlock)(NSError *_Nullable error);
 @class DJIBattery;
 @class DJICamera;
 @class DJIAirLink;
+@class DJIPayload;
 
 
 /**
  *  This protocol provides delegate methods that notify user of changes in
- *  connectivity between the DJI product and the mobile device, changes  in
- *  components that are part of the product, and diagnostic information  from the
+ *  connectivity between the DJI product and the mobile device, changes in
+ *  components that are part of the product, and diagnostic information from the
  *  product.
  */
 @protocol DJIBaseProductDelegate <NSObject>
@@ -52,8 +53,8 @@ typedef void (^_Nullable DJICompletionBlock)(NSError *_Nullable error);
 
 
 /**
- *  Abstract class for all DJI Products. `DJIAircraft` and `DJIHandheld` objects
- *  are subclasses of `DJIBaseProduct` and can be accessed from `product` in
+ *  Abstract class for all DJI Products. `DJIAircraft` and `DJIHandheld` objects are
+ *  subclasses of `DJIBaseProduct` and can be accessed from `product` in
  *  `DJISDKManager`. Additional components can be found in `DJIAircraft` and
  *  `DJIHandheld` that are unique to those products only.
  */
@@ -101,9 +102,9 @@ typedef void (^_Nullable DJICompletionBlock)(NSError *_Nullable error);
 
 
 /**
- *  Gets the product's firmware package version. Products other than  Phantom 4,
+ *  Gets the product's firmware package version. Products other than Phantom 4,
  *  Phantom 4 Pro, Mavic Pro, and Inspire 2, require internet connection. The
- *  execution time for this method  depends on the speed of internet connectivity.
+ *  execution time for this method depends on the speed of internet connectivity.
  *  
  *  @param version The product's firmware package version.
  *  @param error Error retrieving the value.
@@ -143,7 +144,7 @@ typedef void (^_Nullable DJICompletionBlock)(NSError *_Nullable error);
 
 
 /**
- *  Retrieves the model of the product. See `DJIAircraft` and  `DJIHandheld` for the
+ *  Retrieves the model of the product. See `DJIAircraft` and `DJIHandheld` for the
  *  possible strings that can be returned.
  */
 @property (nonatomic, strong, readonly) NSString *_Nullable model;

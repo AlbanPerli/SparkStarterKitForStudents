@@ -50,6 +50,19 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(void)airLink:(DJIAirLink * _Nonnull)airLink didUpdateUplinkSignalQuality:(NSUInteger)quality;
 
+
+/**
+ *  The country code of the airlink is required to update to avoid violating the
+ *  local policy.  If auto update country code is not enabled,
+ *  `updateCountryCodeWithCompletion` should be  called to update the country code
+ *  manually.
+ *   CAUTION: updating the country code may  restart the airlink (WiFi, OcuSync or
+ *  Lightbridge).
+ *  
+ *  @param airLink The Airlink requiring update country code.
+ */
+-(void)airlinkDidRequireUpdateCountryCode:(DJIAirLink * _Nonnull)airLink;
+
 @end
 
 
@@ -110,6 +123,45 @@ NS_ASSUME_NONNULL_BEGIN
  *  Returns the OcuSync Link if it is available.
  */
 @property (nonatomic, readonly, nullable) DJIOcuSyncLink *ocuSyncLink;
+
+
+/**
+ *  Updates the country code. This should be called manually when auto update
+ *  country code is  disabled.
+ *   CAUTION: updating the country code may restart the airlink (WiFi, OcuSync  or
+ *  Lightbridge).
+ *  
+ *  @param completion Completion block to receive the result.
+ */
+- (void)updateCountryCodeWithCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Checks if we need to update country code to the DJI Product.
+ *  
+ *  @return `YES` if the country code is required to update.
+ */
+- (BOOL)isUpdateCountryCodeRequired;
+
+
+/**
+ *  Enables auto update of the country code. When it is enabled, SDK will update the
+ *  country code to  the aircraft automatically when it is required. It is enabled
+ *  by default and the value is stored  persistently on the device.
+ *  
+ *  @param enabled `YES` to enable auto update of the country code.
+ */
++ (void)setAutoUpdateCountryCodeEnabled:(BOOL)enabled;
+
+
+/**
+ *  Determines if auto update country code is enabled. When it is enabled, SDK will
+ *  update the country  code to the aircraft automatically when it is required. It
+ *  is enabled by default and the value is  stored persistently on the device.
+ *  
+ *  @return `YES` if auto update country code is enabled.
+ */
++ (BOOL)getAutoUpdateCountryCodeEnabled;
 
 @end
 

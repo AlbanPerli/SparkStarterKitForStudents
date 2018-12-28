@@ -17,7 +17,7 @@
 
 /**
  *  The current gimbal attitude in degrees. Roll, pitch and yaw are 0 if the gimbal
- *  is level with the  aircraft and points in the forward direction of North Pole.
+ *  is level with the aircraft and points in the forward direction of North Pole.
  */
 @property(nonatomic, readonly) DJIGimbalAttitude attitudeInDegrees;
 
@@ -29,21 +29,30 @@
 
 
 /**
- *  Returns the gimbal's roll fine-tune value. The range for the fine-tuned value is
- *  [-10, 10] degrees.  If the fine-tune value is negative, the gimbal will be fine-
- *  tuned to the specified number of degrees in  the counterclockwise direction.
+ *  Returns the gimbal's roll fine-tuned value. The range for the fine-tuned value
+ *  is [-10, 10] degrees. If the fine-tune value is negative, the gimbal will be
+ *  fine- tuned to the specified number of degrees in the counterclockwise
+ *  direction.
  */
-@property(nonatomic, readonly) float rollFineTuneInDegrees;
+@property(nonatomic, readonly) float fineTunedRoll;
 
 
 /**
- *  Returns the gimbal's pitch fine-tune value. The range for the fine-tuned value
- *  is [-10, 10] degrees.  If the fine-tune value is negative, the gimbal will be
- *  fine- tuned to the specified number of degrees  in the downward direction. It is
+ *  Returns the gimbal's pitch fine-tuned value. The range for the fine-tuned value
+ *  is [-10, 10] degrees. If the fine-tune value is negative, the gimbal will be
+ *  fine-tuned to the specified number of degrees in the downward direction. It is
  *  only supported by Spark.
  */
-@property(nonatomic, readonly) float pitchFineTuneInDegrees;
+@property(nonatomic, readonly) float fineTunedPitch;
 
+
+/**
+ *  Returns the gimbal's yaw fine-tuned value. The range for the fine-tuned value is
+ *  [-10, 10] degrees. If the fine-tune value is negative, the gimbal will be fine-
+ *  tuned to the specified number of degrees in the port (left) direction. Only
+ *  supported by DJI Mavic Air.
+ */
+@property(nonatomic, readonly) float fineTunedYaw;
 
 
 /**

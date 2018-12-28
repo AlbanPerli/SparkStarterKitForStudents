@@ -62,6 +62,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
+ *  Returns `YES` if the firmware of the connect product supports channel selection
+ *  mode. This feature is only supported by Mavic Air and Spark.
+ */
+@property (nonatomic, readonly) BOOL isChannelSelectionModeSupported;
+
+
+/**
  *  Reboot WiFi to enable new settings to take effect.
  *  
  *  @param completion Remote execution result error block.
@@ -120,7 +127,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Sets the WiFi frequency band.
+ *  It is not supported by Spark or Mavic Air. For these products, set different
+ *  channel  numbers to select the frequency band.
  *  
  *  @param frequencyBand WiFi frequency band to change to.
  *  @param completion Remote execution result error block.
@@ -130,7 +138,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Gets the current WiFi frequency band.
+ *  Gets the current WiFi frequency band. It is not supported by Spark or Mavic Air.
  *  
  *  @param frequencyBand The value of `DJIWiFiFrequencyBand` Enum.
  *  @param error Error retrieving the value.
@@ -142,6 +150,28 @@ NS_ASSUME_NONNULL_BEGIN
 /*********************************************************************************/
 #pragma mark Channels
 /*********************************************************************************/
+
+
+/**
+ *  Sets the channel selection mode. Both channel number and bandwidth can be
+ *  changed.  If the 5 GHz band is available,  then channels from that band can also
+ *  be used. It is  supported when `isChannelSelectionModeSupported` returns `YES`.
+ *  
+ *  @param mode Selection mode to set.
+ *  @param completion Completion block that receives the setter result.
+ */
+-(void)setChannelSelectionMode:(DJIWiFiChannelSelectionMode)mode withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the channel selection mode. It is supported when
+ *  `isChannelSelectionModeSupported` returns `YES`.
+ *  
+ *  @param mode The current selection mode. It returns `DJIWiFiChannelSelectionModeUnknown` when error is encountered.
+ *  @param error The encountered error if any.
+ *  @param completion Completion block to receive the result.
+ */
+-(void)getChannelSelectionModeWithCompletion:(void (^_Nonnull)(DJIWiFiChannelSelectionMode mode, NSError *_Nullable error))completion;
 
 
 /**
@@ -187,7 +217,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sets the WiFi data rate (throughput). Higher data rates increase the quality of
- *  video transmission, but can only be  used at shorter ranges.
+ *  video transmission, but can only be  used at shorter ranges. It is not supported
+ *  by Spark or Mavic Air.
  *  
  *  @param rate Data rate (throughput).
  *  @param completion The completion block with the returned execution result.
@@ -196,7 +227,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Gets the current data rate (throughput).
+ *  Gets the current data rate (throughput). It is not supported by Spark or Mavic
+ *  Air.
  *  
  *  @param rate The `DJIWiFiDataRate` object.
  *  @param error Error retrieving the value.

@@ -187,6 +187,42 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)getChannelNumberValidRangeWithCompletion:(void (^_Nonnull)(NSRange range,
                                                                   NSError *_Nullable error))completion;
 
+
+/**
+ *  Gets the frequency bands supported by the product in the current area. It is
+ *  supported by P4P V2 and Mavic 2 Series. For  Mavic Pro, only 2.4GHz is
+ *  supported.
+ *  
+ *  @param frequencyBands The array of the `DJIOcuSyncFrequencyBand` values.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getSupportedFrequencyBandsWithCompletion:(void (^_Nonnull)(NSArray<NSNumber *> *_Nullable frequencyBands,
+                                                                   NSError *_Nullable error))completion;
+
+
+/**
+ *  Sets the OcuSync air link frequency band. It is only supported by Phantom 4 Pro
+ *  V2 and Mavic 2 Series. For Mavic Pro,  the frequency band is always 2.4 GHz.
+ *  
+ *  @param frequencyBand Frequency band to change to.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)setFrequencyBand:(DJIOcuSyncFrequencyBand)frequencyBand
+          withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the OcuSync air link frequency band. It is only supported by Phantom 4 Pro
+ *  V2 and Mavic 2 Series. For Mavic Pro, the frequency band is always 2.4 GHz.
+ *  
+ *  @param frequencyBand The current frequency band.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getFrequencyBandWithCompletion:(void (^_Nonnull)(DJIOcuSyncFrequencyBand frequencyBand,
+                                                         NSError *_Nullable error))completion;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,6 +8,8 @@
 #import <Foundation/Foundation.h>
 #import <DJISDK/DJIMissionAction.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 
 /**
  *  This class represents a take-off action used as an element in a Timeline
@@ -19,3 +21,5 @@
 @interface DJITakeOffAction : DJIMissionAction
 
 @end
+
+NS_ASSUME_NONNULL_END

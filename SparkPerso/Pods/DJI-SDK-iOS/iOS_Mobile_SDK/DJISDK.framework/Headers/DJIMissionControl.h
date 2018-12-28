@@ -188,7 +188,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param element A previously scheduled element. Should also be the element running.
  *  @param error An optional error if the execution end was the result of it.
  */
-- (void)element:(id <DJIMissionControlTimelineElement>)element didFinishRunningWithError:(NSError * _Nullable)error ;
+- (void)element:(id <DJIMissionControlTimelineElement>)element didFinishRunningWithError:(NSError * _Nullable)error;
 
 
 /**
@@ -290,7 +290,7 @@ typedef NS_ENUM(NSInteger, DJIMissionControlError) {
     
 
     /**
-     *  Can't resume a timeline which is not paused.
+     *  Can't stop a timeline which is not running.
      */
     DJIMissionControlTimelineStopErrorNotRunning = 10011,
         
@@ -329,20 +329,22 @@ typedef NS_ENUM(NSInteger, DJIMissionControlError) {
  *  has APIs to control the mission (e.g. start, stop, pause etc.) and provides
  *  mission state through listeners.
  *   Mission Control's Timeline is made up of a series of Timeline elements which
- *  can be Waypoint missions,  Hotpoint missions (through the Hotpoint action
+ *  can be Waypoint missions, Hotpoint missions (through the Hotpoint action
  *  `DJIHotpointAction`) or objects that follow the
  *  `DJIMissionControlTimelineElement` protocol. `DJIMissionAction` is a Timeline
- *  element, with  `DJIAircraftYawAction` and `DJIGimbalAttitudeAction` subclasses
- *  being examples of specific actions.  If a mission is being executed in a
- *  Timeline, the mission operator can still be used to get state  information of
- *  the mission as well as change mission execution parameters.
+ *  element, with `DJIAircraftYawAction` and `DJIGimbalAttitudeAction` subclasses
+ *  being examples of specific actions. If a mission is being executed in a
+ *  Timeline, the mission operator can still be used to get state information of the
+ *  mission as well as change mission execution parameters.
  *   Timeline elements can also have triggers (`DJIMissionTrigger`) associated with
  *  them. Triggers are separate objects that are run in parallel with a Timeline
  *  element. The trigger object is used to initiate actions if a set of criteria are
  *  met. For example, a trigger could be used to monitor battery level, and then
- *  initiate an action once a threshold is passed.
+ *  initiate an action once a threshold is passed. Mission Control's Timeline is
+ *  only supported by aircrafts. Handheld devices (e.g. OSMO) do not support this
+ *  feature.
  *   The listening mechanism for Mission Control is block based. To listen to an
- *  event, a listener  object and a block to execute when the event occurs is passed
+ *  event, a listener object and a block to execute when the event occurs is passed
  *  to Mission Control. The listener object is only used by Mission Control to keep
  *  track of whether it should execute the listener block or not. Mission Control
  *  would not execute the listener block if the listener object was removed from the

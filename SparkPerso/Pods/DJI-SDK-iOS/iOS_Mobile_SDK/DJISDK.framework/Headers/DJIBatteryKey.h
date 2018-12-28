@@ -44,6 +44,7 @@ EXTERN_KEY NSString *const DJIBatteryParamLevel1CellVoltageThreshold;
 EXTERN_KEY NSString *const DJIBatteryParamLevel2CellVoltageThreshold;
 EXTERN_KEY NSString *const DJIBatteryParamLevel1CellVoltageBehavior;
 EXTERN_KEY NSString *const DJIBatteryParamLevel2CellVoltageBehavior;
+EXTERN_KEY NSString *const DJIBatteryParamHeatingState;
 
 //-----------------------------------------------------------------
 #pragma mark Actions

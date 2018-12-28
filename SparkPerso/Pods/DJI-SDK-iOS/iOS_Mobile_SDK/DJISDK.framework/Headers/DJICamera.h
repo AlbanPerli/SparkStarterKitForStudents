@@ -17,12 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 @class DJIMediaFile;
 @class DJICamera;
 @class DJICameraSystemState;
-@class DJICameraSDCardState;
+@class DJICameraStorageState;
 @class DJICameraPlaybackState;
 @class DJICameraFocusState;
 @class DJIMediaManager;
 @class DJIPlaybackManager;
 @class DJICameraCapabilities;
+@class DJICameraWatermarkSettings;
 @class UIImage;
 
 
@@ -55,10 +56,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Called when the camera's lens and focus state has been updated. This delegate
- *  method is only available when `isInterchangeableLensSupported` is `YES`.
+ *  Called when the camera's lens and focus state has been updated.
  *  
- *  @param camera Camera that sends out the updatd lens information.
+ *  @param camera Camera that sends out the updated lens information.
  *  @param lensState The camera's lens and focus state.
  */
 - (void)camera:(DJICamera *_Nonnull)camera didUpdateFocusState:(DJICameraFocusState *_Nonnull)lensState;
@@ -91,12 +91,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Called when the camera's SD card state has been updated.
+ *  Called when the camera's SD card state has been updated. This method is now
+ *  deprecated.
  *  
  *  @param camera Camera that sends out the updated SD card state.
  *  @param sdCardState The camera's SD card state.
  */
-- (void)camera:(DJICamera *_Nonnull)camera didUpdateSDCardState:(DJICameraSDCardState *_Nonnull)sdCardState;
+- (void)camera:(DJICamera *_Nonnull)camera didUpdateSDCardState:(DJICameraStorageState *_Nonnull)sdCardState DJI_API_DEPRECATED("Use camera:didUpdateStorageState:. ");
+
+
+/**
+ *  Called when the camera's storage state has been updated. Use
+ *  `DJICameraStorageState`'s `location` to determine if the updated state is for SD
+ *  card or the internal storage.
+ *  
+ *  @param camera Camera that sends out the updated storage state.
+ *  @param storageState The camera storage state. If the camera supports internal storage (e.g. Mavic Air), use `location` to determine whether the state is for SD card or internal storage.
+ */
+- (void)camera:(DJICamera *_Nonnull)camera didUpdateStorageState:(DJICameraStorageState *_Nonnull)storageState;
 
 
 /**
@@ -166,7 +178,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  This class contains the media manager and playback manager, which manage the
- *  camera's media content. It provides  methods to change camera settings and
+ *  camera's media content. It provides methods to change camera settings and
  *  perform camera actions. This object is available from the `DJIAircraft` or
  *  `DJIHandheld` object, which is a subclass of `DJIBaseProduct`.
  */
@@ -683,6 +695,32 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param completion `completion block` to receive the result.
  */
 - (void)getPhotoPanoramaModeWithCompletion:(void (^_Nonnull)(DJICameraPhotoPanoramaMode mode, NSError *_Nullable error))completion;
+
+
+/**
+ *  Change the original image configuration when shooting panorama photos. CAUTION:
+ *  enabling this may consume 500 MB in the SD card or the internal storage for each
+ *  panorama. It is supported by Mavic Air and Mavic 2. For Mavic Air, `format` is
+ *  not used and it will ignore the value.
+ *  
+ *  @param settings An object of `DJICameraOriginalPhotoSettings`.
+ *  @param completion Completion block that receives the setter result.
+ */
+- (void)setPanoOriginalPhotoSettings:(DJICameraOriginalPhotoSettings *)settings withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the configuration, which determines the behavior for the original images
+ *  when shooting panorama photos. CAUTION: If this is enabled, it may consume 500
+ *  MB in the SD card or the internal storage for each panorama. It is supported by
+ *  Mavic Air and Mavic 2. However, Mavic Air cannot change the format to save the
+ *  original images. `format` will be  ignored by Mavic Air.
+ *  
+ *  @param setting An object of `DJICameraOriginalPhotoSettings`.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getPanoOriginalPhotoSettingsWithCompletion:(void (^_Nonnull)(DJICameraOriginalPhotoSettings *setting, NSError *_Nullable error))completion;
 
 /*********************************************************************************/
 #pragma mark Exposure Settings
@@ -1377,7 +1415,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Determines whether the camera supports an adjustable aperture. Currently
- *  adjustable aperture is supported only by the X5, X5R, X4S and X5S cameras.
+ *  adjustable aperture is supported only by the X5, X5R, X4S, X5S cameras and Mavic
+ *  2 Pro.
  *  
  *  @return A boolean value.
  */
@@ -1390,7 +1429,7 @@ NS_ASSUME_NONNULL_BEGIN
  *   Precondition:
  *   The exposure mode `DJICameraExposureMode` must be in
  *  `DJICameraExposureModeManual` or `DJICameraExposureModeAperturePriority`. </br>
- *  Supported only by the X5, X5R, X4S and X5S camera.
+ *  Supported only by the X5, X5R, X4S, X5S camera and Mavic 2 Pro.
  *  
  *  @param aperture The aperture to set. See DJICameraLensFocusMode.
  *  @param completion The execution callback with the returned execution result.
@@ -1412,7 +1451,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Determines whether the camera supports an adjustable focal point. Currently, the
  *  adjustable focal point is supported by the X5, X5R, Z3, Mavic Pro camera, Z30,
- *  Phantom 4 Pro camera, X4S and X5S.
+ *  Phantom 4 Pro camera, X4S, X5S, Mavic 2 Pro, Mavic 2 Zoom Camera and and Mavic 2
+ *  Enterprise Camera.
  *  
  *  @return A boolean value.
  */
@@ -1423,7 +1463,8 @@ NS_ASSUME_NONNULL_BEGIN
  *  Sets the lens focus mode. See `DJICameraFocusMode`. It is available only when
  *  `isAdjustableFocalPointSupported` returns `YES`. Supported by the X5, X5R, Z3
  *  cameras (Z3 camera can only support `DJICameraFocusModeAuto`), the Mavic Pro
- *  camera, Z30, Phantom 4 Pro camera, X4S and X5S.
+ *  camera, Z30, Phantom 4 Pro camera, X4S, X5S, Mavic 2 Pro, Mavic 2 Zoom Camera
+ *  and Mavic 2 Enterprise Camera.
  *  
  *  @param focusMode Focus mode to set. Check `DJICameraFocusMode` for more detail.
  *  @param completion The execution callback with the returned execution result.
@@ -1434,7 +1475,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Gets the lens focus mode. Please check `DJICameraFocusMode`. It is available
  *  only when `isAdjustableFocalPointSupported` returns `YES`. Supported only by the
- *  X5, X5R, Z3 cameras, Mavic Pro camera, Z30, Phantom 4 Pro camera, X4S, X5S.
+ *  X5, X5R, Z3 cameras, Mavic Pro camera, Z30, Phantom 4 Pro camera, X4S, X5S,
+ *  Mavic 2 Pro,  Mavic 2 Zoom Camera and Mavic 2 Enterprise Camera.
  *  
  *  @param focusMode The value of the `DJICameraFocusMode` Enum.
  *  @param error Error retrieving the value.
@@ -1448,7 +1490,8 @@ NS_ASSUME_NONNULL_BEGIN
  *  is the focal point. When the focus mode is manual, the target point is the zoom
  *  out area if the focus assistant is enabled for the manual mode. It is available
  *  only when `isAdjustableFocalPointSupported` returns `YES`. Supported only by the
- *  X5, X5R, Z3 cameras, Mavic Pro camera and Phantom 4 Pro camera, X4S and X5S.
+ *  X5, X5R, Z3 cameras, Mavic Pro camera, Phantom 4 Pro camera, Mavic 2 Pro, Mavic
+ *  2 Zoom Camera, Mavic 2 Enterprise Camera, X4S and X5S. camera, X4S and X5S.
  *  
  *  @param focusTarget The focus target to set. The range for x and y is from 0.0 to 1.0. The point [0.0, 0.0] represents the top-left angle of the screen.
  *  @param completion The execution callback with the returned execution result.
@@ -1459,7 +1502,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Gets the lens focus target point. It is available only when
  *  `isAdjustableFocalPointSupported` returns `YES`. Supported only by the X5, X5R,
- *  Z3 cameras, Mavic Pro camera and Phantom 4 Pro camera, X4S and X5S.
+ *  Z3 cameras, Mavic Pro camera and Phantom 4 Pro camera, X4S, X5S, Mavic 2 Pro,
+ *  Mavic 2 Zoom Camera and Mavic 2 Enterprise Camera.
  *  
  *  @param focusTarget The CGPoint struct.
  *  @param error Error retrieving the value.
@@ -1490,7 +1534,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  so the user can see the quality of focus. Focus assistant can be used for both
  *  manual focus (MF) and auto focus (AF). It is available only when
  *  `isAdjustableFocalPointSupported` returns `YES`. Supported only by the X5, X5R,
- *  Z3 cameras, Phantom 4 Pro. X4s and X5S.
+ *  Z3 cameras, Phantom 4 Pro, X4s and X5S.
  *  
  *  @param settings Sets whether the lens focus assistant under AF and MF mode is enabled.
  *  @param error Error retrieving the value.
@@ -1503,7 +1547,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Gets the lens focusing ring value's max value. It is available only when
  *  `isAdjustableFocalPointSupported` returns `YES`. Supported only by the X5, X5R,
- *  Z3 cameras, Phantom 4 Pro, X4S and X5S.
+ *  Z3 cameras, Phantom 4 Pro camera, X4S, X5S, Mavic 2 Pro, Mavic 2 Zoom Camera and
+ *  Mavic 2 Enterprise Camera.
  *  
  *  @param upperBound The upperBound value.
  *  @param error Error retrieving the value.
@@ -1524,7 +1569,8 @@ NS_ASSUME_NONNULL_BEGIN
  *  `getFocusRingValueWithCompletion` to get the current focus ring value. This is
  *  the minimum value. The maximum value can be retrieved using
  *  `getFocusRingValueUpperBoundWithCompletion`. Supported only by X5, X5R, Z3
- *  cameras, Phantom 4 Pro. X4S and X5S.
+ *  cameras, Phantom 4 Pro, X4S, X5S, Mavic 2 Pro, Mavic 2 Zoom Camera  and Mavic 2
+ *  Enterprise Camera.
  *  
  *  @param value Value to adjust focus ring to. The minimum value is 0, the maximum value depends on the installed lens. Please use method `getFocusRingValueUpperBoundWithCompletion` to ensure the input argument is valid.
  *  @param completion The execution callback with the returned execution result.
@@ -1535,7 +1581,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Gets the lens focus ring value. It is available only when
  *  `isAdjustableFocalPointSupported` returns `YES`. Supported only by the X5, X5R,
- *  Z3 cameras, Phantom 4 Pro, X4S and X5S.
+ *  Z3 cameras, Phantom 4 Pro, X4S, X5S, Mavic 2 Pro, Mavic 2 Zoom Camera, Mavic 2
+ *  Enterprise Camera.
  *  
  *  @param distance The distance value.
  *  @param error Error retrieving the value.
@@ -1549,7 +1596,8 @@ NS_ASSUME_NONNULL_BEGIN
  *  resolution is 1080p with frame rate 30 fps. The settings will only take effect
  *  when the camera is in record-video mode and the video resolution is either 1080p
  *  or 2.7k without slow-motion enabled. If recording video in 4k, then the live
- *  stream will be limited to 720p. Supported only by Mavic Pro.
+ *  stream will be limited to 720p. Supported by Mavic Pro, Mavic 2 Pro, Mavic 2
+ *  Zoom and Phantom 4 Pro v2.0.
  *  
  *  @param enabled Enable or disable HD live view.
  *  @param completion The execution callback with the returned execution result.
@@ -1577,7 +1625,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  Mavic Pro.
  *  
  *  @param enabled Enable the automatic control of the front-arm LEDs.
- *  @param completion The execution callback with the returned execution result.
+ *  @param completion The completion block with the returned execution result.
  */
 -(void)setLEDAutoTurnOffEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
 
@@ -1644,8 +1692,9 @@ NS_ASSUME_NONNULL_BEGIN
  *  be written to all media files until the information is changed again by this
  *  method. Custom information written to each file can be retrieved through
  *  `fetchCustomInformationWithCompletion`  or from the image itself when processed
- *  on a separate system. It is only supported Phantom 4 Pro, Phantom 4 Advanced and
- *  Inspire 2 with firmware released after May 23 2017.
+ *  on a separate system. It is only supported Phantom 4 Pro, Phantom 4  Advanced,
+ *  Phantom 4 Pro V2.0, Zenmuse X4S, Zenmuse X5S, Zenmuse X7 and Mavic 2 Enterprise
+ *  camera.
  *  
  *  @param information Custom information to set. Use UTF-8 encoding with a length equal to or less than 31 characters.
  *  @param completion Completion block to receive the result.
@@ -1658,7 +1707,8 @@ NS_ASSUME_NONNULL_BEGIN
  *  retrieves the information that will be written to future media files. The
  *  information written to individual files can be retrieved through
  *  `fetchCustomInformationWithCompletion`. It is only supported Phantom 4 Pro,
- *  Phantom 4 Advanced and Inspire 2 with firmware released after May 23 2017.
+ *  Phantom 4 Advanced, Phantom 4 Pro V2.0, Zenmuse X4S, Zenmuse X5S, Zenmuse X7 and
+ *  Mavic 2 Enterprise camera.
  *  
  *  @param information The custom information to write.
  *  @param error The encountered error if any.
@@ -1930,6 +1980,41 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getSSDClipFileNameWithCompletion:(void (^_Nonnull)(DJICameraSSDClipFileName *_Nullable name, NSError *_Nullable error))completion;
 
 /*********************************************************************************/
+#pragma mark Storage Location
+/*********************************************************************************/
+
+/**
+ *  Determines if the camera supports the internal storage or not. When it is
+ *  supported, the camera shoot photos or record videos without SD card. The newly
+ *  generated photos or videos will be stored in the internal storage.
+ *  
+ *  @return `YES` if internal storage is supported.
+ */
+- (BOOL)isInternalStorageSupported;
+
+
+/**
+ *  Sets the storage location for the newly generated photos or videos. It is only
+ *  supported when `isInternalStorageSupported` returns `YES`.
+ *  
+ *  @param location The storage location to set.
+ *  @param completion Completion block to receive the setter result.
+ */
+- (void)setStorageLocation:(DJICameraStorageLocation)location withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the storage location for the newly generated photos or videos. When
+ *  `isInternalStorageSupported` returns `NO`, this setting is always
+ *  `DJICameraStorageLocationSDCard`.
+ *  
+ *  @param location The location to store photos and videos.
+ *  @param error Error if there is any.
+ *  @param completion Completion block to receive the getter result.
+ */
+- (void)getStorageLocationWithCompletion:(void (^_Nonnull)(DJICameraStorageLocation location, NSError *_Nullable error))completion;
+
+/*********************************************************************************/
 #pragma mark Save/load camera settings
 /*********************************************************************************/
 
@@ -1963,16 +2048,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)loadSettingsFromProfile:(DJICameraCustomSettingsProfile)profile withCompletion:(DJICompletionBlock)completion;
 
-@end
-
 /*********************************************************************************/
-#pragma mark - DJISDCardOperations
+#pragma mark - Storage Operation
 /*********************************************************************************/
-
-/**
- *  You can store high quality photos and videos on an SD card.
- */
-@interface DJICamera (SDCardOperations)
 
 
 /**
@@ -1982,6 +2060,15 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param completion Remote execution result callback block.
  */
 - (void)formatSDCardWithCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Formats the storage by deleting all the data on it.
+ *  
+ *  @param storage The storage (either SD card or the internal storage) to format. When it is `DJICameraStorageLocationSDCard`, this interface has the same effect as `formatSDCardWithCompletion`.
+ *  @param completion Remote execution result callback block.
+ */
+- (void)formatStorage:(DJICameraStorageLocation)storage withCompletion:(DJICompletionBlock)completion;
 
 @end
 
@@ -2179,6 +2266,54 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param completion Completion block to receive the result.
  */
 - (void)getSSDVideoRecordingEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Enables this to lock the gimbal when the camera is shooting a photo. The gimbal
+ *  will  keep the attitude when starting to shoot the photo.
+ *  
+ *  @param enabled `YES` to enable the feature.
+ *  @param completion Completion block that receives the setter result.
+ */
+- (void)setAutoLockGimbalEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines whether the gimbal will be locked automatically during shooting
+ *  photos.
+ *  
+ *  @param enabled `YES` if it is enabled.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getAutoLockGimbalEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+/*********************************************************************************/
+#pragma mark - Watermark
+/*********************************************************************************/
+
+
+/**
+ *  Sets the watermark configuration. Enables this to add timestamp and location
+ *  stamp to  the newly generated photos or videos. It is only supported by Mavic 2
+ *  Enterprise.
+ *  
+ *  @param config The watermark configuration to set.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)setWatermarkSettings:(DJICameraWatermarkSettings *)config withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the watermark settings. If it is enabled, timestamp and location stamp will
+ *  be  added to the newly generated photos or videos. It is only supported by Mavic
+ *  2 Enterprise.
+ *  
+ *  @param settings The watermark settings to set.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getWatermarkSettingsWithCompletion:(void (^_Nonnull)(DJICameraWatermarkSettings *settings, NSError *_Nullable error))completion;
 
 @end
 
@@ -2763,6 +2898,147 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param completion Completion block that receives the setter execution result.
  */
 - (void)setThermalWindowTransmissionCoefficient:(float)coefficient withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Sets the temperature unit. Only supported by XT2.
+ *  
+ *  @param temperatureUnit Temperature unit to set.
+ *  @param completion Completion block that receives the setter execution result.
+ */
+- (void)setThermalTemperatureUnit:(DJICameraTemperatureUnit)temperatureUnit withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the temperature unit. Only supported by XT2.
+ *  
+ *  @param temperatureUnit The current temperature unit.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getThermalTemperatureUnitWithCompletion:(void (^_Nonnull)(DJICameraTemperatureUnit temperatureUnit, NSError *_Nullable error))completion;
+
+
+/**
+ *  Sets the display mode to coordinate the video feeds from both the  visual camera
+ *  and the thermal camera. Only supported by XT2 camera.
+ *  
+ *  @param mode The display mode to set.
+ *  @param completion Completion block that receives the setter execution result.
+ */
+- (void)setDisplayMode:(DJICameraDisplayMode)mode withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the display mode. The display mode determine the way to coordinate  the
+ *  video feeds from both the visual camera and the thermal camera. Only  supported
+ *  by XT2 camera.
+ *  
+ *  @param mode The current display mode.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getDisplayModeWithCompletion:(void (^_Nonnull)(DJICameraDisplayMode mode, NSError *_Nullable error))completion;
+
+
+/**
+ *  Sets the thermal window's position relative to the visual window. The setting is
+ *  valid when  the display mode is `DJICameraDisplayModePIP`. Refer to
+ *  `setDisplayMode:withCompletion`  and `getDisplayModeWithCompletion`. Only
+ *  supported by XT2 camera.
+ *  
+ *  @param position The position to set.
+ *  @param completion Completion block that receives the setter execution result.
+ */
+- (void)setPIPPosition:(DJICameraPIPPosition)position withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the PIP position which determines the thermal window's position relative to
+ *  the visual window. The setting  is valid when the display mode is
+ *  `DJICameraDisplayModePIP`. Refer to `setDisplayMode:withCompletion`  and
+ *  `getDisplayModeWithCompletion`. Only supported by XT2 camera.
+ *  
+ *  @param position The current position.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getPIPPositionWithCompletion:(void (^_Nonnull)(DJICameraPIPPosition position, NSError *_Nullable error))completion;
+
+
+/**
+ *  Sets the level for MSX display mode. The range for level is [0, 100]. When it is
+ *  0, the visible spectrum definition is invisible.  When it is 100, the visual
+ *  spectrum definition is the most obvious. Only supported by XT2 camera.
+ *  
+ *  @param level The MSX level to set with range [0, 100].
+ *  @param completion Completion block that receives the setter execution result.
+ */
+- (void)setMSXLevel:(uint8_t)level withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the level for MSX display mode. The range for level is [0, 100]. When it is
+ *  0, the visible spectrum definition is invisible. When  it is 100, the visual
+ *  spectrum definition is the most obvious. Only supported by XT2 camera.
+ *  
+ *  @param level The current MSX level.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getMSXLevelWithCompletion:(void (^_Nonnull)(uint8_t level, NSError *_Nullable error))completion;
+
+
+/**
+ *  Sets the vertical alignment offset between the video feeds from both the visual
+ *  camera and the thermal camera. The alignment is applied to  the MSX display
+ *  mode. The valid range is [-8, 8]. Positive value will move the thermal window
+ *  up. Use this setting to fine-tune the performance  of MSX display mode and the
+ *  align PIP mode. Only supported by XT2 camera.
+ *  
+ *  @param offset The vertical offset to set.
+ *  @param completion Completion block that receives the setter execution result.
+ */
+- (void)setDualFeedVerticalAlignmentOffset:(int8_t)offset withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the vertical alignment offset between the video feeds from both the visual
+ *  camera and the thermal camera. The alignment is applied to the  MSX display
+ *  mode. The valid range is [-8, 8]. Positive value will move the thermal window
+ *  up. Only supported by XT2 camera.
+ *  
+ *  @param offset The current vertical offset.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getDualFeedVerticalAlignmentOffsetWithCompletion:(void (^_Nonnull)(int8_t offset, NSError *_Nullable error))completion;
+
+
+/**
+ *  Sets the horizontal alignment offset between the video feeds from both the
+ *  visual camera and the thermal camera. The alignment is applied to the MSX
+ *  display mode. The valid range is [-100, 100]. Positive value will move the
+ *  thermal window to the right. Use this setting to fine-tune the performance  of
+ *  MSX display mode and the align PIP mode. Only supported by XT2 camera.
+ *  
+ *  @param offset The horizontal offset to set.
+ *  @param completion Completion block that receives the setter execution result.
+ */
+- (void)setDualFeedHorizontalAlignmentOffset:(int8_t)offset withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the horizontal alignment offset between the video feeds from both the
+ *  visual camera and the thermal camera. The alignment is applied to the MSX
+ *  display mode. The valid range is [-100, 100]. Positive value will move the
+ *  thermal window to the right. Only supported by XT2 camera.
+ *  
+ *  @param offset The current vertical offset.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getDualFeedHorizontalAlignmentOffsetWithCompletion:(void (^_Nonnull)(int8_t offset, NSError *_Nullable error))completion;
 
 @end
 

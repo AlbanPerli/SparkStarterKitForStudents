@@ -62,10 +62,22 @@ typedef NS_ENUM(NSInteger, DJIShootPhotoActionError) {
  *  
  *  @param count Photo count.
  *  @param interval Time interval in seconds between shooting photos.
+ *  @param wait `YES` if action should finish only after all photos are shot. `NO` if  action should return immediately after starting shoot photo action.
  *  
  *  @return An instance of `DJIShootPhotoAction`.
  */
-- (instancetype _Nullable)initWithPhotoCount:(int)count timeInterval:(double)interval;
+- (instancetype _Nullable)initWithPhotoCount:(int)count timeInterval:(double)interval waitUntilFinish:(BOOL)wait;
+
+
+/**
+ *  Initialize object to stop shooting photos. Only works if there was a  previous
+ *  `DJIShootPhotoAction` in the timeline which started shooting photos using  the
+ *  `initWithPhotoCount:timeInterval:waitUntilFinish` initializer with `wait` set to
+ *  `NO`.
+ *  
+ *  @return An instance of `DJIShootPhotoAction`.
+ */
+- (instancetype _Nullable)initWithStopShootPhoto;
 
 @end
 

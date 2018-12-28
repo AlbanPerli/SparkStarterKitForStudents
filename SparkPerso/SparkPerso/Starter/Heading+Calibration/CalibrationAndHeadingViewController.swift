@@ -38,6 +38,7 @@ class CalibrationAndHeadingViewController: UIViewController {
         // ---------------------
         if let mySpark = DJISDKManager.product() as? DJIAircraft {
             if let flightController = mySpark.flightController {
+                
                 if let compass = flightController.compass {
                     print("Calibration state before start: \(compass.calibrationState.rawValue)")
                     compass.startCalibration(completion: { (err) in
@@ -65,6 +66,7 @@ class CalibrationAndHeadingViewController: UIViewController {
             }
             print("iOS \(CGFloat(heading).degreesToRadians)")
         }
+        locationManager.startUpdatingHeading()
     }
     
     func readHeading() {

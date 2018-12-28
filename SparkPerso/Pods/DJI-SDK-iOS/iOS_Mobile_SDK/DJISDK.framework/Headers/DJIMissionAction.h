@@ -20,4 +20,10 @@
  */
 @property (readonly, nonatomic) BOOL isRunning;
 
+
+/**
+ *  `YES` if the action is paused.
+ */
+@property (readonly, nonatomic) BOOL isPaused;
+
 @end

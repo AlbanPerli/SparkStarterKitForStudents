@@ -12,6 +12,8 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import "DJIMission.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 
 /**
  *  The state of the target being tracked by the aircraft.
@@ -171,6 +173,27 @@ typedef NS_ENUM(NSUInteger, DJIActiveTrackQuickShotMode) {
 	 */
 	DJIActiveTrackQuickShotModeRocket,
 
+    /**
+     *  The aircraft will fly around the tracking object in an upwardly sloped oval with
+     *  the  video finishing at the start point. Only supported by DJI Mavic Air.
+     */
+    DJIActiveTrackQuickShotModeBoomerang,
+
+    /**
+     *  The aircraft will fly backward and upward while recording video, capture a
+     *  sphere  panorama at the end of the flight path, then combine the footage and
+     *  panorama into  a short video. Only supported by DJI Mavic Air.
+     */
+    DJIActiveTrackQuickShotModeAsteroid,
+
+    /**
+     *  The aircraft will fly backward and upward. It will adjust the zoom during flight
+     *  to keep the selected subject the same while the background changes. Ensure there
+     *  is sufficient space when using Dolly Zoom. Allow at least triple distance from
+     *  aircraft to the subject behind the aircraft. Only supported by Mavic 2 Zoom.
+     */
+    DJIActiveTrackQuickShotModeDollyZoom,
+
 	/**
 	 *  Unknown.
 	 */
@@ -243,12 +266,49 @@ typedef NS_ENUM (NSInteger, DJIActiveTrackCannotConfirmReason) {
 
 
 /**
+ *  The state of one of the auto-sensed subject after enabling auto sensing.  Only
+ *  supported by DJI Mavic Air.
+ */
+@interface DJISubjectSensingState : NSObject
+
+
+/**
+ *  Index of the auto-sensed subjects. After enabling auto sensing, the aircraft
+ *  may find multiple subjects and an index will be assigned to each subject.  Use
+ *  this index to select the subject to track.
+ */
+@property (nonatomic, readonly) NSInteger index;
+
+
+/**
+ *  The target state of the auto-sensed subject.
+ */
+@property (nonatomic, readonly) DJIActiveTrackTargetState state;
+
+
+/**
+ *  The type of the auto-sensed subject.
+ */
+@property (nonatomic, readonly) DJIActiveTrackTargetType targetType;
+
+
+/**
+ *  A rectangle in the live video view image that represents the auto-sensed
+ *  subject.  The rectangle is normalized to [0,1] where (0,0) is the top left of
+ *  the video  preview and (1,1) is the bottom right.
+ */
+@property (nonatomic, readonly) CGRect targetRect;
+
+@end
+
+
+/**
  *  The tracking state of the ActiveTrack mission that is executing.
  */
 @interface DJIActiveTrackTrackingState : NSObject
 
 /**
- *  The state of the  being tracked.
+ *  The state of the target being tracked.
  */
 @property (nonatomic, readonly) DJIActiveTrackTargetState state;
 
@@ -282,6 +342,12 @@ typedef NS_ENUM (NSInteger, DJIActiveTrackCannotConfirmReason) {
  */
 @property (nonatomic, readonly) NSUInteger progress;
 
+
+/**
+ *  The auto-sensed subjects after enabling auto sensing.
+ */
+@property (nonatomic, readonly, nullable) NSArray<DJISubjectSensingState *> *autoSensedSubjects;
+
 @end
 
 
@@ -293,13 +359,31 @@ typedef NS_ENUM (NSInteger, DJIActiveTrackCannotConfirmReason) {
 
 /**
  *  A bounding box for the target. The rectangle is normalized to [0,1] where (0,0)
- *  is the top left of the video preview and (1,1) is the bottom right. The `size`
- *  parameter of `CGRect` can be set to 0 to initialize the mission with a point
- *  instead of a rectangle. If the mission is initialized with a point, the vision
- *  system will try to recognize the object around the point and return the
- *  representative  rect in the status delegate.
+ *  is the top left  of the video preview and (1,1) is the bottom right. The `size`
+ *  parameter of `CGRect` can be set  to 0 to initialize the mission with a point
+ *  instead of a rectangle. If the mission is  initialized with a point, the vision
+ *  system will try to recognize the object around the point  and return the
+ *  representative rect in the status delegate.
+ *   This property is used when  the `DJIActiveTrackMission` object is passed to
+ *  `startMission:withCompletion`.  If the object is passed to
+ *  `startAutoSensingMission:withCompletion`, this property  will be ignored. Use
+ *  `subjectIndex` to select the target to track instead.
  */
 @property (nonatomic, readwrite) CGRect targetRect;
+
+
+/**
+ *  The index of the subject to track. After starting auto sensing (by calling
+ *  `enableAutoSensingWithCompletion`  or
+ *  `enableAutoSensingForQuickShotWithCompletion`), the aircraft will push the
+ *  sensed subjects  (`autoSensedSubjects`). Select the subject to track by passing
+ *  the index of the subject.
+ *  This  property is used when the `DJIActiveTrackMission` object is passed to
+ *  `startAutoSensingMission:withCompletion`.  If the object is passed to
+ *  `startMission:withCompletion`, this property will be ignored. Use `targetRect`
+ *  to define the target to track.
+ */
+@property (nonatomic, readwrite) NSInteger subjectIndex;
 
 
 /**
@@ -316,5 +400,7 @@ typedef NS_ENUM (NSInteger, DJIActiveTrackCannotConfirmReason) {
 @property (nonatomic, readwrite) DJIActiveTrackQuickShotMode quickShotMode;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif /* DJIActiveTrackMission_h */

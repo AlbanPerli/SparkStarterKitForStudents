@@ -7,6 +7,7 @@
 
 #import <DJISDK/DJIBaseProduct.h>
 #import <DJISDK/DJIVisionTypes.h>
+#import <DJISDK/DJISDKFoundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -64,6 +65,16 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param state The palm control state.
  */
 - (void)flightAssistant:(DJIFlightAssistant *)assistant didUpdateVisionPalmControlState:(DJIVisionPalmControlState)state;
+
+
+/**
+ *  Callback function that updates the SmartCapture state. It is only supported by
+ *  Mavic Air.
+ *  
+ *  @param assistant Flight assistant that has the updated state.
+ *  @param state The SmartCapture state.
+ */
+- (void)flightAssistant:(DJIFlightAssistant *)assistant didUpdateVisionSmartCaptureState:(DJISmartCaptureState *)state;
 
 @end
 
@@ -158,17 +169,17 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param enabled `YES` to enable the active avoidance.
  *  @param completion Completion block that receives the setter result.
  */
-- (void)setActiveObstacleAvoidanceEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+- (void)setActiveObstacleAvoidanceEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion DJI_API_DEPRECATED("TODO:DJI Go Not Used, Not friendly for user.");
 
 
 /**
  *  Gets active obstacle avoidance status (enabled/disabled).
  *  
- *  @param enabled YES if active obstacle avoidance is enabled.
+ *  @param enabled `YES` if active obstacle avoidance is enabled.
  *  @param error Error retrieving the value.
  *  @param completion Completion block to receive the result.
  */
-- (void)getActiveObstacleAvoidanceEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+- (void)getActiveObstacleAvoidanceEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion DJI_API_DEPRECATED("TODO:DJI Go Not Used, Not friendly for user.");
 
 
 /**
@@ -223,6 +234,161 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param completion Completion block to receive the result.
  */
 - (void)getAdvancedGestureControlEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Determines if SmartCapture is supported. This feature is only supported by Mavic
+ *  Air.
+ *  
+ *  @return `YES` if Smart Capture is supported.
+ */
+- (BOOL)isSmartCaptureSupported;
+
+
+/**
+ *  Enables/disables SmartCapture. When enabled, deep learning gesture recognition
+ *  allows the user to take selfies,  record videos, and control the aircraft
+ *  (GestureLaunch, Follow and GestureLand) using simple hand gestures.  It is only
+ *  supported when `isSmartCaptureSupported` returns `YES`.
+ *  
+ *  @param enabled `YES` to enable SmartCapture.
+ *  @param completion Completion block with the returned execution result.
+ */
+- (void)setSmartCaptureEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines whether SmartCapture is enabled. When enabled, users can When
+ *  enabled, deep learning gesture  recognition allows the user to take selfies,
+ *  record videos, and control the aircraft (GestureLaunch,  Follow and GestureLand)
+ *  using simple hand gestures. It is only supported  when `isSmartCaptureSupported`
+ *  returns `YES`.
+ *  
+ *  @param enabled `YES` if SmartCapture is enabled.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getSmartCaptureEnabledEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Sets the following mode for SmartCapture. It is only valid when SmartCapture is
+ *  enabled.
+ *  
+ *  @param mode The following mode to set.
+ *  @param completion The completion block with the returned execution result.
+ */
+- (void)setSmartCaptureFollowingMode:(DJISmartCaptureFollowingMode)mode withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the following mode for SmartCapture. It is only valid when SmartCapture is
+ *  enabled.
+ *  
+ *  @param mode The following mode for SmartCapture.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getSmartCaptureFollowingModeWithCompletion:(void (^_Nonnull)(DJISmartCaptureFollowingMode mode, NSError *_Nullable error))completion;
+
+
+/**
+ *  Enables the Advanced Pilot Assistance System (APAS). When APAS is enabled, the
+ *  aircraft  continues to respond to user commands and plans its path according to
+ *  both control stick  inputs and the flight environment. APAS makes it easier to
+ *  avoid obstacles and obtain  smoother footage, and gives a better fly
+ *  experiences. It is only valid when the aircraft  is in P-mode. It is supported
+ *  by Mavic Air and Mavic 2 Series.
+ *  
+ *  @param enabled `YES` to enable APAS.
+ *  @param completion Completion block with the returned execution result.
+ */
+- (void)setAdvancedPilotAssistanceSystemEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines whether the Advanced Pilot Assistance System (APAS) is enabled or
+ *  not. When  APAS is enabled, the aircraft continues to respond to user commands
+ *  and plans its path  according to both control stick inputs and the flight
+ *  environment. APAS makes it easier  to avoid obstacles and obtain smoother
+ *  footage, and gives a better fly experiences. It  is only supported by Mavic Air.
+ *  
+ *  @param enabled `YES` if APAS is enabled.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getAdvancedPilotAssistanceSystemEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Enables Obstacle Avoidance during RTH. This is only active when the environment
+ *  is bright  enough. It is not active when the aircraft is landing. CAUTION: If
+ *  RTH Obstacle Avoidance is disabled, aircraft will not check obstacles during RTH
+ *  or ascend to avoid obstacles, which  may cause great risks.
+ *  
+ *  @param enabled `YES` to enable Obstacle Avoidance during RTH.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)setRTHObstacleAvoidanceEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines if Obstacle Avoidance is enabled during RTH. This is only active when
+ *  the environment is bright enough. It is not active when the aircraft is landing.
+ *  CAUTION: If RTH Obstacle Avoidance is disabled, aircraft will not check
+ *  obstacles during RTH or ascend to avoid obstacles,  which may cause great risks.
+ *  
+ *  @param enable `YES` if Obstacle Avoidance during RTH is enabled.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getRTHObstacleAvoidanceEnabledWithCompletion:(void(^)(BOOL enable, NSError* error))completion;
+
+
+/**
+ *  Enables Remote Obstacle Avoidance during RTH. Enabling this, the aircraft will
+ *  adjust its RTH route  automatically to avoid obstacles in far distance. The
+ *  gimbal will not respond to any commands from  the application or the remote
+ *  controller.
+ *  
+ *  @param enabled `YES` to enable Remote Obstacle Avoidance during RTH.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)setRTHRemoteObstacleAvoidanceEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines if RTH Remote Obstacle Avoidance is enabled or not. When it is
+ *  enabled, the aircraft will  adjust its RTH route automatically to avoid
+ *  obstacles in far distance. The gimbal will not respond to  any commands from the
+ *  application or the remote controller.
+ *  
+ *  @param enabled `YES` if Remote RTH Obstacle Avoidance is enabled during RTH.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getRTHRemoteObstacleAvoidanceEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Sets the mode for the auxiliary light at the bottom of the aircraft. It is only
+ *  supported by Mavic 2 series.
+ *  
+ *  @param mode The lighting mode to set.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)setBottomAuxiliaryLightMode:(DJIBottomAuxiliaryLightMode)mode withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the mode for the auxiliary light at the bottom of the aircraft. It is only
+ *  supported by Mavic 2 series.
+ *  
+ *  @param mode The mode of the auxiliary light at the bottom of the aircraft.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getBottomAuxiliaryLightModeWithCompletion:(void (^_Nonnull)(DJIBottomAuxiliaryLightMode mode, NSError *_Nullable error))completion;
 
 @end
 

@@ -154,7 +154,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Sets FPV video quality vs latency preference. This mode only effects the FPV
+ *  Sets FPV video quality vs latency preference. This mode only affects the FPV
  *  camera and not the camera on the HD Gimbal.
  *  
  *  @param mode Quality vs Latency tradeoff for the FPV video
@@ -165,7 +165,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Gets FPV video quality vs latency preference. This mode only effects the FPV
+ *  Gets FPV video quality vs latency preference. This mode only affects the FPV
  *  camera and not the camera on the HD Gimbal.
  *  
  *  @param transmissionMode The DJILBAirLinkFPVVideoQualityLatency object.
@@ -646,12 +646,38 @@ NS_ASSUME_NONNULL_BEGIN
  *  Phantom 4 Pro. For the other products  with LB air link, the frequency band is
  *  always 2.4 GHz.
  *  
- *  @param frequencyBand The array of the `DJILightbridgeFrequencyBand` values.
+ *  @param frequencyBand The current frequency band.
  *  @param error Error retrieving the value.
  *  @param completion Completion block to receive the result.
  */
 - (void)getFrequencyBandWithCompletion:(void (^_Nonnull)(DJILightbridgeFrequencyBand frequencyBand,
                                                          NSError *_Nullable error))completion;
+
+
+/**
+ *  Enables the setting to output video to both the mobile device and the HDMI port
+ *  on the remote controller  simultaneously. When it is disabled and the remote
+ *  controller is connected to a HDMI display, the mobile  device will not receive
+ *  the live view. It is only supported by Inspire 1 and M100.
+ *  
+ *  @param enabled `YES` to enable live view simultaneous output.
+ *  @param completion Completion block to receive the result.
+ */
+-(void) setLiveViewSimultaneousOutputEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines whether the setting to output video to both the mobile device and the
+ *  HDMI port on the remote  controller simultaneously is enabled or not. When it is
+ *  disabled and the remote controller is connected  to a HDMI display, the mobile
+ *  device will not receive the live view. It is only supported by Inspire 1 and
+ *  M100.
+ *  
+ *  @param enabled `YES` if enabled.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+-(void) getLiveViewSimultaneousOutputEnabledWithCompletion:(void(^_Nonnull)(BOOL enabled, NSError* _Nullable error))completion;
 
 @end
 

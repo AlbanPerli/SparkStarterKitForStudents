@@ -23,23 +23,23 @@ typedef NS_ENUM (uint8_t, DJIHandheldPowerMode){
 
     /**
      *  The handheld product is awake. For Osmo, when it is in this mode, all the
-     *  components  in `DJIHandheld` are accessible.
+     *  components in `DJIHandheld` are accessible.
      */
     DJIHandheldPowerModeOn,
  
 
     /**
-     *  The handheld product is sleeping. The handheld controller keeps  the wireless
-     *  connection to the mobile device alive but most other  components are off. The
-     *  power consumption is low in this mode.  For Osmo in this mode, only the
-     *  `DJIHandheldController`,  `DJIAirLink`, and `DJIBattery` are accessible.
+     *  The handheld product is sleeping. The handheld controller keeps the wireless
+     *  connection to the mobile device alive but most other components are off. The
+     *  power consumption is low in this mode. For Osmo in this mode, only the
+     *  `DJIHandheldController`, `DJIAirLink`, and `DJIBattery` are accessible.
      */
     DJIHandheldPowerModeSleeping,
  
 
     /**
-     *  The handheld product is powered off. Once this mode is set the  delegate will
-     *  receive this mode until  the handheld device is shut down completely.  It is not
+     *  The handheld product is powered off. Once this mode is set the delegate will
+     *  receive this mode until the handheld device is shut down completely. It is not
      *  supported by Osmo Mobile.
      */
     DJIHandheldPowerModeOff,
@@ -92,37 +92,37 @@ typedef NS_ENUM (uint8_t, DJIHandheldRecordAndShutterButtons) {
 /**
  *  The status of the shutter button and record button on the handheld controller.
  */
-typedef NS_ENUM (uint8_t, DJIHandheldTriggerButton) {
+typedef NS_ENUM (uint8_t, DJIHandheldButtonClickEvent) {
  
 
     /**
      *  Trigger button status is idle.
      */
-    DJIHandheldTriggerButtonIdle,
+    DJIHandheldButtonClickEventIdle,
  
 
     /**
      *  Trigger button is pressed and released.
      */
-    DJIHandheldTriggerButtonSingleClick,
+    DJIHandheldButtonClickEventSingleClick,
  
 
     /**
      *  Trigger button is pressed twice quickly.
      */
-    DJIHandheldTriggerButtonDoubleClick,
+    DJIHandheldButtonClickEventDoubleClick,
  
 
     /**
      *  Trigger button is pressed three times quickly.
      */
-    DJIHandheldTriggerButtonTripleClick,
+    DJIHandheldButtonClickEventTripleClick,
  
 
     /**
      *  Trigger button status is unknown.
      */
-    DJIHandheldTriggerButtonUnknown = 0xFF,
+    DJIHandheldButtonClickEventUnknown = 0xFF,
 };
 
 
@@ -190,10 +190,10 @@ typedef NS_ENUM (uint8_t, DJIHandheldStickHorizontalDirection) {
 
 /**
  *  The control mode for the gimbal physical controller (joystick for Osmo). The
- *  total controller  deflection is a combination of horizontal and vertical
- *  deflection. This translates to gimbal  movement around the yaw and pitch axes.
- *  The gimbal can be set to either move in both yaw and  pitch simultaneously based
- *  on horizontal and vertical deflection of the controller, or move in  only yaw or
+ *  total controller deflection is a combination of horizontal and vertical
+ *  deflection. This translates to gimbal movement around the yaw and pitch axes.
+ *  The gimbal can be set to either move in both yaw and pitch simultaneously based
+ *  on horizontal and vertical deflection of the controller, or move in only yaw or
  *  pitch exclusively based on whether horizontal or vertical deflection is larger.
  */
 typedef NS_ENUM (uint8_t, DJIHandheldControllerStickControlMode){
@@ -201,14 +201,14 @@ typedef NS_ENUM (uint8_t, DJIHandheldControllerStickControlMode){
 
     /**
      *  Gimbal movement will be exclusively in yaw or pitch depending on whether the
-     *  controller  horizontal or vertical deflection is greater respectively.
+     *  controller horizontal or vertical deflection is greater respectively.
      */
     DJIHandheldControllerStickControlModeOneAxis,
  
 
     /**
      *  Gimbal movement will be in both yaw and pitch simultaneously relative to the
-     *  horizontal and  vertical deflection of the controller respectively.
+     *  horizontal and vertical deflection of the controller respectively.
      */
     DJIHandheldControllerStickControlModeTwoAxis,
  
@@ -217,6 +217,37 @@ typedef NS_ENUM (uint8_t, DJIHandheldControllerStickControlMode){
      *  The gimbal controller control mode is unknown.
      */
     DJIHandheldControllerStickControlModeUnknown = 0xFF,
+};
+
+
+/**
+ *  The state of the zoom slider on the handheld controller. Used by Osmo Mobile 2
+ *  only.
+ */
+typedef NS_ENUM (uint8_t, DJIHandheldZoomSlider){
+
+	/**
+	 *  Zoom slider is idle.
+	 */
+	DJIHandheldZoomSliderIdle,
+	
+
+	/**
+	 *  The slider is pushed up and the camera should zoom in.
+	 */
+	DJIHandheldZoomSliderZoomIn,
+	
+
+	/**
+	 *  The slider is pushed down and the camera should zoom out.
+	 */
+	DJIHandheldZoomSliderZoomOut,
+	
+
+	/**
+	 *  Unknown.
+	 */
+	DJIHandheldZoomSliderZoomUnknown,
 };
 
 
@@ -241,9 +272,22 @@ typedef NS_ENUM (uint8_t, DJIHandheldControllerStickControlMode){
 
 
 /**
+ *  `YES` when the mode button is being pressed. It is only supported by OSMO Mobile
+ *  2.
+ */
+@property(nonatomic, readonly) BOOL isModeButtonBeingPressed;
+
+
+/**
  *  Status of the trigger button.
  */
-@property(nonatomic, readonly) DJIHandheldTriggerButton triggerButton;
+@property(nonatomic, readonly) DJIHandheldButtonClickEvent triggerButton;
+
+
+/**
+ *  Status of the mode button. It is only supported by Osmo Mobile 2.
+ */
+@property(nonatomic, readonly) DJIHandheldButtonClickEvent modeButton;
 
 
 /**
@@ -264,6 +308,12 @@ typedef NS_ENUM (uint8_t, DJIHandheldControllerStickControlMode){
  */
 @property(nonatomic, readonly) DJIStick stick;
 
+
+/**
+ *  Status of the zoom slider. It is only supported by Osmo Mobile 2.
+ */
+@property(nonatomic, readonly) DJIHandheldZoomSlider zoomSlider;
+
 @end
 
 
@@ -277,16 +327,16 @@ typedef NS_ENUM (uint8_t, DJIHandheldControllerStickControlMode){
 /**
  *  Pattern to control the time varying behaviour of the LED color. Each element of
  *  <code>pattern</code> is a boolean `NSNumber` representing the LED on/off state
- *  for 0.125 seconds where  `YES` means the LED is on. The length of the pattern
- *  cannot  exceed 32. By default, the array is empty,  which will turn the LED
- *  color off.
+ *  for 0.125 seconds where `YES` means the LED is on. The length of the pattern
+ *  cannot exceed 32. By default, the array is empty, which will turn the LED color
+ *  off.
  */
 @property (nonatomic) NSArray<NSNumber *> *pattern;
 
 
 /**
  *  The number of times to repeat the sequence with range [1, 255]. A value of 255
- *  will repeat the  sequence indefinitely until a new  command is sent. The default
+ *  will repeat the sequence indefinitely until a new  command is sent. The default
  *  value is 255.
  */
 @property (nonatomic) uint8_t repeatTimes;

@@ -76,9 +76,9 @@ typedef NS_ENUM (uint8_t, DJIFlyZoneCategory){
     
 
     /**
-     *  Enhanced warning zones restrict flight by default, and can be unlocked  using
-     *  `unlockFlyZones:withCompletion` without requiring the user to be logged into
-     *  their DJI account.
+     *  Enhanced warning zones do not restrict flight but are highly recommended to be
+     *  informational  to alert the user. In an enhanced warning zone, users should be
+     *  prompted with a warning message  describing the zone.
      */
     DJIFlyZoneCategoryEnhancedWarning,
     
@@ -532,8 +532,10 @@ typedef NS_ENUM(NSUInteger, DJIFlyZoneDatabaseState) {
 
 
 /**
- *  When `isCustomUnlockZoneSupported` is `YES`, unlocked fly zones  can be
- *  disabled. This is useful if the aircraft is shared between users.
+ *  Disables the unlocked fly zones. This is useful if the aircraft is shared
+ *  between users. It is not  supported by Inspire 1 series or Phantom 3 series. For
+ *  the other products, it is supported  when `isCustomUnlockZoneSupported` is
+ *  `YES`.
  *  
  *  @param enabled `YES` to enable the unlocked fly zone.
  *  @param completion `completion block` to receive the result.
@@ -542,7 +544,8 @@ typedef NS_ENUM(NSUInteger, DJIFlyZoneDatabaseState) {
 
 
 /**
- *  `YES` if the unlocked fly zone is enabled. This method can only be used when
+ *  `YES` if the unlocked fly zone is enabled. It is not supported by Inspire 1
+ *  series or Phantom 3  series. For the other products, it is supported when
  *  `isCustomUnlockZoneSupported` is `YES`.
  *  
  *  @param enabled `YES` if the visual stabilization is enabled.

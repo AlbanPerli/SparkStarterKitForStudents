@@ -50,9 +50,9 @@ typedef void (^DJIKeyedListenerUpdateBlock)(DJIKeyedValue * _Nullable oldValue, 
 
 
 /**
- *  `DJIKeyManager` provides access to the keyed interface using  `DJIKey` and
- *  corresponding subclass objects. `DJIKeyManager` is accessed from `keyManager`
- *  in `DJISDKManager`.
+ *  `DJIKeyManager` provides access to the keyed interface using `DJIKey` and
+ *  corresponding subclass objects. `DJIKeyManager` is accessed from `keyManager` in
+ *  `DJISDKManager`.
  */
 @interface DJIKeyManager : NSObject
 
@@ -137,6 +137,16 @@ typedef void (^DJIKeyedListenerUpdateBlock)(DJIKeyedValue * _Nullable oldValue, 
  *  @param listener The listener object passed to `startListeningForChangesOnKey:withListener:andUpdateBlock`.
  */
 - (void)stopAllListeningOfListeners:(id)listener;
+
+
+/**
+ *  Determines if a key is supported by the connected product.
+ *  
+ *  @param key Key to be check on current product.
+ *  
+ *  @return `YES` if the key is supported.
+ */
+- (BOOL)isKeySupported:(DJIKey *)key;
 
 @end
 

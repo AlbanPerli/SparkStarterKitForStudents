@@ -27,6 +27,7 @@
 		61DAFC12200B9AB3001CB2E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61DAFC10200B9AB3001CB2E2 /* Main.storyboard */; };
 		61DAFC14200B9AB3001CB2E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61DAFC13200B9AB3001CB2E2 /* Assets.xcassets */; };
 		61DAFC17200B9AB3001CB2E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61DAFC15200B9AB3001CB2E2 /* LaunchScreen.storyboard */; };
+		B25DCA3E206348505DAC1430 /* Pods_SparkPerso.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9574723689CDFD5A62E8841B /* Pods_SparkPerso.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +70,7 @@
 		61DAFC13200B9AB3001CB2E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61DAFC16200B9AB3001CB2E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		61DAFC18200B9AB3001CB2E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9574723689CDFD5A62E8841B /* Pods_SparkPerso.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SparkPerso.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				612304B4200BBC1E00F98395 /* VideoPreviewer.framework in Frameworks */,
+				B25DCA3E206348505DAC1430 /* Pods_SparkPerso.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				612304B1200BB73300F98395 /* VideoPreviewer.framework */,
+				9574723689CDFD5A62E8841B /* Pods_SparkPerso.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -190,7 +194,6 @@
 				61DAFC06200B9AB3001CB2E2 /* Frameworks */,
 				61DAFC07200B9AB3001CB2E2 /* Resources */,
 				9A358873264767E72AC0AC6F /* [CP] Embed Pods Frameworks */,
-				0507D1E9F742D09E6180189E /* [CP] Copy Pods Resources */,
 				612304B6200BBC1F00F98395 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -256,21 +259,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0507D1E9F742D09E6180189E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SparkPerso/Pods-SparkPerso-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8D34D4480670726EA1824995 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -466,7 +454,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 54PCF2T5ZE;
+				DEVELOPMENT_TEAM = G739VH73FZ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -475,7 +463,7 @@
 				INFOPLIST_FILE = SparkPerso/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.albanperli;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.alban;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -488,7 +476,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 54PCF2T5ZE;
+				DEVELOPMENT_TEAM = G739VH73FZ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -497,7 +485,7 @@
 				INFOPLIST_FILE = SparkPerso/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.albanperli;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sparkperso.alban;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

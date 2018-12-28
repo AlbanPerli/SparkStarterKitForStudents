@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  Mission Triggers can be used to trigger an action during the execution of a
  *  Timeline element if a set of criteria is met. The subclass of
  *  `DJIMissionTrigger` should implement the logic for collecting and judging the
- *  criteria, and then executing the action. Mission Triggers are  used in the
+ *  criteria, and then executing the action. Mission Triggers are used in the
  *  Timeline element `DJIMissionControlTimelineElement`.
  *   Trigger actions can be listened to, so when subclassing this class,
  *  `notifyListenersOfEvent:error` should be used to notify listeners of trigger

@@ -35,6 +35,7 @@ EXTERN_KEY NSString *const DJILightbridgeLinkParamBandwidthAllocationForMainCame
 EXTERN_KEY NSString *const DJILightbridgeLinkParamBandwidthAllocationForLeftCamera;
 EXTERN_KEY NSString *const DJILightbridgeLinkParamIsSecondaryVideoOutputSupported;
 EXTERN_KEY NSString *const DJILightbridgeLinkParamSecondaryVideoOutputEnabled;
+EXTERN_KEY NSString *const DJILightbridgeLinkParamLiveViewSimultaneousOutputEnabled;
 EXTERN_KEY NSString *const DJILightbridgeLinkParamSecondaryVideoOutputPort;
 EXTERN_KEY NSString *const DJILightbridgeLinkParamSecondaryVideoDisplayMode;
 EXTERN_KEY NSString *const DJILightbridgeLinkParamSecondaryVideoOSDEnabled;
@@ -63,6 +64,9 @@ EXTERN_KEY NSString *const DJIWiFiLinkParamChannelNumber;
 EXTERN_KEY NSString *const DJIWiFiLinkParamAvailableChannelNumbers;
 EXTERN_KEY NSString *const DJIWiFiLinkParamDataRate;
 EXTERN_KEY NSString *const DJIWiFiLinkParamMagneticInterferenceLevel;
+EXTERN_KEY NSString *const DJIWiFiLinkParamIsChannelSelectionModeSupported;
+EXTERN_KEY NSString *const DJIWiFiLinkParamChannelSelectionMode;
+
 
 //OcuSync
 EXTERN_KEY NSString *const DJIOcuSyncLinkParamChannelInterference;
@@ -72,6 +76,8 @@ EXTERN_KEY NSString *const DJIOcuSyncLinkParamChannelNumber;
 EXTERN_KEY NSString *const DJIOcuSyncLinkParamChannelNumberValidRange;
 EXTERN_KEY NSString *const DJIOcuSyncLinkParamVideoDataRate;
 EXTERN_KEY NSString *const DJIOcuSyncLinkParamWarningMessages;
+EXTERN_KEY NSString *const DJIOcuSyncLinkParamSupportedFrequencyBands;
+EXTERN_KEY NSString *const DJIOcuSyncLinkParamFrequencyBand;
 
 
 /**

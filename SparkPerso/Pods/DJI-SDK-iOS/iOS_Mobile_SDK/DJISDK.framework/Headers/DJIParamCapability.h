@@ -10,8 +10,8 @@
 
 /**
  *  Represents the capability of a parameter of a component or product. This class
- *  can be sub-classed to include  additional information on the parameter.
- *  `DJIParamCapabilityMinMax` includes the maximum  and minimum possible values of
+ *  can be sub-classed to include additional information on the parameter.
+ *  `DJIParamCapabilityMinMax` includes the maximum and minimum possible values of
  *  the parameter.
  */
 @interface DJIParamCapability : NSObject

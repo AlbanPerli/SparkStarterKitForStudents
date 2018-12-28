@@ -10,6 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 EXTERN_KEY NSString *const DJIRemoteControllerComponent;
+EXTERN_KEY NSString *const DJIRemoteControllerParamDisplayName;
 
 EXTERN_KEY NSString *const DJIRemoteControllerParamStartPairing;
 EXTERN_KEY NSString *const DJIRemoteControllerParamStopPairing;
@@ -34,7 +35,7 @@ EXTERN_KEY NSString *const DJIRemoteControllerParamMasterAuthorizationCode;
 EXTERN_KEY NSString *const DJIRemoteControllerParamMasters;
 EXTERN_KEY NSString *const DJIRemoteControllerParamConnectToMasterWithIDAndAuthorizationCode;
 EXTERN_KEY NSString *const DJIRemoteControllerParamRespondToRequestForGimbalControl;
-EXTERN_KEY NSString *const DJIRemoteControllerParamRequestGimbalControl;
+EXTERN_KEY NSString *const DJIRemoteControllerParamRequestLegacyGimbalControl;
 EXTERN_KEY NSString *const DJIRemoteControllerParamGimbalMappingStyle;
 EXTERN_KEY NSString *const DJIRemoteControllerParamCustomGimbalMapping;
 EXTERN_KEY NSString *const DJIRemoteControllerParamGimbalControlSpeedCoefficient;
@@ -46,7 +47,7 @@ EXTERN_KEY NSString *const DJIRemoteControllerParamFocusControllerIsWorking;
 EXTERN_KEY NSString *const DJIRemoteControllerParamFocusControllerControlType;
 EXTERN_KEY NSString *const DJIRemoteControllerParamFocusControllerDirection;
 EXTERN_KEY NSString *const DJIRemoteControllerParamConnectedMasterCredentials;
-
+EXTERN_KEY NSString *const DJIRemoteControllerParamRequestGimbalControl;
 // Hardware
 EXTERN_KEY NSString *const DJIRemoteControllerParamLeftHorizontalValue;
 EXTERN_KEY NSString *const DJIRemoteControllerParamLeftVerticalValue;
@@ -65,6 +66,8 @@ EXTERN_KEY NSString *const DJIRemoteControllerParamCustomButton1Down;
 EXTERN_KEY NSString *const DJIRemoteControllerParamCustomButton2Down;
 
 EXTERN_KEY NSString *constDJIRemoteControllerParamIsNewMasterSlaveModeSupported;
+
+EXTERN_KEY NSString *const DJIRemoteControllerParamControllingGimbalIndex;
 
 
 /**

@@ -6,6 +6,7 @@
 //
 
 #import <DJISDK/DJISDKFoundation.h>
+#import <DJISDK/DJICameraSettingsDef.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,9 +29,9 @@ typedef NS_ENUM(NSUInteger, DJIMediaFileListState) {
 
     /**
      *  New files have been generated since the last call of
-     *  `refreshFileListWithCompletion`. Calling  `refreshFileListWithCompletion` can
-     *  synchronize the newly generated files and  append them to the end of the file
-     *  list.
+     *  `refreshFileListOfStorageLocation:withCompletion`. Calling
+     *  `refreshFileListOfStorageLocation:withCompletion` can synchronize the newly
+     *  generated files and append them to the end of the file list.
      */
     DJIMediaFileListStateIncomplete,
 
@@ -39,9 +40,9 @@ typedef NS_ENUM(NSUInteger, DJIMediaFileListState) {
      *  cases:
      *   - Camera is disconnected.
      *   - SD card is formatted.
-     *    - SD card is not inserted.
+     *   - SD card is not inserted.
      *   - Error occurs when deleting files from SD card.
-     *   In this state, `fileListSnapshot` will return `nil`.
+     *   In this state, `sdCardFileListSnapshot` will return `nil`.
      */
     DJIMediaFileListStateReset,
 
@@ -50,6 +51,11 @@ typedef NS_ENUM(NSUInteger, DJIMediaFileListState) {
      *  progress.
      */
     DJIMediaFileListStateDeleting,
+
+    /**
+     *  A renaming operation is in progress.
+     */
+    DJIMediaFileListStateRenaming,
 
     /**
      *  The media manager is synchronizing the file list from the SD card.
@@ -102,6 +108,17 @@ typedef NS_ENUM(NSUInteger, DJIMediaFileListState) {
  */
 -(void)manager:(DJIMediaManager *)manager didUpdateFileListState:(DJIMediaFileListState)fileListState;
 
+
+/**
+ *  Updates the file list state of the media manager.
+ *  
+ *  @param manager The media manager with updated file list state.
+ *  @param location The storage location of the file list.
+ *  @param fileListState The latest state of the file list.
+ */
+-(void)manager:(DJIMediaManager *)manager didUpdateStorageLocation:(DJICameraStorageLocation)location
+                                                     fileListState:(DJIMediaFileListState)fileListState;
+
 @end
 
 /*********************************************************************************/
@@ -110,9 +127,9 @@ typedef NS_ENUM(NSUInteger, DJIMediaFileListState) {
 
 
 /**
- *  The media manager is used to interact with the file system on the SD card. By
- *  using the media manager, the user can get the metadata for all the multimedia
- *  files, and has access to each individual multimedia file.
+ *  The media manager is used to interact with the file system on the SD card or the
+ *  internal storage. By using the media manager, the user can get the metadata for
+ *  all the multimedia files, and has access to each individual multimedia file.
  */
 @interface DJIMediaManager : NSObject
 
@@ -131,37 +148,55 @@ typedef NS_ENUM(NSUInteger, DJIMediaFileListState) {
 
 
 /**
- *  File list state.
+ *  The file list state of the SD card.
  */
-@property (nonatomic, readonly) DJIMediaFileListState fileListState;
+@property (nonatomic, readonly) DJIMediaFileListState sdCardFileListState;
 
 
 /**
- *  Returns a copy of the current file list. Returns `nil`  if `fileListState` is
- *  reset.
+ *  Returns a copy of the current file list on the SD card. Returns `nil` if
+ *  `sdCardFileListState` is reset.
  *  
  *  @return An array of `DJIMediaFile` objects.
  */
-- (NSArray<DJIMediaFile *> *_Nullable)fileListSnapshot;
+- (NSArray<DJIMediaFile *> *_Nullable)sdCardFileListSnapshot;
 
 
 /**
- *  Refresh the file list from the SD card. If the current state  is
- *  `DJIMediaFileListStateReset`, the media manager will  try to fetch the complete
- *  file list. If the current state  is `DJIMediaFileListStateIncomplete`, the media
- *  manager  will only fetch the missing list of files. If the file list is
- *  refreshed  successfully, `fileListState` will  become
- *  `DJIMediaFileListStateUpToDate`.
+ *  The file list state of the internal storage.
  *  
+ *  @return .
+ */
+@property (nonatomic, readonly) DJIMediaFileListState internalStorageFileListState;
+
+
+/**
+ *  Returns a copy of the current file list on the internal storage. Returns `nil`
+ *  if `internalStorageFileListState` is reset or unknown.
+ *  
+ *  @return An array of `DJIMediaFile` objects.
+ */
+- (NSArray<DJIMediaFile *> *_Nullable)internalStoragefileListSnapshot;
+
+
+/**
+ *  Refreshes the file list of the storage. If the current state is
+ *  `DJIMediaFileListStateReset`, the media manager will try to fetch the complete
+ *  file list. If the current state  is `DJIMediaFileListStateIncomplete`, the media
+ *  manager will only fetch the missing list of files. If the file list is refreshed
+ *  successfully, the corresponding file list state (either `sdCardFileListState` or
+ *  `internalStorageFileListState`) will become `DJIMediaFileListStateUpToDate`.
+ *  
+ *  @param storageLocation The storage location of the file list to refresh.
  *  @param completion Completion block to receive the result.
  */
-- (void)refreshFileListWithCompletion:(DJICompletionBlock)completion;
+- (void)refreshFileListOfStorageLocation:(DJICameraStorageLocation)storageLocation withCompletion:(DJICompletionBlock)completion;
 
 
 /**
- *  Delete media files from SD card. If the operation is started successfully,
- *  `fileListState` will become  `DJIMediaFileListStateDeleting`. If there is error
- *  or  "failedFiles" is not empty, `fileListState` will become
+ *  Delete media files from storages. If the operation is started successfully,
+ *  `DJIMediaFileListState` will become  `DJIMediaFileListStateDeleting`. If there
+ *  is error or  "failedFiles" is not empty, `DJIMediaFileListState` will become
  *  `DJIMediaFileListStateReset`.
  *  
  *  @param files Media files to delete.
@@ -173,7 +208,6 @@ typedef NS_ENUM(NSUInteger, DJIMediaFileListState) {
 
 @end
 
-
 /**
  *  Category of `DJIMediaManager` includes methods to control the video playback.
  */
@@ -181,9 +215,8 @@ typedef NS_ENUM(NSUInteger, DJIMediaFileListState) {
 
 
 /**
- *  Checks if the media manager supports video playback or not. Video playback is
- *  supported only by Mavic Pro.  @return `YES` if the media manager supports video
- *  playback.
+ *  Checks if the media manager supports video playback or not. @return `YES` if the
+ *  media manager supports video playback.
  *  
  *  @return `YES` if the media manager supports video playback.
  */
@@ -192,9 +225,9 @@ typedef NS_ENUM(NSUInteger, DJIMediaFileListState) {
 
 /**
  *  Start video playback through `DJIMediaManager`. When the media manager is
- *  playing a video, video data can be  received from
+ *  playing a video, video data can be received from
  *  `manager:didUpdateVideoPlaybackData:length:forRendering` and playback state
- *  received  from `manager:didUpdateVideoPlaybackState`. Video playback  through
+ *  received from `manager:didUpdateVideoPlaybackState`. Video playback through
  *  `DJIMediaManager` is fixed at 720p.
  *  
  *  @param videoMedia The video to play.
@@ -217,7 +250,6 @@ typedef NS_ENUM(NSUInteger, DJIMediaFileListState) {
  *  @param completion The completion block to receive the command execution result.
  */
 - (void)pauseWithCompletion:(DJICompletionBlock)completion;
-
 
 
 /**

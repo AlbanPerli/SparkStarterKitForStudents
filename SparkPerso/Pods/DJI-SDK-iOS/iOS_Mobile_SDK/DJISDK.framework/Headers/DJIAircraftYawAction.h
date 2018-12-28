@@ -63,6 +63,20 @@ typedef NS_ENUM(NSInteger, DJIAircraftYawActionError) {
  */
 - (instancetype _Nullable)initWithRelativeAngle:(double)angle andAngularVelocity:(double)velocity;
 
+
+/**
+ *  Initialize with a yaw angle relative to current heading or absolute heading
+ *  against true north.  The range of angle is [-180, 180]. This initializer should
+ *  be preferred when accuracy of the angle  is more of a priority than smooth yaw
+ *  movement.
+ *  
+ *  @param angle Angle in degrees.
+ *  @param isAbsolute `YES` means angle is the absolute heading against true north. `NO` means  angle is relative to the current heading.
+ *  
+ *  @return An instance of `DJIAircraftYawAction`.
+ */
+- (instancetype _Nullable)initWithAngle:(double)angle andIsAbsolute:(BOOL)isAbsolute;
+
 @end
 
 NS_ASSUME_NONNULL_END

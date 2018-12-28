@@ -93,7 +93,7 @@ typedef NS_ENUM (uint8_t, DJIRCAircraftMappingStyle){
     /**
      *  Unknown style.
      */
-    DJIRCAircraftMappingStyleUnknown
+    DJIRCAircraftMappingStyleUnknown = 0xFF,
 };
 
 
@@ -136,7 +136,7 @@ typedef NS_ENUM (uint8_t, DJIRCAircraftStickMappingTarget) {
 	/**
 	 *  Unknown.
 	 */
-	DJIRCAircraftStickMappingUnknown = 0xEF,
+	DJIRCAircraftStickMappingUnknown = 0xFF,
 };
 
 
@@ -181,7 +181,7 @@ typedef NS_ENUM (uint8_t, DJIRCGimbalMappingStyle){
     /**
      *  Unknown
      */
-    DJIRCGimbalMappingStyleUnknown
+    DJIRCGimbalMappingStyleUnknown = 0xFF,
 };
 
 
@@ -272,7 +272,7 @@ typedef NS_ENUM (uint8_t, DJIRCRequestGimbalControlResult) {
     /**
      *  The slave Remote Controller's request is unknown.
      */
-    DJIRCRequestGimbalControlResultUnknown,
+    DJIRCRequestGimbalControlResultUnknown = 0xFF,
 };
 
 
@@ -336,7 +336,7 @@ typedef NS_ENUM (uint8_t, DJIRCPairingState){
     /**
      *  The Remote Controller's pairing state is unknown.
      */
-    DJIRCPairingStateStateUnknown,
+    DJIRCPairingStateStateUnknown = 0xFF,
 };
 
 /*********************************************************************************/
@@ -390,7 +390,7 @@ typedef NS_ENUM (uint8_t, DJIRCConnectToMasterResult){
      *  The result of the slave Remote Controller's attempt to join the master Remote
      *  Controller is unknown.
      */
-    DJIRCConnectToMasterResultUnknown
+    DJIRCConnectToMasterResultUnknown = 0xFF,
 };
 
 /*********************************************************************************/
@@ -581,8 +581,8 @@ typedef struct
     
 
     /**
-     *  Wheel value in the range of [0, 1320]. The value represents the difference in an
-     *  operation.
+     *  Wheel value in the range of [-660, 660]. The value represents the difference in
+     *  an operation.
      */
     NSInteger value;
 } DJIRCRightWheel;
@@ -607,7 +607,13 @@ typedef NS_ENUM (uint8_t, DJIRCTransformationSwitchState){
     /**
      *  Deploy landing gear switch state.
      */
-    DJIRCTransformationSwitchStateDeploy
+    DJIRCTransformationSwitchStateDeploy,
+	
+
+	/**
+	 *  Unknown.
+	 */
+	DJIRCTransformationSwitchStateUnknown = 0xFF,
 };
 
 /*********************************************************************************/
@@ -650,9 +656,9 @@ typedef NS_ENUM (uint8_t, DJIRCFlightModeSwitch){
     /**
      *  Position One. For all products except Mavic Pro, this is the left most position
      *  of the flight mode switch on a remote controller from the perspective of the
-     *  pilot. For example, on a Phantom 4 remote controller, Position One is labeled
-     *  "A". For the Mavic Pro, this is the position that is furthest away from the
-     *  pilot and labeled "Sport".
+     *  pilot. For example, on a Phantom 4 remote controller,  Position One is labeled
+     *  "A". For Mavic Pro, Spark and Mavic Air, this is  the position that is furthest
+     *  away from the pilot and labeled "Sport".
      */
     DJIRCFlightModeSwitchOne,
 
@@ -661,8 +667,8 @@ typedef NS_ENUM (uint8_t, DJIRCFlightModeSwitch){
      *  Position Two. For all products except Mavic Pro, this is the middle position of
      *  the flight mode switch on a remote controller from the perspective of the pilot.
      *  For example, on a Phantom 4 remote controller, Position Two is labeled "S". For
-     *  the Mavic Pro, this is the position that is closest to the pilot (the P
-     *  position).
+     *  Mavic Pro, Spark and Mavic Air, this is the position that is closest  to the
+     *  pilot (the P position).
      */
     DJIRCFlightModeSwitchTwo,
 
@@ -671,8 +677,8 @@ typedef NS_ENUM (uint8_t, DJIRCFlightModeSwitch){
      *  Position Three. For all products except Mavic Pro, this is the right most
      *  position of the flight mode switch on a remote controller from the perspective
      *  of the pilot. For example, on a Phantom 4 remote controller, Position Two is
-     *  labeled "P". The Mavic Pro does not have a third position for the flight mode
-     *  switch.
+     *  labeled "P". Mavic Pro, Spark or Mavic Air does not have  a third position for
+     *  the flight mode switch.
      */
     DJIRCFlightModeSwitchThree,
 };
@@ -853,7 +859,8 @@ typedef struct
     
 
     /**
-     *  Current state of custom button 1 (left Back Button).
+     *  Current state of custom button 1 (left Back Button). It is not supported by
+     *  remote controllers  for Mavic Air or Spark.
      */
     DJIRCButton c1Button;
     
@@ -865,8 +872,15 @@ typedef struct
     
 
     /**
+     *  Current state of fn button. It is only supported by remote controllers for Spark
+     *  or Mavic Air.
+     */
+    DJIRCButton fnButton;
+    
+
+    /**
      *  Current state of the 5D button. The button can be moved up, down, left and right
-     *  and can be pressed. The 5D  button is only supported on Mavic Pro remote
+     *  and can be pressed. The 5D  button is supported by Mavic Pro and Mavic 2 remote
      *  controllers.
      */
     DJIRCFiveDButton fiveDButton;
@@ -903,7 +917,7 @@ typedef NS_ENUM (uint8_t, DJIRCFocusControllerControlType){
     /**
      *  Unknown types.
      */
-    DJIRCFocusControllerControlTypeUnknown
+    DJIRCFocusControllerControlTypeUnknown = 0xFF,
 };
 
 /*********************************************************************************/
@@ -932,7 +946,7 @@ typedef NS_ENUM (uint8_t, DJIRCFocusControllerDirection){
     /**
      *  Unknown.
      */
-    DJIRCRemoteFocusControlDirectionUnknown,
+    DJIRCRemoteFocusControlDirectionUnknown = 0xFF,
 };
 
 /*********************************************************************************/
@@ -1117,6 +1131,15 @@ typedef struct
  *  numbers.
  */
 @property(nonatomic, readonly) NSString *authorizationCode;
+
+
+/**
+ *  `YES` if the remote controller has gimbal control.  Call
+ *  `requestGimbalControlWithCompletion` to attain the gimbal control.
+ *  
+ *  @return `YES` if the remote controller has gimbal control.
+ */
+@property(nonatomic, readonly) BOOL hasGimbalControl;
 
 @end
 
@@ -1357,7 +1380,8 @@ typedef NS_ENUM(NSUInteger, DJIRCButtonAction) {
     DJIRCButtonActionCustom9                                = 9,
 
     /**
-     *  Reset FPV gimbal attitude to the center. This action is handled by the firmware.
+     *  Reset FPV gimbal attitude to the center, the gimbal will rotate 45 degrees in
+     *  pitch axis up and down when the action is trigger.
      */
     DJIRCButtonActionResetFPVGimbal                         = 12,
 

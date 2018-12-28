@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Notification if LDM support has changed. If LDM support changes from `YES` to
- *  `NO`, and LDM is enabled, then LDM will be disabled after 5 minutes (300s) if
+ *  `NO`, and LDM is enabled, then LDM will be disabled after 2 minutes (120s) if
  *  `isLDMSupported` remains `NO`.
  */
 extern NSString *DJILDMManagerSupportedChangedNotification;
@@ -27,17 +27,17 @@ extern NSString *DJILDMManagerEnabledChangedNotification;
 
 /**
  *  Local Data Mode (LDM) manager. When Local Data Mode is enabled, the SDK's access
- *  to the internet is  restricted. Only application registration (confirming the
- *  app key is valid) will be unrestricted.  All other SDK services will be
- *  restricted. When the SDK's internet access is restricted, all SDK  services that
- *  require an internet connection will not be available or able to update. For
- *  instance,  the Fly Zone manager will not be able to update the fly zone data
- *  base, retrieve the latest TFRs  (temporary flight restrictions) or unlock fly
- *  zones. LDM is therefore most appropriate for users  that have very stringent
- *  data requirements, and are able to accomodate this restricted functionality.
+ *  to the internet is restricted. Only application registration (confirming the app
+ *  key is valid) will be unrestricted. All other SDK services will be restricted.
+ *  When the SDK's internet access is restricted, all SDK services that require an
+ *  internet connection will not be available or able to update. For instance, the
+ *  Fly Zone manager will not be able to update the fly zone data base, retrieve the
+ *  latest TFRs (temporary flight restrictions) or unlock fly zones. LDM is
+ *  therefore most appropriate for users that have very stringent data requirements,
+ *  and are able to accommodate this restricted functionality.
  *  `*DJILDMManagerSupportedChangedNotification` and
- *  `*DJILDMManagerEnabledChangedNotification`  can be used to monitor changes in
- *  state for availabiltiy of LDM support and whether LDM is enabled or not. LDM is
+ *  `*DJILDMManagerEnabledChangedNotification` can be used to monitor changes in
+ *  state for availability of LDM support and whether LDM is enabled or not. LDM is
  *  not available when operating in China.
  */
 @interface DJILDMManager : NSObject
@@ -45,8 +45,10 @@ extern NSString *DJILDMManagerEnabledChangedNotification;
 
 /**
  *  `YES` if LDM is supported in the current context. LDM is not supported in China.
- *  The SDK locally uses a combination of IP address, GPS location and MCC (mobile
- *  country code) to determine the country of operation.
+ *  The SDK locally uses GPS location and MCC (mobile country code) to determine the
+ *  country  of operation. If LDM is not enabled and the internet is accessible, the
+ *  IP address is also  used to determine the country of operation. The default
+ *  value is `YES` after the first installation.
  *  
  *  @return A bool value to check if LDM is supported.
  */
@@ -70,7 +72,9 @@ extern NSString *DJILDMManagerEnabledChangedNotification;
 
 
 /**
- *  Enables LDM. Can only be enabled if `isLDMSupported` is `YES`.
+ *  Enables LDM. Can only be enabled if `isLDMSupported` is `YES`. Call this method
+ *  before  calling the other methods of SDK (including `registerAppWithDelegate`)
+ *  to restrict the internet access  of SDK (SDK registration is unrestricted).
  *  
  *  @return The error occured. NULL if LDM is enabled successfully.
  */

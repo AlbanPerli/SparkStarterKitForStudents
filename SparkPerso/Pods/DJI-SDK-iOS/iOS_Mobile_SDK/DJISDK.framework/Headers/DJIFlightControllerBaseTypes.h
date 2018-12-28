@@ -585,6 +585,14 @@ typedef NS_ENUM(uint8_t, DJIFlightControllerRemoteControllerFlightMode) {
      *  such as missions and intelligent orientation control enabled.
      */
     DJIFlightControllerRemoteControllerFlightModeF,
+    
+
+    /**
+     *  Tripod Mode. This mode drops the aircraft's maximum speed and significantly
+     *  reduces the control stick sensitivity of the remote controller to give the  user
+     *  the precision needed for accurate framing. It is only supported by Mavic 2.
+     */
+    DJIFlightControllerRemoteControllerFlightModeT,
 
 
     /**
@@ -795,5 +803,88 @@ typedef NS_ENUM(NSUInteger, DJIFlightWindWarning) {
      */
     DJIFlightWindWarningUnknown = 0xFF,
 };
+
+
+/**
+ *  Settings for the aircraft's LEDs.
+ */
+@interface DJIFlightControllerLEDsSettings : NSObject<NSCopying, NSMutableCopying>
+
+
+/**
+ *  `YES` if the LEDs on the front arms are turned on.
+ */
+@property (nonatomic, readonly) BOOL frontLEDsOn;
+
+
+/**
+ *  `YES` if the status indicator is on. It is supported by Inspire 2, Matrice 200
+ *  series and Mavic 2 series. The other products will ignore this property. For
+ *  Mavic 2  series, there are two status indicators and they are on the rear arms.
+ */
+@property (nonatomic, readonly) BOOL statusIndicatorOn;
+
+
+/**
+ *  `YES` if the LEDs on the rear arms are turned on. It is  supported by Inspire 2,
+ *  Matrice 200 series and Mavic 2 series.  The other products will ignore this
+ *  property.
+ */
+@property (nonatomic, readonly) BOOL rearLEDsOn;
+
+@end
+
+
+/**
+ *  Mutable sub-class of `DJIFlightControllerLEDsSettings`.  Use this for setter.
+ */
+@interface DJIMutableFlightControllerLEDsSettings : DJIFlightControllerLEDsSettings
+
+
+/**
+ *  `YES` to turn on the LEDs on the front arms.
+ */
+@property (nonatomic, readwrite) BOOL frontLEDsOn;
+
+/**
+ *  `YES` to turn on the LEDs on the rear arms. It is supported by Inspire 2,
+ *  Matrice 200 series and Mavic 2 series. The other products will always return
+ *  `NO`.
+ */
+@property (nonatomic, readwrite) BOOL rearLEDsOn;
+
+/**
+ *  `YES` to turn on thestatus indicator. It is supported by Inspire 2 and Matrice
+ *  200 series.  The other products will always return `NO`.
+ */
+@property (nonatomic, readwrite) BOOL statusIndicatorOn;
+
+@end
+
+
+/**
+ *  DJI Simulator Wind Speed.
+ */
+@interface DJISimulatorWindSpeed : NSObject
+
+
+/**
+ *  DJI Simulator Wind Speed X value.
+ */
+@property (nonatomic, assign) NSUInteger windSpeedX;
+
+
+/**
+ *  DJI Simulator Wind Speed Y value.
+ */
+@property (nonatomic, assign) NSUInteger windSpeedY;
+
+
+/**
+ *  DJI Simulator Wind Speed Z value.
+ */
+@property (nonatomic, assign) NSUInteger windSpeedZ;
+
+@end
 
 #endif /* DJIFlightControllerBaseTypes_h */

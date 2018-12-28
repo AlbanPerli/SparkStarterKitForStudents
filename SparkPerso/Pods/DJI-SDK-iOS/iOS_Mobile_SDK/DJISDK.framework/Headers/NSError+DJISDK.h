@@ -67,6 +67,33 @@ FOUNDATION_EXPORT NSString *_Nonnull const DJISDKRegistrationErrorDomain;
  */
 FOUNDATION_EXPORT NSString *_Nonnull const DJISDKFlySafeErrorDomain;
 
+
+/**
+ *  SDK FlightHub error domain.
+ */
+FOUNDATION_EXPORT NSString *_Nonnull const DJISDKFlightHubErrorDomain;
+
+
+/**
+ *  The error domain used to describe errors produced by the `DJITakeOffAction`
+ *  object.
+ */
+FOUNDATION_EXPORT NSString *_Nonnull const DJITakeOffActionErrorDomain;
+
+
+/**
+ *  The error domain used to describe errors produced by the
+ *  `DJIAccessoryAggregation` object.
+ */
+FOUNDATION_EXPORT NSString *_Nonnull const DJIAccessoryAggregationErrorDomain;
+
+
+/**
+ *  The error domain used to describe errors produced by the `DJIAccessLocker`
+ *  object.
+ */
+FOUNDATION_EXPORT NSString *_Nonnull const DJIAccessLockerErrorDomain;
+
 /*********************************************************************************/
 #pragma mark DJISDKRegistrationError
 /*********************************************************************************/
@@ -99,17 +126,17 @@ typedef NS_ENUM (NSInteger, DJISDKRegistrationError){
 
     /**
      *  The attempt to copy metadata from another registered device to a device that is
-     *  currently connected is not  permitted. For example, if a developer has two
-     *  devices and the application is activated with the app key on  one of the devices
+     *  currently connected is not permitted. For example, if a developer has two
+     *  devices and the application is activated with the app key on one of the devices
      *  and if the other device is plugged in and tries to register the application,
-     *  this error  will occur.
+     *  this error will occur.
      */
     DJISDKRegistrationErrorDeviceDoesNotMatch = -4L,
 
 
     /**
      *  The bundle identifier of your application does not match the bundle identifier
-     *  you registered on the  developer website when you applied to obtain an
+     *  you registered on the developer website when you applied to obtain an
      *  application key.
      */
     DJISDKRegistrationErrorBundleIdDoesNotMatch = -5L,
@@ -117,15 +144,15 @@ typedef NS_ENUM (NSInteger, DJISDKRegistrationError){
 
     /**
      *  The application key is prohibited. This occurs when an application key that has
-     *  already been released by DJI  is revoked. Please contact DJI for assistance.
+     *  already been released by DJI is revoked. Please contact DJI for assistance.
      */
     DJISDKRegistrationErrorAppKeyProhibited = -6L,
 
 
     /**
      *  There is a maximum number of devices one application key can be used to
-     *  activate. The maximum number of  devices is given when an application is
-     *  registered on the DJI developer website. This error will occur  if the maximum
+     *  activate. The maximum number of devices is given when an application is
+     *  registered on the DJI developer website. This error will occur if the maximum
      *  number of activations has been reached.
      */
     DJISDKRegistrationErrorMaxActivationCountReached = -7L,
@@ -133,8 +160,8 @@ typedef NS_ENUM (NSInteger, DJISDKRegistrationError){
 
     /**
      *  This error occurs when an application key was given for a specific platform and
-     *  is trying to be used to  activate an application for another platform. For
-     *  instance, if an application key was given for an iOS  application and is used to
+     *  is trying to be used to activate an application for another platform. For
+     *  instance, if an application key was given for an iOS application and is used to
      *  activate an Android application, this error will occur.
      */
     DJISDKRegistrationErrorAppKeyInvalidPlatformError = -8L,
@@ -149,7 +176,7 @@ typedef NS_ENUM (NSInteger, DJISDKRegistrationError){
 
     /**
      *  There are two levels for the SDK framework, level 1 and level 2. If an
-     *  application key was given under one  level and is trying to be used to active an
+     *  application key was given under one level and is trying to be used to active an
      *  application using another level SDK framework, this error will occur.
      */
     DJISDKRegistrationErrorAppKeyLevelNotPermitted = -10L,
@@ -184,6 +211,14 @@ typedef NS_ENUM (NSInteger, DJISDKRegistrationError){
      *  No application key was provided.
      */
     DJISDKRegistrationErrorEmptyAppKey = -15L,
+
+
+    /**
+     *  Applications under basic develop account could only have the maximum of 20
+     *  unique activations.  Visit DJI developer center
+     *  <https://developer.dji.com/user/membership/> to upgrade the membership.
+     */
+	DJISDKRegistrationErrorOverMaxActivationsCount = -16L,
 
 
     /**
@@ -340,6 +375,19 @@ typedef NS_ENUM (NSInteger, DJISDKError){
      *  There are no existing archived logs.
      */
     DJISDKErrorNoExistingArchiveLogs = -1022L,
+    
+
+    /**
+     *  The pack to send is more than the maximum allowed size.
+     */
+    DJISDKErrorBeyondMaximumAllowedSize = -1023L,
+    
+
+    /**
+     *  The current transmission rate already reached the channel's bandwidth. Re-send
+     *  data later.
+     */
+    DJISDKErrorReachChannelBandwidth = -1024L,
 
 
     /**
@@ -646,20 +694,20 @@ typedef NS_ENUM (NSInteger, DJISDKFlightControllerError) {
  
 
     /**
-     *  Connection between base station and mobile station is broken.
+     *  Connection between ground system and mobile station is broken.
      */
     DJISDKFlightControllerErrorRTKConnectionBroken = -4024L,
  
 
     /**
-     *  RTK base station antenna error. Check if the antenna is connected to the correct
-     *  port.
+     *  RTK ground system antenna error. Check if the antenna is connected to the
+     *  correct port.
      */
     DJISDKFlightControllerErrorRTKBSAntennaError = -4025L,
  
 
     /**
-     *  RTK base station's coordinate resets.
+     *  RTK ground system's coordinate resets.
      */
     DJISDKFlightControllerErrorRTKBSCoordinatesReset = -4026L,
  
@@ -689,9 +737,9 @@ typedef NS_ENUM (NSInteger, DJISDKMissionError){
 
     /**
      *  Cannot execute in the current mode. For products and flight controller firmware
-     *  versions that support 'F'  mode (e.g. Phantom 3 Professional, Inspire 1, A3 with
-     *  flight controller firmware version lower than  3.2.10.0, etc), please make sure
-     *  the remote controller's mode switch is in 'F' mode. For the others,  please make
+     *  versions that support 'F' mode (e.g. Phantom 3 Professional, Inspire 1, A3 with
+     *  flight controller firmware version lower than 3.2.10.0, etc), please make sure
+     *  the remote controller's mode switch is in 'F' mode. For the others, please make
      *  sure the remote controller's mode switch is in 'P' mode.
      */
     DJISDKMissionErrorModeError = -5000L,
@@ -1063,104 +1111,104 @@ typedef NS_ENUM (NSInteger, DJISDKMissionError){
 
 
     /**
-     *  Max Flight speed value provided is invalid
+     *  Max Flight speed value provided is invalid.
      */
     DJISDKWaypointMissionParameterErrorMaxFlightSpeed = -5100L,
 
 
     /**
-     *  Auto flight speed value provided is invalid
+     *  Auto flight speed value provided is invalid.
      */
     DJISDKWaypointMissionParameterErrorAutoFlightSpeed = -5101L,
     
 
     /**
-     *  Repeat time value provided is invalid
+     *  Repeat time value provided is invalid.
      */
     DJISDKWaypointMissionParameterErrorRepeatTime = -5102L,
     
 
     /**
-     *  Waypoint count is invalid
+     *  Waypoint count is invalid.
      */
     DJISDKWaypointMissionParameterErrorWaypointCount = -5102L,
 
     
 
     /**
-     *  Waypoint mission is absent from the operator (upload failed somehow)
+     *  Waypoint mission is absent from the operator (upload failed somehow).
      */
     DJISDKWaypointMissionAbsentError = -5110L,
     
 
     /**
-     *  Waypoint coordinate provided is invalid
+     *  Waypoint coordinate provided is invalid.
      */
     DJISDKWaypointParameterErrorCoordinate = -5120L,
     
 
     /**
-     *  Waypoint altitude provided is invalid
+     *  Waypoint altitude provided is invalid.
      */
     DJISDKWaypointParameterErrorAltitude = -5121L,
     
 
     /**
-     *  Waypoint heading provided is invalid
+     *  Waypoint heading provided is invalid.
      */
     DJISDKWaypointParameterErrorHeading = -5122L,
     
 
     /**
-     *  Waypoint repeat time provided is invalid
+     *  Waypoint repeat time provided is invalid.
      */
     DJISDKWaypointParameterErrorActionRepeatTime = -5123L,
     
 
     /**
-     *  Waypoint action timeout provided is invalid
+     *  Waypoint action timeout provided is invalid.
      */
     DJISDKWaypointParameterErrorActionTimeout = -5124L,
     
 
     /**
-     *  Waypoint corner radius provided is invalid
+     *  Waypoint corner radius provided is invalid.
      */
     DJISDKWaypointParameterErrorCornerRadius = -5125L,
     
 
     /**
-     *  Waypoint gimbal pitch provided is invalid
+     *  Waypoint gimbal pitch provided is invalid.
      */
     DJISDKWaypointParameterErrorGimbalPitch = -5126L,
     
 
     /**
-     *  Waypoint speed provided is invalid
+     *  Waypoint speed provided is invalid.
      */
     DJISDKWaypointParameterErrorSpeed = -5127L,
     
 
     /**
-     *  Waypoint shoot photo distance provided is invalid
+     *  Waypoint shoot photo distance provided is invalid.
      */
     DJISDKWaypointParameterErrorShootPhotoDistance = -5128L,
     
 
     /**
-     *  Waypoint stay action param provided is invalid
+     *  Waypoint stay action param provided is invalid.
      */
     DJISDKWaypointParameterErrorStayActionParam = -5129L,
     
 
     /**
-     *  Waypoint rotate gimbal action param provided is invalid
+     *  Waypoint rotate gimbal action param provided is invalid.
      */
     DJISDKWaypointParameterErrorRotateGimbalActionParam = -5130L,
     
 
     /**
-     *  Waypoint rotate aircraft action param provided is invalid
+     *  Waypoint rotate aircraft action param provided is invalid.
      */
     DJISDKWaypointParameterErrorRotateAircraftActionParam = -5131L,
     
@@ -1239,7 +1287,7 @@ typedef NS_ENUM(NSInteger, DJISDKFlySafeError){
 
     /**
      *  The simulated aircraft location is not valid. During the simulation, a location
-     *  is valid if it is within  50km of (37.460484, -122.115312).
+     *  is valid if it is within 50km of (37.460484, -122.115312).
      */
     DJISDKFlySafeErrorInvalidSimulatedLocation = -6011L,
     
@@ -1248,6 +1296,345 @@ typedef NS_ENUM(NSInteger, DJISDKFlySafeError){
      *  The Account login is out of date, Need login again.
      */
     DJISDKFlySafeErrorTokenOutOfDate = -6012L,
+};
+
+/*********************************************************************************/
+#pragma mark FlightHub Error
+/*********************************************************************************/
+
+
+/**
+ *  DJI SDK FlightHub Error.
+ */
+typedef NS_ENUM(NSInteger, DJISDKFlightHubError){
+
+	/**
+	 *  Server rejected the request because the signature is invalid.
+	 */
+	DJISDKFlightHubErrorSignatureInvalid = -7001L,
+
+	/**
+	 *  Server rejected the request because the user does not have the permission.
+	 */
+	DJISDKFlightHubErrorNoRightToAccess = -7002L,
+
+	/**
+	 *  Invalid parameter(s).
+	 */
+	DJISDKFlightHubErrorParametersInvalid = -7003L,
+
+	/**
+	 *  No authorization information found.
+	 */
+	DJISDKFlightHubErrorNoAuthorizationInformationFound = -7004L,
+
+	/**
+	 *  The account information is not found.
+	 */
+	DJISDKFlightHubErrorUserNotFoundInUserCenter = -7005L,
+
+	/**
+	 *  Authorization information has expired. Please authorize again.
+	 */
+	DJISDKFlightHubErrorAuthorizationExpired = -7006L,
+
+	/**
+	 *  User not found in DJI FlightHub system.
+	 */
+	DJISDKFlightHubErrorUserNotFoundInFlightHub = -7007L,
+
+	/**
+	 *  The service package has been expired.
+	 */
+	DJISDKFlightHubErrorServicePackageExpired = -7008L,
+
+	/**
+	 *  The service package has reached the limit of device numbers.
+	 */
+	DJISDKFlightHubErrorServicePackageLimitationReached = -7009L,
+
+	/**
+	 *  The service package does not have permission to access SDK service.
+	 */
+	DJISDKFlightHubErrorUserHasNoSDKPermissionForServicePackage = -7010L,
+
+	/**
+	 *  No team found.
+	 */
+	DJISDKFlightHubErrorNoTeamFound = -7011L,
+
+	/**
+	 *  No aircraft found.
+	 */
+	DJISDKFlightHubErrorNoAircraftFound = -7012L,
+
+	/**
+	 *  The aircraft has already been bound in the chosen team.
+	 */
+	DJISDKFlightHubErrorAircraftAlreadyBoundInTeamChosen = -7013L,
+
+	/**
+	 *  No record found.
+	 */
+	DJISDKFlightHubErrorNoRecordFound = -7014L,
+
+	/**
+	 *  No user is logged in.
+	 */
+	DJISDKFlightHubErrorNotLoggedIn = -7015L,
+
+	/**
+	 *  Aircraft's serial number is not available.
+	 */
+	DJISDKFlightHubErrorAircraftSerialNumberNotAvailable = -7016L,
+
+	/**
+	 *  The aircraft has already been bound in the other team. Please unbind it first.
+	 */
+	DJISDKFlightHubErrorAircraftAlreadyBoundInTeamChosenInOtherTeam = -7017L,
+
+	/**
+	 *  Bound device number has reached the limit of your service package.
+	 */
+	DJISDKFlightHubErrorBoundDeviceLimitationReached = -7018L,
+};
+
+/*********************************************************************************/
+#pragma mark Take-off Action Error
+/*********************************************************************************/
+
+/**
+ *  Error codes for errors specific to `DJITakeOffActionErrorDomain`.
+ */
+typedef NS_ENUM(NSInteger, DJITakeOffActionError) {
+
+    /**
+     *  Motors should be off before Take-off action is executed.
+     */
+    DJITakeOffActionErrorMotorsAlreadyOn = 100,
+
+
+    /**
+     *  Unknown.
+     */
+    DJITakeOffActionErrorUnknown = -1,
+};
+
+
+/*********************************************************************************/
+#pragma mark Upgrade Error
+/*********************************************************************************/
+
+//hidden-WM245
+/**
+ *  DJI SDK Upgrade Error.
+ */
+typedef NS_ENUM(NSInteger, DJISDKUpgradeError){
+	//hidden-WM245
+	/**
+	 *	固件已经下载，不需要再重复下载
+	 */
+	DJISDKUpgradeErrorFirmwareAlreadyDownloaded = -10001L,
+
+	//hidden-WM245
+	/**
+	 *	固件已经下载，不需要再重复下载
+	 */
+	DJISDKUpgradeErrorFirmwareDownloadFailed = -10002L,
+	
+	//hidden-WM245
+	/**
+	 *	固件传输失败。
+	 */
+	DJISDKUpgradeErrorFirmwareFirmwareTransferFailed = -10003L,
+	
+	//hidden-WM245
+	/**
+	 *	固件传入取消
+	 */
+	DJISDKUpgradeErrorFirmwareFirmwareTransferCanceled = -10004L,
+	
+	//hidden-WM245
+	/**
+	 *	固件版本号不一致
+	 */
+	DJISDKUpgradeErrorFirmwareFirmwareVersionNotSame = -10005L,
+	
+    //hidden-WM245
+    /**
+     *  需要直连飞机才允许升级
+     */
+    DJISDKUpgradeErrorAircraftNeedDirectConnected = -10006L,
+    
+    //hidden-WM245
+    /**
+     *  当前飞机电池电量过低
+     */
+    DJISDKUpgradeErrorAircraftLowElectricityNow = -10007L,
+    
+    //hidden-WM245
+    /**
+     * 当前遥控器电池电量过低
+     */
+    DJISDKUpgradeErrorRCLowElectricityNow = -10008L,
+    
+    //hidden-WM245
+    /**
+     *  电机处于起桨状态
+     */
+    DJISDKUpgradeErrorDeviceMotorOn = -10009L,
+    
+	//hidden-WM245
+	/**
+	 *	Unknown Error
+	 */
+	DJISDKUpgradeErrorUnknown = -11000L,
+};
+
+/*********************************************************************************/
+#pragma mark Accessory Error
+/*********************************************************************************/
+
+
+/**
+ *  Errors related to accessories on the aircraft (e.g. spotlights, speakers).
+ */
+typedef NS_ENUM(NSInteger, DJIAccessoryAggregationError) {
+
+    /**
+     *  The accessory is not connected. Also update the implementation.
+     */
+    DJIAccessoryAggregationErrorNotConnected = -8000L,
+
+    /**
+     *  The file name exceeds the maximum length (20 characters).
+     */
+    DJIAccessoryAggregationErrorFileNameLengthInvalid = -8001L,
+
+    /**
+     *  The file name is already taken in the aircraft. Choose a different file name.
+     */
+    DJIAccessoryAggregationErrorFileNameDuplicated = -8002L,
+
+    /**
+     *  A file name cannot be empty.
+     */
+    DJIAccessoryAggregationErrorFileNameEmpty = -8003L,
+
+    /**
+     *  The file does not exist in the aircraft.
+     */
+    DJIAccessoryAggregationErrorFileNotExist = -8004L,
+
+    /**
+     *  An error occurs when creating the file.
+     */
+    DJIAccessoryAggregationErrorFileCreated = -8005L,
+
+    /**
+     *  There is no more file index available for the file.
+     */
+    DJIAccessoryAggregationErrorFileIndexUnavailable = -8006L,
+
+    /**
+     *  Error occurs when renaming the file.
+     */
+    DJIAccessoryAggregationErrorRenameFile = -8007L,
+
+    /**
+     *  The connection of the speaker is broken and data transmission cannot start.
+     */
+    DJIAccessoryAggregationErrorDataTransmissionDisconnection = -8008L,
+
+    /**
+     *  The data transimission operation cannot be executed in the current state.
+     */
+    DJIAccessoryAggregationErrorWrongDataTransmissionState = -8009L,
+
+    /**
+     *  Data validation failed. Data is corrupted during the transmission.
+     */
+    DJIAccessoryAggregationErrorDataCorruption = -8010L,
+
+    /**
+     *  The ongoing data transmission is cancelled.
+     */
+    DJIAccessoryAggregationErrorCancelledByUser = -8011L,
+
+    /**
+     *  The ongoing data transmission is interrupted by timeout error.
+     */
+    DJIAccessoryAggregationErrorInterruptedByTimeout = -8012L,
+
+    /**
+     *  The storage is full.
+     */
+    DJIAccessoryAggregationErrorStorageFull = -8013L,
+};
+
+/*********************************************************************************/
+#pragma mark AccessLocker Error
+/*********************************************************************************/
+
+
+/**
+ *  Errors related to the access locker.
+ */
+typedef NS_ENUM(NSInteger, DJIAccessLockerError) {
+
+    /**
+     *  The command is not valid in current state.
+     */
+    DJIAccessLockerErrorInvalidState = -9000L,
+
+    /**
+     *  Write failure when updating data in the firmware.
+     */
+    DJIAccessLockerErrorFirmwareWrite = -9001L,
+
+    /**
+     *  Read failure when accessing data in the firmware.
+     */
+    DJIAccessLockerErrorFirmwareRead = -9002L,
+
+    /**
+     *  The Security Code is incorrect.
+     */
+    DJIAccessLockerErrorSecurityCodeIncorrect = -9003L,
+
+    /**
+     *  The user account is not set up for the security feature yet.
+     */
+    DJIAccessLockerErrorNotSetUp = -9004L,
+
+    /**
+     *  The aircraft is already unlocked.
+     */
+    DJIAccessLockerErrorAlreadyUnlocked = -9005L,
+
+    /**
+     *  Attempt with wrong Security Code more than 5 times. The aircraft is  disable and
+     *  try again in 1 minute.
+     */
+    DJIAccessLockerErrorSecurityCodeIncorrectFiveTimes = -9006L,
+
+    /**
+     *  Attempt with wrong Security Code more than 20 times. The aircraft is disable and
+     *  try again in 24 hours.
+     */
+    DJIAccessLockerErrorSecurityCodeIncorrectTwentyTimes = -9007L,
+
+    /**
+     *  The username does not exist.
+     */
+    DJIAccessLockerErrorUsernameNotExist = -9008L,
+
+    /**
+     *  The new security code is not valid. A valid security code should contain only
+     *  numbers and letters and  its length is not less than 4 characters and not longer
+     *  than 8 characters.
+     */
+    DJIAccessLockerErrorSecurityCodeFormatInvalid = -9009L,
 };
 
 
@@ -1315,6 +1702,37 @@ typedef NS_ENUM(NSInteger, DJISDKFlySafeError){
  *  @return An NSError object initialized with errorCode. If the errorCode was 0, returns nil.
  */
 + (_Nullable instancetype)DJISDKFlySafeErrorForCode:(DJISDKFlySafeError)errorCode;
+
+
+/**
+ *  Returns the specific error in the `DJISDKFlightHubError` according to the error
+ *  code.
+ *  
+ *  @param errorCode errorCode for `DJISDKFlightHubError`.
+ *  
+ *  @return An NSError object initialized with errorCode. If the errorCode was 0, returns nil.
+ */
++ (_Nullable instancetype)DJISDKFlightHubErrorForCode:(DJISDKFlightHubError)errorCode;
+
+
+/**
+ *  Get DJIAccessoryAggregationError.
+ *  
+ *  @param errorCode errorCode for `DJIAccessoryAggregationError`.
+ *  
+ *  @return An NSError object initialized with errorCode. If the errorCode was 0, returns nil.
+ */
++ (_Nullable instancetype)DJIAccessoryAggregationErrorForCode:(DJIAccessoryAggregationError)errorCode;
+
+
+/**
+ *  Get DJIAccessoryAggregationError.
+ *  
+ *  @param errorCode errorCode for `DJIAccessoryAggregationError`.
+ *  
+ *  @return An NSError object initialized with errorCode. If the errorCode was 0, returns nil.
+ */
++ (_Nullable instancetype)DJIAccessLockerErrorForCode:(DJIAccessLockerError)errorCode;
 
 
 /**

@@ -19,6 +19,8 @@
 @class DJIFlightAssistant;
 @class DJISimulator;
 @class DJIAirSenseSystemInformation;
+@class DJIOnboardSDKDevice;
+@class DJIAccessLocker;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -100,16 +102,6 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 
 /**
- *  Called when the data received from an external device (e.g. the onboard device)
- *  has been updated.
- *  
- *  @param fc Instance of the flight controller for which the data will be updated.
- *  @param data Data received from an external device. The size of the data will not be larger than 100 bytes.
- */
-- (void)flightController:(DJIFlightController *_Nonnull)fc didReceiveDataFromOnboardSDKDevice:(NSData *_Nonnull)data;
-
-
-/**
  *  Called when the flight controller pushes an IMU state update. The callback
  *  method would not be called if the aircraft is flying.
  *  
@@ -174,6 +166,13 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 
 /**
+ *  Gets the instance of the access locker. It is used to encapsulate the access
+ *  protection features on the aircraft.
+ */
+@property(nonatomic, readonly) DJIAccessLocker *accessLocker;
+
+
+/**
  *  Simulator object.
  */
 @property(nonatomic, readonly) DJISimulator *_Nullable simulator;
@@ -188,6 +187,12 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
  *   - N3 has two inner IMUs and can have one external IMU.
  */
 @property(nonatomic, readonly) NSUInteger IMUCount;
+
+
+/**
+ *  The object representing the optional onboardsdk device.
+ */
+@property (nonatomic, readonly, nullable) DJIOnboardSDKDevice *onboardSDKDevice;
 
 /*********************************************************************************/
 #pragma mark Flight Limitation
@@ -217,7 +222,7 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 /**
  *  Sets the maximum flight radius limitation of the aircraft. The radius is
  *  calculated from the home point.  The <code>maxRadius</code> value must be in the
- *  range [15, 500] m.
+ *  range [15, 8000] m.
  *  
  *  @param maxRadius Maximum flight radius of the aircraft.
  *  @param completion Completion block.
@@ -324,6 +329,25 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
  *  @param completion Completion block.
  */
 - (void)turnOffMotorsWithCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Enables ESC beeping.
+ *  
+ *  @param enabled `YES` to enable ESC beeping.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)setESCBeepEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines if ESC beeping is enabled.
+ *  
+ *  @param enabled `YES` if ESC beeping is enabled.
+ *  @param error Encountered error if any.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getESCBeepEnabledWithCompletion:(void (^_Nullable)(BOOL enabled, NSError *_Nullable error))completion;
 
 
 /**
@@ -436,25 +460,11 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 
 /**
- *  Checks if the onboard SDK device is available.
+ *  Returns if the Onboard SDK feature is available on the connected product.
  *  
  *  @return A boolean value.
  */
-- (BOOL)isOnboardSDKDeviceAvailable;
-
-
-/**
- *  If there is a device connected to the aircraft using the Onboard SDK, this
- *  method will send data to that device. The size of the data cannot be greater
- *  than 100 bytes, and will be sent in 40 byte increments every 14ms. This method
- *  is only supported on products that support the Onboard SDK (Matrice 100, Matrice
- *  600, Matrice 600 Pro, A3, A3 Pro, and N3).
- *  
- *  @param data Data to be sent to the external device. The size of the data should not be larger than 100 bytes.
- *  @param completion Completion block.
- */
-- (void)sendDataToOnboardSDKDevice:(NSData *_Nonnull)data
-                    withCompletion:(DJICompletionBlock)completion;
+- (BOOL)isOnboardSDKAvailable;
 
 
 /**
@@ -579,23 +589,23 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 
 /**
- *  Turns on/off the forward LEDs, which are used to indicate aircraft status. They
- *  are on by default.
+ *  Turns on/off different sets of LEDs on the aircraft. All the LEDs are on by
+ *  default.
  *  
- *  @param enabled `YES` to turn on forward LEDs, `NO` to turn them off.
+ *  @param ledsSettings Settings to control LEDs.
  *  @param completion Completion block that receives the setter execution result.
  */
-- (void)setLEDsEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+- (void)setLEDsEnabledSettings:(DJIMutableFlightControllerLEDsSettings *)ledsSettings withCompletion:(DJICompletionBlock)completion;
 
 
 /**
- *  Gets on/off status of forward LEDs.
+ *  Determines the status of LEDs on the aircraft.
  *  
- *  @param enabled The BOOL value.
+ *  @param ledsSettings An object of `DJIFlightControllerLEDsSettings`.
  *  @param error Error retrieving the value.
  *  @param completion Completion block to receive the result.
  */
-- (void)getLEDsEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+- (void)getLEDsEnabledSettingsWithCompletion:(void (^)(DJIFlightControllerLEDsSettings *ledsSettings, NSError *_Nullable error))completion;
 
 
 /**
@@ -654,7 +664,8 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 /**
  *  Enables/disables cinematic mode. In Cinematic Mode, you can shoot more stable
  *  and smooth photos and videos. Aircraft yaw speed will be lower and braking
- *  distance will be longer. It's only supported by Mavic Pro and Spark.
+ *  distance will be longer. It's only supported by Mavic Pro, Spark, Mavic 2 Zoom
+ *  and Mavic 2 Pro.
  *  
  *  @param enabled `YES` to enable cinematic mode.
  *  @param completion Completion block to receive the result.
@@ -664,14 +675,58 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 
 /**
- *  Gets cinematic mode status (enabled/disabled). It's only supported by Mavic Pro
- *  and Spark.
+ *  Gets cinematic mode status (enabled/disabled). It's only supported by Mavic Pro,
+ *  Spark, Mavic 2 Zoom and  Mavic 2 Pro.
  *  
  *  @param enabled `YES` to enable cinematic mode.
  *  @param error Error retrieving the value.
  *  @param completion Completion block to receive the result.
  */
 - (void)getCinematicModeEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Adjusts the braking sensitivity when cinematic mode is enabled. Higher
+ *  sensitivity can shorten the  braking distance in cinematic mode. It's supported
+ *  by Mavic Pro, Spark, Mavic 2 Zoom and  Mavic 2 Pro.
+ *  
+ *  @param brakeSensitivity Brake sensitivity in cinematic mode.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)setCinematicBrakeSensitivity:(NSUInteger)brakeSensitivity withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the braking sensitivity when cinematic mode is enabled. Higher sensitivity
+ *  can shorten the  braking distance in cinematic mode. It's supported by Mavic
+ *  Pro, Spark, Mavic 2 Zoom and  Mavic 2 Pro.
+ *  
+ *  @param brakeSensitivity Brake sensitivity in cinematic mode.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getCinematicBrakeSensitivityWithCompletion:(void (^_Nonnull)(NSUInteger brakeSensitivity, NSError *_Nullable error))completion;
+
+
+/**
+ *  Adjusts the aircraft's yaw speed when cinematic mode is enabled. It's supported
+ *  by Mavic Pro, Spark, Mavic 2 Zoom and  Mavic 2 Pro.
+ *  
+ *  @param yawSpeed The aircraft's yaw speed in cinematic mode.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)setCinematicYawSpeed:(NSUInteger)yawSpeed withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the aircraft's yaw speed when cinematic mode is enabled. It's supported by
+ *  Mavic Pro, Spark, Mavic 2 Zoom and  Mavic 2 Pro.
+ *  
+ *  @param yawSpeed The aircraft's yaw speed in cinematic mode.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getCinematicYawSpeedWithCompletion:(void (^_Nonnull)(NSUInteger yawSpeed, NSError *_Nullable error))completion;
 
 
 /**
@@ -806,8 +861,7 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
  *  @param error Error if there is any.
  *  @param completion Completion block that receives the execution result.
  */
-- (void)getNoviceModeEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled,
-                                                             NSError *_Nullable error))completion;
+- (void)getNoviceModeEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
 
 /*********************************************************************************/
 #pragma mark Virtual Stick Mode

@@ -11,6 +11,7 @@
 @class DJIFlightController;
 @class DJIRemoteController;
 @class DJIMobileRemoteController;
+@class DJIAccessoryAggregation;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -112,6 +113,12 @@ extern NSString *const DJIAircraftModelNamePhantom4Pro;
 
 
 /**
+ *  The aircraft's model name is Phantom 4 Pro V2.
+ */
+extern NSString *const DJIAircraftModelNamePhantom4ProV2;
+
+
+/**
  *  The aircraft's model name is Inspire 2.
  */
 extern NSString *const DJIAircraftModelNameInspire2;
@@ -148,9 +155,46 @@ extern NSString *const DJIAircraftModelNameMatrice210RTK;
 
 
 /**
+ *  The aircraft's model name is Mavic Air.
+ */
+extern NSString *const DJIAircraftModelNameMavicAir;
+
+
+/**
+ *  The aircraft's model name is Mavic 2 Pro.
+ */
+extern NSString *const DJIAircraftModelNameMavic2Pro;
+
+
+/**
+ *  The aircraft's model name is Mavic 2 Zoom.
+ */
+extern NSString *const DJIAircraftModelNameMavic2Zoom;
+
+
+/**
+ *  The aircraft's model name is either Mavic 2 Pro or Mavic 2 Zoom.  The camera is
+ *  not recognized yet.
+ */
+extern NSString *const DJIAircraftModelNameMavic2;
+
+
+/**
+ *  The aircraft's model name is Mavic 2 Enterprise.
+ */
+extern NSString *const DJIAircraftModelNameMavic2Enterprise;
+
+
+/**
+ *  The display name when only the remote controller is connected.
+ */
+extern NSString *const DJIAircraftModeNameOnlyRemoteController;
+
+
+/**
  *  Aircraft product class, which includes basic product information and access to
  *  all components (such as flight controller, battery etc.). This object is
- *  accessed  from `product` in `DJISDKManager`. Aircraft components are defined in
+ *  accessed from `product` in `DJISDKManager`. Aircraft components are defined in
  *  both `DJIAircraft` and its parent `DJIBaseProduct`.
  */
 @interface DJIAircraft : DJIBaseProduct
@@ -205,6 +249,31 @@ extern NSString *const DJIAircraftModelNameMatrice210RTK;
  *  and Spark using WiFi.
  */
 @property(nonatomic, readonly) DJIMobileRemoteController *_Nullable mobileRemoteController;
+
+
+/**
+ *  The connected payload instance.
+ */
+@property(nonatomic, readonly) DJIPayload *_Nullable payload;
+
+
+/**
+ *  The container of accessories on the aircraft. It is accessible when the
+ *  connected  aircraft supports extra accessories.
+ */
+@property(nonatomic, readonly) DJIAccessoryAggregation *_Nullable accessoryAggregation;
+
+
+/**
+ *  Retrieves instances of the product's payloads. This is used when the aircraft
+ *  has multiple gimbal slots,  e.g. M210 and  M210 RTK. Note, when two payload
+ *  instances do exist, the order within the array will not  always be the same. For
+ *  example: On the M210, the port side (left) payload will have property index to
+ *  be  0 and the starboard side (right) payload will have index to be 1. However,
+ *  the first object of `cameras`  will not necessarily always be the payload with
+ *  index of 0.
+ */
+@property(nonatomic, readonly) NSArray<DJIPayload *> *_Nullable payloads;
 
 @end
 NS_ASSUME_NONNULL_END

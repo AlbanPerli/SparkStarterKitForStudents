@@ -11,7 +11,7 @@
 /**
  *  A cartesian vector in 3D space.
  */
-__attribute__((objc_runtime_name("41a964c7-86f0-11e7-adce-a860b61add44"))) 
+__attribute__((objc_runtime_name("74f47570-7b7b-11e8-bf4d-a860b61add44"))) 
 @interface DJISDKVector3D : NSObject
 
 

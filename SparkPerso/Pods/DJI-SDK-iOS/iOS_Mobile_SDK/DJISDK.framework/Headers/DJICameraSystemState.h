@@ -8,6 +8,8 @@
 #import <Foundation/Foundation.h>
 #import <DJISDK/DJICameraSettingsDef.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 
 /**
  *  This class provides general information and current status of the camera.
@@ -16,17 +18,17 @@
 
 
 /**
- *  `YES` when the camera is performing any photo capture in  any
+ *  `YES` when the camera is performing any photo capture in any
  *  `DJICameraShootPhotoMode`. Between photo capture in interval and time lapse
- *  mode, this property  will be `NO`. The camera is shooting a single photo.
+ *  mode, this property will be `NO`. The camera is shooting a single photo.
  */
 @property(nonatomic, readonly) BOOL isShootingSinglePhoto;
 
 
 /**
  *  `YES` when the camera is performing a photo capture in RAW or RAW+JPEG format.
- *  Between  photo capture in interval and time lapse mode, this property will be
- *  `NO`. If saving  the photo in JPEG only, this property will always be `NO`.
+ *  Between photo capture in interval and time lapse mode, this property will be
+ *  `NO`. If saving the photo in JPEG only, this property will always be `NO`.
  */
 @property(nonatomic, readonly) BOOL isShootingSinglePhotoInRAWFormat;
 
@@ -40,17 +42,17 @@
 
 
 /**
- *  `YES` when the camera is performing a burst capture. `YES`  after
+ *  `YES` when the camera is performing a burst capture. `YES` after
  *  `startShootPhotoWithCompletion` is called, and `NO` after the burst is complete.
- *  The camera  is shooting burst photos.
+ *  The camera is shooting burst photos.
  */
 @property(nonatomic, readonly) BOOL isShootingBurstPhoto;
 
 
 /**
- *  `YES` when the camera is performing a RAW burst capture. `YES`  after
+ *  `YES` when the camera is performing a RAW burst capture. `YES` after
  *  `startShootPhotoWithCompletion` is called, and `NO` after the RAW burst is
- *  complete. The  camera is shooting RAW burst photos.
+ *  complete. The camera is shooting RAW burst photos.
  */
 @property(nonatomic, readonly) BOOL isShootingRAWBurstPhoto;
 
@@ -74,8 +76,8 @@
 
 
 /**
- *  `YES` if the camera is storing a photo. When `isStoringPhoto`  is `YES`, the
- *  user cannot change the camera mode or start to shoot another photo.
+ *  `YES` if the camera is storing a photo. When `isStoringPhoto` is `YES`, the user
+ *  cannot change the camera mode or start to shoot another photo.
  */
 @property(nonatomic, readonly) BOOL isStoringPhoto;
 
@@ -114,4 +116,14 @@
  */
 @property(nonatomic, readonly) NSUInteger currentPanoramaPhotoCount;
 
+
+/**
+ *  The progress of the executing panorama shot. It is `nil` if there is no
+ *  executing panorama shot.
+ */
+@property(nonatomic, readonly, nullable) NSProgress *panoramaProgress;
+
 @end
+
+NS_ASSUME_NONNULL_END
+

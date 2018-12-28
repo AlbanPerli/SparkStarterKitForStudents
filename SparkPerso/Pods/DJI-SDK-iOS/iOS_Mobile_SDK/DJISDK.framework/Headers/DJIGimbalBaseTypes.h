@@ -36,10 +36,10 @@ typedef NS_ENUM(NSInteger, DJIGimbalRotationMode) {
 
     /**
      *  Rotate the gimbal's pitch, roll, and yaw in SPEED Mode. The direction can either
-     *  be set to clockwise or  counter-clockwise.
+     *  be set to clockwise or counter-clockwise.
      *   For Phantom 3 Professional, Phantom 3 Advanced and Phantom 3 Standard, roll and
      *  yaw rotations are not available.
-     *   For Inspire 1, Inspire Pro and M100, pitch, roll and yaw rotations  are
+     *   For Inspire 1, Inspire Pro and M100, pitch, roll and yaw rotations are
      *  available.
      *   For Osmo, roll rotation is not available. The yaw angleVelocity of
      *  DJIGimbalSpeedRotation range is (-120, 120).
@@ -65,7 +65,7 @@ typedef NS_ENUM(NSInteger, DJIGimbalRotationMode) {
 
 /**
  *  The pitch property of a gimbal rotation operation, how much the gimbal rotates
- *  on the pitch axis. When it is `nil`,  no operation will be applied to the pitch
+ *  on the pitch axis. When it is `nil`, no operation will be applied to the pitch
  *  axis.
  */
 @property (nonatomic, strong, nullable, readonly) NSNumber *pitch;
@@ -73,15 +73,15 @@ typedef NS_ENUM(NSInteger, DJIGimbalRotationMode) {
 
 /**
  *  The roll property of a gimbal rotation operation, how much the gimbal rotates on
- *  the roll axis. When it is `nil`,  no operation will be applied to the roll axis.
+ *  the roll axis. When it is `nil`, no operation will be applied to the roll axis.
  */
 @property (nonatomic, strong, nullable, readonly) NSNumber *roll;
 
 
 /**
  *  The yaw property of a gimbal rotation operation, how much the gimbal rotates on
- *  the yaw axis. When the rotation mode is  `DJIGimbalRotationModeAbsoluteAngle`,
- *  the yaw value is relative to the aircraft's heading.  When it is `nil`, no
+ *  the yaw axis. When the rotation mode is `DJIGimbalRotationModeAbsoluteAngle`,
+ *  the yaw value is relative to the aircraft's heading. When it is `nil`, no
  *  operation will be applied to the yaw axis.
  */
 @property (nonatomic, strong, nullable, readonly) NSNumber *yaw;
@@ -158,8 +158,8 @@ typedef NS_ENUM (uint8_t, DJIGimbalMode){
 
     /**
      *  The gimbal can move independently of the aircraft's yaw. In this mode, even if
-     *  the aircraft yaw  changes, the camera will continue pointing in the same world
-     *  direction. This mode is only available  for the Ronin-MX when the M600 or M600
+     *  the aircraft yaw changes, the camera will continue pointing in the same world
+     *  direction. This mode is only available for the Ronin-MX when the M600 or M600
      *  Pro landing gear is retracted.
      */
     DJIGimbalModeFree,
@@ -167,16 +167,16 @@ typedef NS_ENUM (uint8_t, DJIGimbalMode){
 
     /**
      *  The gimbal's work mode is FPV mode. In this mode, the gimbal yaw will follow the
-     *  aircraft's heading,  and the gimbal roll will follow the RC's roll channel
-     *  value. The pitch will be available to move. This  mode is only available for the
-     *  Ronin-MX when the M600 landing gear is retracted.
+     *  aircraft's heading, and the gimbal roll will follow the RC's roll channel value.
+     *  The pitch will be available to move. This mode is only available for the Ronin-
+     *  MX when the M600 landing gear is retracted.
      */
     DJIGimbalModeFPV,
 
 
     /**
      *  The gimbal's work mode is such that it will follow the yaw. In this mode, the
-     *  gimbal yaw will be  fixed, while pitch and roll will be available to move.
+     *  gimbal yaw will be fixed, while pitch and roll will be available to move.
      */
     DJIGimbalModeYawFollow,
 
@@ -194,43 +194,43 @@ typedef NS_ENUM (uint8_t, DJIGimbalMode){
 
 /**
  *  The Movement Settings Profile contains presets for SmoothTrack and the Physical
- *  Controller  sensitivity. SmoothTrack and Controller settings can only be
- *  manually changed if Custom1 or Custom2  profiles are selected.
+ *  Controller sensitivity. SmoothTrack and Controller settings can only be manually
+ *  changed if Custom1 or Custom2 profiles are selected.
  */
 typedef NS_ENUM (uint8_t, DJIGimbalMovementSettingsProfile){
 
 
     /**
      *  The gimbal's SmoothTrack and Controller sensitivity is high. When the gimbal is
-     *  using this profile,  user cannot change the Movement Settings manually.
+     *  using this profile, user cannot change the Movement Settings manually.
      */
     DJIGimbalMovementSettingsProfileFast,
 
 
     /**
      *  The gimbal's SmoothTrack and Controller sensitivity is medium. When the gimbal
-     *  is using this profile,  user cannot change the Movement Settings manually.
+     *  is using this profile, user cannot change the Movement Settings manually.
      */
     DJIGimbalMovementSettingsProfileMedium,
     
 
     /**
      *  The gimbal's SmoothTrack and Controller sensitivity is slow. When the gimbal is
-     *  using this profile,  user cannot change the Movement Settings manually.
+     *  using this profile, user cannot change the Movement Settings manually.
      */
     DJIGimbalMovementSettingsProfileSlow,
 
 
     /**
      *  The gimbal uses a custom configuration in memory slot 1 where the yaw and pitch
-     *  speed, deadband, and  acceleration can be defined.
+     *  speed, deadband, and acceleration can be defined.
      */
     DJIGimbalMovementSettingsProfileCustom1,
 
 
     /**
      *  The gimbal uses a custom configuration in memory slot 2 where the yaw and pitch
-     *  speed, deadband, and  acceleration can be defined.
+     *  speed, deadband, and acceleration can be defined.
      */
     DJIGimbalMovementSettingsProfileCustom2,
 
@@ -313,7 +313,7 @@ typedef NS_ENUM (uint8_t, DJIGimbalEndpointDirection){
 
 /**
  *  For gimbals that allow payloads to be changed, the motor control configuration
- *  can be used to  optimize gimbal performance for the different payloads.
+ *  can be used to optimize gimbal performance for the different payloads.
  */
 typedef NS_ENUM (uint8_t, DJIGimbalMotorControlPreset){
 
@@ -344,7 +344,7 @@ typedef NS_ENUM (uint8_t, DJIGimbalMotorControlPreset){
 
 /**
  *  For gimbals that allow payloads to be changed, a balance test should be
- *  performed to ensure the  camera is mounted correctly.
+ *  performed to ensure the camera is mounted correctly.
  */
 typedef NS_ENUM (uint8_t, DJIGimbalBalanceTestResult){
  
@@ -380,8 +380,8 @@ typedef NS_ENUM (uint8_t, DJIGimbalBalanceTestResult){
 
 /**
  *  The loading balance status of the gimbal. The gimbal loading is changeable for
- *  Osmo Mobile.  When the mounted mobile device is changed, in order to  optimize
- *  the gimbal performance, user can  adjust the gimbal physically based on the
+ *  Osmo Mobile. When the mounted mobile device is changed, in order to  optimize
+ *  the gimbal performance, user can adjust the gimbal physically based on the
  *  status.
  */
 typedef NS_ENUM (uint8_t, DJIGimbalBalanceState){
@@ -420,32 +420,32 @@ typedef NS_ENUM (uint8_t, DJIGimbalBalanceState){
 
 
 /**
- *  Key string in the `capabilities` dictionary that holds  the complete capability
- *  of the gimbal. A negative value in the valid range represents  counter-clockwise
+ *  Key string in the `capabilities` dictionary that holds the complete capability
+ *  of the gimbal. A negative value in the valid range represents counter-clockwise
  *  rotation. A positive value in the valid range represents clockwise rotation.
  */
 extern NSString *const DJIGimbalParamAdjustPitch;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal supports yaw
- *  axis adjustment. The corresponding value in `capabilities` is  an instance of
+ *  Key string in `capabilities` associated with whether the gimbal supports yaw
+ *  axis adjustment. The corresponding value in `capabilities` is an instance of
  *  `DJIParamCapabilityMinMax` meaning both the feature's existence as well as its
- *  possible  range in degrees is returned. A negative value in the valid range
- *  represents counter-clockwise rotation.  A positive value in the valid range
- *  represents clockwise rotation. For Gimbal's that allow a pitch range  extension
+ *  possible range in degrees is returned. A negative value in the valid range
+ *  represents counter-clockwise rotation. A positive value in the valid range
+ *  represents clockwise rotation. For Gimbal's that allow a pitch range extension
  *  (see `DJIGimbalParamPitchRangeExtensionEnabled`, the range will be
- *  representative of the  extended range whether it is enabled or not.
+ *  representative of the extended range whether it is enabled or not.
  */
 extern NSString *const DJIGimbalParamAdjustYaw;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal supports roll
- *  axis adjustment. The corresponding value in `capabilities`  is an instance of
+ *  Key string in `capabilities` associated with whether the gimbal supports roll
+ *  axis adjustment. The corresponding value in `capabilities` is an instance of
  *  `DJIParamCapabilityMinMax` meaning both the feature's existence as well as its
  *  possible range in degrees is returned. A negative value in the valid range
- *  represents  counter-clockwise rotation. A positive value in the valid range
+ *  represents counter-clockwise rotation. A positive value in the valid range
  *  represents clockwise rotation.
  */
 extern NSString *const DJIGimbalParamAdjustRoll;
@@ -460,17 +460,17 @@ extern NSString *const DJIGimbalParamMovementSettingsProfile;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal supports a
- *  range extension in pitch. The corresponding value  in `capabilities` is an
- *  instance of `DJIParamCapabilityMinMax` meaning both the  feature's existence as
- *  well as its possible range in degrees is returned.
+ *  Key string in `capabilities` associated with whether the gimbal supports a range
+ *  extension in pitch. The corresponding value in `capabilities` is an instance of
+ *  `DJIParamCapabilityMinMax` meaning both the feature's existence as well as its
+ *  possible range in degrees is returned.
  */
 extern NSString *const DJIGimbalParamPitchRangeExtensionEnabled;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's pitch axis
- *  response speed to manual control can be adjusted. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's pitch axis
+ *  response speed to manual control can be adjusted. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */
@@ -478,8 +478,8 @@ extern NSString *const DJIGimbalParamPitchControllerSpeedCoefficient;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's yaw axis
- *  response speed to manual control can be adjusted. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's yaw axis
+ *  response speed to manual control can be adjusted. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */
@@ -487,8 +487,8 @@ extern NSString *const DJIGimbalParamYawControllerSpeedCoefficient;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's pitch axis
- *  smoothing can be adjusted when using manual control. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's pitch axis
+ *  smoothing can be adjusted when using manual control. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */
@@ -496,8 +496,8 @@ extern NSString *const DJIGimbalParamPitchControllerSmoothingFactor;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's yaw axis
- *  smoothing can be adjusted when using manual control. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's yaw axis
+ *  smoothing can be adjusted when using manual control. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */
@@ -505,44 +505,62 @@ extern NSString *const DJIGimbalParamYawControllerSmoothingFactor;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's manual
- *  control pitch axis deadband can be adjusted. The corresponding value  in
- *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
- *  feature's existence as well as its possible range (unitless) is returned.
+ *  Key string in `capabilities` associated with whether the gimbal's manual control
+ *  pitch axis deadband can be adjusted. The corresponding value in `capabilities`
+ *  is an instance of `DJIParamCapabilityMinMax` meaning both the feature's
+ *  existence as well as its possible range (unitless) is returned.
  */
 extern NSString *const DJIGimbalParamPitchControllerDeadband;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's manual
- *  control yaw axis deadband can be adjusted. The corresponding value  in
- *  `capabilities` is an instance  of `DJIParamCapabilityMinMax` meaning both the
- *  feature's existence as well as  its possible range (unitless) is returned.
+ *  Key string in `capabilities` associated with whether the gimbal's manual control
+ *  yaw axis deadband can be adjusted. The corresponding value in `capabilities` is
+ *  an instance of `DJIParamCapabilityMinMax` meaning both the feature's existence
+ *  as well as its possible range (unitless) is returned.
  */
 extern NSString *const DJIGimbalParamYawControllerDeadband;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's pitch axis
- *  SmoothTrack can be toggled. The corresponding value  in `capabilities` is an
- *  instance of `DJIParamCapability`. Ronin-MX cannot toggle  the SmoothTrack
+ *  Key string in `capabilities` associated with whether the gimbal's manual control
+ *  pitch axis max speed can be adjusted. The corresponding value in `capabilities`
+ *  is an instance of `DJIParamCapabilityMinMax` meaning both the feature's
+ *  existence as well as its possible range (unitless) is returned.
+ */
+extern NSString *const DJIGimbalParamPitchControllerMaxSpeed;
+
+
+/**
+ *  Key string in `capabilities` associated with whether the gimbal's manual control
+ *  yaw axis max speed can be adjusted. The corresponding value in `capabilities` is
+ *  an instance of `DJIParamCapabilityMinMax` meaning both the feature's existence
+ *  as well as its possible range (unitless) is returned.
+ */
+extern NSString *const DJIGimbalParamYawControllerMaxSpeed;
+
+
+/**
+ *  Key string in `capabilities` associated with whether the gimbal's pitch axis
+ *  SmoothTrack can be toggled. The corresponding value in `capabilities` is an
+ *  instance of `DJIParamCapability`. Ronin-MX cannot toggle the SmoothTrack
  *  functionality and it is always enabled.
  */
 extern NSString *const DJIGimbalParamPitchSmoothTrackEnabled;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's yaw axis
- *  SmoothTrack can be toggled. The corresponding value  in `capabilities` is an
- *  instance of `DJIParamCapability`. Ronin-MX cannot toggle the  SmoothTrack
+ *  Key string in `capabilities` associated with whether the gimbal's yaw axis
+ *  SmoothTrack can be toggled. The corresponding value in `capabilities` is an
+ *  instance of `DJIParamCapability`. Ronin-MX cannot toggle the SmoothTrack
  *  functionality and it is always enabled.
  */
 extern NSString *const DJIGimbalParamYawSmoothTrackEnabled;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's pitch axis
- *  SmoothTrack acceleration can be adjusted. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's pitch axis
+ *  SmoothTrack acceleration can be adjusted. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */
@@ -550,8 +568,8 @@ extern NSString *const DJIGimbalParamPitchSmoothTrackAcceleration;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's yaw axis
- *  SmoothTrack acceleration can be adjusted. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's yaw axis
+ *  SmoothTrack acceleration can be adjusted. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */
@@ -559,80 +577,80 @@ extern NSString *const DJIGimbalParamYawSmoothTrackAcceleration;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's pitch axis
- *  SmoothTrack speed can be adjusted. The corresponding value  in `capabilities` is
- *  an instance of `DJIParamCapabilityMinMax` meaning both the  feature's existence
+ *  Key string in `capabilities` associated with whether the gimbal's pitch axis
+ *  SmoothTrack speed can be adjusted. The corresponding value in `capabilities` is
+ *  an instance of `DJIParamCapabilityMinMax` meaning both the feature's existence
  *  as well as its possible range (unitless) is returned.
  */
 extern NSString *const DJIGimbalParamPitchSmoothTrackSpeed;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's yaw axis
- *  SmoothTrack speed can be adjusted. The corresponding value  in `capabilities` is
- *  an instance of `DJIParamCapabilityMinMax` meaning both the  feature's existence
+ *  Key string in `capabilities` associated with whether the gimbal's yaw axis
+ *  SmoothTrack speed can be adjusted. The corresponding value in `capabilities` is
+ *  an instance of `DJIParamCapabilityMinMax` meaning both the feature's existence
  *  as well as its possible range (unitless) is returned.
  */
 extern NSString *const DJIGimbalParamYawSmoothTrackSpeed;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's pitch axis
- *  SmoothTrack deadband can be adjusted. The corresponding value  in `capabilities`
- *  is an instance of `DJIParamCapabilityMinMax` meaning both the  feature's
+ *  Key string in `capabilities` associated with whether the gimbal's pitch axis
+ *  SmoothTrack deadband can be adjusted. The corresponding value in `capabilities`
+ *  is an instance of `DJIParamCapabilityMinMax` meaning both the feature's
  *  existence as well as its possible range (unitless) is returned.
  */
 extern NSString *const DJIGimbalParamPitchSmoothTrackDeadband;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's yaw axis
- *  SmoothTrack deadband can be adjusted. The corresponding value  in `capabilities`
- *  is an instance of `DJIParamCapabilityMinMax` meaning both the  feature's
+ *  Key string in `capabilities` associated with whether the gimbal's yaw axis
+ *  SmoothTrack deadband can be adjusted. The corresponding value in `capabilities`
+ *  is an instance of `DJIParamCapabilityMinMax` meaning both the feature's
  *  existence as well as its possible range (unitless) is returned.
  */
 extern NSString *const DJIGimbalParamYawSmoothTrackDeadband;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's pitch up
- *  endpoint can be adjusted. The corresponding value  in `capabilities` is an
- *  instance of `DJIParamCapabilityMinMax` meaning both the  feature's existence as
+ *  Key string in `capabilities` associated with whether the gimbal's pitch up
+ *  endpoint can be adjusted. The corresponding value in `capabilities` is an
+ *  instance of `DJIParamCapabilityMinMax` meaning both the feature's existence as
  *  well as its possible range (unitless) is returned.
  */
 extern NSString *const DJIGimbalParamPitchUpEndpoint;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's pitch down
- *  endpoint can be adjusted. The corresponding value  in `capabilities` is an
- *  instance of `DJIParamCapabilityMinMax` meaning both the  feature's existence as
+ *  Key string in `capabilities` associated with whether the gimbal's pitch down
+ *  endpoint can be adjusted. The corresponding value in `capabilities` is an
+ *  instance of `DJIParamCapabilityMinMax` meaning both the feature's existence as
  *  well as its possible range (unitless) is returned.
  */
 extern NSString *const DJIGimbalParamPitchDownEndpoint;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's yaw left
- *  endpoint can be adjusted. The corresponding value  in `capabilities` is an
- *  instance of `DJIParamCapabilityMinMax` meaning both the  feature's existence as
+ *  Key string in `capabilities` associated with whether the gimbal's yaw left
+ *  endpoint can be adjusted. The corresponding value in `capabilities` is an
+ *  instance of `DJIParamCapabilityMinMax` meaning both the feature's existence as
  *  well as its possible range (unitless) is returned.
  */
 extern NSString *const DJIGimbalParamYawLeftEndpoint;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's yaw right
- *  endpoint can be adjusted. The corresponding value  in `capabilities` is an
- *  instance of `DJIParamCapabilityMinMax` meaning both the  feature's existence as
+ *  Key string in `capabilities` associated with whether the gimbal's yaw right
+ *  endpoint can be adjusted. The corresponding value in `capabilities` is an
+ *  instance of `DJIParamCapabilityMinMax` meaning both the feature's existence as
  *  well as its possible range (unitless) is returned.
  */
 extern NSString *const DJIGimbalParamYawRightEndpoint;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's pitch axis
- *  motor control stiffness can be adjusted. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's pitch axis
+ *  motor control stiffness can be adjusted. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */
@@ -640,17 +658,17 @@ extern NSString *const DJIGimbalParamPitchMotorControlStiffness;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's yaw axis
- *  motor control stiffness can be adjusted. The corresponding value  in
- *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
- *  feature's existence as well as its possible range (unitless) is returned.
+ *  Key string in `capabilities` associated with whether the gimbal's yaw axis motor
+ *  control stiffness can be adjusted. The corresponding value in `capabilities` is
+ *  an instance of `DJIParamCapabilityMinMax` meaning both the feature's existence
+ *  as well as its possible range (unitless) is returned.
  */
 extern NSString *const DJIGimbalParamYawMotorControlStiffness;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's roll axis
- *  motor control stiffness can be adjusted. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's roll axis
+ *  motor control stiffness can be adjusted. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */
@@ -658,8 +676,8 @@ extern NSString *const DJIGimbalParamRollMotorControlStiffness;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's pitch axis
- *  motor control strength can be adjusted. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's pitch axis
+ *  motor control strength can be adjusted. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */
@@ -667,17 +685,17 @@ extern NSString *const DJIGimbalParamPitchMotorControlStrength;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's yaw axis
- *  motor control strength can be adjusted. The corresponding value  in
- *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
- *  feature's existence as well as its possible range (unitless) is returned.
+ *  Key string in `capabilities` associated with whether the gimbal's yaw axis motor
+ *  control strength can be adjusted. The corresponding value in `capabilities` is
+ *  an instance of `DJIParamCapabilityMinMax` meaning both the feature's existence
+ *  as well as its possible range (unitless) is returned.
  */
 extern NSString *const DJIGimbalParamYawMotorControlStrength;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's roll axis
- *  motor control strength can be adjusted. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's roll axis
+ *  motor control strength can be adjusted. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */
@@ -685,8 +703,8 @@ extern NSString *const DJIGimbalParamRollMotorControlStrength;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's pitch axis
- *  motor control gyro filtering can be adjusted. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's pitch axis
+ *  motor control gyro filtering can be adjusted. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */
@@ -694,8 +712,8 @@ extern NSString *const DJIGimbalParamPitchMotorControlGyroFilteringFactor;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's yaw axis
- *  motor control gyro filtering can be adjusted. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's yaw axis motor
+ *  control gyro filtering can be adjusted. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */
@@ -703,8 +721,8 @@ extern NSString *const DJIGimbalParamYawMotorControlGyroFilteringFactor;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's roll axis
- *  motor control gyro filtering can be adjusted. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's roll axis
+ *  motor control gyro filtering can be adjusted. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */
@@ -712,8 +730,8 @@ extern NSString *const DJIGimbalParamRollMotorControlGyroFilteringFactor;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's pitch axis
- *  motor control "precontrol" can be adjusted. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's pitch axis
+ *  motor control "precontrol" can be adjusted. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */
@@ -721,17 +739,17 @@ extern NSString *const DJIGimbalParamPitchMotorControlPreControl;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's yaw axis
- *  motor control "precontrol" can be adjusted. The corresponding value  in
- *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
- *  feature's existence as well as its possible range (unitless) is returned.
+ *  Key string in `capabilities` associated with whether the gimbal's yaw axis motor
+ *  control "precontrol" can be adjusted. The corresponding value in `capabilities`
+ *  is an instance of `DJIParamCapabilityMinMax` meaning both the feature's
+ *  existence as well as its possible range (unitless) is returned.
  */
 extern NSString *const DJIGimbalParamYawMotorControlPreControl;
 
 
 /**
- *  Key string in `capabilities` associated with whether the  gimbal's roll axis
- *  motor control "precontrol" can be adjusted. The corresponding value  in
+ *  Key string in `capabilities` associated with whether the gimbal's roll axis
+ *  motor control "precontrol" can be adjusted. The corresponding value in
  *  `capabilities` is an instance of `DJIParamCapabilityMinMax` meaning both the
  *  feature's existence as well as its possible range (unitless) is returned.
  */

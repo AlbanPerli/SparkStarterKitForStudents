@@ -116,7 +116,56 @@ extern NSString *const DJICameraDisplayNameSparkCamera;
 
 
 /**
+ *  The display name for Phantom 4 Pro V2 camera.
+ */
+extern NSString *const DJICameraDisplayNamePhantom4ProV2Camera;
+
+
+/**
  *  The display name for X7 camera.
  */
 extern NSString *const DJICameraDisplayNameX7;
+
+
+/**
+ *  The display name for XT2 thermal camera.
+ */
+extern NSString *const DJICameraDisplayNameXT2Thermal;
+
+
+/**
+ *  The display name for XT2 visual camera.
+ */
+extern NSString *const DJICameraDisplayNameXT2Visual;
+
+
+/**
+ *  The display name for Mavic Air camera.
+ */
+extern NSString *const DJICameraDisplayNameMavicAirCamera;
+
+
+/**
+ *  The display name for Mavic 2 Zoom camera.
+ */
+extern NSString *const DJICameraDisplayNameMavic2ZoomCamera;
+
+
+/**
+ *  The display name for Mavic 2 Pro camera.
+ */
+extern NSString *const DJICameraDisplayNameMavic2ProCamera;
+
+
+/**
+ *  The display name for a camera payload.
+ */
+extern NSString *const DJICameraDisplayNamePayload;
+
+
+/**
+ *  The display name for Mavic 2 Enterprise.
+ */
+extern NSString *const DJICameraDisplayNameMavic2EnterpriseCamera;
+
 #endif /* DJICameraDisplayNames_h */

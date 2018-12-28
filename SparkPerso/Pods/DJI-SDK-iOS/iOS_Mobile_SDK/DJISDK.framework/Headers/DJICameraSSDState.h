@@ -24,7 +24,7 @@
 
 
 /**
- *  `YES` if the SSD is connected. Note, if the camera is disconnected,  the values
+ *  `YES` if the SSD is connected. Note, if the camera is disconnected, the values
  *  for other properties in `DJICameraSSDState` are undefined.
  */
 @property (nonatomic, readonly) BOOL isConnected;

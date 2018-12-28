@@ -231,6 +231,43 @@ typedef NS_ENUM(NSInteger, DJIVideoFeedPhysicalSource) {
  */
 - (void)removeAllListeners;
 
+
+/**
+ *  Parses decoding assistant information for H.264 stream data. The information
+ *  will  be useful for the H.264 decoder.
+ *  
+ *  @param buffer H.264 stream data to parse.
+ *  @param length The data's length.
+ *  @param assistInfo An allocated memory with at least 8 bytes to receive the assistant information.
+ *  
+ *  @return `YES` if information is parsed successfully from the stream.
+ */
+- (BOOL)parseDecodingAssistInfoWithBuffer:(uint8_t *)buffer length:(int)length assistInfo:(void *)assistInfo;
+
+
+/**
+ *  Synchronizes the decoder status (if it is in normal status) to the video feeder.
+ *  The  decoder status is useful for the assistant information parser.
+ *  
+ *  @param isNormal `YES` if the decoder is in normal status.
+ */
+- (void)syncDecoderStatus:(BOOL)isNormal;
+
+
+/**
+ *  Tells the parser that the decoder has decoded a frame successfully.
+ *  
+ *  @param timestamp The timestamp of the decoded frame.
+ */
+- (void)decodingDidSucceedWithTimestamp:(NSUInteger)timestamp;
+
+
+/**
+ *  Tells the parser that the decoder has failed to decode frames from the video
+ *  feed.
+ */
+- (void)decodingDidFail;
+
 @end
 
 NS_ASSUME_NONNULL_END
