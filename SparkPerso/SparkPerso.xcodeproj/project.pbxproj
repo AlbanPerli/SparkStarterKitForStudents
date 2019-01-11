@@ -15,6 +15,7 @@
 		612304BB200BD77300F98395 /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BA200BD77300F98395 /* LocationDelegate.swift */; };
 		612304BE200BDCEE00F98395 /* TakeOffAndLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */; };
 		612304C0200BE41500F98395 /* MovementLevelOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */; };
+		6132AB4F21E8962700D98D27 /* CGPoints+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6132AB4E21E8962700D98D27 /* CGPoints+Extensions.swift */; };
 		614F6E1620403BB30079B22D /* MovementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614F6E1520403BB30079B22D /* MovementManager.swift */; };
 		618F61D02040646500CAE2A3 /* Scenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618F61CE2040646500CAE2A3 /* Scenarios.swift */; };
 		618F61D12040646500CAE2A3 /* Infos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618F61CF2040646500CAE2A3 /* Infos.swift */; };
@@ -55,6 +56,7 @@
 		612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeOffAndLandingViewController.swift; sourceTree = "<group>"; };
 		612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementLevelOneViewController.swift; sourceTree = "<group>"; };
 		6130FA5B20404746009EE612 /* TestScenarios.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestScenarios.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		6132AB4E21E8962700D98D27 /* CGPoints+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGPoints+Extensions.swift"; path = "TestScenarios.playground/Sources/CGPoints+Extensions.swift"; sourceTree = "<group>"; };
 		614F6E1520403BB30079B22D /* MovementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementManager.swift; sourceTree = "<group>"; };
 		618F61CE2040646500CAE2A3 /* Scenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenarios.swift; sourceTree = "<group>"; };
 		618F61CF2040646500CAE2A3 /* Infos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Infos.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		612304B7200BC74500F98395 /* Starter */ = {
 			isa = PBXGroup;
 			children = (
+				6132AB4E21E8962700D98D27 /* CGPoints+Extensions.swift */,
 				618F61D22040646900CAE2A3 /* Model */,
 				6130FA5B20404746009EE612 /* TestScenarios.playground */,
 				61DAFC0E200B9AB3001CB2E2 /* ConnectionViewController.swift */,
@@ -314,6 +317,7 @@
 				61D50D7220274586000842A3 /* AccelerometerViewController.swift in Sources */,
 				61C0211420404AD3006D887D /* AutomaticMovementViewController.swift in Sources */,
 				612304B0200BB6A000F98395 /* CameraViewController.swift in Sources */,
+				6132AB4F21E8962700D98D27 /* CGPoints+Extensions.swift in Sources */,
 				61DAFC0F200B9AB3001CB2E2 /* ConnectionViewController.swift in Sources */,
 				61DAFC0D200B9AB3001CB2E2 /* AppDelegate.swift in Sources */,
 			);
