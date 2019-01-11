@@ -9,11 +9,11 @@
 import Foundation
 import CoreGraphics
 
-func degreesToRadians(degrees: CGFloat) -> CGFloat {
+public func degreesToRadians(degrees: CGFloat) -> CGFloat {
     return degrees * CGFloat(M_PI) / 180
 }
 
-func radiansToDegress(radians: CGFloat) -> CGFloat {
+public func radiansToDegress(radians: CGFloat) -> CGFloat {
     return radians * 180 / CGFloat(M_PI)
 }
 
@@ -42,6 +42,13 @@ public extension CGPoint {
         x += dx
         y += dy
         return self
+    }
+    
+    /**
+     * Adds (dx, dy) and create a new point.
+     */
+    public func createWithOffset(dx: CGFloat, dy: CGFloat) -> CGPoint {
+        return CGPoint(x: x + dx, y: y + dy)
     }
     
     /**
@@ -91,7 +98,7 @@ public extension CGPoint {
     }
 }
 
-extension CGPoint {
+public extension CGPoint {
     
     static func pointOnCircle(center: CGPoint, radius: CGFloat, angle: CGFloat) -> CGPoint {
         let x = center.x + radius * cos(angle)
