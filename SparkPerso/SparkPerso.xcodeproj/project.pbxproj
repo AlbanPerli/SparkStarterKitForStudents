@@ -15,12 +15,17 @@
 		612304BB200BD77300F98395 /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BA200BD77300F98395 /* LocationDelegate.swift */; };
 		612304BE200BDCEE00F98395 /* TakeOffAndLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */; };
 		612304C0200BE41500F98395 /* MovementLevelOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */; };
-		614F6E1620403BB30079B22D /* MovementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614F6E1520403BB30079B22D /* MovementManager.swift */; };
-		618F61D02040646500CAE2A3 /* Scenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618F61CE2040646500CAE2A3 /* Scenarios.swift */; };
-		618F61D12040646500CAE2A3 /* Infos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618F61CF2040646500CAE2A3 /* Infos.swift */; };
-		618F61D42040647E00CAE2A3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618F61D32040647E00CAE2A3 /* SwiftyJSON.swift */; };
+		6184E2D121E8ABA600895FDF /* SparkPersoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2D021E8ABA600895FDF /* SparkPersoTests.swift */; };
+		6184E2D921E8ABB000895FDF /* DirectionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2D821E8ABB000895FDF /* DirectionSequence.swift */; };
+		6184E2DB21E8ABB300895FDF /* CGPoints+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DA21E8ABB300895FDF /* CGPoints+Extensions.swift */; };
+		6184E2DE21E8ABCC00895FDF /* MovingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DD21E8ABCC00895FDF /* MovingManager.swift */; };
+		6184E2E021E8ABE800895FDF /* Mouvement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DF21E8ABE800895FDF /* Mouvement.swift */; };
+		6184E2E121E8ABFB00895FDF /* MovingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DD21E8ABCC00895FDF /* MovingManager.swift */; };
+		6184E2E221E8ABFD00895FDF /* Mouvement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DF21E8ABE800895FDF /* Mouvement.swift */; };
+		6184E2E321E8AC2700895FDF /* DirectionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2D821E8ABB000895FDF /* DirectionSequence.swift */; };
+		6184E2E521E8AFEB00895FDF /* AutoMoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2E421E8AFEB00895FDF /* AutoMoveViewController.swift */; };
 		618F61D6204064C900CAE2A3 /* Scenar.json in Resources */ = {isa = PBXBuildFile; fileRef = 618F61D5204064C900CAE2A3 /* Scenar.json */; };
-		61C0211420404AD3006D887D /* AutomaticMovementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C0211320404AD3006D887D /* AutomaticMovementViewController.swift */; };
+		61CD7E1B21EF30630039A36A /* CGPoints+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DA21E8ABB300895FDF /* CGPoints+Extensions.swift */; };
 		61D50D7220274586000842A3 /* AccelerometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D50D7120274586000842A3 /* AccelerometerViewController.swift */; };
 		61DAFC0D200B9AB3001CB2E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAFC0C200B9AB3001CB2E2 /* AppDelegate.swift */; };
 		61DAFC0F200B9AB3001CB2E2 /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAFC0E200B9AB3001CB2E2 /* ConnectionViewController.swift */; };
@@ -29,6 +34,16 @@
 		61DAFC17200B9AB3001CB2E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61DAFC15200B9AB3001CB2E2 /* LaunchScreen.storyboard */; };
 		B25DCA3E206348505DAC1430 /* Pods_SparkPerso.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9574723689CDFD5A62E8841B /* Pods_SparkPerso.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6184E2D321E8ABA600895FDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61DAFC01200B9AB3001CB2E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61DAFC08200B9AB3001CB2E2;
+			remoteInfo = SparkPerso;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		612304B6200BBC1F00F98395 /* Embed Frameworks */ = {
@@ -54,14 +69,16 @@
 		612304BA200BD77300F98395 /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
 		612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeOffAndLandingViewController.swift; sourceTree = "<group>"; };
 		612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementLevelOneViewController.swift; sourceTree = "<group>"; };
-		6130FA5B20404746009EE612 /* TestScenarios.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestScenarios.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		614F6E1520403BB30079B22D /* MovementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementManager.swift; sourceTree = "<group>"; };
-		618F61CE2040646500CAE2A3 /* Scenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenarios.swift; sourceTree = "<group>"; };
-		618F61CF2040646500CAE2A3 /* Infos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Infos.swift; sourceTree = "<group>"; };
-		618F61D32040647E00CAE2A3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		6184E2CE21E8ABA600895FDF /* SparkPersoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkPersoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6184E2D021E8ABA600895FDF /* SparkPersoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkPersoTests.swift; sourceTree = "<group>"; };
+		6184E2D221E8ABA600895FDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6184E2D821E8ABB000895FDF /* DirectionSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionSequence.swift; sourceTree = "<group>"; };
+		6184E2DA21E8ABB300895FDF /* CGPoints+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoints+Extensions.swift"; sourceTree = "<group>"; };
+		6184E2DD21E8ABCC00895FDF /* MovingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingManager.swift; sourceTree = "<group>"; };
+		6184E2DF21E8ABE800895FDF /* Mouvement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouvement.swift; sourceTree = "<group>"; };
+		6184E2E421E8AFEB00895FDF /* AutoMoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMoveViewController.swift; sourceTree = "<group>"; };
 		618F61D5204064C900CAE2A3 /* Scenar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Scenar.json; sourceTree = "<group>"; };
 		61B94651200E70E5001E5E41 /* SparkPerso.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SparkPerso.entitlements; sourceTree = "<group>"; };
-		61C0211320404AD3006D887D /* AutomaticMovementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticMovementViewController.swift; sourceTree = "<group>"; };
 		61D50D7120274586000842A3 /* AccelerometerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerViewController.swift; sourceTree = "<group>"; };
 		61DAFC09200B9AB3001CB2E2 /* SparkPerso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SparkPerso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DAFC0C200B9AB3001CB2E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +91,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6184E2CB21E8ABA600895FDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		61DAFC06200B9AB3001CB2E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,16 +121,13 @@
 		612304B7200BC74500F98395 /* Starter */ = {
 			isa = PBXGroup;
 			children = (
-				618F61D22040646900CAE2A3 /* Model */,
-				6130FA5B20404746009EE612 /* TestScenarios.playground */,
+				61CD7E1C21EF31EC0039A36A /* Automatic */,
 				61DAFC0E200B9AB3001CB2E2 /* ConnectionViewController.swift */,
 				612304AF200BB6A000F98395 /* CameraViewController.swift */,
 				612304BC200BD77A00F98395 /* Heading+Calibration */,
 				612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */,
 				612304BF200BE41500F98395 /* MovementLevelOneViewController.swift */,
 				61D50D7120274586000842A3 /* AccelerometerViewController.swift */,
-				614F6E1520403BB30079B22D /* MovementManager.swift */,
-				61C0211320404AD3006D887D /* AutomaticMovementViewController.swift */,
 				618F61D5204064C900CAE2A3 /* Scenar.json */,
 			);
 			path = Starter;
@@ -121,20 +142,40 @@
 			path = "Heading+Calibration";
 			sourceTree = "<group>";
 		};
-		618F61D22040646900CAE2A3 /* Model */ = {
+		6184E2CF21E8ABA600895FDF /* SparkPersoTests */ = {
 			isa = PBXGroup;
 			children = (
-				618F61D32040647E00CAE2A3 /* SwiftyJSON.swift */,
-				618F61CF2040646500CAE2A3 /* Infos.swift */,
-				618F61CE2040646500CAE2A3 /* Scenarios.swift */,
+				6184E2D021E8ABA600895FDF /* SparkPersoTests.swift */,
+				6184E2D221E8ABA600895FDF /* Info.plist */,
 			);
-			path = Model;
+			path = SparkPersoTests;
+			sourceTree = "<group>";
+		};
+		6184E2DC21E8ABC100895FDF /* Moving */ = {
+			isa = PBXGroup;
+			children = (
+				6184E2DA21E8ABB300895FDF /* CGPoints+Extensions.swift */,
+				6184E2D821E8ABB000895FDF /* DirectionSequence.swift */,
+				6184E2DD21E8ABCC00895FDF /* MovingManager.swift */,
+				6184E2DF21E8ABE800895FDF /* Mouvement.swift */,
+			);
+			path = Moving;
+			sourceTree = "<group>";
+		};
+		61CD7E1C21EF31EC0039A36A /* Automatic */ = {
+			isa = PBXGroup;
+			children = (
+				6184E2E421E8AFEB00895FDF /* AutoMoveViewController.swift */,
+				6184E2DC21E8ABC100895FDF /* Moving */,
+			);
+			path = Automatic;
 			sourceTree = "<group>";
 		};
 		61DAFC00200B9AB3001CB2E2 = {
 			isa = PBXGroup;
 			children = (
 				61DAFC0B200B9AB3001CB2E2 /* SparkPerso */,
+				6184E2CF21E8ABA600895FDF /* SparkPersoTests */,
 				61DAFC0A200B9AB3001CB2E2 /* Products */,
 				9DE103B774E7C0D0D915A0FF /* Pods */,
 				DAF062492152209D4BDB5354 /* Frameworks */,
@@ -145,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				61DAFC09200B9AB3001CB2E2 /* SparkPerso.app */,
+				6184E2CE21E8ABA600895FDF /* SparkPersoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,6 +227,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6184E2CD21E8ABA600895FDF /* SparkPersoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6184E2D521E8ABA600895FDF /* Build configuration list for PBXNativeTarget "SparkPersoTests" */;
+			buildPhases = (
+				6184E2CA21E8ABA600895FDF /* Sources */,
+				6184E2CB21E8ABA600895FDF /* Frameworks */,
+				6184E2CC21E8ABA600895FDF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6184E2D421E8ABA600895FDF /* PBXTargetDependency */,
+			);
+			name = SparkPersoTests;
+			productName = SparkPersoTests;
+			productReference = 6184E2CE21E8ABA600895FDF /* SparkPersoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		61DAFC08200B9AB3001CB2E2 /* SparkPerso */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 61DAFC1B200B9AB3001CB2E2 /* Build configuration list for PBXNativeTarget "SparkPerso" */;
@@ -211,10 +271,15 @@
 		61DAFC01200B9AB3001CB2E2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = AlbanPerli;
 				TargetAttributes = {
+					6184E2CD21E8ABA600895FDF = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 61DAFC08200B9AB3001CB2E2;
+					};
 					61DAFC08200B9AB3001CB2E2 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -240,11 +305,19 @@
 			projectRoot = "";
 			targets = (
 				61DAFC08200B9AB3001CB2E2 /* SparkPerso */,
+				6184E2CD21E8ABA600895FDF /* SparkPersoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6184E2CC21E8ABA600895FDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		61DAFC07200B9AB3001CB2E2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -298,21 +371,33 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6184E2CA21E8ABA600895FDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6184E2E321E8AC2700895FDF /* DirectionSequence.swift in Sources */,
+				6184E2E221E8ABFD00895FDF /* Mouvement.swift in Sources */,
+				61CD7E1B21EF30630039A36A /* CGPoints+Extensions.swift in Sources */,
+				6184E2D121E8ABA600895FDF /* SparkPersoTests.swift in Sources */,
+				6184E2E121E8ABFB00895FDF /* MovingManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		61DAFC05200B9AB3001CB2E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				612304BE200BDCEE00F98395 /* TakeOffAndLandingViewController.swift in Sources */,
+				6184E2D921E8ABB000895FDF /* DirectionSequence.swift in Sources */,
 				612304B9200BC77200F98395 /* CalibrationAndHeadingViewController.swift in Sources */,
-				614F6E1620403BB30079B22D /* MovementManager.swift in Sources */,
+				6184E2E521E8AFEB00895FDF /* AutoMoveViewController.swift in Sources */,
 				612304BB200BD77300F98395 /* LocationDelegate.swift in Sources */,
+				6184E2DE21E8ABCC00895FDF /* MovingManager.swift in Sources */,
+				6184E2E021E8ABE800895FDF /* Mouvement.swift in Sources */,
 				612304C0200BE41500F98395 /* MovementLevelOneViewController.swift in Sources */,
-				618F61D42040647E00CAE2A3 /* SwiftyJSON.swift in Sources */,
-				618F61D02040646500CAE2A3 /* Scenarios.swift in Sources */,
+				6184E2DB21E8ABB300895FDF /* CGPoints+Extensions.swift in Sources */,
 				612304AA200BABF200F98395 /* ProductCommunicationManager.swift in Sources */,
-				618F61D12040646500CAE2A3 /* Infos.swift in Sources */,
 				61D50D7220274586000842A3 /* AccelerometerViewController.swift in Sources */,
-				61C0211420404AD3006D887D /* AutomaticMovementViewController.swift in Sources */,
 				612304B0200BB6A000F98395 /* CameraViewController.swift in Sources */,
 				61DAFC0F200B9AB3001CB2E2 /* ConnectionViewController.swift in Sources */,
 				61DAFC0D200B9AB3001CB2E2 /* AppDelegate.swift in Sources */,
@@ -320,6 +405,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6184E2D421E8ABA600895FDF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61DAFC08200B9AB3001CB2E2 /* SparkPerso */;
+			targetProxy = 6184E2D321E8ABA600895FDF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		61DAFC10200B9AB3001CB2E2 /* Main.storyboard */ = {
@@ -341,6 +434,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6184E2D621E8ABA600895FDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G739VH73FZ;
+				INFOPLIST_FILE = SparkPersoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alban.perli.SparkPersoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SparkPerso.app/SparkPerso";
+			};
+			name = Debug;
+		};
+		6184E2D721E8ABA600895FDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G739VH73FZ;
+				INFOPLIST_FILE = SparkPersoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alban.perli.SparkPersoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SparkPerso.app/SparkPerso";
+			};
+			name = Release;
+		};
 		61DAFC19200B9AB3001CB2E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -495,6 +631,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6184E2D521E8ABA600895FDF /* Build configuration list for PBXNativeTarget "SparkPersoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6184E2D621E8ABA600895FDF /* Debug */,
+				6184E2D721E8ABA600895FDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		61DAFC04200B9AB3001CB2E2 /* Build configuration list for PBXProject "SparkPerso" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
