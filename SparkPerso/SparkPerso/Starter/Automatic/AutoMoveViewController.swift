@@ -20,10 +20,10 @@ class AutoMoveViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         MovingManager.instance.restart()
-        MovingManager.instance.appendMouvement(mouvement: Mouvement(direction: .top, duration: 3.0))
-        MovingManager.instance.appendMouvement(mouvement: Mouvement(direction: .back, duration: 3.1))
-        MovingManager.instance.appendMouvement(mouvement: Mouvement(direction: .topRight, duration: 5.2))
-        MovingManager.instance.appendMouvement(mouvement: Mouvement(direction: .left, duration: 2.8))
+        MovingManager.instance.appendMouvement(mouvement: Movement(direction: .top, duration: 3.0))
+        MovingManager.instance.appendMouvement(mouvement: Movement(direction: .back, duration: 3.1))
+        MovingManager.instance.appendMouvement(mouvement: Movement(direction: .topRight, duration: 5.2))
+        MovingManager.instance.appendMouvement(mouvement: Movement(direction: .left, duration: 2.8))
         
         MovingManager.instance.play()
     }

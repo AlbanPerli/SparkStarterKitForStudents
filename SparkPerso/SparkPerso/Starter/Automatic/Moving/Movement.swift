@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Mouvement {
+struct Movement {
     var direction:Direction
     var duration:CGFloat
     

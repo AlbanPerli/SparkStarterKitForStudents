@@ -19,9 +19,9 @@
 		6184E2D921E8ABB000895FDF /* DirectionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2D821E8ABB000895FDF /* DirectionSequence.swift */; };
 		6184E2DB21E8ABB300895FDF /* CGPoints+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DA21E8ABB300895FDF /* CGPoints+Extensions.swift */; };
 		6184E2DE21E8ABCC00895FDF /* MovingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DD21E8ABCC00895FDF /* MovingManager.swift */; };
-		6184E2E021E8ABE800895FDF /* Mouvement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DF21E8ABE800895FDF /* Mouvement.swift */; };
+		6184E2E021E8ABE800895FDF /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DF21E8ABE800895FDF /* Movement.swift */; };
 		6184E2E121E8ABFB00895FDF /* MovingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DD21E8ABCC00895FDF /* MovingManager.swift */; };
-		6184E2E221E8ABFD00895FDF /* Mouvement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DF21E8ABE800895FDF /* Mouvement.swift */; };
+		6184E2E221E8ABFD00895FDF /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DF21E8ABE800895FDF /* Movement.swift */; };
 		6184E2E321E8AC2700895FDF /* DirectionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2D821E8ABB000895FDF /* DirectionSequence.swift */; };
 		6184E2E521E8AFEB00895FDF /* AutoMoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2E421E8AFEB00895FDF /* AutoMoveViewController.swift */; };
 		618F61D6204064C900CAE2A3 /* Scenar.json in Resources */ = {isa = PBXBuildFile; fileRef = 618F61D5204064C900CAE2A3 /* Scenar.json */; };
@@ -75,7 +75,7 @@
 		6184E2D821E8ABB000895FDF /* DirectionSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionSequence.swift; sourceTree = "<group>"; };
 		6184E2DA21E8ABB300895FDF /* CGPoints+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoints+Extensions.swift"; sourceTree = "<group>"; };
 		6184E2DD21E8ABCC00895FDF /* MovingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingManager.swift; sourceTree = "<group>"; };
-		6184E2DF21E8ABE800895FDF /* Mouvement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouvement.swift; sourceTree = "<group>"; };
+		6184E2DF21E8ABE800895FDF /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		6184E2E421E8AFEB00895FDF /* AutoMoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMoveViewController.swift; sourceTree = "<group>"; };
 		618F61D5204064C900CAE2A3 /* Scenar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Scenar.json; sourceTree = "<group>"; };
 		61B94651200E70E5001E5E41 /* SparkPerso.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SparkPerso.entitlements; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 				6184E2DA21E8ABB300895FDF /* CGPoints+Extensions.swift */,
 				6184E2D821E8ABB000895FDF /* DirectionSequence.swift */,
 				6184E2DD21E8ABCC00895FDF /* MovingManager.swift */,
-				6184E2DF21E8ABE800895FDF /* Mouvement.swift */,
+				6184E2DF21E8ABE800895FDF /* Movement.swift */,
 			);
 			path = Moving;
 			sourceTree = "<group>";
@@ -376,7 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6184E2E321E8AC2700895FDF /* DirectionSequence.swift in Sources */,
-				6184E2E221E8ABFD00895FDF /* Mouvement.swift in Sources */,
+				6184E2E221E8ABFD00895FDF /* Movement.swift in Sources */,
 				61CD7E1B21EF30630039A36A /* CGPoints+Extensions.swift in Sources */,
 				6184E2D121E8ABA600895FDF /* SparkPersoTests.swift in Sources */,
 				6184E2E121E8ABFB00895FDF /* MovingManager.swift in Sources */,
@@ -393,7 +393,7 @@
 				6184E2E521E8AFEB00895FDF /* AutoMoveViewController.swift in Sources */,
 				612304BB200BD77300F98395 /* LocationDelegate.swift in Sources */,
 				6184E2DE21E8ABCC00895FDF /* MovingManager.swift in Sources */,
-				6184E2E021E8ABE800895FDF /* Mouvement.swift in Sources */,
+				6184E2E021E8ABE800895FDF /* Movement.swift in Sources */,
 				612304C0200BE41500F98395 /* MovementLevelOneViewController.swift in Sources */,
 				6184E2DB21E8ABB300895FDF /* CGPoints+Extensions.swift in Sources */,
 				612304AA200BABF200F98395 /* ProductCommunicationManager.swift in Sources */,

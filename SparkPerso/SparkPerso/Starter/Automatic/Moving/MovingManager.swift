@@ -13,14 +13,14 @@ import UIKit
 class MovingManager {
     
     static let instance = MovingManager()
-    var mouvements = [Mouvement]()
+    var mouvements = [Movement]()
     
     func restart() {
         DirectionSequence.instance.content.removeAll()
         mouvements = []
     }
     
-    func appendMouvement(mouvement:Mouvement) {
+    func appendMouvement(mouvement:Movement) {
         DirectionSequence.instance.content.append(mouvement.description())
         mouvements.append(mouvement)
     }
