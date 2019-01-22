@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6117015521F5F12D009F47E4 /* GimbalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117015421F5F12D009F47E4 /* GimbalManager.swift */; };
+		6117015B21F60C63009F47E4 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6117015A21F60C63009F47E4 /* MobileNet.mlmodel */; };
+		6117015E21F60C7F009F47E4 /* ImageRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117015D21F60C7F009F47E4 /* ImageRecognition.swift */; };
+		6117016021F60CB4009F47E4 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117015F21F60CB4009F47E4 /* UIImage+CVPixelBuffer.swift */; };
 		612304AA200BABF200F98395 /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304A9200BABF200F98395 /* ProductCommunicationManager.swift */; };
 		612304B0200BB6A000F98395 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304AF200BB6A000F98395 /* CameraViewController.swift */; };
 		612304B4200BBC1E00F98395 /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612304B1200BB73300F98395 /* VideoPreviewer.framework */; };
@@ -62,6 +66,10 @@
 /* Begin PBXFileReference section */
 		3FC166B54DFCF09CC13A3795 /* Pods-SparkPerso.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SparkPerso.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SparkPerso/Pods-SparkPerso.debug.xcconfig"; sourceTree = "<group>"; };
 		43A0CB1DA1DFC20A7F568AB0 /* Pods-SparkPerso.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SparkPerso.release.xcconfig"; path = "Pods/Target Support Files/Pods-SparkPerso/Pods-SparkPerso.release.xcconfig"; sourceTree = "<group>"; };
+		6117015421F5F12D009F47E4 /* GimbalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GimbalManager.swift; sourceTree = "<group>"; };
+		6117015A21F60C63009F47E4 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
+		6117015D21F60C7F009F47E4 /* ImageRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognition.swift; sourceTree = "<group>"; };
+		6117015F21F60CB4009F47E4 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
 		612304A9200BABF200F98395 /* ProductCommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationManager.swift; sourceTree = "<group>"; };
 		612304AF200BB6A000F98395 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		612304B1200BB73300F98395 /* VideoPreviewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VideoPreviewer.framework; sourceTree = "<group>"; };
@@ -110,6 +118,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6117015321F5F10F009F47E4 /* Gimbal */ = {
+			isa = PBXGroup;
+			children = (
+				6117015421F5F12D009F47E4 /* GimbalManager.swift */,
+			);
+			path = Gimbal;
+			sourceTree = "<group>";
+		};
+		6117015C21F60C64009F47E4 /* IA */ = {
+			isa = PBXGroup;
+			children = (
+				6117015F21F60CB4009F47E4 /* UIImage+CVPixelBuffer.swift */,
+				6117015A21F60C63009F47E4 /* MobileNet.mlmodel */,
+				6117015D21F60C7F009F47E4 /* ImageRecognition.swift */,
+			);
+			path = IA;
+			sourceTree = "<group>";
+		};
 		612304AB200BABF700F98395 /* HelpersFromSample */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +147,8 @@
 		612304B7200BC74500F98395 /* Starter */ = {
 			isa = PBXGroup;
 			children = (
+				6117015C21F60C64009F47E4 /* IA */,
+				6117015321F5F10F009F47E4 /* Gimbal */,
 				61CD7E1C21EF31EC0039A36A /* Automatic */,
 				61DAFC0E200B9AB3001CB2E2 /* ConnectionViewController.swift */,
 				612304AF200BB6A000F98395 /* CameraViewController.swift */,
@@ -358,10 +386,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SparkPerso/Pods-SparkPerso-frameworks.sh",
 				"${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageDetect/ImageDetect.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageDetect.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -390,11 +420,15 @@
 				612304BE200BDCEE00F98395 /* TakeOffAndLandingViewController.swift in Sources */,
 				6184E2D921E8ABB000895FDF /* DirectionSequence.swift in Sources */,
 				612304B9200BC77200F98395 /* CalibrationAndHeadingViewController.swift in Sources */,
+				6117015E21F60C7F009F47E4 /* ImageRecognition.swift in Sources */,
 				6184E2E521E8AFEB00895FDF /* AutoMoveViewController.swift in Sources */,
 				612304BB200BD77300F98395 /* LocationDelegate.swift in Sources */,
 				6184E2DE21E8ABCC00895FDF /* MovingManager.swift in Sources */,
+				6117016021F60CB4009F47E4 /* UIImage+CVPixelBuffer.swift in Sources */,
 				6184E2E021E8ABE800895FDF /* Movement.swift in Sources */,
 				612304C0200BE41500F98395 /* MovementLevelOneViewController.swift in Sources */,
+				6117015B21F60C63009F47E4 /* MobileNet.mlmodel in Sources */,
+				6117015521F5F12D009F47E4 /* GimbalManager.swift in Sources */,
 				6184E2DB21E8ABB300895FDF /* CGPoints+Extensions.swift in Sources */,
 				612304AA200BABF200F98395 /* ProductCommunicationManager.swift in Sources */,
 				61D50D7220274586000842A3 /* AccelerometerViewController.swift in Sources */,

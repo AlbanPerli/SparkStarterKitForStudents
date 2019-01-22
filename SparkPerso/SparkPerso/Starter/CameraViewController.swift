@@ -9,10 +9,13 @@
 import UIKit
 import DJISDK
 import VideoPreviewer
+import ImageDetect
 
 class CameraViewController: UIViewController {
 
     @IBOutlet weak var extractedFrameImageView: UIImageView!
+    
+    @IBOutlet weak var resultLabel: UILabel!
     
     let prev1 = VideoPreviewer()
     @IBOutlet weak var cameraView: UIView!
@@ -23,6 +26,7 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +37,8 @@ class CameraViewController: UIViewController {
                 self.setupVideoPreview()
             }
             
+            GimbalManager.shared.setup(withDuration: 1.0, defaultPitch: -28.0)
+            
         }
     }
 
@@ -40,15 +46,47 @@ class CameraViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func lookFront(_ sender: Any) {
+        GimbalManager.shared.lookFront()
+    }
     
+    @IBAction func lookUnder(_ sender: Any) {
+        GimbalManager.shared.lookUnder()
+    }
     @IBAction func startStopCameraButtonClicked(_ sender: UIButton) {
-        
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             self.prev1?.snapshotThumnnail { (image) in
+                
                 if let img = image {
                     print(img.size)
                     // Resize it and put it in a neural network! :)
-                    self.extractedFrameImageView.image = img
+                
+                    if let infos = ImageRecognition.shared.predictUsingCoreML(image: img){
+                        self.extractedFrameImageView.image = infos.0
+                        self.resultLabel.text = infos.1
+                    }else{
+                        self.extractedFrameImageView.image = nil
+                        self.resultLabel.text = ""
+                    }
+                    
+                    /*
+                    img.detector.crop(type: DetectionType.face) { result in
+                        DispatchQueue.main.async { [weak self] in
+                            switch result {
+                            case .success(let croppedImages):
+                                // When the `Vision` successfully find type of object you set and successfuly crops it.
+                                self?.extractedFrameImageView.image = croppedImages.first
+                            case .notFound:
+                                // When the image doesn't contain any type of object you did set, `result` will be `.notFound`.
+                                print("Not Found")
+                            case .failure(let error):
+                                // When the any error occured, `result` will be `failure`.
+                                print(error.localizedDescription)
+                            }
+                        }
+                    }
+                     */
+                    
                 }
             }
         }

@@ -1,16 +1,20 @@
 PODS:
   - DJI-SDK-iOS (4.8.2)
+  - ImageDetect (1.1.3)
 
 DEPENDENCIES:
   - DJI-SDK-iOS (~> 4.8.2)
+  - ImageDetect
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - DJI-SDK-iOS
+    - ImageDetect
 
 SPEC CHECKSUMS:
   DJI-SDK-iOS: 1d29d7baa1cdeb19ea490bad47cf8419ce4f1055
+  ImageDetect: 1c9798bc83b761d0af3b11db7d457fcf3932c5a5
 
-PODFILE CHECKSUM: 77a12e59ad97073ae2169b9693c4f5f9d919da64
+PODFILE CHECKSUM: e599c52f8d5c45a96def390c3f7cd7fe1e940f98
 
 COCOAPODS: 1.5.3

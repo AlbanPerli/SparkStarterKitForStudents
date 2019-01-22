@@ -147,17 +147,51 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="D9r-rQ-IED">
+                                <rect key="frame" x="21" y="75" width="43" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7H-Cn-4nP">
+                                        <rect key="frame" x="0.0" y="0.0" width="43" height="30"/>
+                                        <state key="normal" title="Front"/>
+                                        <connections>
+                                            <action selector="lookFront:" destination="YKt-Di-K7K" eventType="touchUpInside" id="BYM-fx-fmz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kci-Nb-2Xd">
+                                        <rect key="frame" x="0.0" y="30" width="43" height="30"/>
+                                        <state key="normal" title="Under"/>
+                                        <connections>
+                                            <action selector="lookUnder:" destination="YKt-Di-K7K" eventType="touchUpInside" id="Bpn-kL-XfC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="43" id="gyd-Sg-KFf"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7P-NF-NXQ">
+                                <rect key="frame" x="21" y="461" width="283" height="49"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="D9r-rQ-IED" firstAttribute="top" secondItem="EMI-O1-QY6" secondAttribute="top" constant="11" id="6lM-5i-jjR"/>
                             <constraint firstItem="YIn-Cw-sQf" firstAttribute="top" secondItem="EMI-O1-QY6" secondAttribute="top" id="HiQ-aR-2F7"/>
                             <constraint firstItem="DMU-ur-pEb" firstAttribute="top" secondItem="YIn-Cw-sQf" secondAttribute="bottom" constant="8" id="HnX-fW-uga"/>
+                            <constraint firstItem="D9r-rQ-IED" firstAttribute="leading" secondItem="EMI-O1-QY6" secondAttribute="leading" constant="21" id="Ktk-hy-jAO"/>
                             <constraint firstItem="EMI-O1-QY6" firstAttribute="bottom" secondItem="2gt-RA-kvm" secondAttribute="bottom" constant="20" id="PNd-HU-aGO"/>
                             <constraint firstItem="fL5-dw-QWx" firstAttribute="centerX" secondItem="EMI-O1-QY6" secondAttribute="centerX" id="SQv-HS-8I2"/>
                             <constraint firstItem="2gt-RA-kvm" firstAttribute="centerX" secondItem="EMI-O1-QY6" secondAttribute="centerX" id="WvJ-YS-ixw"/>
                             <constraint firstItem="YIn-Cw-sQf" firstAttribute="centerX" secondItem="EMI-O1-QY6" secondAttribute="centerX" id="Z07-ST-qmy"/>
                             <constraint firstItem="DMU-ur-pEb" firstAttribute="centerX" secondItem="EMI-O1-QY6" secondAttribute="centerX" id="a8g-Ll-A82"/>
                             <constraint firstItem="fL5-dw-QWx" firstAttribute="centerY" secondItem="EMI-O1-QY6" secondAttribute="centerY" id="aLW-TR-h92"/>
+                            <constraint firstItem="v7P-NF-NXQ" firstAttribute="leading" secondItem="EMI-O1-QY6" secondAttribute="leading" constant="21" id="c6k-dJ-hbx"/>
+                            <constraint firstItem="v7P-NF-NXQ" firstAttribute="top" secondItem="fL5-dw-QWx" secondAttribute="bottom" constant="7.5" id="gRe-et-4tu"/>
+                            <constraint firstItem="EMI-O1-QY6" firstAttribute="trailing" secondItem="v7P-NF-NXQ" secondAttribute="trailing" constant="16" id="hiF-K8-JDu"/>
+                            <constraint firstItem="2gt-RA-kvm" firstAttribute="top" secondItem="v7P-NF-NXQ" secondAttribute="bottom" constant="8" id="sHU-7D-l0f"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EMI-O1-QY6"/>
                     </view>
@@ -166,6 +200,7 @@
                         <outlet property="camera2View" destination="DmQ-zr-kzo" id="gmE-KF-Faa"/>
                         <outlet property="cameraView" destination="HXf-7N-DCs" id="dlG-YX-1X7"/>
                         <outlet property="extractedFrameImageView" destination="Egs-rY-pcF" id="gZb-hl-HWy"/>
+                        <outlet property="resultLabel" destination="v7P-NF-NXQ" id="g7I-hh-Hsx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqv-gj-vJR" userLabel="First Responder" sceneMemberID="firstResponder"/>

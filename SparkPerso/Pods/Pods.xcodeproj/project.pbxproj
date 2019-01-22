@@ -7,40 +7,103 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		074349E3579CB8AD131F67BAA6DC84DC /* Pods-SparkPerso-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C67BA24A3F3BEC23159E920CE1E7173B /* Pods-SparkPerso-dummy.m */; };
-		5E812927CB96E698AFEC6EBB894537D1 /* Pods-SparkPerso-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F23F41D7E0ECBBBBAAD67A2078EAE29B /* Pods-SparkPerso-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		96CC12D9DE09443403E6EB54310C311C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		23C52630389D4182D9CD5AE597EF9225 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B309FE113AF30DFA127596BC6DB56A9 /* Foundation.framework */; };
+		61CBDCA9F956EB4B88C2C0970653A758 /* Pods-SparkPerso-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F23F41D7E0ECBBBBAAD67A2078EAE29B /* Pods-SparkPerso-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64D5736E00A7F7AAD7E0598F91F2DC64 /* Pods-SparkPerso-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C67BA24A3F3BEC23159E920CE1E7173B /* Pods-SparkPerso-dummy.m */; };
+		6B5FA992AFAC03C516F5C7CA9BF5CCB8 /* ImageDetect-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ED8B4ADC483B134E36891CBDF2C85 /* ImageDetect-dummy.m */; };
+		6FE21D029624E239EEAEA3360C2749EF /* ImageDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1490F8F88C299425ACCB31E2691966D1 /* ImageDetect.swift */; };
+		85CBA184FA78F5F6BB855B96CF7E85F4 /* ImageDetect-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 069ECB79E8ED905A242C01F5256DD5CB /* ImageDetect-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89449032357B7D09E12F9C908AEAE60F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B309FE113AF30DFA127596BC6DB56A9 /* Foundation.framework */; };
+		8E9C0F2230639F94E6D9C1DB2A6547C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF785FF55FA4A8F10520061092C67796 /* UIKit.framework */; };
+		9851C6FB5514083F8FCA278930E14B6A /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5FB1104EE81B4E3A7D5AD204A7184C /* Vision.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		501E3A0AA601DA3F381D5968068F3719 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD1A9E0FC822058C391F597256E5A931;
+			remoteInfo = ImageDetect;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		069ECB79E8ED905A242C01F5256DD5CB /* ImageDetect-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ImageDetect-umbrella.h"; sourceTree = "<group>"; };
+		0D0EABF3073B95C11870A8430B43E265 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12FFAA5930D992319DFD334D51ECEE3D /* Pods-SparkPerso-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SparkPerso-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1490F8F88C299425ACCB31E2691966D1 /* ImageDetect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDetect.swift; path = ImageDetect/Classes/ImageDetect.swift; sourceTree = "<group>"; };
+		2D2ED8B4ADC483B134E36891CBDF2C85 /* ImageDetect-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ImageDetect-dummy.m"; sourceTree = "<group>"; };
 		39E29AD987CFC5C50DCB0305E6AE0DB6 /* Pods-SparkPerso.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SparkPerso.debug.xcconfig"; sourceTree = "<group>"; };
+		4B309FE113AF30DFA127596BC6DB56A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5CB1BB65BBB0B90D705A8EA5831F91A4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D64167961231C3AFF3F554D8FE4CEF6 /* Pods-SparkPerso.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SparkPerso.modulemap"; sourceTree = "<group>"; };
-		60D35208A41F813C11CF2EABF1729F56 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = iOS_Mobile_SDK/DJISDK.framework; sourceTree = "<group>"; };
+		60EDB5D7BCFC31BA0E2EFC1D084CCBBF /* ImageDetect.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ImageDetect.modulemap; sourceTree = "<group>"; };
 		6401620BF888E8891646942492DDAF98 /* Pods-SparkPerso-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SparkPerso-acknowledgements.plist"; sourceTree = "<group>"; };
 		8E6585A84FCDE4F5F01D08FF138BB34B /* Pods-SparkPerso.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SparkPerso.release.xcconfig"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9CC721DE3432FEA6B5761593C8415B18 /* ImageDetect.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ImageDetect.xcconfig; sourceTree = "<group>"; };
+		B6D0D7BCB35E7781B80B9EF5DA2B3FD3 /* ImageDetect-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ImageDetect-prefix.pch"; sourceTree = "<group>"; };
 		B8D96DCA6E5D40819D432CDB9B72DEDD /* Pods-SparkPerso-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SparkPerso-frameworks.sh"; sourceTree = "<group>"; };
 		BA9654802F70A4B93EF2ED11F15A2150 /* Pods-SparkPerso-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SparkPerso-resources.sh"; sourceTree = "<group>"; };
 		C67BA24A3F3BEC23159E920CE1E7173B /* Pods-SparkPerso-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SparkPerso-dummy.m"; sourceTree = "<group>"; };
-		C6FA99DC1188E53AFF00DC253ED85297 /* Pods_SparkPerso.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SparkPerso.framework; path = "Pods-SparkPerso.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CF785FF55FA4A8F10520061092C67796 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		ED5FB1104EE81B4E3A7D5AD204A7184C /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Vision.framework; sourceTree = DEVELOPER_DIR; };
 		F23F41D7E0ECBBBBAAD67A2078EAE29B /* Pods-SparkPerso-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SparkPerso-umbrella.h"; sourceTree = "<group>"; };
+		F4B1330706CD9C09C5B8AAA5B39FB946 /* ImageDetect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ImageDetect.framework; path = ImageDetect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD7108FF25E617670223F68EBEB4E2F9 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = iOS_Mobile_SDK/DJISDK.framework; sourceTree = "<group>"; };
+		FFC6826C3DD8D7CD9514CE2D9C78564F /* Pods_SparkPerso.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SparkPerso.framework; path = "Pods-SparkPerso.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		33893AA6591E0A2A780F217AEBCA7B5C /* Frameworks */ = {
+		375599B8FFE4CF90946F976EED002099 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96CC12D9DE09443403E6EB54310C311C /* Foundation.framework in Frameworks */,
+				23C52630389D4182D9CD5AE597EF9225 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C40D616986FED22B8004D04E61376FA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89449032357B7D09E12F9C908AEAE60F /* Foundation.framework in Frameworks */,
+				8E9C0F2230639F94E6D9C1DB2A6547C5 /* UIKit.framework in Frameworks */,
+				9851C6FB5514083F8FCA278930E14B6A /* Vision.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0823673DBB31CF90D312BC6C07B787DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D3ADD36F22FA8DD0C57C5DA1DA4A2865 /* DJI-SDK-iOS */,
+				100D5B70F788464015664010E75A459D /* ImageDetect */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		100D5B70F788464015664010E75A459D /* ImageDetect */ = {
+			isa = PBXGroup;
+			children = (
+				1490F8F88C299425ACCB31E2691966D1 /* ImageDetect.swift */,
+				95E517F7AE845C06A1E02C7FD8281600 /* Support Files */,
+			);
+			name = ImageDetect;
+			path = ImageDetect;
+			sourceTree = "<group>";
+		};
+		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4B41C41E9EF05C8C8691894F7CB02D0 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		31E8D8ED1E90C74B37C720E0477A513F /* Pods-SparkPerso */ = {
 			isa = PBXGroup;
 			children = (
@@ -59,34 +122,11 @@
 			path = "Target Support Files/Pods-SparkPerso";
 			sourceTree = "<group>";
 		};
-		44D5347904CF754D6785B84253F2574A /* iOS */ = {
+		4F0EB56A2E2C2512B605F0E67BDB7F1D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		56F41CF807F2E3D702FCC66A3C9E3ED3 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B807EC8B5210DCC405066E964D6E24F1 /* DJI-SDK-iOS */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		67CB930674CE5A381B0C1916D23A3035 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				60D35208A41F813C11CF2EABF1729F56 /* DJISDK.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7910C777CB3EC62D4DAB94C0A1C0E263 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C6FA99DC1188E53AFF00DC253ED85297 /* Pods_SparkPerso.framework */,
+				F4B1330706CD9C09C5B8AAA5B39FB946 /* ImageDetect.framework */,
+				FFC6826C3DD8D7CD9514CE2D9C78564F /* Pods_SparkPerso.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,11 +135,33 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				56F41CF807F2E3D702FCC66A3C9E3ED3 /* Pods */,
-				7910C777CB3EC62D4DAB94C0A1C0E263 /* Products */,
+				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
+				0823673DBB31CF90D312BC6C07B787DF /* Pods */,
+				4F0EB56A2E2C2512B605F0E67BDB7F1D /* Products */,
 				A066953CC66BAABEABD07631070B0932 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		8D79244E4085AB7CC5AE0174A921F1A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD7108FF25E617670223F68EBEB4E2F9 /* DJISDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95E517F7AE845C06A1E02C7FD8281600 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				60EDB5D7BCFC31BA0E2EFC1D084CCBBF /* ImageDetect.modulemap */,
+				9CC721DE3432FEA6B5761593C8415B18 /* ImageDetect.xcconfig */,
+				2D2ED8B4ADC483B134E36891CBDF2C85 /* ImageDetect-dummy.m */,
+				B6D0D7BCB35E7781B80B9EF5DA2B3FD3 /* ImageDetect-prefix.pch */,
+				069ECB79E8ED905A242C01F5256DD5CB /* ImageDetect-umbrella.h */,
+				0D0EABF3073B95C11870A8430B43E265 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ImageDetect";
 			sourceTree = "<group>";
 		};
 		A066953CC66BAABEABD07631070B0932 /* Targets Support Files */ = {
@@ -110,53 +172,82 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		B807EC8B5210DCC405066E964D6E24F1 /* DJI-SDK-iOS */ = {
+		D3ADD36F22FA8DD0C57C5DA1DA4A2865 /* DJI-SDK-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				67CB930674CE5A381B0C1916D23A3035 /* Frameworks */,
+				8D79244E4085AB7CC5AE0174A921F1A7 /* Frameworks */,
 			);
 			name = "DJI-SDK-iOS";
 			path = "DJI-SDK-iOS";
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+		F4B41C41E9EF05C8C8691894F7CB02D0 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				44D5347904CF754D6785B84253F2574A /* iOS */,
+				4B309FE113AF30DFA127596BC6DB56A9 /* Foundation.framework */,
+				CF785FF55FA4A8F10520061092C67796 /* UIKit.framework */,
+				ED5FB1104EE81B4E3A7D5AD204A7184C /* Vision.framework */,
 			);
-			name = Frameworks;
+			name = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		E98AAAE7BC7FC03F7234D3239908EC4D /* Headers */ = {
+		3B99CCAE833B0263E27EED08B7758C35 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E812927CB96E698AFEC6EBB894537D1 /* Pods-SparkPerso-umbrella.h in Headers */,
+				61CBDCA9F956EB4B88C2C0970653A758 /* Pods-SparkPerso-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		869114F5E3A29846A3C2DCEBB2F04F25 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85CBA184FA78F5F6BB855B96CF7E85F4 /* ImageDetect-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		CE365F88983669FEFBB0E05AAE4590E0 /* Pods-SparkPerso */ = {
+		7DA853F5CE3C512B55B122AC0DA24D16 /* Pods-SparkPerso */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E7300676CD261FE08CA589F4FEB0988E /* Build configuration list for PBXNativeTarget "Pods-SparkPerso" */;
+			buildConfigurationList = 3ED86AA172EE43D2103C558862196969 /* Build configuration list for PBXNativeTarget "Pods-SparkPerso" */;
 			buildPhases = (
-				E98AAAE7BC7FC03F7234D3239908EC4D /* Headers */,
-				B739B4EA93927C1CC6312F1148C53AD6 /* Sources */,
-				33893AA6591E0A2A780F217AEBCA7B5C /* Frameworks */,
-				FDC859A58DCA0C89D8B8A26A5BD0074A /* Resources */,
+				3B99CCAE833B0263E27EED08B7758C35 /* Headers */,
+				9707E92D5079885856CA9102820F9D7A /* Sources */,
+				375599B8FFE4CF90946F976EED002099 /* Frameworks */,
+				BAA2517C970213A9B706EF473A4086D6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0D76F9CDE8816522C7F8DD0E3E6337A /* PBXTargetDependency */,
+			);
+			name = "Pods-SparkPerso";
+			productName = "Pods-SparkPerso";
+			productReference = FFC6826C3DD8D7CD9514CE2D9C78564F /* Pods_SparkPerso.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AD1A9E0FC822058C391F597256E5A931 /* ImageDetect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0265CE03B18644C2122B7AAE6C33134A /* Build configuration list for PBXNativeTarget "ImageDetect" */;
+			buildPhases = (
+				869114F5E3A29846A3C2DCEBB2F04F25 /* Headers */,
+				9821247EF752137450F1E0C9ED1FDA81 /* Sources */,
+				C40D616986FED22B8004D04E61376FA6 /* Frameworks */,
+				21CADCD9B0ED3B1A2BCEA07BF6DB4C35 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-SparkPerso";
-			productName = "Pods-SparkPerso";
-			productReference = C6FA99DC1188E53AFF00DC253ED85297 /* Pods_SparkPerso.framework */;
+			name = ImageDetect;
+			productName = ImageDetect;
+			productReference = F4B1330706CD9C09C5B8AAA5B39FB946 /* ImageDetect.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -176,17 +267,25 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 7910C777CB3EC62D4DAB94C0A1C0E263 /* Products */;
+			productRefGroup = 4F0EB56A2E2C2512B605F0E67BDB7F1D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CE365F88983669FEFBB0E05AAE4590E0 /* Pods-SparkPerso */,
+				AD1A9E0FC822058C391F597256E5A931 /* ImageDetect */,
+				7DA853F5CE3C512B55B122AC0DA24D16 /* Pods-SparkPerso */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FDC859A58DCA0C89D8B8A26A5BD0074A /* Resources */ = {
+		21CADCD9B0ED3B1A2BCEA07BF6DB4C35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BAA2517C970213A9B706EF473A4086D6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -196,52 +295,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B739B4EA93927C1CC6312F1148C53AD6 /* Sources */ = {
+		9707E92D5079885856CA9102820F9D7A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				074349E3579CB8AD131F67BAA6DC84DC /* Pods-SparkPerso-dummy.m in Sources */,
+				64D5736E00A7F7AAD7E0598F91F2DC64 /* Pods-SparkPerso-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9821247EF752137450F1E0C9ED1FDA81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B5FA992AFAC03C516F5C7CA9BF5CCB8 /* ImageDetect-dummy.m in Sources */,
+				6FE21D029624E239EEAEA3360C2749EF /* ImageDetect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin XCBuildConfiguration section */
-		1F5349CB6C5E6881F1E74367EAC3F8E7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39E29AD987CFC5C50DCB0305E6AE0DB6 /* Pods-SparkPerso.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-SparkPerso/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SparkPerso/Pods-SparkPerso.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
+/* Begin PBXTargetDependency section */
+		D0D76F9CDE8816522C7F8DD0E3E6337A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ImageDetect;
+			target = AD1A9E0FC822058C391F597256E5A931 /* ImageDetect */;
+			targetProxy = 501E3A0AA601DA3F381D5968068F3719 /* PBXContainerItemProxy */;
 		};
-		8A42EE55670C5C05F6359D15B79FF23A /* Release */ = {
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1E3B548FFC90F2ECFBCC4B922B3B2FA8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8E6585A84FCDE4F5F01D08FF138BB34B /* Pods-SparkPerso.release.xcconfig */;
 			buildSettings = {
@@ -275,6 +358,38 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		710327C588D8EE3DCD34AD86DC515EC5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CC721DE3432FEA6B5761593C8415B18 /* ImageDetect.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ImageDetect/ImageDetect-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ImageDetect/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ImageDetect/ImageDetect.modulemap";
+				PRODUCT_MODULE_NAME = ImageDetect;
+				PRODUCT_NAME = ImageDetect;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		8DFC9796FA9E6BCF680E1E0B1780DD0D /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -335,6 +450,73 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		C97DB50D5498904C43ADD375C4B4AC07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39E29AD987CFC5C50DCB0305E6AE0DB6 /* Pods-SparkPerso.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SparkPerso/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SparkPerso/Pods-SparkPerso.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E0C1B8C2FC1A7461764598654AD7010E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CC721DE3432FEA6B5761593C8415B18 /* ImageDetect.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ImageDetect/ImageDetect-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ImageDetect/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ImageDetect/ImageDetect.modulemap";
+				PRODUCT_MODULE_NAME = ImageDetect;
+				PRODUCT_NAME = ImageDetect;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -407,6 +589,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0265CE03B18644C2122B7AAE6C33134A /* Build configuration list for PBXNativeTarget "ImageDetect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				710327C588D8EE3DCD34AD86DC515EC5 /* Debug */,
+				E0C1B8C2FC1A7461764598654AD7010E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -416,11 +607,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E7300676CD261FE08CA589F4FEB0988E /* Build configuration list for PBXNativeTarget "Pods-SparkPerso" */ = {
+		3ED86AA172EE43D2103C558862196969 /* Build configuration list for PBXNativeTarget "Pods-SparkPerso" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1F5349CB6C5E6881F1E74367EAC3F8E7 /* Debug */,
-				8A42EE55670C5C05F6359D15B79FF23A /* Release */,
+				C97DB50D5498904C43ADD375C4B4AC07 /* Debug */,
+				1E3B548FFC90F2ECFBCC4B922B3B2FA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

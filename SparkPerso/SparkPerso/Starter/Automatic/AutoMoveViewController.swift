@@ -21,11 +21,17 @@ class AutoMoveViewController: UIViewController {
         
         MovingManager.instance.restart()
         MovingManager.instance.appendMouvement(mouvement: Movement(direction: .top, duration: 3.0))
-        MovingManager.instance.appendMouvement(mouvement: Movement(direction: .back, duration: 3.1))
-        MovingManager.instance.appendMouvement(mouvement: Movement(direction: .topRight, duration: 5.2))
+        MovingManager.instance.appendMouvement(mouvement: Movement(direction: .right, duration: 3.1))
+        MovingManager.instance.appendMouvement(mouvement: Movement(direction: .top, duration: 5.2))
         MovingManager.instance.appendMouvement(mouvement: Movement(direction: .left, duration: 2.8))
         
         MovingManager.instance.play()
+        
+        //
+        //   |     Screenshot    Camera DOWN     Action/Decision f(context) -> Image de chat? atterissage sinon retour au point 0.
+        //     |   Screenshot    Camera FRONT
+        //     |
+        //   |
     }
     
 
