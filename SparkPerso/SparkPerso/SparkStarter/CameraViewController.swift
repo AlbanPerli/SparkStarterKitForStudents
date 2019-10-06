@@ -9,7 +9,7 @@
 import UIKit
 import DJISDK
 import VideoPreviewer
-import ImageDetect
+//import ImageDetect
 
 class CameraViewController: UIViewController {
 
@@ -100,7 +100,7 @@ class CameraViewController: UIViewController {
     func getCamera() -> DJICamera? {
         // Check if it's an aircraft
         if let mySpark = DJISDKManager.product() as? DJIAircraft {
-            return mySpark.camera
+             return mySpark.camera
         }
         
         return nil
@@ -108,10 +108,30 @@ class CameraViewController: UIViewController {
     
     func setupVideoPreview() {
         
+        // Prev1 est de type VideoPreviewer
+        // Camera view est une view liée depuis le storyboard
+        
         prev1?.setView(self.cameraView)
+        /*
+        // ...
+        // plus loin
+        // ...
+        // ReceivedData est l'équivalent de ton callBack de reception
+        WebSocketManager.shared.receivedData{ data in
+            // On extrait les bytes de data sous la forme d'un pointeur sur UInt8
+            data.withUnsafeBytes { (bytes:UnsafePointer<UInt8>) in
+                // On push ces fameux bytes dans la vue
+                prev1?.push(UnsafeMutablePointer(mutating: bytes), length: Int32(data.count))
+            }
+        }
+        */
+        
+        
         prev2?.setView(self.camera2View)
         //VideoPreviewer.instance().setView(self.cameraView)
         if let _ = DJISDKManager.product(){
+            let video = DJISDKManager.videoFeeder()
+            
             DJISDKManager.videoFeeder()?.primaryVideoFeed.add(self, with: nil)
         }
         prev1?.start()
@@ -147,15 +167,14 @@ class CameraViewController: UIViewController {
 
 extension CameraViewController:DJIVideoFeedListener {
     func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData videoData: Data) {
-        
+        print([UInt8](videoData).count)
         videoData.withUnsafeBytes { (bytes:UnsafePointer<UInt8>) in
             prev1?.push(UnsafeMutablePointer(mutating: bytes), length: Int32(videoData.count))
             prev2?.push(UnsafeMutablePointer(mutating: bytes), length: Int32(videoData.count))
         }
         
     }
-    
-    
+
 }
 
 extension CameraViewController:DJISDKManagerDelegate {

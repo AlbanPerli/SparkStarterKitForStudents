@@ -14,6 +14,7 @@ class MovingManager {
     
     static let instance = MovingManager()
     var mouvements = [Movement]()
+    var isTesting:Bool = false
     
     func restart() {
         DirectionSequence.instance.content.removeAll()
@@ -36,7 +37,11 @@ class MovingManager {
         if let move = mouvements.first {
             
             // Ici Envoyer la direction au drone == Remplir les sticks
-            print(move.description())
+            if isTesting {
+                print(move.description())
+            }else{
+                Spark.instance.move(movement: move)
+            }
             
             Timer.scheduledTimer(withTimeInterval: TimeInterval(move.duration), repeats: false) { (t) in
                 // Code exécuté après move.duration seconds
@@ -47,6 +52,7 @@ class MovingManager {
         }else{
             // Envoyer stop au drone == Remplir les sticks avec des 0
             print("SEND STOP!!!!!")
+            Spark.instance.stop()
         }
     }
     

@@ -11,6 +11,7 @@
 		6117015B21F60C63009F47E4 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6117015A21F60C63009F47E4 /* MobileNet.mlmodel */; };
 		6117015E21F60C7F009F47E4 /* ImageRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117015D21F60C7F009F47E4 /* ImageRecognition.swift */; };
 		6117016021F60CB4009F47E4 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117015F21F60CB4009F47E4 /* UIImage+CVPixelBuffer.swift */; };
+		6117056921F75E4D009F47E4 /* Spark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6117056821F75E4D009F47E4 /* Spark.swift */; };
 		612304AA200BABF200F98395 /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304A9200BABF200F98395 /* ProductCommunicationManager.swift */; };
 		612304B0200BB6A000F98395 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612304AF200BB6A000F98395 /* CameraViewController.swift */; };
 		612304B4200BBC1E00F98395 /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612304B1200BB73300F98395 /* VideoPreviewer.framework */; };
@@ -29,6 +30,50 @@
 		6184E2E321E8AC2700895FDF /* DirectionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2D821E8ABB000895FDF /* DirectionSequence.swift */; };
 		6184E2E521E8AFEB00895FDF /* AutoMoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2E421E8AFEB00895FDF /* AutoMoveViewController.swift */; };
 		618F61D6204064C900CAE2A3 /* Scenar.json in Resources */ = {isa = PBXBuildFile; fileRef = 618F61D5204064C900CAE2A3 /* Scenar.json */; };
+		61C3D66C231BF82F00F98C11 /* SharedToyBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D63E231BF82F00F98C11 /* SharedToyBox.swift */; };
+		61C3D66D231BF82F00F98C11 /* SDKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D640231BF82F00F98C11 /* SDKUtils.swift */; };
+		61C3D66E231BF82F00F98C11 /* Toy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D643231BF82F00F98C11 /* Toy.swift */; };
+		61C3D66F231BF82F00F98C11 /* SensorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D644231BF82F00F98C11 /* SensorControl.swift */; };
+		61C3D670231BF82F00F98C11 /* SPRKToy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D646231BF82F00F98C11 /* SPRKToy.swift */; };
+		61C3D671231BF82F00F98C11 /* SensorControlV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D647231BF82F00F98C11 /* SensorControlV1.swift */; };
+		61C3D672231BF82F00F98C11 /* SpheroV1Toy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D648231BF82F00F98C11 /* SpheroV1Toy.swift */; };
+		61C3D673231BF82F00F98C11 /* SpheroV1ToyCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D649231BF82F00F98C11 /* SpheroV1ToyCore.swift */; };
+		61C3D674231BF82F00F98C11 /* BB8Toy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D64A231BF82F00F98C11 /* BB8Toy.swift */; };
+		61C3D675231BF82F00F98C11 /* SensorControlV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D64C231BF82F00F98C11 /* SensorControlV2.swift */; };
+		61C3D676231BF82F00F98C11 /* BB9EToy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D64D231BF82F00F98C11 /* BB9EToy.swift */; };
+		61C3D677231BF82F00F98C11 /* SpheroV2Toy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D64E231BF82F00F98C11 /* SpheroV2Toy.swift */; };
+		61C3D678231BF82F00F98C11 /* BoltToy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D64F231BF82F00F98C11 /* BoltToy.swift */; };
+		61C3D679231BF82F00F98C11 /* R2D2Toy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D650231BF82F00F98C11 /* R2D2Toy.swift */; };
+		61C3D67A231BF82F00F98C11 /* SpheroV2ToyCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D651231BF82F00F98C11 /* SpheroV2ToyCore.swift */; };
+		61C3D67B231BF82F00F98C11 /* MiniToy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D652231BF82F00F98C11 /* MiniToy.swift */; };
+		61C3D67C231BF82F00F98C11 /* ToyProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D653231BF82F00F98C11 /* ToyProtocols.swift */; };
+		61C3D67D231BF82F00F98C11 /* CBUUID+SpheroUUIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D654231BF82F00F98C11 /* CBUUID+SpheroUUIDs.swift */; };
+		61C3D67E231BF82F00F98C11 /* ToyBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D656231BF82F00F98C11 /* ToyBox.swift */; };
+		61C3D67F231BF82F00F98C11 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D657231BF82F00F98C11 /* Color+Utils.swift */; };
+		61C3D680231BF82F00F98C11 /* SensorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D659231BF82F00F98C11 /* SensorUtils.swift */; };
+		61C3D681231BF82F00F98C11 /* CommandOperationV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D65B231BF82F00F98C11 /* CommandOperationV2.swift */; };
+		61C3D682231BF82F00F98C11 /* CommandSequencerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D65C231BF82F00F98C11 /* CommandSequencerV2.swift */; };
+		61C3D683231BF82F00F98C11 /* CommandV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D65D231BF82F00F98C11 /* CommandV2.swift */; };
+		61C3D684231BF82F00F98C11 /* VersionsCommandResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D65F231BF82F00F98C11 /* VersionsCommandResponse.swift */; };
+		61C3D685231BF82F00F98C11 /* ShouldActionCompleteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D660231BF82F00F98C11 /* ShouldActionCompleteResponse.swift */; };
+		61C3D686231BF82F00F98C11 /* SensorCommandResponseV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D661231BF82F00F98C11 /* SensorCommandResponseV2.swift */; };
+		61C3D687231BF82F00F98C11 /* SensorCommandResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D662231BF82F00F98C11 /* SensorCommandResponse.swift */; };
+		61C3D688231BF82F00F98C11 /* SensorMaskCommandResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D663231BF82F00F98C11 /* SensorMaskCommandResponse.swift */; };
+		61C3D689231BF82F00F98C11 /* PowerStateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D664231BF82F00F98C11 /* PowerStateResponse.swift */; };
+		61C3D68A231BF82F00F98C11 /* CollisionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D665231BF82F00F98C11 /* CollisionData.swift */; };
+		61C3D68B231BF82F00F98C11 /* CommandV1Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D667231BF82F00F98C11 /* CommandV1Operation.swift */; };
+		61C3D68C231BF82F00F98C11 /* CommandV1Sequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D668231BF82F00F98C11 /* CommandV1Sequencer.swift */; };
+		61C3D68D231BF82F00F98C11 /* CommandV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D669231BF82F00F98C11 /* CommandV1.swift */; };
+		61C3D68E231BF82F00F98C11 /* Double+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D66A231BF82F00F98C11 /* Double+Utils.swift */; };
+		61C3D68F231BF82F00F98C11 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D66B231BF82F00F98C11 /* String+Utils.swift */; };
+		61C3D691231BFD5F00F98C11 /* SpheroAimingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D690231BFD5F00F98C11 /* SpheroAimingViewController.swift */; };
+		61C3D693231BFE6900F98C11 /* SpheroDirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D692231BFE6900F98C11 /* SpheroDirectionViewController.swift */; };
+		61C3D695231C12BC00F98C11 /* SpheroLedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D694231C12BC00F98C11 /* SpheroLedsViewController.swift */; };
+		61C3D697231C170900F98C11 /* SpheroSensorControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D696231C170900F98C11 /* SpheroSensorControlViewController.swift */; };
+		61C3D69C231C171F00F98C11 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D699231C171F00F98C11 /* GraphView.swift */; };
+		61C3D69D231C171F00F98C11 /* CGContext+GraphLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D69A231C171F00F98C11 /* CGContext+GraphLines.swift */; };
+		61C3D69E231C171F00F98C11 /* GraphSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C3D69B231C171F00F98C11 /* GraphSegment.swift */; };
+		61CC82FD231E4A8D001AE806 /* LocatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CC82FC231E4A8D001AE806 /* LocatorViewController.swift */; };
 		61CD7E1B21EF30630039A36A /* CGPoints+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DA21E8ABB300895FDF /* CGPoints+Extensions.swift */; };
 		61D50D7220274586000842A3 /* AccelerometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D50D7120274586000842A3 /* AccelerometerViewController.swift */; };
 		61DAFC0D200B9AB3001CB2E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAFC0C200B9AB3001CB2E2 /* AppDelegate.swift */; };
@@ -36,6 +81,7 @@
 		61DAFC12200B9AB3001CB2E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61DAFC10200B9AB3001CB2E2 /* Main.storyboard */; };
 		61DAFC14200B9AB3001CB2E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61DAFC13200B9AB3001CB2E2 /* Assets.xcassets */; };
 		61DAFC17200B9AB3001CB2E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61DAFC15200B9AB3001CB2E2 /* LaunchScreen.storyboard */; };
+		61F339AB23250521000967B2 /* SpheroStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F339AA23250521000967B2 /* SpheroStatusViewController.swift */; };
 		B25DCA3E206348505DAC1430 /* Pods_SparkPerso.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9574723689CDFD5A62E8841B /* Pods_SparkPerso.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +116,7 @@
 		6117015A21F60C63009F47E4 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 		6117015D21F60C7F009F47E4 /* ImageRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognition.swift; sourceTree = "<group>"; };
 		6117015F21F60CB4009F47E4 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
+		6117056821F75E4D009F47E4 /* Spark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spark.swift; sourceTree = "<group>"; };
 		612304A9200BABF200F98395 /* ProductCommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationManager.swift; sourceTree = "<group>"; };
 		612304AF200BB6A000F98395 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		612304B1200BB73300F98395 /* VideoPreviewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VideoPreviewer.framework; sourceTree = "<group>"; };
@@ -87,6 +134,50 @@
 		6184E2E421E8AFEB00895FDF /* AutoMoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMoveViewController.swift; sourceTree = "<group>"; };
 		618F61D5204064C900CAE2A3 /* Scenar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Scenar.json; sourceTree = "<group>"; };
 		61B94651200E70E5001E5E41 /* SparkPerso.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SparkPerso.entitlements; sourceTree = "<group>"; };
+		61C3D63E231BF82F00F98C11 /* SharedToyBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedToyBox.swift; sourceTree = "<group>"; };
+		61C3D640231BF82F00F98C11 /* SDKUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKUtils.swift; sourceTree = "<group>"; };
+		61C3D643231BF82F00F98C11 /* Toy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toy.swift; sourceTree = "<group>"; };
+		61C3D644231BF82F00F98C11 /* SensorControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorControl.swift; sourceTree = "<group>"; };
+		61C3D646231BF82F00F98C11 /* SPRKToy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPRKToy.swift; sourceTree = "<group>"; };
+		61C3D647231BF82F00F98C11 /* SensorControlV1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorControlV1.swift; sourceTree = "<group>"; };
+		61C3D648231BF82F00F98C11 /* SpheroV1Toy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpheroV1Toy.swift; sourceTree = "<group>"; };
+		61C3D649231BF82F00F98C11 /* SpheroV1ToyCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpheroV1ToyCore.swift; sourceTree = "<group>"; };
+		61C3D64A231BF82F00F98C11 /* BB8Toy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BB8Toy.swift; sourceTree = "<group>"; };
+		61C3D64C231BF82F00F98C11 /* SensorControlV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorControlV2.swift; sourceTree = "<group>"; };
+		61C3D64D231BF82F00F98C11 /* BB9EToy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BB9EToy.swift; sourceTree = "<group>"; };
+		61C3D64E231BF82F00F98C11 /* SpheroV2Toy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpheroV2Toy.swift; sourceTree = "<group>"; };
+		61C3D64F231BF82F00F98C11 /* BoltToy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoltToy.swift; sourceTree = "<group>"; };
+		61C3D650231BF82F00F98C11 /* R2D2Toy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R2D2Toy.swift; sourceTree = "<group>"; };
+		61C3D651231BF82F00F98C11 /* SpheroV2ToyCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpheroV2ToyCore.swift; sourceTree = "<group>"; };
+		61C3D652231BF82F00F98C11 /* MiniToy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniToy.swift; sourceTree = "<group>"; };
+		61C3D653231BF82F00F98C11 /* ToyProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToyProtocols.swift; sourceTree = "<group>"; };
+		61C3D654231BF82F00F98C11 /* CBUUID+SpheroUUIDs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CBUUID+SpheroUUIDs.swift"; sourceTree = "<group>"; };
+		61C3D656231BF82F00F98C11 /* ToyBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToyBox.swift; sourceTree = "<group>"; };
+		61C3D657231BF82F00F98C11 /* Color+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Utils.swift"; sourceTree = "<group>"; };
+		61C3D659231BF82F00F98C11 /* SensorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorUtils.swift; sourceTree = "<group>"; };
+		61C3D65B231BF82F00F98C11 /* CommandOperationV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandOperationV2.swift; sourceTree = "<group>"; };
+		61C3D65C231BF82F00F98C11 /* CommandSequencerV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSequencerV2.swift; sourceTree = "<group>"; };
+		61C3D65D231BF82F00F98C11 /* CommandV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandV2.swift; sourceTree = "<group>"; };
+		61C3D65F231BF82F00F98C11 /* VersionsCommandResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionsCommandResponse.swift; sourceTree = "<group>"; };
+		61C3D660231BF82F00F98C11 /* ShouldActionCompleteResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShouldActionCompleteResponse.swift; sourceTree = "<group>"; };
+		61C3D661231BF82F00F98C11 /* SensorCommandResponseV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorCommandResponseV2.swift; sourceTree = "<group>"; };
+		61C3D662231BF82F00F98C11 /* SensorCommandResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorCommandResponse.swift; sourceTree = "<group>"; };
+		61C3D663231BF82F00F98C11 /* SensorMaskCommandResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorMaskCommandResponse.swift; sourceTree = "<group>"; };
+		61C3D664231BF82F00F98C11 /* PowerStateResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerStateResponse.swift; sourceTree = "<group>"; };
+		61C3D665231BF82F00F98C11 /* CollisionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionData.swift; sourceTree = "<group>"; };
+		61C3D667231BF82F00F98C11 /* CommandV1Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandV1Operation.swift; sourceTree = "<group>"; };
+		61C3D668231BF82F00F98C11 /* CommandV1Sequencer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandV1Sequencer.swift; sourceTree = "<group>"; };
+		61C3D669231BF82F00F98C11 /* CommandV1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandV1.swift; sourceTree = "<group>"; };
+		61C3D66A231BF82F00F98C11 /* Double+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Utils.swift"; sourceTree = "<group>"; };
+		61C3D66B231BF82F00F98C11 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
+		61C3D690231BFD5F00F98C11 /* SpheroAimingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpheroAimingViewController.swift; sourceTree = "<group>"; };
+		61C3D692231BFE6900F98C11 /* SpheroDirectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpheroDirectionViewController.swift; sourceTree = "<group>"; };
+		61C3D694231C12BC00F98C11 /* SpheroLedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpheroLedsViewController.swift; sourceTree = "<group>"; };
+		61C3D696231C170900F98C11 /* SpheroSensorControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpheroSensorControlViewController.swift; sourceTree = "<group>"; };
+		61C3D699231C171F00F98C11 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		61C3D69A231C171F00F98C11 /* CGContext+GraphLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGContext+GraphLines.swift"; sourceTree = "<group>"; };
+		61C3D69B231C171F00F98C11 /* GraphSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphSegment.swift; sourceTree = "<group>"; };
+		61CC82FC231E4A8D001AE806 /* LocatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocatorViewController.swift; sourceTree = "<group>"; };
 		61D50D7120274586000842A3 /* AccelerometerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerViewController.swift; sourceTree = "<group>"; };
 		61DAFC09200B9AB3001CB2E2 /* SparkPerso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SparkPerso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DAFC0C200B9AB3001CB2E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +186,7 @@
 		61DAFC13200B9AB3001CB2E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61DAFC16200B9AB3001CB2E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		61DAFC18200B9AB3001CB2E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61F339AA23250521000967B2 /* SpheroStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpheroStatusViewController.swift; sourceTree = "<group>"; };
 		9574723689CDFD5A62E8841B /* Pods_SparkPerso.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SparkPerso.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -144,13 +236,13 @@
 			path = HelpersFromSample;
 			sourceTree = "<group>";
 		};
-		612304B7200BC74500F98395 /* Starter */ = {
+		612304B7200BC74500F98395 /* SparkStarter */ = {
 			isa = PBXGroup;
 			children = (
+				612304AB200BABF700F98395 /* HelpersFromSample */,
 				6117015C21F60C64009F47E4 /* IA */,
 				6117015321F5F10F009F47E4 /* Gimbal */,
 				61CD7E1C21EF31EC0039A36A /* Automatic */,
-				61DAFC0E200B9AB3001CB2E2 /* ConnectionViewController.swift */,
 				612304AF200BB6A000F98395 /* CameraViewController.swift */,
 				612304BC200BD77A00F98395 /* Heading+Calibration */,
 				612304BD200BDCEE00F98395 /* TakeOffAndLandingViewController.swift */,
@@ -158,7 +250,7 @@
 				61D50D7120274586000842A3 /* AccelerometerViewController.swift */,
 				618F61D5204064C900CAE2A3 /* Scenar.json */,
 			);
-			path = Starter;
+			path = SparkStarter;
 			sourceTree = "<group>";
 		};
 		612304BC200BD77A00F98395 /* Heading+Calibration */ = {
@@ -190,11 +282,160 @@
 			path = Moving;
 			sourceTree = "<group>";
 		};
+		61C3D5E9231BF7E300F98C11 /* SpheroStarter */ = {
+			isa = PBXGroup;
+			children = (
+				61C3D698231C171F00F98C11 /* Graph */,
+				61C3D63D231BF82F00F98C11 /* SpheroSDK */,
+				61C3D690231BFD5F00F98C11 /* SpheroAimingViewController.swift */,
+				61C3D692231BFE6900F98C11 /* SpheroDirectionViewController.swift */,
+				61C3D694231C12BC00F98C11 /* SpheroLedsViewController.swift */,
+				61C3D696231C170900F98C11 /* SpheroSensorControlViewController.swift */,
+				61CC82FC231E4A8D001AE806 /* LocatorViewController.swift */,
+				61F339AA23250521000967B2 /* SpheroStatusViewController.swift */,
+			);
+			path = SpheroStarter;
+			sourceTree = "<group>";
+		};
+		61C3D63D231BF82F00F98C11 /* SpheroSDK */ = {
+			isa = PBXGroup;
+			children = (
+				61C3D63E231BF82F00F98C11 /* SharedToyBox.swift */,
+				61C3D63F231BF82F00F98C11 /* SDK */,
+			);
+			path = SpheroSDK;
+			sourceTree = "<group>";
+		};
+		61C3D63F231BF82F00F98C11 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				61C3D640231BF82F00F98C11 /* SDKUtils.swift */,
+				61C3D641231BF82F00F98C11 /* BLE */,
+				61C3D657231BF82F00F98C11 /* Color+Utils.swift */,
+				61C3D658231BF82F00F98C11 /* Commands */,
+				61C3D66A231BF82F00F98C11 /* Double+Utils.swift */,
+				61C3D66B231BF82F00F98C11 /* String+Utils.swift */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		61C3D641231BF82F00F98C11 /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				61C3D642231BF82F00F98C11 /* Toy */,
+				61C3D654231BF82F00F98C11 /* CBUUID+SpheroUUIDs.swift */,
+				61C3D655231BF82F00F98C11 /* ToyBox */,
+			);
+			path = BLE;
+			sourceTree = "<group>";
+		};
+		61C3D642231BF82F00F98C11 /* Toy */ = {
+			isa = PBXGroup;
+			children = (
+				61C3D643231BF82F00F98C11 /* Toy.swift */,
+				61C3D644231BF82F00F98C11 /* SensorControl.swift */,
+				61C3D645231BF82F00F98C11 /* V1Toys */,
+				61C3D64B231BF82F00F98C11 /* V2Toys */,
+				61C3D653231BF82F00F98C11 /* ToyProtocols.swift */,
+			);
+			path = Toy;
+			sourceTree = "<group>";
+		};
+		61C3D645231BF82F00F98C11 /* V1Toys */ = {
+			isa = PBXGroup;
+			children = (
+				61C3D646231BF82F00F98C11 /* SPRKToy.swift */,
+				61C3D647231BF82F00F98C11 /* SensorControlV1.swift */,
+				61C3D648231BF82F00F98C11 /* SpheroV1Toy.swift */,
+				61C3D649231BF82F00F98C11 /* SpheroV1ToyCore.swift */,
+				61C3D64A231BF82F00F98C11 /* BB8Toy.swift */,
+			);
+			path = V1Toys;
+			sourceTree = "<group>";
+		};
+		61C3D64B231BF82F00F98C11 /* V2Toys */ = {
+			isa = PBXGroup;
+			children = (
+				61C3D64C231BF82F00F98C11 /* SensorControlV2.swift */,
+				61C3D64D231BF82F00F98C11 /* BB9EToy.swift */,
+				61C3D64E231BF82F00F98C11 /* SpheroV2Toy.swift */,
+				61C3D64F231BF82F00F98C11 /* BoltToy.swift */,
+				61C3D650231BF82F00F98C11 /* R2D2Toy.swift */,
+				61C3D651231BF82F00F98C11 /* SpheroV2ToyCore.swift */,
+				61C3D652231BF82F00F98C11 /* MiniToy.swift */,
+			);
+			path = V2Toys;
+			sourceTree = "<group>";
+		};
+		61C3D655231BF82F00F98C11 /* ToyBox */ = {
+			isa = PBXGroup;
+			children = (
+				61C3D656231BF82F00F98C11 /* ToyBox.swift */,
+			);
+			path = ToyBox;
+			sourceTree = "<group>";
+		};
+		61C3D658231BF82F00F98C11 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				61C3D659231BF82F00F98C11 /* SensorUtils.swift */,
+				61C3D65A231BF82F00F98C11 /* CommandV2 */,
+				61C3D65E231BF82F00F98C11 /* CommandResponses */,
+				61C3D666231BF82F00F98C11 /* CommandV1 */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		61C3D65A231BF82F00F98C11 /* CommandV2 */ = {
+			isa = PBXGroup;
+			children = (
+				61C3D65B231BF82F00F98C11 /* CommandOperationV2.swift */,
+				61C3D65C231BF82F00F98C11 /* CommandSequencerV2.swift */,
+				61C3D65D231BF82F00F98C11 /* CommandV2.swift */,
+			);
+			path = CommandV2;
+			sourceTree = "<group>";
+		};
+		61C3D65E231BF82F00F98C11 /* CommandResponses */ = {
+			isa = PBXGroup;
+			children = (
+				61C3D65F231BF82F00F98C11 /* VersionsCommandResponse.swift */,
+				61C3D660231BF82F00F98C11 /* ShouldActionCompleteResponse.swift */,
+				61C3D661231BF82F00F98C11 /* SensorCommandResponseV2.swift */,
+				61C3D662231BF82F00F98C11 /* SensorCommandResponse.swift */,
+				61C3D663231BF82F00F98C11 /* SensorMaskCommandResponse.swift */,
+				61C3D664231BF82F00F98C11 /* PowerStateResponse.swift */,
+				61C3D665231BF82F00F98C11 /* CollisionData.swift */,
+			);
+			path = CommandResponses;
+			sourceTree = "<group>";
+		};
+		61C3D666231BF82F00F98C11 /* CommandV1 */ = {
+			isa = PBXGroup;
+			children = (
+				61C3D667231BF82F00F98C11 /* CommandV1Operation.swift */,
+				61C3D668231BF82F00F98C11 /* CommandV1Sequencer.swift */,
+				61C3D669231BF82F00F98C11 /* CommandV1.swift */,
+			);
+			path = CommandV1;
+			sourceTree = "<group>";
+		};
+		61C3D698231C171F00F98C11 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				61C3D699231C171F00F98C11 /* GraphView.swift */,
+				61C3D69A231C171F00F98C11 /* CGContext+GraphLines.swift */,
+				61C3D69B231C171F00F98C11 /* GraphSegment.swift */,
+			);
+			path = Graph;
+			sourceTree = "<group>";
+		};
 		61CD7E1C21EF31EC0039A36A /* Automatic */ = {
 			isa = PBXGroup;
 			children = (
 				6184E2E421E8AFEB00895FDF /* AutoMoveViewController.swift */,
 				6184E2DC21E8ABC100895FDF /* Moving */,
+				6117056821F75E4D009F47E4 /* Spark.swift */,
 			);
 			path = Automatic;
 			sourceTree = "<group>";
@@ -222,9 +463,10 @@
 		61DAFC0B200B9AB3001CB2E2 /* SparkPerso */ = {
 			isa = PBXGroup;
 			children = (
+				61DAFC0E200B9AB3001CB2E2 /* ConnectionViewController.swift */,
+				612304B7200BC74500F98395 /* SparkStarter */,
+				61C3D5E9231BF7E300F98C11 /* SpheroStarter */,
 				61B94651200E70E5001E5E41 /* SparkPerso.entitlements */,
-				612304B7200BC74500F98395 /* Starter */,
-				612304AB200BABF700F98395 /* HelpersFromSample */,
 				61DAFC0C200B9AB3001CB2E2 /* AppDelegate.swift */,
 				61DAFC10200B9AB3001CB2E2 /* Main.storyboard */,
 				61DAFC13200B9AB3001CB2E2 /* Assets.xcassets */,
@@ -417,23 +659,69 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61C3D68F231BF82F00F98C11 /* String+Utils.swift in Sources */,
 				612304BE200BDCEE00F98395 /* TakeOffAndLandingViewController.swift in Sources */,
 				6184E2D921E8ABB000895FDF /* DirectionSequence.swift in Sources */,
+				61C3D695231C12BC00F98C11 /* SpheroLedsViewController.swift in Sources */,
 				612304B9200BC77200F98395 /* CalibrationAndHeadingViewController.swift in Sources */,
+				61C3D687231BF82F00F98C11 /* SensorCommandResponse.swift in Sources */,
+				61C3D684231BF82F00F98C11 /* VersionsCommandResponse.swift in Sources */,
+				61C3D677231BF82F00F98C11 /* SpheroV2Toy.swift in Sources */,
+				61C3D68D231BF82F00F98C11 /* CommandV1.swift in Sources */,
+				61CC82FD231E4A8D001AE806 /* LocatorViewController.swift in Sources */,
+				61C3D674231BF82F00F98C11 /* BB8Toy.swift in Sources */,
+				61C3D69D231C171F00F98C11 /* CGContext+GraphLines.swift in Sources */,
 				6117015E21F60C7F009F47E4 /* ImageRecognition.swift in Sources */,
+				61C3D67C231BF82F00F98C11 /* ToyProtocols.swift in Sources */,
 				6184E2E521E8AFEB00895FDF /* AutoMoveViewController.swift in Sources */,
+				61C3D673231BF82F00F98C11 /* SpheroV1ToyCore.swift in Sources */,
+				61C3D689231BF82F00F98C11 /* PowerStateResponse.swift in Sources */,
+				61C3D66C231BF82F00F98C11 /* SharedToyBox.swift in Sources */,
+				61C3D676231BF82F00F98C11 /* BB9EToy.swift in Sources */,
+				61C3D66F231BF82F00F98C11 /* SensorControl.swift in Sources */,
+				61C3D67E231BF82F00F98C11 /* ToyBox.swift in Sources */,
+				61C3D679231BF82F00F98C11 /* R2D2Toy.swift in Sources */,
 				612304BB200BD77300F98395 /* LocationDelegate.swift in Sources */,
+				61C3D681231BF82F00F98C11 /* CommandOperationV2.swift in Sources */,
+				61C3D680231BF82F00F98C11 /* SensorUtils.swift in Sources */,
+				61C3D68B231BF82F00F98C11 /* CommandV1Operation.swift in Sources */,
+				61C3D66D231BF82F00F98C11 /* SDKUtils.swift in Sources */,
 				6184E2DE21E8ABCC00895FDF /* MovingManager.swift in Sources */,
+				61C3D67F231BF82F00F98C11 /* Color+Utils.swift in Sources */,
+				61C3D68C231BF82F00F98C11 /* CommandV1Sequencer.swift in Sources */,
+				61F339AB23250521000967B2 /* SpheroStatusViewController.swift in Sources */,
+				61C3D67B231BF82F00F98C11 /* MiniToy.swift in Sources */,
 				6117016021F60CB4009F47E4 /* UIImage+CVPixelBuffer.swift in Sources */,
+				61C3D671231BF82F00F98C11 /* SensorControlV1.swift in Sources */,
+				61C3D682231BF82F00F98C11 /* CommandSequencerV2.swift in Sources */,
 				6184E2E021E8ABE800895FDF /* Movement.swift in Sources */,
+				61C3D697231C170900F98C11 /* SpheroSensorControlViewController.swift in Sources */,
 				612304C0200BE41500F98395 /* MovementLevelOneViewController.swift in Sources */,
+				61C3D69C231C171F00F98C11 /* GraphView.swift in Sources */,
+				61C3D66E231BF82F00F98C11 /* Toy.swift in Sources */,
+				61C3D67A231BF82F00F98C11 /* SpheroV2ToyCore.swift in Sources */,
 				6117015B21F60C63009F47E4 /* MobileNet.mlmodel in Sources */,
+				61C3D686231BF82F00F98C11 /* SensorCommandResponseV2.swift in Sources */,
+				61C3D68E231BF82F00F98C11 /* Double+Utils.swift in Sources */,
 				6117015521F5F12D009F47E4 /* GimbalManager.swift in Sources */,
+				61C3D678231BF82F00F98C11 /* BoltToy.swift in Sources */,
+				61C3D685231BF82F00F98C11 /* ShouldActionCompleteResponse.swift in Sources */,
+				6117056921F75E4D009F47E4 /* Spark.swift in Sources */,
 				6184E2DB21E8ABB300895FDF /* CGPoints+Extensions.swift in Sources */,
+				61C3D693231BFE6900F98C11 /* SpheroDirectionViewController.swift in Sources */,
 				612304AA200BABF200F98395 /* ProductCommunicationManager.swift in Sources */,
+				61C3D691231BFD5F00F98C11 /* SpheroAimingViewController.swift in Sources */,
+				61C3D69E231C171F00F98C11 /* GraphSegment.swift in Sources */,
 				61D50D7220274586000842A3 /* AccelerometerViewController.swift in Sources */,
+				61C3D68A231BF82F00F98C11 /* CollisionData.swift in Sources */,
+				61C3D675231BF82F00F98C11 /* SensorControlV2.swift in Sources */,
+				61C3D67D231BF82F00F98C11 /* CBUUID+SpheroUUIDs.swift in Sources */,
+				61C3D670231BF82F00F98C11 /* SPRKToy.swift in Sources */,
+				61C3D672231BF82F00F98C11 /* SpheroV1Toy.swift in Sources */,
 				612304B0200BB6A000F98395 /* CameraViewController.swift in Sources */,
 				61DAFC0F200B9AB3001CB2E2 /* ConnectionViewController.swift in Sources */,
+				61C3D683231BF82F00F98C11 /* CommandV2.swift in Sources */,
+				61C3D688231BF82F00F98C11 /* SensorMaskCommandResponse.swift in Sources */,
 				61DAFC0D200B9AB3001CB2E2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

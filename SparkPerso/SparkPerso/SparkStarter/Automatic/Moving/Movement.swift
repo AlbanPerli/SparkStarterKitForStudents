@@ -11,6 +11,7 @@ import UIKit
 struct Movement {
     var direction:Direction
     var duration:CGFloat
+    var speed:CGFloat
     
     enum Direction:String,CaseIterable {
         case top,back,left,right,topRight,topLeft,bottomRight,bottomLeft
@@ -31,6 +32,14 @@ struct Movement {
     
     func description() -> String {
         return "\(direction.rawValue) during \(duration)s"
+    }
+    
+    func rightStickVerticalValue() -> Float {
+        return Float(direction.value().y*speed)
+    }
+    
+    func rightStickHorizontalValue() -> Float {
+        return Float(direction.value().x*speed)
     }
 }
 

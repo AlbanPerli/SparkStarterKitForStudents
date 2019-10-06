@@ -12,6 +12,7 @@ import DJISDK
 
 class ConnectionViewController: UIViewController {
     
+    @IBOutlet weak var connectionStateSpheroLabel: UILabel!
     @IBOutlet weak var connectionStateLabel: UILabel!
     let SSID = ""
     
@@ -25,6 +26,10 @@ class ConnectionViewController: UIViewController {
         super.viewDidAppear(animated)
 
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        DJISDKManager.keyManager()?.stopAllListening(ofListeners: self)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -32,12 +37,24 @@ class ConnectionViewController: UIViewController {
     }
 
     @IBAction func connectionButtonClicked(_ sender: UIButton) {
-        
-        tryConnection()
-        
+        trySparkConnection()
     }
     
-    func tryConnection() {
+    // SPHERO CONNECTION
+    @IBAction func connectionSpheroButtonClicked(_ sender: Any) {
+        SharedToyBox.instance.searchForBoltsNamed(["SB-A729","SB-92B2","SB-8630"]) { err in
+            if err == nil {
+                self.connectionStateSpheroLabel.text = "Connected"
+            }
+        }
+    }
+    
+}
+
+
+// SPARK CONNECTION
+extension ConnectionViewController {
+    func trySparkConnection() {
         
         guard let connectedKey = DJIProductKey(param: DJIParamConnection) else {
             NSLog("Error creating the connectedKey")
@@ -67,9 +84,7 @@ class ConnectionViewController: UIViewController {
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        DJISDKManager.keyManager()?.stopAllListening(ofListeners: self)
-    }
+   
     
     func productConnected() {
         guard let newProduct = DJISDKManager.product() else {
@@ -79,9 +94,10 @@ class ConnectionViewController: UIViewController {
      
         if let model = newProduct.model {
             self.connectionStateLabel.text = "\(model) is connected \n"
+            Spark.instance.airCraft = DJISDKManager.product() as? DJIAircraft
+            
         }
         
-      
         //Updates the product's firmware version - COMING SOON
         newProduct.getFirmwarePackageVersion{ (version:String?, error:Error?) -> Void in
             
