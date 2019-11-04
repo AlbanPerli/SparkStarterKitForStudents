@@ -54,6 +54,24 @@ class CameraViewController: UIViewController {
         GimbalManager.shared.lookUnder()
     }
     @IBAction func startStopCameraButtonClicked(_ sender: UIButton) {
+        
+        self.prev1?.snapshotThumnnail { (image) in
+            if let img = image {
+                print(img.size)
+                self.extractedFrameImageView.image = img
+                
+                
+                if let dataImg = UIImagePNGRepresentation(img){
+                    let strId = UUID().uuidString
+                    var url = getDocumentsDirectory()
+                    let imgUrl = url.appendingPathComponent("MonNom"+strId+".png")
+                    try! dataImg.write(to: imgUrl)
+                }
+                
+            }
+        }
+        
+        /*
          Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             self.prev1?.snapshotThumnnail { (image) in
                 
@@ -90,7 +108,7 @@ class CameraViewController: UIViewController {
                 }
             }
         }
-        
+        */
     }
     
     @IBAction func captureModeValueChanged(_ sender: UISegmentedControl) {
@@ -127,7 +145,7 @@ class CameraViewController: UIViewController {
         */
         
         
-        prev2?.setView(self.camera2View)
+        //prev2?.setView(self.camera2View)
         //VideoPreviewer.instance().setView(self.cameraView)
         if let _ = DJISDKManager.product(){
             let video = DJISDKManager.videoFeeder()
@@ -135,13 +153,13 @@ class CameraViewController: UIViewController {
             DJISDKManager.videoFeeder()?.primaryVideoFeed.add(self, with: nil)
         }
         prev1?.start()
-        prev2?.start()
+        //prev2?.start()
         //VideoPreviewer.instance().start()
     }
     
     func resetVideoPreview() {
         prev1?.unSetView()
-        prev2?.unSetView()
+       // prev2?.unSetView()
         DJISDKManager.videoFeeder()?.primaryVideoFeed.remove(self)
         
     }
@@ -188,3 +206,4 @@ extension CameraViewController:DJISDKManagerDelegate {
 extension CameraViewController:DJICameraDelegate {
     
 }
+

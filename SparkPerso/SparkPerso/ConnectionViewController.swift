@@ -8,13 +8,15 @@
 
 import UIKit
 import DJISDK
-
+import SocketIO
 
 class ConnectionViewController: UIViewController {
     
     @IBOutlet weak var connectionStateSpheroLabel: UILabel!
     @IBOutlet weak var connectionStateLabel: UILabel!
     let SSID = ""
+    
+    @IBOutlet weak var socketIOConnectionStateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,9 @@ class ConnectionViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
+       
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -36,13 +40,17 @@ class ConnectionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func socketIOConnectionButtonClicked(_ sender: Any) {
+        
+    }
+    
     @IBAction func connectionButtonClicked(_ sender: UIButton) {
         trySparkConnection()
     }
     
     // SPHERO CONNECTION
     @IBAction func connectionSpheroButtonClicked(_ sender: Any) {
-        SharedToyBox.instance.searchForBoltsNamed(["SB-A729","SB-92B2","SB-8630"]) { err in
+        SharedToyBox.instance.searchForBoltsNamed(["SB-42C1"]) { err in
             if err == nil {
                 self.connectionStateSpheroLabel.text = "Connected"
             }

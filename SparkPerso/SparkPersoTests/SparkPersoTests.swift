@@ -18,18 +18,8 @@ class SparkPersoTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testMovingManager() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testMySequence() {
         
-        MovingManager.instance.restart()
-        MovingManager.instance.appendMouvement(mouvement: Mouvement(direction: .top, duration: 1.0))
-        MovingManager.instance.appendMouvement(mouvement: Mouvement(direction: .back, duration: 1.1))
-        MovingManager.instance.appendMouvement(mouvement: Mouvement(direction: .topRight, duration: 0.2))
-        MovingManager.instance.appendMouvement(mouvement: Mouvement(direction: .left, duration: 0.8))
-        
-        MovingManager.instance.play()
-
     }
 
     func testPerformanceExample() {

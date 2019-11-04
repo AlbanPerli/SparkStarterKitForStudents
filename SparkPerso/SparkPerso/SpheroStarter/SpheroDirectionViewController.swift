@@ -27,17 +27,31 @@ class SpheroDirectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SharedToyBox.instance.bolt?.setStabilization(state: SetStabilization.State.on)
-        SharedToyBox.instance.bolt?.setCollisionDetection(configuration: .enabled)
-        SharedToyBox.instance.bolt?.onCollisionDetected = { collisionData in
-            
-            DispatchQueue.main.sync {
-                self.collisionLabel.text = "Aïe!!!"
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    self.collisionLabel.text = ""
+        
+        let nbBolts = SharedToyBox.instance.bolts.count
+        var boltCollision = [Bool]()
+        
+        SharedToyBox.instance.bolts.map{
+            $0.setStabilization(state: SetStabilization.State.on)
+            $0.setCollisionDetection(configuration: .enabled)
+        }
+        SharedToyBox.instance.bolts.map{
+            $0.onCollisionDetected = { collisionData in
+                boltCollision.append(true)
+                DispatchQueue.main.sync {
+                    if nbBolts == boltCollision.count {
+                        print("Collision de 2 bolts")
+                    }else{
+                        delay(0.5) {
+                            boltCollision = []
+                        }
+                    }
+                    self.collisionLabel.text = "Aïe!!!"
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        self.collisionLabel.text = ""
+                    }
                 }
             }
-            
         }
     }
     
