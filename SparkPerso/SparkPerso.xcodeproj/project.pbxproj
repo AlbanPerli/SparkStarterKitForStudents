@@ -28,13 +28,14 @@
 		612F95D92369BA2A00DE29AA /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612F95CB2369B91600DE29AA /* SocketIO.framework */; };
 		612F95DA2369BA2A00DE29AA /* SocketIO.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 612F95CB2369B91600DE29AA /* SocketIO.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		612F95DE2369C04500DE29AA /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612F95DD2369C04500DE29AA /* SocketIOManager.swift */; };
-		612F95E7236B2E8200DE29AA /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612F95E0236B2E8100DE29AA /* Error.swift */; };
-		612F95E8236B2E8200DE29AA /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612F95E1236B2E8100DE29AA /* Dataset.swift */; };
-		612F95E9236B2E8200DE29AA /* Activation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612F95E2236B2E8100DE29AA /* Activation.swift */; };
-		612F95EA236B2E8200DE29AA /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612F95E3236B2E8100DE29AA /* Storage.swift */; };
-		612F95EB236B2E8200DE29AA /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612F95E4236B2E8100DE29AA /* Cache.swift */; };
-		612F95EC236B2E8200DE29AA /* Structure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612F95E5236B2E8200DE29AA /* Structure.swift */; };
-		612F95ED236B2E8200DE29AA /* NeuralNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612F95E6236B2E8200DE29AA /* NeuralNet.swift */; };
+		613A72ED237C6A9000119581 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A72E5237C6A9000119581 /* Matrix.swift */; };
+		613A72EE237C6A9000119581 /* FFNN+Metal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A72E6237C6A9000119581 /* FFNN+Metal.swift */; };
+		613A72EF237C6A9000119581 /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A72E7237C6A9000119581 /* Operations.swift */; };
+		613A72F0237C6A9000119581 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A72E8237C6A9000119581 /* Vector.swift */; };
+		613A72F1237C6A9000119581 /* FFNN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A72E9237C6A9000119581 /* FFNN.swift */; };
+		613A72F2237C6A9000119581 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A72EA237C6A9000119581 /* Random.swift */; };
+		613A72F3237C6A9000119581 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A72EB237C6A9000119581 /* Storage.swift */; };
+		613A72F4237C6A9000119581 /* FFNN+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A72EC237C6A9000119581 /* FFNN+Storage.swift */; };
 		6184E2D121E8ABA600895FDF /* SparkPersoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2D021E8ABA600895FDF /* SparkPersoTests.swift */; };
 		6184E2D921E8ABB000895FDF /* DirectionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2D821E8ABB000895FDF /* DirectionSequence.swift */; };
 		6184E2DB21E8ABB300895FDF /* CGPoints+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DA21E8ABB300895FDF /* CGPoints+Extensions.swift */; };
@@ -179,13 +180,14 @@
 		612F95C52369B91500DE29AA /* Socket.IO-Client-Swift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Socket.IO-Client-Swift.xcodeproj"; path = "../socket.io-client-swift-master/Socket.IO-Client-Swift.xcodeproj"; sourceTree = "<group>"; };
 		612F95CE2369B98B00DE29AA /* Starscream.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Starscream.xcodeproj; path = "../Starscream-master/Starscream.xcodeproj"; sourceTree = "<group>"; };
 		612F95DD2369C04500DE29AA /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
-		612F95E0236B2E8100DE29AA /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		612F95E1236B2E8100DE29AA /* Dataset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
-		612F95E2236B2E8100DE29AA /* Activation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activation.swift; sourceTree = "<group>"; };
-		612F95E3236B2E8100DE29AA /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		612F95E4236B2E8100DE29AA /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		612F95E5236B2E8200DE29AA /* Structure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structure.swift; sourceTree = "<group>"; };
-		612F95E6236B2E8200DE29AA /* NeuralNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeuralNet.swift; sourceTree = "<group>"; };
+		613A72E5237C6A9000119581 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		613A72E6237C6A9000119581 /* FFNN+Metal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FFNN+Metal.swift"; sourceTree = "<group>"; };
+		613A72E7237C6A9000119581 /* Operations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
+		613A72E8237C6A9000119581 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		613A72E9237C6A9000119581 /* FFNN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFNN.swift; sourceTree = "<group>"; };
+		613A72EA237C6A9000119581 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		613A72EB237C6A9000119581 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		613A72EC237C6A9000119581 /* FFNN+Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FFNN+Storage.swift"; sourceTree = "<group>"; };
 		6184E2CE21E8ABA600895FDF /* SparkPersoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkPersoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6184E2D021E8ABA600895FDF /* SparkPersoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkPersoTests.swift; sourceTree = "<group>"; };
 		6184E2D221E8ABA600895FDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -381,13 +383,14 @@
 		612F95EE236B2EB000DE29AA /* NeuralNet */ = {
 			isa = PBXGroup;
 			children = (
-				612F95E2236B2E8100DE29AA /* Activation.swift */,
-				612F95E4236B2E8100DE29AA /* Cache.swift */,
-				612F95E1236B2E8100DE29AA /* Dataset.swift */,
-				612F95E0236B2E8100DE29AA /* Error.swift */,
-				612F95E6236B2E8200DE29AA /* NeuralNet.swift */,
-				612F95E3236B2E8100DE29AA /* Storage.swift */,
-				612F95E5236B2E8200DE29AA /* Structure.swift */,
+				613A72E9237C6A9000119581 /* FFNN.swift */,
+				613A72E6237C6A9000119581 /* FFNN+Metal.swift */,
+				613A72EC237C6A9000119581 /* FFNN+Storage.swift */,
+				613A72E5237C6A9000119581 /* Matrix.swift */,
+				613A72E7237C6A9000119581 /* Operations.swift */,
+				613A72EA237C6A9000119581 /* Random.swift */,
+				613A72EB237C6A9000119581 /* Storage.swift */,
+				613A72E8237C6A9000119581 /* Vector.swift */,
 			);
 			path = NeuralNet;
 			sourceTree = "<group>";
@@ -845,13 +848,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				612F95E8236B2E8200DE29AA /* Dataset.swift in Sources */,
 				61C3D68F231BF82F00F98C11 /* String+Utils.swift in Sources */,
 				61EDDB1D2359BC82008B3636 /* SparkMovementManager.swift in Sources */,
+				613A72F2237C6A9000119581 /* Random.swift in Sources */,
 				612304BE200BDCEE00F98395 /* TakeOffAndLandingViewController.swift in Sources */,
 				6184E2D921E8ABB000895FDF /* DirectionSequence.swift in Sources */,
 				612F95DE2369C04500DE29AA /* SocketIOManager.swift in Sources */,
-				612F95ED236B2E8200DE29AA /* NeuralNet.swift in Sources */,
 				61C3D695231C12BC00F98C11 /* SpheroLedsViewController.swift in Sources */,
 				612304B9200BC77200F98395 /* CalibrationAndHeadingViewController.swift in Sources */,
 				61EA75412359F08200C3E1E5 /* SpheroTP1ViewController.swift in Sources */,
@@ -859,18 +861,20 @@
 				61C3D684231BF82F00F98C11 /* VersionsCommandResponse.swift in Sources */,
 				61C3D677231BF82F00F98C11 /* SpheroV2Toy.swift in Sources */,
 				61C3D68D231BF82F00F98C11 /* CommandV1.swift in Sources */,
-				612F95E7236B2E8200DE29AA /* Error.swift in Sources */,
 				61CC82FD231E4A8D001AE806 /* LocatorViewController.swift in Sources */,
 				61C3D674231BF82F00F98C11 /* BB8Toy.swift in Sources */,
 				611ACD772358A9B3001EDB7E /* Helper.swift in Sources */,
+				613A72ED237C6A9000119581 /* Matrix.swift in Sources */,
 				61EDDB192359BC42008B3636 /* BasicMove.swift in Sources */,
 				61C3D69D231C171F00F98C11 /* CGContext+GraphLines.swift in Sources */,
 				6117015E21F60C7F009F47E4 /* ImageRecognition.swift in Sources */,
 				61C3D67C231BF82F00F98C11 /* ToyProtocols.swift in Sources */,
+				613A72F4237C6A9000119581 /* FFNN+Storage.swift in Sources */,
 				6184E2E521E8AFEB00895FDF /* AutoMoveViewController.swift in Sources */,
 				61C3D673231BF82F00F98C11 /* SpheroV1ToyCore.swift in Sources */,
 				61C3D689231BF82F00F98C11 /* PowerStateResponse.swift in Sources */,
 				61C3D66C231BF82F00F98C11 /* SharedToyBox.swift in Sources */,
+				613A72F3237C6A9000119581 /* Storage.swift in Sources */,
 				61C3D676231BF82F00F98C11 /* BB9EToy.swift in Sources */,
 				61C3D66F231BF82F00F98C11 /* SensorControl.swift in Sources */,
 				61C3D67E231BF82F00F98C11 /* ToyBox.swift in Sources */,
@@ -881,22 +885,22 @@
 				61C3D68B231BF82F00F98C11 /* CommandV1Operation.swift in Sources */,
 				61C3D66D231BF82F00F98C11 /* SDKUtils.swift in Sources */,
 				6184E2DE21E8ABCC00895FDF /* MovingManager.swift in Sources */,
+				613A72F0237C6A9000119581 /* Vector.swift in Sources */,
 				61C3D67F231BF82F00F98C11 /* Color+Utils.swift in Sources */,
 				61C3D68C231BF82F00F98C11 /* CommandV1Sequencer.swift in Sources */,
 				61F339AB23250521000967B2 /* SpheroStatusViewController.swift in Sources */,
 				61C3D67B231BF82F00F98C11 /* MiniToy.swift in Sources */,
 				6117016021F60CB4009F47E4 /* UIImage+CVPixelBuffer.swift in Sources */,
 				611ACD7523589558001EDB7E /* TP1ViewController.swift in Sources */,
-				612F95EA236B2E8200DE29AA /* Storage.swift in Sources */,
 				61C3D671231BF82F00F98C11 /* SensorControlV1.swift in Sources */,
 				61C3D682231BF82F00F98C11 /* CommandSequencerV2.swift in Sources */,
 				61EDDB1B2359BC62008B3636 /* GenericMovementManager.swift in Sources */,
 				6184E2E021E8ABE800895FDF /* Movement.swift in Sources */,
 				61C3D697231C170900F98C11 /* SpheroSensorControlViewController.swift in Sources */,
 				612304C0200BE41500F98395 /* MovementLevelOneViewController.swift in Sources */,
+				613A72F1237C6A9000119581 /* FFNN.swift in Sources */,
 				61C3D69C231C171F00F98C11 /* GraphView.swift in Sources */,
 				61C3D66E231BF82F00F98C11 /* Toy.swift in Sources */,
-				612F95E9236B2E8200DE29AA /* Activation.swift in Sources */,
 				61C3D67A231BF82F00F98C11 /* SpheroV2ToyCore.swift in Sources */,
 				6117015B21F60C63009F47E4 /* MobileNet.mlmodel in Sources */,
 				61EDDB1F2359BC92008B3636 /* SpheroMovementManager.swift in Sources */,
@@ -911,15 +915,15 @@
 				612304AA200BABF200F98395 /* ProductCommunicationManager.swift in Sources */,
 				61C3D691231BFD5F00F98C11 /* SpheroAimingViewController.swift in Sources */,
 				61C3D69E231C171F00F98C11 /* GraphSegment.swift in Sources */,
-				612F95EC236B2E8200DE29AA /* Structure.swift in Sources */,
 				61D50D7220274586000842A3 /* AccelerometerViewController.swift in Sources */,
 				61C3D68A231BF82F00F98C11 /* CollisionData.swift in Sources */,
 				61C3D675231BF82F00F98C11 /* SensorControlV2.swift in Sources */,
 				61C3D67D231BF82F00F98C11 /* CBUUID+SpheroUUIDs.swift in Sources */,
 				61C3D670231BF82F00F98C11 /* SPRKToy.swift in Sources */,
-				612F95EB236B2E8200DE29AA /* Cache.swift in Sources */,
 				61C3D672231BF82F00F98C11 /* SpheroV1Toy.swift in Sources */,
 				612304B0200BB6A000F98395 /* CameraViewController.swift in Sources */,
+				613A72EF237C6A9000119581 /* Operations.swift in Sources */,
+				613A72EE237C6A9000119581 /* FFNN+Metal.swift in Sources */,
 				61DAFC0F200B9AB3001CB2E2 /* ConnectionViewController.swift in Sources */,
 				61C3D683231BF82F00F98C11 /* CommandV2.swift in Sources */,
 				61C3D688231BF82F00F98C11 /* SensorMaskCommandResponse.swift in Sources */,

@@ -8,11 +8,12 @@
 
 import UIKit
 import simd
+import AVFoundation
 
 class SpheroSensorControlViewController: UIViewController {
 
     enum Classes:Int {
-        case Carre,Rond,Triangle
+        case Carre,Triangle,Rond
         
         func neuralNetResponse() -> [Double] {
             switch self {
@@ -24,7 +25,7 @@ class SpheroSensorControlViewController: UIViewController {
         
     }
     
-    var neuralNet:NeuralNet? = nil
+    var neuralNet:FFNN? = nil
     
     @IBOutlet weak var gyroChart: GraphView!
     @IBOutlet weak var acceleroChart: GraphView!
@@ -36,16 +37,17 @@ class SpheroSensorControlViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
-        let structure = try! NeuralNet.Structure(nodes: [3600,60,3], hiddenActivation: .rectifiedLinear, outputActivation: .rectifiedLinear)
-        neuralNet = try! NeuralNet(structure: structure)
+        neuralNet = FFNN(inputs: 3600, hidden: 20, outputs: 3, learningRate: 0.3, momentum: 0.2, weights: nil, activationFunction: .Sigmoid, errorFunction: .default(average: true))
         
         
         movementData[.Carre] = []
         movementData[.Rond] = []
         movementData[.Triangle] = []
         
-        var currentData = [Double]()
+        var currentAccData = [Double]()
+        var currentGyroData = [Double]()
         
         SharedToyBox.instance.bolt?.sensorControl.enable(sensors: SensorMask.init(arrayLiteral: .accelerometer,.gyro))
         SharedToyBox.instance.bolt?.sensorControl.interval = 1
@@ -56,7 +58,7 @@ class SpheroSensorControlViewController: UIViewController {
                 if self.isRecording || self.isPredicting {
                     if let acceleration = data.accelerometer?.filteredAcceleration {
                         // PAS BIEN!!!
-                        currentData.append(contentsOf: [acceleration.x!, acceleration.y!, acceleration.z!])
+                        currentAccData.append(contentsOf: [acceleration.x!, acceleration.y!, acceleration.z!])
                         
                         let dataToDisplay: double3 = [acceleration.x!, acceleration.y!, acceleration.z!]
                         self.acceleroChart.add(dataToDisplay)
@@ -65,23 +67,62 @@ class SpheroSensorControlViewController: UIViewController {
                     if let gyro = data.gyro?.rotationRate {
                         // TOUJOURS PAS BIEN!!!
                         let rotationRate: double3 = [Double(gyro.x!)/2000.0, Double(gyro.y!)/2000.0, Double(gyro.z!)/2000.0]
-                        currentData.append(contentsOf: [Double(gyro.x!)/2000.0, Double(gyro.y!)/2000.0, Double(gyro.z!)/2000.0])
+                        currentGyroData.append(contentsOf: [Double(gyro.x!), Double(gyro.y!), Double(gyro.z!)])
                         self.gyroChart.add(rotationRate)
                     }
-                    print(currentData.count)
-                    if currentData.count >= 3600 {
+                    
+                    if currentAccData.count+currentGyroData.count >= 3600 {
                         print("Data ready for network!")
                         if self.isRecording {
                             self.isRecording = false
-                            self.movementData[self.selectedClass]?.append(currentData)
-                            currentData = []
+                            
+                            // Normalisation
+                            let minAcc = currentAccData.min()!
+                            let maxAcc = currentAccData.max()!
+                            let normalizedAcc = currentAccData.map { ($0 - minAcc) / (maxAcc - minAcc) }
+                            
+                            let minGyr = currentGyroData.min()!
+                            let maxGyr = currentGyroData.max()!
+                            let normalizedGyr = currentGyroData.map { ($0 - minGyr) / (maxGyr - minGyr) }
+                            
+                            self.movementData[self.selectedClass]?.append(normalizedAcc+normalizedGyr)
+                            currentAccData = []
+                            currentGyroData = []
                         }
                         if self.isPredicting {
                             self.isPredicting = false
-                            let floatInput = currentData.map{ Float($0) }
-                            let prediction = try! self.neuralNet?.infer(floatInput)
+                            
+                            // Normalisation
+                            let minAcc = currentAccData.min()!
+                            let maxAcc = currentAccData.max()!
+                            let normalizedAcc = currentAccData.map { Float(($0 - minAcc) / (maxAcc - minAcc)) }
+                            let minGyr = currentGyroData.min()!
+                            let maxGyr = currentGyroData.max()!
+                            let normalizedGyr = currentGyroData.map { Float(($0 - minGyr) / (maxGyr - minGyr)) }
+                            
+                            let prediction = try! self.neuralNet?.update(inputs: normalizedAcc+normalizedGyr)
+                            
+                            let index = prediction?.index(of: (prediction?.max()!)!)! // [0.89,0.03,0.14]
+                            
+                            
+                            let recognizedClass = Classes(rawValue: index!)!
+                            print(recognizedClass)
                             print(prediction!)
-                            currentData = []
+                            
+                            var str = "Je pense que c'est un "
+                            switch recognizedClass {
+                            case .Carre: str = str+"carré!"
+                            case .Rond: str = str+"rond!"
+                            case .Triangle: str = str+"triangle!"
+                            }
+                            let utterance = AVSpeechUtterance(string: str)
+                            utterance.voice = AVSpeechSynthesisVoice(language: "fr-Fr")
+                            utterance.rate = 0.4
+                            
+                            let synthesizer = AVSpeechSynthesizer()
+                            synthesizer.speak(utterance)
+                            currentAccData = []
+                            currentGyroData = []
                         }
                     }
                 }
@@ -107,7 +148,8 @@ class SpheroSensorControlViewController: UIViewController {
         // --------------------------------------
         // TRAINING
         // --------------------------------------
-        for _ in 0...800 {
+        for i in 0...20 {
+            print(i)
             if let selectedClass = movementData.randomElement(),
                 let input = selectedClass.value.randomElement(){
                 let expectedResponse = selectedClass.key.neuralNetResponse()
@@ -115,8 +157,8 @@ class SpheroSensorControlViewController: UIViewController {
                 let floatInput = input.map{ Float($0) }
                 let floatRes = expectedResponse.map{ Float($0) }
                 
-                try! neuralNet?.infer(floatInput) // -> [0.23,0.67,0.99]
-                try! neuralNet?.backpropagate(floatRes)
+                try! neuralNet?.update(inputs: floatInput) // -> [0.23,0.67,0.99]
+                try! neuralNet?.backpropagate(answer: floatRes)
                 
             }
         }
@@ -129,7 +171,7 @@ class SpheroSensorControlViewController: UIViewController {
             let values = movementData[k]!
             for v in values {
                 let floatInput = v.map{ Float($0) }
-                let prediction = try! neuralNet?.infer(floatInput)
+                let prediction = try! neuralNet?.update(inputs:floatInput)
                 print(prediction!)
             }
         }

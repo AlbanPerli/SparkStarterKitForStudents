@@ -53,6 +53,13 @@ class SpheroDirectionViewController: UIViewController {
                 }
             }
         }
+        
+        SharedToyBox.instance.bolt?.sensorControl.enable(sensors: SensorMask.init(arrayLiteral: .accelerometer))
+        SharedToyBox.instance.bolt?.sensorControl.interval = 1
+        SharedToyBox.instance.bolt?.setStabilization(state: SetStabilization.State.off)
+        SharedToyBox.instance.bolt?.sensorControl.onDataReady = { data in
+            print(data.accelerometer!)
+        }
     }
     
     func displayCurrentState() {
