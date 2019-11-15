@@ -36,6 +36,7 @@
 		613A72F2237C6A9000119581 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A72EA237C6A9000119581 /* Random.swift */; };
 		613A72F3237C6A9000119581 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A72EB237C6A9000119581 /* Storage.swift */; };
 		613A72F4237C6A9000119581 /* FFNN+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A72EC237C6A9000119581 /* FFNN+Storage.swift */; };
+		613A72F7237EDA0600119581 /* ImageResize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A72F6237EDA0600119581 /* ImageResize.swift */; };
 		6184E2D121E8ABA600895FDF /* SparkPersoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2D021E8ABA600895FDF /* SparkPersoTests.swift */; };
 		6184E2D921E8ABB000895FDF /* DirectionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2D821E8ABB000895FDF /* DirectionSequence.swift */; };
 		6184E2DB21E8ABB300895FDF /* CGPoints+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6184E2DA21E8ABB300895FDF /* CGPoints+Extensions.swift */; };
@@ -188,6 +189,7 @@
 		613A72EA237C6A9000119581 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		613A72EB237C6A9000119581 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		613A72EC237C6A9000119581 /* FFNN+Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FFNN+Storage.swift"; sourceTree = "<group>"; };
+		613A72F6237EDA0600119581 /* ImageResize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResize.swift; sourceTree = "<group>"; };
 		6184E2CE21E8ABA600895FDF /* SparkPersoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkPersoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6184E2D021E8ABA600895FDF /* SparkPersoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkPersoTests.swift; sourceTree = "<group>"; };
 		6184E2D221E8ABA600895FDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 		612304B7200BC74500F98395 /* SparkStarter */ = {
 			isa = PBXGroup;
 			children = (
+				613A72F5237ED9F500119581 /* ImageHelper */,
 				611ACD732358951D001EDB7E /* TP */,
 				612304AB200BABF700F98395 /* HelpersFromSample */,
 				6117015C21F60C64009F47E4 /* IA */,
@@ -393,6 +396,14 @@
 				613A72E8237C6A9000119581 /* Vector.swift */,
 			);
 			path = NeuralNet;
+			sourceTree = "<group>";
+		};
+		613A72F5237ED9F500119581 /* ImageHelper */ = {
+			isa = PBXGroup;
+			children = (
+				613A72F6237EDA0600119581 /* ImageResize.swift */,
+			);
+			path = ImageHelper;
 			sourceTree = "<group>";
 		};
 		6184E2CF21E8ABA600895FDF /* SparkPersoTests */ = {
@@ -851,6 +862,7 @@
 				61C3D68F231BF82F00F98C11 /* String+Utils.swift in Sources */,
 				61EDDB1D2359BC82008B3636 /* SparkMovementManager.swift in Sources */,
 				613A72F2237C6A9000119581 /* Random.swift in Sources */,
+				613A72F7237EDA0600119581 /* ImageResize.swift in Sources */,
 				612304BE200BDCEE00F98395 /* TakeOffAndLandingViewController.swift in Sources */,
 				6184E2D921E8ABB000895FDF /* DirectionSequence.swift in Sources */,
 				612F95DE2369C04500DE29AA /* SocketIOManager.swift in Sources */,
