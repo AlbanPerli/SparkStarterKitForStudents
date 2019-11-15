@@ -14,6 +14,10 @@ struct StreamingDataTrackerV2 {
 }
 
 fileprivate func valueFrom(data: Data, startLocation: Int) -> Double {
+    if startLocation >= data.count
+        || startLocation+4 > data.count {
+        return 0.0
+    }
     let dataArray = [UInt8](data[startLocation..<startLocation+4])
     
     guard let float = Float32(dataArray.reversed()) else { return 0.0 }
