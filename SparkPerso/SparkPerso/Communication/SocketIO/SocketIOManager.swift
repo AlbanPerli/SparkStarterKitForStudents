@@ -14,15 +14,20 @@ class SocketIOManager {
     struct Ctx {
         var ip:String
         var port:String
-        var modeVerbose:Bool
+        var modeVerbose:Bool = true
         // ...
         func fullIp() -> String {
             return "http://"+ip+":"+port
         }
         
         static func debugContext() -> Ctx {
-            return Ctx(ip: "169.254.27.200", port: "3000", modeVerbose: false)
+            return Ctx(ip: "192.168.43.81", port: "3000")
         }
+        
+        static func newCtx() -> Ctx {
+            return Ctx(ip: "172.20.10.10", port: "8888")
+        }
+
     }
     
     static let instance = SocketIOManager()
@@ -30,9 +35,10 @@ class SocketIOManager {
     var manager:SocketManager? = nil
     var socket:SocketIOClient? = nil
         
-    func setup(ctx:Ctx = Ctx.debugContext()) {
+    func setup(ctx:Ctx = Ctx.newCtx()) {
         manager = SocketManager(socketURL: URL(string: ctx.fullIp())!, config: [.log(ctx.modeVerbose), .compress])
         socket = manager?.defaultSocket
+        
     }
     
     func connect(callBack:@escaping ()->()) {

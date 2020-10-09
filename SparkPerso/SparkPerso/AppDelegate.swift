@@ -26,6 +26,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.productCommunicationManager.registerWithSDK()
         
+        SocketIOManager.instance.setup(ctx: SocketIOManager.Ctx.debugContext())
+        SocketIOManager.instance.connect {
+            print("**** Connect *****")
+            SocketIOManager.instance.writeValue("Hey", toChannel: "hello") {
+            }
+            
+            SocketIOManager.instance.listenToChannel(channel: "hello") { (str) in
+                if let s = str {
+                    print(s)
+                }
+            }
+
+        }
+        
+        
+       
         return true
     }
 

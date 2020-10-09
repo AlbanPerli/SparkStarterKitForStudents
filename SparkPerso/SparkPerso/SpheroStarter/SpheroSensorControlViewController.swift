@@ -39,7 +39,7 @@ class SpheroSensorControlViewController: UIViewController {
 
         
         // Do any additional setup after loading the view.
-        neuralNet = FFNN(inputs: 3600, hidden: 20, outputs: 3, learningRate: 0.3, momentum: 0.2, weights: nil, activationFunction: .Sigmoid, errorFunction: .default(average: true))
+        neuralNet = FFNN(inputs: 1800, hidden: 20, outputs: 3, learningRate: 0.3, momentum: 0.2, weights: nil, activationFunction: .Sigmoid, errorFunction:.crossEntropy(average: false))// .default(average: true))
         
         
         movementData[.Carre] = []
@@ -56,10 +56,25 @@ class SpheroSensorControlViewController: UIViewController {
             DispatchQueue.main.async {
                 
                 if self.isRecording || self.isPredicting {
+                    
+                   
+                    
+                    
                     if let acceleration = data.accelerometer?.filteredAcceleration {
                         // PAS BIEN!!!
                         currentAccData.append(contentsOf: [acceleration.x!, acceleration.y!, acceleration.z!])
-                        
+//                        if acceleration.x! >= 0.65 {
+//                            print("droite")
+//                        }else if acceleration.x! <= -0.65 {
+//                            print("gauche")
+//                        }
+                        let absSum = abs(acceleration.x!)+abs(acceleration.y!)+abs(acceleration.z!)
+                        /*
+                        if absSum > 14 {
+                            print("Secousse")
+                        }else{
+                            print("IDLE")
+                        }*/
                         let dataToDisplay: double3 = [acceleration.x!, acceleration.y!, acceleration.z!]
                         self.acceleroChart.add(dataToDisplay)
                     }
@@ -70,7 +85,7 @@ class SpheroSensorControlViewController: UIViewController {
                         currentGyroData.append(contentsOf: [Double(gyro.x!), Double(gyro.y!), Double(gyro.z!)])
                         self.gyroChart.add(rotationRate)
                     }
-                    
+                    /*
                     if currentAccData.count+currentGyroData.count >= 3600 {
                         print("Data ready for network!")
                         if self.isRecording {
@@ -85,7 +100,7 @@ class SpheroSensorControlViewController: UIViewController {
                             let maxGyr = currentGyroData.max()!
                             let normalizedGyr = currentGyroData.map { ($0 - minGyr) / (maxGyr - minGyr) }
                             
-                            self.movementData[self.selectedClass]?.append(normalizedAcc+normalizedGyr)
+                            self.movementData[self.selectedClass]?.append(normalizedAcc)
                             currentAccData = []
                             currentGyroData = []
                         }
@@ -100,7 +115,7 @@ class SpheroSensorControlViewController: UIViewController {
                             let maxGyr = currentGyroData.max()!
                             let normalizedGyr = currentGyroData.map { Float(($0 - minGyr) / (maxGyr - minGyr)) }
                             
-                            let prediction = try! self.neuralNet?.update(inputs: normalizedAcc+normalizedGyr)
+                            let prediction = try! self.neuralNet?.update(inputs: normalizedAcc)
                             
                             let index = prediction?.index(of: (prediction?.max()!)!)! // [0.89,0.03,0.14]
                             
@@ -125,6 +140,7 @@ class SpheroSensorControlViewController: UIViewController {
                             currentGyroData = []
                         }
                     }
+ */
                 }
             }
         }
